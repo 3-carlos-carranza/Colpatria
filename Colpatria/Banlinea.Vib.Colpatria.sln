@@ -73,7 +73,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{99388EE1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{79967AC0-7F27-4BD6-B506-563A8BD35573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Web.Colpatria", "Presentation.Web.Colpatria\Presentation.Web.Colpatria.csproj", "{EBB2367B-D381-4250-9566-FE8EBC2180CA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB2367B-D381-4250-9566-FE8EBC2180CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB2367B-D381-4250-9566-FE8EBC2180CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB2367B-D381-4250-9566-FE8EBC2180CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB2367B-D381-4250-9566-FE8EBC2180CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -107,5 +119,6 @@ Global
 		{1040FEF8-F840-4E77-BDF8-EEF8A4B5A4F1} = {869F6862-ABF5-4534-8132-0745FA7DCB1F}
 		{99388EE1-8A56-4775-AE8C-E47CE5A4FB8A} = {869F6862-ABF5-4534-8132-0745FA7DCB1F}
 		{79967AC0-7F27-4BD6-B506-563A8BD35573} = {869F6862-ABF5-4534-8132-0745FA7DCB1F}
+		{EBB2367B-D381-4250-9566-FE8EBC2180CA} = {D880FAEF-0475-4BF6-B1EF-B0B5620A3332}
 	EndGlobalSection
 EndGlobal

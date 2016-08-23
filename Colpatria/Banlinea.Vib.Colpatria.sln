@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Common.Definition", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Common.Implementation", "Data.Common.Implementation\Data.Common.Implementation.csproj", "{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crusscutting.DependencyInjectionFactory", "Crusscutting.DependencyInjectionFactory\Crusscutting.DependencyInjectionFactory.csproj", "{DC094F7C-1264-420E-9B4E-A2B83A63AD48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC094F7C-1264-420E-9B4E-A2B83A63AD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC094F7C-1264-420E-9B4E-A2B83A63AD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC094F7C-1264-420E-9B4E-A2B83A63AD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC094F7C-1264-420E-9B4E-A2B83A63AD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +140,6 @@ Global
 		{EBB2367B-D381-4250-9566-FE8EBC2180CA} = {D880FAEF-0475-4BF6-B1EF-B0B5620A3332}
 		{470AB1B1-B29E-4360-AA44-0D83825ECFCD} = {A465A074-7523-48C9-86ED-68D1AFFA427B}
 		{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F} = {A465A074-7523-48C9-86ED-68D1AFFA427B}
+		{DC094F7C-1264-420E-9B4E-A2B83A63AD48} = {BA59863A-4312-47D7-8371-574698CEC133}
 	EndGlobalSection
 EndGlobal

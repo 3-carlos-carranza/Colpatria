@@ -1,5 +1,6 @@
 ﻿using Data.MongoModule;
 using Microsoft.Practices.Unity;
+using Presentation.Web.Common;
 
 namespace Crusscutting.DependencyInjectionFactory
 {
@@ -8,6 +9,8 @@ namespace Crusscutting.DependencyInjectionFactory
         public static void InitializeContainer(this IUnityContainer container)
         {
             container.InitializeMongoRepository();
+            container.InitializeAppService();
         }
     }
 }
+ 

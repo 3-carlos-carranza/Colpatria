@@ -1,11 +1,41 @@
-﻿@model dynamic
+﻿@model IEnumerable<Core.DataTransferObject.Mongo.ColpatriaLogDto>
 
 @{
     ViewBag.Title = "Colpatria";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br/>
-<br/>
+<br />
+<br />
 <h2>Bienvenidos a Colpatria</h2>
 
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Listado de tareas Colpatria</div>
+    <div class="panel-body">
+        <p>Información obtenida desde la base de datos de Mongo</p>
+    </div>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Fecha creación</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var log in Model)
+                {
+                    <tr>
+                        <td>@log.CreatedDate</td>
+                        <td>@log.Level</td>
+                        <td>@log.Message</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+    </div>
 

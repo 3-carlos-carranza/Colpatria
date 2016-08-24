@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Crosscutting.Mappers;
 
 namespace Presentation.Web.Colpatria
 {
@@ -13,6 +10,7 @@ namespace Presentation.Web.Colpatria
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AutomapperMaps.Initialize();
         }
     }
 }

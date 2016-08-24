@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 
-namespace Crusscutting.DependencyInjectionFactory
+namespace Crosscutting.DependencyInjectionFactory
 {
     public class DiContainer
     {

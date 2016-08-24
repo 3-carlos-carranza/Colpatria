@@ -7,8 +7,8 @@
     <ProjectGuid>{DC094F7C-1264-420E-9B4E-A2B83A63AD48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Crusscutting.DependencyInjectionFactory</RootNamespace>
-    <AssemblyName>Crusscutting.DependencyInjectionFactory</AssemblyName>
+    <RootNamespace>Crosscutting.DependencyInjectionFactory</RootNamespace>
+    <AssemblyName>Crosscutting.DependencyInjectionFactory</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

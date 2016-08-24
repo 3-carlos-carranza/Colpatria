@@ -3,7 +3,7 @@ using Core.Entities.Mongo;
 
 namespace Application.Main.Definition
 {
-    public interface IMongoAppService
+    public interface ILoggingAppService
     {
         IEnumerable<ColpatriaLog> GetAllColpatriaLogs();
     }

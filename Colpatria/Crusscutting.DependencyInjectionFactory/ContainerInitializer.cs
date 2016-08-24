@@ -2,7 +2,7 @@
 using Microsoft.Practices.Unity;
 using Presentation.Web.Common;
 
-namespace Crusscutting.DependencyInjectionFactory
+namespace Crosscutting.DependencyInjectionFactory
 {
     public static class ContainerInitializer
     {

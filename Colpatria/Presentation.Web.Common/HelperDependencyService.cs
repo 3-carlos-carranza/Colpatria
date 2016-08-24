@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Application.Main.Definition;
+using Application.Main.Implementation;
+using Microsoft.Practices.Unity;
 
 namespace Presentation.Web.Common
 {
@@ -6,6 +8,7 @@ namespace Presentation.Web.Common
     {
         public static void InitializeAppService(this IUnityContainer container)
         {
+            container.RegisterType<ILoggingAppService, LoggingAppService>();
         }
     }
 }

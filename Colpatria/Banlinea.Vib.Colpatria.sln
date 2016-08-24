@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Core", "3.Core", "{B472E3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Data", "4.Data", "{714ECD53-B34B-4940-8CB4-A485EA15384D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Crusscutting", "5.Crusscutting", "{02183C6F-3160-48A1-A76E-3EA83EDFC542}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Crosscutting", "5.Crosscutting", "{02183C6F-3160-48A1-A76E-3EA83EDFC542}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Testing", "6.Testing", "{6668F49C-A5FA-43A9-84E8-A4AADD9E95A3}"
 EndProject
@@ -79,7 +79,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Common.Definition", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Common.Implementation", "Data.Common.Implementation\Data.Common.Implementation.csproj", "{4F25BBFA-26D1-4B46-AD1D-A9471CF3975F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crusscutting.DependencyInjectionFactory", "Crusscutting.DependencyInjectionFactory\Crusscutting.DependencyInjectionFactory.csproj", "{DC094F7C-1264-420E-9B4E-A2B83A63AD48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crosscutting.DependencyInjectionFactory", "Crusscutting.DependencyInjectionFactory\Crosscutting.DependencyInjectionFactory.csproj", "{DC094F7C-1264-420E-9B4E-A2B83A63AD48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.MongoModule", "Data.MongoModule\Data.MongoModule.csproj", "{B971EC7F-4A5D-49C1-9150-2322B59E0E2E}"
 EndProject
@@ -91,7 +91,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.GlobalRepository.Defin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Web.Common", "Presentation.Web.Common\Presentation.Web.Common.csproj", "{092626EC-96CA-42F3-BA06-2F7C2135533A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crusscutting.Mappers", "Crusscutting.Mappers\Crusscutting.Mappers.csproj", "{09B7B936-6FED-4935-A682-24FD1D0F132B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crosscutting.Mappers", "Crusscutting.Mappers\Crosscutting.Mappers.csproj", "{09B7B936-6FED-4935-A682-24FD1D0F132B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Main.Definition", "Application.Main.Definition\Application.Main.Definition.csproj", "{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6}"
 EndProject

@@ -1,0 +1,302 @@
+/*request process*/
+/* line 7, ../../sass/requestProcess.scss */
+.req-exp {
+  background: #b00000;
+  padding: 15px 15px 15px 30px;
+}
+/* line 12, ../../sass/requestProcess.scss */
+.req-exp p .tsol-tit {
+  padding-left: 20px;
+  color: #fff;
+}
+
+/*counter styles*/
+/* line 21, ../../sass/requestProcess.scss */
+.countdown_section {
+  font-size: 1em !important;
+  display: inline-block !important;
+  margin: 0 10px;
+  text-align: center;
+  color: #fff;
+}
+
+/* line 29, ../../sass/requestProcess.scss */
+.countdown_amount {
+  display: inline-block !important;
+  color: #fff;
+}
+
+/* line 34, ../../sass/requestProcess.scss */
+.countdown_section:nth-child(3) {
+  display: none !important;
+  color: #fff;
+}
+
+/* line 39, ../../sass/requestProcess.scss */
+.countdown_section:nth-child(4) {
+  display: none !important;
+  color: #fff;
+}
+
+/* line 44, ../../sass/requestProcess.scss */
+.vnc-inf {
+  margin-right: 30px;
+  color: #fff;
+}
+
+/*counter styles*/
+/* line 56, ../../sass/requestProcess.scss */
+.tt-preapp-card {
+  color: #003886;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* line 62, ../../sass/requestProcess.scss */
+.txt-indt {
+  list-style: none;
+}
+
+/* line 66, ../../sass/requestProcess.scss */
+.txt-crt {
+  padding: 20px 0;
+}
+
+/* line 70, ../../sass/requestProcess.scss */
+.img-carta {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* line 76, ../../sass/requestProcess.scss */
+.btns-pc {
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding: 0px 15px;
+}
+
+/*preapproved certificate modal*/
+/* line 85, ../../sass/requestProcess.scss */
+.modal-dialog {
+  width: 90%;
+}
+
+/* line 89, ../../sass/requestProcess.scss */
+.modal-body {
+  position: relative;
+  padding: 30px;
+}
+
+/* line 94, ../../sass/requestProcess.scss */
+.modal-header {
+  border-bottom: 0;
+}
+
+/* line 98, ../../sass/requestProcess.scss */
+.modal-footer {
+  background: #F1F1F1;
+}
+
+/* line 102, ../../sass/requestProcess.scss */
+.dat-user-card span {
+  display: block;
+}
+
+/* line 106, ../../sass/requestProcess.scss */
+.date-dv {
+  padding-left: 0;
+}
+
+/* line 110, ../../sass/requestProcess.scss */
+.date-dv span {
+  font-weight: bold;
+}
+
+/* line 114, ../../sass/requestProcess.scss */
+.sp-card {
+  display: block;
+  text-align: right;
+  font-size: 0.8em;
+}
+
+/* line 120, ../../sass/requestProcess.scss */
+.p-ft-card {
+  font-size: 0.7em;
+}
+
+/* line 124, ../../sass/requestProcess.scss */
+.sign-img {
+  width: 80px;
+}
+
+/* line 128, ../../sass/requestProcess.scss */
+.dt-state, .dt-autho, .dt-preApp, .dt-uplfiles {
+  padding: 20px;
+}
+
+/*preapproved certificate modal*/
+/*Request documents*/
+/* line 135, ../../sass/requestProcess.scss */
+.inf-sx-txt {
+  padding: 15px 0;
+  text-align: center;
+  background: #003993;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9em;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* line 148, ../../sass/requestProcess.scss */
+.arr-tx {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  background: #003993;
+}
+
+/* line 154, ../../sass/requestProcess.scss */
+.arr-tx:after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #003993;
+  border-width: 15px;
+  margin-left: -15px;
+}
+
+/* line 169, ../../sass/requestProcess.scss */
+.close-tx {
+  width: 23px;
+  height: 23px;
+  background: #fff;
+  color: #003993;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  padding-top: 6px;
+  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  font-size: 0.7em;
+}
+
+/*Request documents*/
+/* line 187, ../../sass/requestProcess.scss */
+.pnl-docs .panel-heading {
+  font-style: italic;
+  border: none;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+/* line 194, ../../sass/requestProcess.scss */
+.panel-default > .panel-heading {
+  background: transparent;
+  color: #333333;
+  border-color: #dddddd;
+}
+
+/* line 200, ../../sass/requestProcess.scss */
+.panel-heading {
+  height: 30px;
+}
+
+/* line 204, ../../sass/requestProcess.scss */
+.panel-heading {
+  background-image: none;
+  box-shadow: none;
+}
+
+/* line 210, ../../sass/requestProcess.scss */
+.panel-default a span.icon {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  background-image: none;
+  display: block;
+  position: relative;
+  width: 15px;
+  height: 20px;
+  font-size: 0.8em;
+  vertical-align: middle;
+  margin: auto 0;
+  float: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  bottom: 25px;
+  right: 1%;
+}
+/* line 228, ../../sass/requestProcess.scss */
+.panel-default a span.icon:before {
+  content: "\e260";
+}
+/* line 232, ../../sass/requestProcess.scss */
+.panel-default a.collapsed span.icon:before {
+  content: "\e259";
+}
+/* line 236, ../../sass/requestProcess.scss */
+.panel-default a, .panel-default a:hover, .panel-default a:focus, .panel-default a:active {
+  text-decoration: none !important;
+}
+
+/* line 241, ../../sass/requestProcess.scss */
+.cell-row-docs {
+  padding: 15px 15px !important;
+  border-bottom: 1px solid #eee;
+}
+
+/* line 246, ../../sass/requestProcess.scss */
+.gral-hd {
+  padding: 10px 0px !important;
+  font-size: 1.2em;
+  text-align: center;
+  background-color: #F6F6F6;
+  color: #646464;
+  width: auto;
+  margin: 0;
+}
+
+/*Request Complete*/
+/* line 259, ../../sass/requestProcess.scss */
+.tit-li {
+  font-weight: bold;
+  text-decoration: underline;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 266, ../../sass/requestProcess.scss */
+.ic-bg {
+  font-size: 1.5em;
+  margin-right: 10px;
+  color: #B8D900;
+}
+
+/* line 272, ../../sass/requestProcess.scss */
+.titmenSect {
+  display: none;
+  text-align: center;
+  background: #006cb9;
+  padding: 5px 0;
+  margin: 0;
+  margin-bottom: 5px;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 300;
+  -moz-box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+/*Request Complete*/

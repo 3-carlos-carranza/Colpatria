@@ -14,5 +14,10 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+
+        public ActionResult TermsAndConditions()
+        {
+            return View();
+        }
     }
 }

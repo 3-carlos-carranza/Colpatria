@@ -29,7 +29,7 @@ PASO 1: Valida tu Identidad
                     <input name="FirstLastName" type="text" class="form-control input-block-level validate[required] onlyletter" placeholder="" value="Lopez">
                 </label>
                 <label>
-                    <input name="SecondLastName" type="text" class="form-control input-block-level validate[required]" placeholder="" value="Ariza">
+                    <input name="SecondLastName" type="text" class="form-control input-block-level validate[required] onlyletter" placeholder="" value="Ariza">
                 </label>
             </div>
         </div>
@@ -48,17 +48,16 @@ PASO 1: Valida tu Identidad
                         <option value="PASAPORTE">PASAPORTE</option>
                         <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
                         <option value="TI">TI</option>
-
                     </select>
                 </label>
                 <label>
                     Número*
-                    <input name="Number" type="text" class="form-control input-block-levelvalidate[required] onlynumber" placeholder="" value="1030675786">
+                    <input name="Number" type="text" class="form-control input-block-level validate[required] onlynumber" placeholder="" value="1030675786">
                 </label>
             </div>
             <div class="col-md-6">
                 Fecha de Expedicion*<span class="symbol required"></span>
-                <input name="ExpeditionDate" class="inputGrl validate[required] form-control validateMaxToday hasDatepicker" id="">
+                <input name="ExpeditionDate" class="inputGrl validate[required] bd-lt sz-inpfull fz1em validateMaxToday form-control" />
             </div>
         </div>
     </div>
@@ -89,17 +88,17 @@ PASO 1: Valida tu Identidad
 
             <div class="col-md-6">
                 Fecha de Nacimiento*<span class="symbol required"></span>
-                <input name="BirthDate" class="inputGrl validate[required] form-control validateMaxToday hasDatepicker" id="">
+
+                <input name="BirthDate" class="inputGrl validateBirthDay validate[required] form-control validateMaxToday" id="">
             </div>
 
             <div class="col-md-6">
                 <label>
                     Producto*<span class="symbol required"></span>
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                    <select name="" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
                             data-value="">
                         <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                     </select>
-
                 </label>
             </div>
         </div>
@@ -112,7 +111,7 @@ PASO 1: Valida tu Identidad
                     <input type="checkbox" class="grey validate[required]" value="" name="" checked="checked">
                     Acepto términos y condiciones
                 </label>
-                <label class="radio-inline" href="#">VER+</label>
+                <a class="radio-inline" href="@Url.Action("TermsAndConditions", "Request")">VER+</a>
             </div>
             <div class="col-md-6">
 

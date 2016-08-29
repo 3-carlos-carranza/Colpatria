@@ -1,0 +1,31 @@
+/*checking your information*/
+/* line 7, ../../sass/loading.scss */
+.loading-view {
+  background: #f0f0f0;
+}
+
+/* line 11, ../../sass/loading.scss */
+.loading-view .loading-message-wrapper {
+  padding: 200px 20px;
+}
+
+/*.loading-view h1 {
+    color: #B8D900;
+    font-size: 42px;
+}*/
+/* line 20, ../../sass/loading.scss */
+.rotating {
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  -webkit-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+/* line 28, ../../sass/loading.scss */
+.loading-view p {
+  color: #999;
+  font-size: 18px;
+}
+
+/*checking your information*/

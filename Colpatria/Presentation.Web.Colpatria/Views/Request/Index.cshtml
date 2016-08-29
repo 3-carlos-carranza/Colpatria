@@ -4,20 +4,157 @@
     ViewBag.Title = "Datos personales";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<br/>
+<br/>
+<h2><strong>Datos básicos</strong></h2>
+
+PASO 1: Valida tu Identidad
 <br />
 <br />
-<h2>Datos básicos</h2>
-
-
-<div class="panel-body">
-    <div class="col-md-12">
-        <div class="col-md-6">
-            <label>Nombre*</label>
-            <input type="text" class="form-control col-md-12" placeholder="Nombre" aria-describedby="basic-addon1"/>
-        </div>
-        <div class="col-md-6">
-            <label>Apellidos*</label>
-            <input type="text" class="form-control col-md-12" placeholder="Apellidos" aria-describedby="basic-addon1"/>
+<form action="@Url.Action("", "")" method="POST" data-x="x-validate">
+    <div class="form-group panel">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <label>
+                    Nombre*<span class="symbol required"></span>
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Rodrigo">
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Apellidos*<span class="symbol required"></span>
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Lopez">
+                </label>
+                <label>
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Ariza">
+                </label>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="form-group panel">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <label>
+                    Tipo de documento*<span class="symbol required"></span>
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="CARNET DIPLOMATICO">CARNET DIPLOMATICO</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                        <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
+                        <option value="TI">TI</option>
+
+                    </select>
+                </label>
+                <label>
+                    Número*
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="1030675786">
+                </label>
+            </div>
+            <div class="col-md-6">
+                @*Fecha de Expedicion*<span class="symbol required"></span>*@
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">CC</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">Agosto</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">2016</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group panel">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <label>
+                    Correo electronico:<span class="symbol required"></span>
+                    <input name="" type="text" class="inputGrl validate[required,custom[email]] form-control " placeholder="" value="banlinea@banlinea.com">
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label>
+                    Télefono
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3366768">
+                </label>
+                <label>
+                    Celular
+                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3017891369">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group panel">
+        <div class="row col-md-12">
+
+            <div class="col-md-6">
+                @*Fecha de Expedicion*<span class="symbol required"></span>*@
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">12</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">Noviembre</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">1987</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <label>
+                    Producto*<span class="symbol required"></span>
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]]" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                            data-value="">
+                        <option value="CC">Tarjeta de Crédito</option>
+                    </select>
+
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group panel">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <label class="radio-inline">
+                    <input type="checkbox" class="grey validate[required]" value="2d029510-c69c-43d2-9e4d-d890ef452bbc" name="7F902419-7679-493D-BA98-00FC7B759CF3" checked="checked">
+                    Acepto términos y condiciones
+                </label>
+                <label class="radio-inline" href="#">VER+</label>
+            </div>
+            <div class="col-md-6">
+                
+                    <button type="submit" class="btn btn-green pull-right btn-squared btn-block" >
+                        Enviar Ahora<i class="fa fa-arrow-circle-right"></i>
+                    </button>
+            </div>
+        </div>
+    </div>
+
+</form>

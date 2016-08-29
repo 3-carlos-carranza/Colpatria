@@ -7,27 +7,29 @@
 
 <br/>
 <br/>
-<h2><strong>Datos básicos</strong></h2>
+<h2>
+    <strong>Datos básicos</strong>
+</h2>
 
 PASO 1: Valida tu Identidad
-<br />
-<br />
-<form action="@Url.Action("", "")" method="POST" data-x="x-validate">
+<br/>
+<br/>
+<form action="@Url.Action("Register", "Request")" method="POST" data-x="x-validate">
     <div class="form-group panel">
         <div class="row col-md-12">
             <div class="col-md-6">
                 <label>
                     Nombre*<span class="symbol required"></span>
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Rodrigo">
+                    <input name="FirstName" type="text" class="form-control input-block-levelvalidate[required] onlyletter" placeholder="" value="Rodrigo">
                 </label>
             </div>
             <div class="col-md-6">
                 <label>
                     Apellidos*<span class="symbol required"></span>
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Lopez">
+                    <input name="FirstLastName" type="text" class="form-control input-block-level validate[required] onlyletter" placeholder="" value="Lopez">
                 </label>
                 <label>
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="Ariza">
+                    <input name="SecondLastName" type="text" class="form-control input-block-level validate[required]" placeholder="" value="Ariza">
                 </label>
             </div>
         </div>
@@ -38,7 +40,7 @@ PASO 1: Valida tu Identidad
             <div class="col-md-6">
                 <label>
                     Tipo de documento*<span class="symbol required"></span>
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                    <select name="DocType" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
                             data-value="">
                         <option value="CC">CC</option>
                         <option value="CE">CE</option>
@@ -51,50 +53,32 @@ PASO 1: Valida tu Identidad
                 </label>
                 <label>
                     Número*
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="1030675786">
+                    <input name="Number" type="text" class="form-control input-block-levelvalidate[required] onlynumber" placeholder="" value="1030675786">
                 </label>
             </div>
             <div class="col-md-6">
-                @*Fecha de Expedicion*<span class="symbol required"></span>*@
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">CC</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">Agosto</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">2016</option>
-                    </select>
-                </div>
+                Fecha de Expedicion*<span class="symbol required"></span>
+                <input name="ExpeditionDate" class="inputGrl validate[required] form-control validateMaxToday hasDatepicker" id="">
             </div>
         </div>
     </div>
-
 
     <div class="form-group panel">
         <div class="row col-md-12">
             <div class="col-md-6">
                 <label>
                     Correo electronico:<span class="symbol required"></span>
-                    <input name="" type="text" class="inputGrl validate[required,custom[email]] form-control " placeholder="" value="banlinea@banlinea.com">
+                    <input name="email" type="text" class="inputGrl validate[required,custom[email]] form-control " placeholder="" value="banlinea@banlinea.com">
                 </label>
             </div>
             <div class="col-md-6">
                 <label>
                     Télefono
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3366768">
+                    <input name="telephone" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3366768">
                 </label>
                 <label>
                     Celular
-                    <input name="" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3017891369">
+                    <input name="cellphone" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3017891369">
                 </label>
             </div>
         </div>
@@ -104,34 +88,16 @@ PASO 1: Valida tu Identidad
         <div class="row col-md-12">
 
             <div class="col-md-6">
-                @*Fecha de Expedicion*<span class="symbol required"></span>*@
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">12</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">Noviembre</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">1987</option>
-                    </select>
-                </div>
+                Fecha de Nacimiento*<span class="symbol required"></span>
+                <input name="BirthDate" class="inputGrl validate[required] form-control validateMaxToday hasDatepicker" id="">
             </div>
-
 
             <div class="col-md-6">
                 <label>
                     Producto*<span class="symbol required"></span>
-                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]]" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                    <select name="" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
                             data-value="">
-                        <option value="CC">Tarjeta de Crédito</option>
+                        <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                     </select>
 
                 </label>
@@ -143,16 +109,17 @@ PASO 1: Valida tu Identidad
         <div class="row col-md-12">
             <div class="col-md-6">
                 <label class="radio-inline">
-                    <input type="checkbox" class="grey validate[required]" value="2d029510-c69c-43d2-9e4d-d890ef452bbc" name="7F902419-7679-493D-BA98-00FC7B759CF3" checked="checked">
+                    <input type="checkbox" class="grey validate[required]" value="" name="" checked="checked">
                     Acepto términos y condiciones
                 </label>
                 <label class="radio-inline" href="#">VER+</label>
             </div>
             <div class="col-md-6">
-                
-                    <button type="submit" class="btn btn-green pull-right btn-squared btn-block" >
-                        Enviar Ahora<i class="fa fa-arrow-circle-right"></i>
-                    </button>
+
+                <button type="submit" class="btn btn-green pull-right btn-squared btn-block">
+                    Enviar Ahora<i class="fa fa-arrow-circle-right"></i>
+                </button>
+
             </div>
         </div>
     </div>

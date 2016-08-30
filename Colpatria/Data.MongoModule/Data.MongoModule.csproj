@@ -89,6 +89,10 @@
       <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
       <Name>Core.GlobalRepository.Definition</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccess.ProcessModule\DataAccess.ProcessModule.csproj">
+      <Project>{D9B47516-620A-433E-8F0E-E294B3B17386}</Project>
+      <Name>DataAccess.ProcessModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

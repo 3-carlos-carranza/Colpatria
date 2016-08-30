@@ -69,6 +69,14 @@
       <Project>{B971EC7F-4A5D-49C1-9150-2322B59E0E2E}</Project>
       <Name>Data.MongoModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccess.ProcessModule\DataAccess.ProcessModule.csproj">
+      <Project>{D9B47516-620A-433E-8F0E-E294B3B17386}</Project>
+      <Name>DataAccess.ProcessModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess.UserModule\DataAccess.UserModule.csproj">
+      <Project>{727010E6-8790-4F31-B182-37135C33F22C}</Project>
+      <Name>DataAccess.UserModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation.Web.Common\Presentation.Web.Common.csproj">
       <Project>{092626EC-96CA-42F3-BA06-2F7C2135533A}</Project>
       <Name>Presentation.Web.Common</Name>

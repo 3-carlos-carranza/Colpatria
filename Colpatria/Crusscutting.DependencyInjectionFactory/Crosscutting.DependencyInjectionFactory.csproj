@@ -65,6 +65,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Application.Main.Definition\Application.Main.Definition.csproj">
+      <Project>{d4b7dd82-31c4-4013-98d1-f02d92e6bfa6}</Project>
+      <Name>Application.Main.Definition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.Main.Implementation\Application.Main.Implementation.csproj">
+      <Project>{5be9aa00-1437-4c9b-b79d-f817d765e5ad}</Project>
+      <Name>Application.Main.Implementation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.MongoModule\Data.MongoModule.csproj">
       <Project>{B971EC7F-4A5D-49C1-9150-2322B59E0E2E}</Project>
       <Name>Data.MongoModule</Name>

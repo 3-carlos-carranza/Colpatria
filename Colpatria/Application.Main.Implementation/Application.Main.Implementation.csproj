@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicAppService.cs" />
     <Compile Include="LoggingAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj">
       <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
       <Name>Core.GlobalRepository.Definition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
+      <Project>{470AB1B1-B29E-4360-AA44-0D83825ECFCD}</Project>
+      <Name>Data.Common.Definition</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

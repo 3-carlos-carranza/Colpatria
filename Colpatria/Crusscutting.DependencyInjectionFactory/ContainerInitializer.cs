@@ -1,4 +1,5 @@
-﻿using Data.MongoModule;
+﻿using Data.DataCredito;
+using Data.MongoModule;
 using Microsoft.Practices.Unity;
 using Presentation.Web.Common;
 
@@ -10,6 +11,7 @@ namespace Crosscutting.DependencyInjectionFactory
         {
             container.InitializeMongoRepository();
             container.InitializeAppService();
+            container.InitializeDataCreditoRepository();
         }
     }
 }

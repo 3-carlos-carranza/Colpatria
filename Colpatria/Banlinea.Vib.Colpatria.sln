@@ -87,7 +87,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataTransferObject", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Entities", "Core.Entities\Core.Entities.csproj", "{984FC515-8235-4B7B-9821-84A7AF8F4EE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.GlobalRepository.Definition", "Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj", "{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.GlobalRepository", "Core.GlobalRepository.Definition\Core.GlobalRepository.csproj", "{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Web.Common", "Presentation.Web.Common\Presentation.Web.Common.csproj", "{092626EC-96CA-42F3-BA06-2F7C2135533A}"
 EndProject
@@ -96,6 +96,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Main.Definition", "Application.Main.Definition\Application.Main.Definition.csproj", "{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Main.Implementation", "Application.Main.Implementation\Application.Main.Implementation.csproj", "{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.DataCredito", "Data.DataCredito\Data.DataCredito.csproj", "{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crosscutting.Common", "Crosscutting.Common\Crosscutting.Common.csproj", "{31541F2D-B903-4C21-AE5F-116633FD9E65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -151,6 +155,14 @@ Global
 		{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31541F2D-B903-4C21-AE5F-116633FD9E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31541F2D-B903-4C21-AE5F-116633FD9E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31541F2D-B903-4C21-AE5F-116633FD9E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31541F2D-B903-4C21-AE5F-116633FD9E65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,5 +209,7 @@ Global
 		{09B7B936-6FED-4935-A682-24FD1D0F132B} = {4B37B66D-89D5-471B-A577-84DF5F3BE47E}
 		{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6} = {E61BC696-5870-41A1-A4B1-6F4EB48FB4CB}
 		{5BE9AA00-1437-4C9B-B79D-F817D765E5AD} = {E61BC696-5870-41A1-A4B1-6F4EB48FB4CB}
+		{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D} = {602C3055-E8DB-4EDA-A0E5-20EB33197905}
+		{31541F2D-B903-4C21-AE5F-116633FD9E65} = {1C9C7B31-0B0B-4F99-8954-CB0128CE974A}
 	EndGlobalSection
 EndGlobal

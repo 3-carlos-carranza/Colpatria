@@ -64,9 +64,9 @@
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
       <Name>Core.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj">
+    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
       <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
-      <Name>Core.GlobalRepository.Definition</Name>
+      <Name>Core.GlobalRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</ProjectGuid>
+    <ProjectGuid>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core.Entities</RootNamespace>
-    <AssemblyName>Core.Entities</AssemblyName>
+    <RootNamespace>Core.GlobalRepository</RootNamespace>
+    <AssemblyName>Core.GlobalRepository</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,31 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Evidente\Answer.cs" />
-    <Compile Include="Evidente\AnswerRequest.cs" />
-    <Compile Include="Evidente\AnswerResponse.cs" />
-    <Compile Include="Evidente\AnswerSettings.cs" />
-    <Compile Include="Evidente\AnswerSettingsBuilder.cs" />
-    <Compile Include="Evidente\BaseSettings.cs" />
-    <Compile Include="Evidente\ExpeditionDate.cs" />
-    <Compile Include="Evidente\Identification.cs" />
-    <Compile Include="Evidente\Question.cs" />
-    <Compile Include="Evidente\QuestionsRequest.cs" />
-    <Compile Include="Evidente\QuestionsResponse.cs" />
-    <Compile Include="Evidente\QuestionsSettings.cs" />
-    <Compile Include="Evidente\QuestionsSettingsBuilder.cs" />
-    <Compile Include="Evidente\ValidateUserSettings.cs" />
-    <Compile Include="Evidente\ValidateUserSettingsBuilder.cs" />
-    <Compile Include="Evidente\ValidationRequest.cs" />
-    <Compile Include="Evidente\ValidationResponse.cs" />
-    <Compile Include="Evidente\ValidationResponseBuilder.cs" />
-    <Compile Include="Mongo\ColpatriaLog.cs" />
+    <Compile Include="Evidente\IEvidenteRepository.cs" />
+    <Compile Include="Mongo\IColpatriaLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crosscutting.Common\Crosscutting.Common.csproj">
-      <Project>{31541f2d-b903-4c21-ae5f-116633fd9e65}</Project>
-      <Name>Crosscutting.Common</Name>
+    <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
+      <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
+      <Name>Core.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

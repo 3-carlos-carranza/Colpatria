@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC094F7C-1264-420E-9B4E-A2B83A63AD48}</ProjectGuid>
+    <ProjectGuid>{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Crosscutting.DependencyInjectionFactory</RootNamespace>
-    <AssemblyName>Crosscutting.DependencyInjectionFactory</AssemblyName>
+    <RootNamespace>Data.DataCredito</RootNamespace>
+    <AssemblyName>Data.DataCredito</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -56,27 +56,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContainerInitializer.cs" />
-    <Compile Include="DiContainer.cs" />
-    <Compile Include="Factory.cs" />
+    <Compile Include="EvidenteRepository.cs" />
+    <Compile Include="DataCreditoDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
+      <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
+      <Name>Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
+      <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
+      <Name>Core.GlobalRepository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.DataCredito\Data.DataCredito.csproj">
-      <Project>{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}</Project>
-      <Name>Data.DataCredito</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data.MongoModule\Data.MongoModule.csproj">
-      <Project>{B971EC7F-4A5D-49C1-9150-2322B59E0E2E}</Project>
-      <Name>Data.MongoModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Presentation.Web.Common\Presentation.Web.Common.csproj">
-      <Project>{092626EC-96CA-42F3-BA06-2F7C2135533A}</Project>
-      <Name>Presentation.Web.Common</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

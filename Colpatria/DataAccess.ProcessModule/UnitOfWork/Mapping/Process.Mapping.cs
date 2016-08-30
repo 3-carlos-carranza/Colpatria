@@ -7,6 +7,6 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL;
+using Core.Entities.SQL.Process;
 
 

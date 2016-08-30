@@ -58,6 +58,59 @@
       <DependentUpon>ProcessModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ExecutionApplicantRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExecutionRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExtendedDataListRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExtendedFieldRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExtendedFieldValueRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExtendedFileRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ExtendedListRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\FieldInSectionRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\PageRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ProcessRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ProductProcessRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ProductRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Repository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\SectionRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\StateRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\StepRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\StepSectionRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnitOfWork\IProcessContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +189,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Repository\Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Repository.cs</LastGenOutput>
+    </Content>
     <Content Include="UnitOfWork\IProcessContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IProcessContext.cs</LastGenOutput>
@@ -157,6 +214,10 @@
       <Project>{984fc515-8235-4b7b-9821-84a7af8f4ee0}</Project>
       <Name>Core.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj">
+      <Project>{3f22aafc-92be-46b2-86b0-0bc8835c279e}</Project>
+      <Name>Core.GlobalRepository.Definition</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>
       <Name>Data.Common.Definition</Name>
@@ -166,9 +227,7 @@
       <Name>Data.Common.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

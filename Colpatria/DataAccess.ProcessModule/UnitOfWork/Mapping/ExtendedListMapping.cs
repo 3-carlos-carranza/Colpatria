@@ -7,7 +7,7 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL;
+using Core.Entities.SQL.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
@@ -15,7 +15,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class ExtendedListMapping:EntityTypeConfiguration<Core.Entities.SQL.ExtendedList>
+    public partial class ExtendedListMapping:EntityTypeConfiguration<Core.Entities.SQL.Process.ExtendedList>
     {
         
         public ExtendedListMapping()

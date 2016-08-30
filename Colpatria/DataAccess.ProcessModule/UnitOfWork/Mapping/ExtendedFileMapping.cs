@@ -7,7 +7,7 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL;
+using Core.Entities.SQL.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
@@ -15,7 +15,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class ExtendedFileMapping:EntityTypeConfiguration<Core.Entities.SQL.ExtendedFile>
+    public partial class ExtendedFileMapping:EntityTypeConfiguration<Core.Entities.SQL.Process.ExtendedFile>
     {
         
         public ExtendedFileMapping()

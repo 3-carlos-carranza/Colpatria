@@ -9,7 +9,7 @@
 
 namespace DataAccess.ProcessModule.UnitOfWork
 {
-    using Core.Entities.SQL;
+    using Core.Entities.SQL.Process;
     using System.Data.Entity;
     using DataAccess.ProcessModule.UnitOfWork.Mapping;
     

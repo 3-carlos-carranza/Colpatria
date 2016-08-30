@@ -364,7 +364,7 @@ public void WriteHeader(CodeStringGenerator codeStringGenerator, EntityFramework
 
 <#=codeStringGenerator.UsingDirectives(inHeader: true)#>
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL;
+using Core.Entities.SQL.Process;
 
 
 <#+
@@ -454,7 +454,7 @@ public class CodeStringGenerator
             Accessibility.ForType(entity),
             _code.SpaceAfter(_code.AbstractOption(entity)),
            schema+ _code.Escape(entity)+"Mapping",
-           ":EntityTypeConfiguration<Core.Entities.SQL."+schema+ _code.Escape(entity)+">");
+           ":EntityTypeConfiguration<Core.Entities.SQL.Process."+schema+ _code.Escape(entity)+">");
     }
     
     public string EnumOpening(SimpleType enumType)

@@ -1,0 +1,123 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Validación de datos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 validado"><span>1.</span> Ingresa</div>
+            <div class="col-xs-4 col-sm-4 bull active">2. Valida</div>
+            <div class="col-xs-4 col-sm-4 bull">3. Solicita</div>
+        </div>
+    </div>
+    <div class="conts">
+        <div class="col-xs-12 col-sm-4 bordes">
+            <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
+            <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
+            <div class="resumen-data">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>Camilo Florez Rojas</td>
+                            </tr>
+                            <tr>
+                                <td>Documento:</td>
+                                <td>C.C: 1053341168</td>
+                            </tr>
+                            <tr>
+                                <td>Expedición:</td>
+                                <td>26 Febrero 2006</td>
+                            </tr>
+                            <tr>
+                                <td>Lugar:</td>
+                                <td>Bogotá - Bogotá</td>
+                            </tr>
+                            <tr>
+                                <td>Dirección</td>
+                                <td>Calle 114Nº 7a - 71</td>
+                            </tr>
+                            <tr>
+                                <td>Correo</td>
+                                <td>camilo@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Télefono</td>
+                                <td>716 19 33</td>
+                            </tr>
+                            <tr>
+                                <td>Celular</td>
+                                <td>3214508974</td>
+                            </tr>
+                        </tbody>
+                    </table>
+             </div>
+            </div>
+
+            <p class="desc-step">Validación de identidad:</p>
+            <span class="proccess">En Proceso...</span>
+        </div>
+        <div class="col-xs-12 col-sm-8 answer">
+            <p class=""><strong>Camilo,</strong> en este paso vamos a validar tu identidad</p>
+
+            <div class="test">
+                <p class="bolds"><span>1.</span> ¿Su cuenta de ahorros con "bancolombia (conavi, bic)" ha tenido alguna vez problemas como embargos o cancelacion o suspension?</p>
+
+
+                <form action="/"method="post" class="stepMe ac-custom ac-radio ac-fill">
+                    <fieldset>
+                        <ul>
+                            <li><input id="r1" name="r1" type="radio"><label for="r1">Si.</label></li>
+                            <li><input id="r2" name="r1" type="radio"><label for="r2">No.</label></li>
+                            <li><input id="r3" name="r1" type="radio"><label for="r3">No tengo cuenta con la entidad.</label></li>
+                        </ul>
+                        <div class="pag"><span class="red">1/</span>4</div>
+                    </fieldset>
+                    <fieldset>
+                        <ul>
+                            <li><input id="r4" name="r1" type="radio"><label for="r4">Si.</label></li>
+                            <li><input id="r5" name="r1" type="radio"><label for="r5">No.</label></li>
+                            <li><input id="r6" name="r1" type="radio"><label for="r6">No tengo cuenta con la entidad.</label></li>
+                        </ul>
+                        <div class="pag"><span class="red">2/</span>4</div>
+                    </fieldset>
+                    <fieldset>
+                        <ul>
+                            <li><input id="r7" name="r1" type="radio"><label for="r7">Si.</label></li>
+                            <li><input id="r8" name="r1" type="radio"><label for="r8">No.</label></li>
+                            <li><input id="r9" name="r1" type="radio"><label for="r9">No tengo cuenta con la entidad.</label></li>
+                        </ul>
+                        <div class="pag"><span class="red">3/</span>4</div>
+                    </fieldset>
+                    <fieldset>
+                        <ul>
+                            <li><input id="r10" name="r1" type="radio"><label for="r10">Si.</label></li>
+                            <li><input id="r11" name="r1" type="radio"><label for="r11">No.</label></li>
+                            <li><input id="r12" name="r1" type="radio"><label for="r12">No tengo cuenta con la entidad.</label></li>
+                        </ul>
+                        <div class="pag"><span class="red">4/</span>4</div>
+                        <div>
+                            <button type="submit" class="btn btn-danger pull-right enviar valid">
+                                Siguiente<i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div style="clear: both"></div>
+</div>

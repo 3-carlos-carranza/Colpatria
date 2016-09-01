@@ -1,126 +1,182 @@
 ﻿@model dynamic
-
 @{
     ViewBag.Title = "Datos personales";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<br/>
-<br/>
-<h2>
-    <strong>Datos básicos</strong>
-</h2>
-
-PASO 1: Valida tu Identidad
-<br/>
-<br/>
-<form action="@Url.Action("Register", "Request")" method="POST" data-x="x-validate">
-    <div class="form-group panel">
-        <div class="row col-md-12">
-            <div class="col-md-6">
-                <label>
-                    Nombre*<span class="symbol required"></span>
-                    <input name="FirstName" type="text" class="form-control input-block-levelvalidate[required] onlyletter" placeholder="" value="Rodrigo">
-                </label>
-            </div>
-            <div class="col-md-6">
-                <label>
-                    Apellidos*<span class="symbol required"></span>
-                    <input name="FirstLastName" type="text" class="form-control input-block-level validate[required] onlyletter" placeholder="" value="Lopez">
-                </label>
-                <label>
-                    <input name="SecondLastName" type="text" class="form-control input-block-level validate[required] onlyletter" placeholder="" value="Ariza">
-                </label>
-            </div>
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 bull active"><span>1.</span> Ingresa</div>
+            <div class="col-xs-4 col-sm-4 bull">2. Valida</div>
+            <div class="col-xs-4 col-sm-4 bull">3. Solicita</div>
         </div>
     </div>
+    <div class="col-xs-12 block radius">
+        <form action="@Url.Action("Register", "Request")" method="POST" data-x="x-validate" class="form-step">
+            <div class="step-title">
+                <strong>PASO 1.</strong> Ingresa tus datos, no olvides llenar todos los campos.
+            </div>
+            <div class="form-group">
+                <div class="row col-md-12">
+                    <div class="col-xs-12 col-sm-6">
+                        <span class="input input--hoshi">
+                            <input name="FirstName" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="FirstName" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
+                                <span class="input__label-content input__label-content--hoshi input-block-level ">Name<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <span class="input input--hoshi">
+                            <input name="FirstLastName" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="FirstLastName" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstLastName">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Apellidos<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <span class="input input--hoshi">
+                            <input name="SecondLastName" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="SecondLastName" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SecondLastName">
+                                <span class="input__label-content input__label-content--hoshi input-block-level"><span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-xs-12">
+                    <div class="col-xs-12 col-sm-3">
+                        <label>
+                            Tipo de documento<span class="symbol required"></span>
+                        </label>
+                        <select name="DocType" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                data-value="">
+                            <option value="CC">CC</option>
+                            <option value="CE">CE</option>
+                            <option value="CARNET DIPLOMATICO">CARNET DIPLOMATICO</option>
+                            <option value="PASAPORTE">PASAPORTE</option>
+                            <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
+                            <option value="TI">TI</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <span class="input input--hoshi">
+                            <input name="Number" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Number" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Number">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Número<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <span class="input input--hoshi">
+                            <input name="ExpeditionDate" class="input__field input__field--hoshi validate[required,custom[date]]" type="text" id="ExpeditionDate" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="ExpeditionDate">
+                                <span class="input__label-content input__label-content--hoshi"> Fecha de Expedicion<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-xs-12">
+                    <div class="col-xs-12 col-sm-6">
+                        <span class="input input--hoshi">
+                            <input name="BirthDate" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="BirthDate" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="BirthDate">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Lugar de expediciòn de Documento<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <span class="input input--hoshi">
+                            <input name="address" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="address" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="address">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Dirección<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <span class="input input--hoshi">
+                            <input name="email" class="input__field input__field--hoshi validate[required,custom[email]]" type="email" id="email" placeholder="" value="">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Correo electronico<span class="symbol required"></span></span>
+                            </label>
+                        </span>
 
-    <div class="form-group panel">
-        <div class="row col-md-12">
-            <div class="col-md-6">
-                <label>
-                    Tipo de documento*<span class="symbol required"></span>
-                    <select name="DocType" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="CC">CC</option>
-                        <option value="CE">CE</option>
-                        <option value="CARNET DIPLOMATICO">CARNET DIPLOMATICO</option>
-                        <option value="PASAPORTE">PASAPORTE</option>
-                        <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
-                        <option value="TI">TI</option>
-                    </select>
-                </label>
-                <label>
-                    Número*
-                    <input name="Number" type="text" class="form-control input-block-level validate[required] onlynumber" placeholder="" value="1030675786">
-                </label>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                Fecha de Expedicion*<span class="symbol required"></span>
-                <input name="ExpeditionDate" class="inputGrl validate[required] bd-lt sz-inpfull fz1em validateMaxToday form-control" />
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-3">
+                    <span class="input input--hoshi">
+                        <input name="telephone" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="telephone" placeholder="" value="">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="telephone">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Télefono<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <span class="input input--hoshi">
+                        <input name="cellphone" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="cellphone" placeholder="" value="">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="cellphone">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Celular<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                   
+                        <input type="checkbox" class="grey validate[required]" value="" name="" checked="checked">
+                    <label class="check">
+                        Acepto términos y condiciones <a class="vermas" href="@Url.Action("TermsAndConditions", "Request")">VER+</a>
+                    </label>
+                </div>
+                <div class="col-xs-12 col-sm-3" style="display:none;">
+                    <button type="submit" class="btn btn-danger pull-right enviar">
+                        Siguiente<i class="fa fa-arrow-circle-right"></i>
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <a class="btn btn-danger pull-right enviar" href="@Url.Action("Validacion", "Request")">
+                        Siguiente<i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-
-    <div class="form-group panel">
-        <div class="row col-md-12">
-            <div class="col-md-6">
-                <label>
-                    Correo electronico:<span class="symbol required"></span>
-                    <input name="email" type="text" class="inputGrl validate[required,custom[email]] form-control " placeholder="" value="banlinea@banlinea.com">
-                </label>
-            </div>
-            <div class="col-md-6">
-                <label>
-                    Télefono
-                    <input name="telephone" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3366768">
-                </label>
-                <label>
-                    Celular
-                    <input name="cellphone" type="text" class="form-control input-block-levelvalidate[required]" placeholder="" value="3017891369">
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group panel">
-        <div class="row col-md-12">
-
-            <div class="col-md-6">
-                Fecha de Nacimiento*<span class="symbol required"></span>
-
-                <input name="BirthDate" class="inputGrl validateBirthDay validate[required] form-control validateMaxToday" id="">
-            </div>
-
-            <div class="col-md-6">
-                <label>
-                    Producto*<span class="symbol required"></span>
-                    <select name="" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                            data-value="">
-                        <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
-                    </select>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group panel">
-        <div class="row col-md-12">
-            <div class="col-md-6">
-                <label class="radio-inline">
-                    <input type="checkbox" class="grey validate[required]" value="" name="" checked="checked">
-                    Acepto términos y condiciones
-                </label>
-                <a class="radio-inline" href="@Url.Action("TermsAndConditions", "Request")">VER+</a>
-            </div>
-            <div class="col-md-6">
-
-                <button type="submit" class="btn btn-green pull-right btn-squared btn-block">
-                    Enviar Ahora<i class="fa fa-arrow-circle-right"></i>
-                </button>
-
-            </div>
-        </div>
-    </div>
-
-</form>
+</div>
+<script>
+   (function() {
+   	if (!String.prototype.trim) {
+   		(function() {
+   			var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+   			String.prototype.trim = function() {
+   				return this.replace(rtrim, '');
+   			};
+   		})();
+   	}
+   	[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+   		// in case the input is already filled..
+   		if( inputEl.value.trim() !== '' ) {
+   			classie.add( inputEl.parentNode, 'input--filled' );
+   		}
+   		// events:
+   		inputEl.addEventListener( 'focus', onInputFocus );
+   		inputEl.addEventListener( 'blur', onInputBlur );
+   	} );
+   	function onInputFocus( ev ) {
+   		classie.add( ev.target.parentNode, 'input--filled' );
+   	}
+   	function onInputBlur( ev ) {
+   		if( ev.target.value.trim() === '' ) {
+   			classie.remove( ev.target.parentNode, 'input--filled' );
+   		}
+   	}
+   })();
+</script>

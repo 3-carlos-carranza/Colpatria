@@ -32,5 +32,9 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return null;
         }
+        public ActionResult Validacion()
+        {
+            return View();
+        }
     }
 }

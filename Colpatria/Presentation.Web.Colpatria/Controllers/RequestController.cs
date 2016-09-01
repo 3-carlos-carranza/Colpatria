@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -18,6 +23,14 @@ namespace Presentation.Web.Colpatria.Controllers
         public ActionResult TermsAndConditions()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public Task<ActionResult> SaveFields(FormCollection collection)
+        {
+            return null;
         }
     }
 }

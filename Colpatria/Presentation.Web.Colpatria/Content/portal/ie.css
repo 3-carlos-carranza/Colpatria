@@ -1,0 +1,10 @@
+/* line 2, ../../sass/ie.scss */
+html {
+  display: none !important;
+}
+
+/* line 6, ../../sass/ie.scss */
+.container {
+  width: 80% !important;
+  margin: auto !important;
+}

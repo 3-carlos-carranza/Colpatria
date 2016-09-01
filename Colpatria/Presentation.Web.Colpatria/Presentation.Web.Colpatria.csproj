@@ -838,6 +838,8 @@
     <Content Include="Scripts\kendo\2014.3.1119\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\2014.3.1119\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2014.3.1119\kendo.window.min.js.map" />
+    <Content Include="Views\Request\TermsAndConditions.cshtml" />
+    <Content Include="Views\Request\Validacion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

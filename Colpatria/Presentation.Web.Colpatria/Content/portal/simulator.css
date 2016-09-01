@@ -1,0 +1,513 @@
+/* line 5, ../../sass/simulator.scss */
+.img-tit {
+  padding-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* line 11, ../../sass/simulator.scss */
+.title-seccs {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0 20px 0;
+  color: #204394;
+}
+
+/* line 19, ../../sass/simulator.scss */
+.title-tpc {
+  border-bottom: 2px solid #333;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 50px 0 20px 0;
+}
+
+/* line 28, ../../sass/simulator.scss */
+.fna-tips {
+  margin-bottom: 2em;
+}
+/* line 31, ../../sass/simulator.scss */
+.fna-tips li {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #000000;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 3em;
+}
+/* line 38, ../../sass/simulator.scss */
+.fna-tips li span {
+  color: #4e4e4e;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* line 46, ../../sass/simulator.scss */
+.p-prc-usr {
+  color: #686868;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  margin: 40px 0 20px 0;
+  text-align: center;
+}
+
+/* line 56, ../../sass/simulator.scss */
+.inf-app-sim {
+  padding: 35px 20px;
+}
+
+/* line 60, ../../sass/simulator.scss */
+.ics-prz {
+  height: 20px;
+  margin-right: 15px;
+}
+
+/* line 65, ../../sass/simulator.scss */
+.arr-fas {
+  margin: 0 15px 0 20px;
+  font-size: 11px;
+  color: #b7d433;
+}
+
+/* line 71, ../../sass/simulator.scss */
+.panel-default > .panel-heading {
+  background: transparent;
+  padding: 0;
+}
+
+/* line 76, ../../sass/simulator.scss */
+.panel-heading {
+  background-image: none;
+  box-shadow: none;
+}
+
+/* line 81, ../../sass/simulator.scss */
+.panel-group .panel {
+  background: transparent;
+  border: none;
+}
+
+/* line 86, ../../sass/simulator.scss */
+.panel-body {
+  padding-left: 70px;
+}
+
+/* line 90, ../../sass/simulator.scss */
+.panel-group .panel + .panel {
+  margin: 10px 0;
+}
+
+/* line 94, ../../sass/simulator.scss */
+.panel-default > .panel-heading + .panel-collapse .panel-body {
+  border: none;
+  font-size: 0.9em;
+}
+
+/* line 99, ../../sass/simulator.scss */
+.cnt-ic-prz {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 35px;
+}
+
+/* line 105, ../../sass/simulator.scss */
+.panel-title > a {
+  display: block;
+  padding: 10px 15px;
+}
+/* line 111, ../../sass/simulator.scss */
+.panel-title > a:hover {
+  text-decoration: none;
+}
+/* line 115, ../../sass/simulator.scss */
+.panel-title > a:focus {
+  outline: none;
+}
+
+/* line 121, ../../sass/simulator.scss */
+.cash-tab {
+  width: 100%;
+}
+
+/* line 125, ../../sass/simulator.scss */
+.cash-tab tr {
+  padding: 5px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* line 130, ../../sass/simulator.scss */
+.cash-tab tr td {
+  padding: 5px 0;
+}
+
+/* line 134, ../../sass/simulator.scss */
+.sb-tit {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+  color: #333;
+  width: 80%;
+  margin: auto;
+  font-weight: 600;
+}
+
+/* line 144, ../../sass/simulator.scss */
+.bg-gr-nw {
+  background: #f5f5f6;
+}
+
+/* line 148, ../../sass/simulator.scss */
+.tt-res-s {
+  font-size: 0.95em;
+}
+
+/*Simulator modals*/
+/* line 154, ../../sass/simulator.scss */
+.cnt-tt-md {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+/* line 160, ../../sass/simulator.scss */
+.cnt-tt-md {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+/* line 166, ../../sass/simulator.scss */
+.tit-md-inf {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #204394;
+}
+
+/* line 173, ../../sass/simulator.scss */
+.tt-gr-md {
+  color: #686868;
+  display: block;
+  padding: 20px 0;
+  font-size: 1.5em;
+}
+
+/* line 180, ../../sass/simulator.scss */
+.cnt-bt-mdd {
+  margin: 40px 0;
+  text-align: center;
+}
+
+/*Simulator modals*/
+/* line 190, ../../sass/simulator.scss */
+.tabResult .trhead {
+  background: #003886;
+}
+/* line 193, ../../sass/simulator.scss */
+.tabResult .trhead th {
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 10px;
+  line-height: 1em;
+  border-top: 2px solid #B8D900;
+}
+/* line 203, ../../sass/simulator.scss */
+.tabResult td {
+  text-align: center;
+  padding: 10px;
+}
+/* line 208, ../../sass/simulator.scss */
+.tabResult td.num-val {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1em;
+}
+
+/* line 215, ../../sass/simulator.scss */
+.tb-cab-ind {
+  text-align: center;
+  line-height: 1em;
+  padding: 10px 20px;
+  font-weight: 400;
+  color: #003886;
+}
+
+/* line 223, ../../sass/simulator.scss */
+.tt-tab-sc {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* line 229, ../../sass/simulator.scss */
+.td-tab-sc {
+  text-align: center;
+}
+
+/* line 233, ../../sass/simulator.scss */
+.ic-tb {
+  display: none;
+  margin-bottom: 11px;
+  font-size: 2em;
+  color: #006CB9;
+}
+
+/* line 240, ../../sass/simulator.scss */
+.ic-vls {
+  display: none;
+  font-size: 0.9em;
+  color: #006CB9;
+}
+
+/* line 246, ../../sass/simulator.scss */
+.tabs-smlt {
+  width: 100%;
+}
+/* line 249, ../../sass/simulator.scss */
+.tabs-smlt li {
+  background-color: #fefefd;
+  float: left;
+  position: relative;
+  width: 33.3333%;
+  height: 90px;
+}
+/* line 256, ../../sass/simulator.scss */
+.tabs-smlt li a {
+  color: #555f72;
+  font-weight: 400;
+  text-align: center;
+  font-size: 0.85em;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  padding: 0;
+  height: 100%;
+  padding-top: 10px;
+}
+/* line 268, ../../sass/simulator.scss */
+.tabs-smlt li.active {
+  border-bottom: 3px solid #3c67de;
+  background-color: #fefefd;
+}
+/* line 272, ../../sass/simulator.scss */
+.tabs-smlt li.active a:hover, .tabs-smlt li.active li.active a:focus {
+  background-color: #fefefd;
+  color: #3c67de;
+}
+/* line 278, ../../sass/simulator.scss */
+.tabs-smlt li.active a {
+  background-color: transparent;
+  color: #555f72;
+}
+
+/* line 284, ../../sass/simulator.scss */
+.tt-sl-crd {
+  margin: 0;
+  padding: 55px 0 30px 0;
+  font-size: 1.4em;
+  text-align: center;
+  color: #003886;
+}
+
+/* line 294, ../../sass/simulator.scss */
+.tt-sil, .tt-res-sil {
+  width: 100%;
+}
+
+/*Result simulate house*/
+/*Result simulate house*/
+/* line 301, ../../sass/simulator.scss */
+.tab-simulator-house {
+  display: table;
+  width: 90%;
+  table-layout: fixed;
+}
+/* line 306, ../../sass/simulator.scss */
+.tab-simulator-house thead {
+  border-top: 3px solid #333333;
+}
+/* line 310, ../../sass/simulator.scss */
+.tab-simulator-house tbody {
+  border-bottom: 3px solid #333333;
+}
+/* line 313, ../../sass/simulator.scss */
+.tab-simulator-house tbody tr {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+/* line 322, ../../sass/simulator.scss */
+.tab-simulator-house tr th {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 0 20px 5px;
+  line-height: 1em;
+  font-weight: bold;
+  display: table-cell;
+}
+/* line 332, ../../sass/simulator.scss */
+.tab-simulator-house tr th a {
+  cursor: default;
+}
+/* line 335, ../../sass/simulator.scss */
+.tab-simulator-house tr th a span {
+  color: #283a85;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+/* line 346, ../../sass/simulator.scss */
+.tab-simulator-house tr td {
+  padding: 14px 0 20px 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  font-size: 15px;
+}
+/* line 352, ../../sass/simulator.scss */
+.tab-simulator-house tr td .txt-inf-ad {
+  display: block;
+  font-size: 0.7em;
+}
+/* line 358, ../../sass/simulator.scss */
+.tab-simulator-house tr td.num-val {
+  font-weight: 600;
+}
+/* line 362, ../../sass/simulator.scss */
+.tab-simulator-house tr td.bg-val {
+  font-weight: 600;
+}
+/* line 367, ../../sass/simulator.scss */
+.tab-simulator-house th, .tab-simulator-house td {
+  word-wrap: break-word;
+}
+
+/* line 372, ../../sass/simulator.scss */
+.ita-val {
+  display: none;
+}
+
+/* line 376, ../../sass/simulator.scss */
+.p-cred {
+  padding-top: 50px;
+  padding-bottom: 35px;
+}
+
+/*Result simulate house*/
+/*confirmation modal - result simulate */
+/* line 388, ../../sass/simulator.scss */
+.head-mod {
+  background: #B8D900;
+  min-height: 60px;
+  padding: 50px 30px 20px 30px;
+}
+/* line 393, ../../sass/simulator.scss */
+.head-mod .tmsj-mod {
+  font-size: 1.3em;
+  padding: 0 15px;
+}
+/* line 398, ../../sass/simulator.scss */
+.head-mod .ic-tit-md {
+  width: 30%;
+  display: block;
+  float: left;
+  text-align: center;
+}
+/* line 405, ../../sass/simulator.scss */
+.head-mod .tit-md {
+  width: 69%;
+  display: block;
+  float: left;
+}
+/* line 412, ../../sass/simulator.scss */
+.head-mod .mod-pag {
+  display: block;
+  color: #003993;
+  font-style: italic;
+  font-size: 1.7em;
+}
+
+/* line 420, ../../sass/simulator.scss */
+.body-mod {
+  min-height: 140px;
+  padding: 30px;
+}
+/* line 424, ../../sass/simulator.scss */
+.body-mod .p-inf-mod {
+  text-align: center;
+  font-size: 1.25em;
+  margin: 20px;
+}
+
+/* line 431, ../../sass/simulator.scss */
+.cont-bots-mod {
+  position: relative;
+  text-align: center;
+}
+
+/* line 436, ../../sass/simulator.scss */
+.md-confr {
+  margin: 0;
+  padding: 0;
+}
+
+/*confirmation modal - result simulate */
+/*Validation questions*/
+/* line 446, ../../sass/simulator.scss */
+.cnt-qst {
+  border: 2px dashed #203982;
+  padding: 20px;
+}
+
+/*Validation questions*/
+/*confronta*/
+/* line 455, ../../sass/simulator.scss */
+.tt-ask {
+  margin: 25px 0 15px 0;
+  font-size: 1.02em;
+  text-anchor: initial;
+  line-height: 1.2em;
+}
+
+/* line 463, ../../sass/simulator.scss */
+.dv-answers {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+/* line 468, ../../sass/simulator.scss */
+.pst-valid-but {
+  top: -220px;
+  font-size: 1.1em;
+  right: -114%;
+}
+
+/* line 474, ../../sass/simulator.scss */
+.lac-cnfr {
+  position: relative;
+  display: block;
+}
+
+/* line 479, ../../sass/simulator.scss */
+.rad-bt-cfrt {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 485, ../../sass/simulator.scss */
+.txt-cnfr {
+  display: inline-block;
+  width: 90%;
+  padding-left: 20px;
+}
+
+/* line 491, ../../sass/simulator.scss */
+.prc-pg-cnfr {
+  width: 40%;
+  min-width: 250px;
+  margin: auto;
+}
+
+/*confronta*/

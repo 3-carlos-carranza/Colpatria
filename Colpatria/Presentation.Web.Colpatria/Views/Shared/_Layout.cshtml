@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>@ViewBag.Title - Template Application</title>
+    <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/jquery-validation-engine/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/jquery-validation-engine/validationengine.jquery.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-left navbar-brand">
-                <img src="../../Images/Logos/Banco_Colpatria_logo.svg.png" alt="Colpatria" style="width: 100px" />
-
+             
             </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,7 +34,16 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <header class="container header">
+        <div class="col-xs-12 col-sm-6 logo">
+            <img src="../../Images/Logos/colpatria_logo.png" alt="Colpatria"/>
+        </div>
+        <div class="col-xs-12 col-sm-6 logo-step">
+            <img src="../../Images/Content/tu-cuenta.png" alt="Colpatria" />
+        </div>
+    </header>
 
 <div class="container body-content">
     @RenderBody()
@@ -52,5 +66,8 @@
 
 @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>*@
+<script type="text/javascript">
+
+    </script>
 </body>
 </html>

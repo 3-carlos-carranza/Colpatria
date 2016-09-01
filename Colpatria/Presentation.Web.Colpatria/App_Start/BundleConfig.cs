@@ -11,7 +11,8 @@ namespace Presentation.Web.Colpatria
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery.min.js"
+                "~/Scripts/jquery.min.js",
+                "~/Scripts/classie.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryMobile").Include(
@@ -29,6 +30,8 @@ namespace Presentation.Web.Colpatria
                 "~/Scripts/lib/jquery.form/jquery.form.js",
                 "~/Scripts/lib/countdown/jquery.countdown.min.js",
                 "~/Scripts/lib/countdown/jquery.countdown-es.js"
+               
+
                 ));
 
 
@@ -82,7 +85,8 @@ namespace Presentation.Web.Colpatria
                 ));
 
             bundles.Add(new StyleBundle("~/Content/validations").Include(
-                "~/Content/lib/jquery-validation-engine/validationengine.jquery.css"
+                "~/Content/lib/jquery-validation-engine/validationengine.jquery.css",
+                "~/Content/lib/jquery-validation-engine/normalize.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/loadingCss").Include(

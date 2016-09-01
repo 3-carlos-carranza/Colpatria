@@ -250,3 +250,32 @@
     });
 
 }(window.jQuery);
+//Paginacion formulario de validacion de datos
+jQuery.extend({
+    stepForm: function (txtBack, txtNext, token) {
+        var fieldsets = $((token || 'fieldset'), $("form.stepMe"));
+        var total = $(fieldsets).length;
+        $(fieldsets).each(function (x, el) {
+            if (x > 0) {
+                $(el).hide();
+              //  $(el).append('<a class="backStep" href="#x_' + (x - 1) + '">' + (txtBack || 'Volver') + '</a>');
+                $(".backStep", $(el)).on("click", function () {
+                    $("#x_" + (x - 1)).show("slow");
+                    $(el).hide("slow");
+                });
+            }
+
+            if ((x + 1) < total) {
+                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
+                $(".nextStep", $(el)).on("click", function () {
+                    $("#x_" + (x + 1)).show("slow");
+                    $(el).hide("slow");
+                });
+            }
+            $(el).attr("id", "x_" + x);
+        });
+    }
+});
+$(document).ready(function () {
+    $.stepForm();
+});

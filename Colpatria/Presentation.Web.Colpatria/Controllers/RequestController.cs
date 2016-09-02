@@ -15,7 +15,8 @@ namespace Presentation.Web.Colpatria.Controllers
         [AllowAnonymous]
         public ActionResult Index(string check = "false")
         {
-            
+            if (check == null) throw new ArgumentNullException(nameof(check));
+
             ViewBag.Checked = Convert.ToBoolean(check);
             return View();
         }

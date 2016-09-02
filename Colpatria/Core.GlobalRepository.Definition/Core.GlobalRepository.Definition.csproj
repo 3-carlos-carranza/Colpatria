@@ -57,6 +57,7 @@
     <Compile Include="SQL\Process\IExtendedFieldRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\Process\IExtendedFieldRepository.Extension.cs" />
     <Compile Include="SQL\Process\IExtendedFieldValueRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -75,15 +76,15 @@
     <Compile Include="SQL\Process\IProcessRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\Process\IRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="SQL\Process\IProductProcessRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\Process\IProductRepository.cs">
-      <DependentUpon>IRepository.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SQL\Process\IRepository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\Process\ISectionRepository.cs">
@@ -116,15 +117,15 @@
     <Compile Include="SQL\User\IFieldToCreateUserRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\IRepository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IRepository.tt</DependentUpon>
-    </Compile>
     <Compile Include="SQL\User\IRoleRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\User\IUserRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\User\IRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\User\IUserRoleRepository.cs">
@@ -135,6 +136,10 @@
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
       <Name>Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
+      <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
+      <Name>Crosscutting.Common.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>

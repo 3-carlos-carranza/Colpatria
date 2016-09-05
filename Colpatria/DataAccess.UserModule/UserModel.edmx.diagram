@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="041a1a6f652f45d483f41176f6e0477c" Name="Diagram1">
+        <EntityTypeShape EntityType="UserModel.BaseDataList" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.BaseDataListValue" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.BaseField" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.BaseFieldValue" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.BaseFile" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.FieldToCreateUser" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.Role" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.User" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.UserRole" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="UserModel.FK_BaseField_BaseField" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_DataListValue_DataList_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_BaseFieldValue_BaseField" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_FieldToCreateUser_BaseField" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_BaseFieldValue_User" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_BaseFile_BaseFieldValue" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_UserRole_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

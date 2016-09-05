@@ -1,0 +1,65 @@
+.k-state-hover>.k-i-arrow-s, 
+.k-state-hover>*>.k-i-arrow-s{
+    background-position: 0 !important;
+}
+.k-popup .k-list .k-item, .k-fieldselector .k-list .k-item {
+    font-size: 12px;
+    font-stretch: condensed;
+}
+.k-dropdown .k-input, .k-dropdown .k-state-focused .k-input, .k-menu .k-popup {
+    font-size: 14px;
+    font-stretch: condensed;
+}
+
+.fna-grid{}
+
+.fna-grid .k-grid{
+    border: none;
+}
+.fna-grid .k-grid .k-grid-header .k-header{
+    color: #0044cc !important;
+}
+.fna-grid .k-grid .k-grid-header {
+    background: none;
+    border-bottom: solid 1px #E3E3E3;
+}
+.fna-grid .k-grid .k-grid-header .k-header{
+    background: none;
+    border: none;
+    border-bottom: solid 1px #E3E3E3;
+}
+.fna-grid .k-grid .k-grid-header .k-header .k-link{
+    text-align: center;
+    color: #204394  !important;
+}
+.fna-grid .k-grid .k-alt {
+    background-color: #F8F8F8;
+}
+.fna-grid .k-grid tr.k-state-selected{
+    background-color: #E3E3E3;
+    color: #000;
+    font-weight: bold;
+}
+.fna-grid  .k-grid tbody td:first-child{
+    overflow: visible !important;
+}
+.fna-grid  .circle-icon {
+    background-color: #D0D0D0;
+    border-radius: 50%;
+    color: #FFFFFF;
+    margin-top: 2px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px !important;
+    width: 20px;
+    display: inline-block;
+    font-size: 11px !important;
+    margin: 0 10px;
+    float: right;
+    cursor: pointer;
+}
+
+.k-hack.k-widget .k-animation-container .k-group.k-reset {
+    height: auto !important;
+    //min-height: 316px !important;
+}

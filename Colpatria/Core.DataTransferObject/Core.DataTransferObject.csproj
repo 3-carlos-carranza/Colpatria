@@ -42,6 +42,13 @@
   <ItemGroup>
     <Compile Include="Mongo\ColpatriaLogDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\ExecutionArgument.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
+      <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
+      <Name>Crosscutting.Common.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

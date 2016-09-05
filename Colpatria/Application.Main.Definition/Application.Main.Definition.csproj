@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson, Version=1.11.0.92, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <HintPath>..\packages\mongocsharpdriver.1.11.0\lib\net35\MongoDB.Bson.dll</HintPath>
       <Private>True</Private>
@@ -53,13 +57,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEvidenteAppService.cs" />
+    <Compile Include="Arguments\IProcessFlowArgument.cs" />
+    <Compile Include="Arguments\IStepArgument.cs" />
+    <Compile Include="Arguments\ISubmitFormArgument.cs" />
+    <Compile Include="Enumerations\InterfaceTypeResponse.cs" />
+    <Compile Include="IDynamicAppService.cs" />
     <Compile Include="ILoggingAppService.cs" />
+    <Compile Include="IProcessFlowService.cs" />
+    <Compile Include="IUserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\IInterfaceResponse.cs" />
+    <Compile Include="Responses\IShowScreenResponse.cs" />
+    <Compile Include="Responses\IStepResponse.cs" />
+    <Compile Include="Responses\IWebServiceResponse.cs" />
+    <Compile Include="Services\ISubmitFormAppService.cs" />
+    <Compile Include="Steps\IStartFlowStep.cs" />
+    <Compile Include="Steps\IStep.cs" />
+    <Compile Include="Steps\ISubmittableStep.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
       <Name>Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
+      <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
+      <Name>Crosscutting.Common.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +96,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

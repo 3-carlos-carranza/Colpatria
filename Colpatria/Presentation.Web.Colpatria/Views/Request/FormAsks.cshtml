@@ -1,0 +1,165 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
+            <div class="col-xs-4 col-sm-4 validado"><span>2.</span> Valida</div>
+            <div class="col-xs-4 col-sm-4 bull active"><span>3.</span> Solicita</div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="col-xs-12 col-sm-4 bordes">
+            <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
+            <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
+            <div class="resumen-data">
+                @{
+                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml");
+                }
+            </div>
+            <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
+            <span class="proccess">Validado</span>
+        </div>
+        <div class="col-xs-12 col-sm-8 paddmov">
+            <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Cuenta Cero</span>”</p>
+            <div class="test">
+                <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
+                    <p class="bolds">Tus Datos</p>
+                    <div class="form-group">
+                            <div class="col-xs-12 col-sm-6">
+                                <span class="input input--hoshi">
+                                    <input name="BirthDate" class="input__field input__field--hoshi validate[required,custom[date]]" type="text" id="BirthDate" placeholder="" value="">
+                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="BirthDate">
+                                        <span class="input__label-content input__label-content--hoshi">Fecha de Nacimiento<span class="symbol required"></span></span>
+                                    </label>
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>
+                                    Estado Civil<span class="symbol required"></span>
+                                </label>
+                                <select name="CivilStatus" id="CivilStatus" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Soltero">Soltero</option>
+                                    <option value="Casado">Casado</option>
+                                    <option value="Unión libre">Unión libre</option>
+                                    <option value="Separado">Separado</option>
+                                    <option value="Viudo">Viudo</option>
+                                </select>
+                            </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-xs-12 col-sm-6">
+                                <label>
+                                    Actividad Económica <span class="symbol required"></span>
+                                </label>
+                                <select name="EconomicActivity" id="EconomicActivity" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Asalariado">Asalariado</option>
+                                    <option value="Independiente">Independiente</option>
+                                    <option value="Pensionado">Pensionado</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Ama de casa">Ama de casa</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <span class="input input--hoshi">
+                                    <input name="Income" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="">
+                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
+                                        <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
+                                    </label>
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 paddno">
+                                <label>
+                                    Servidor Público<span class="symbol required"></span>
+                                </label>
+                                <select name="PublicServer" id="PublicServer" class="validate[required] form-control" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div style="clear: both"></div>
+                    <div class="form-group">
+                        <p class="bolds">Tu Producto</p>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-xs-12 col-sm-4">
+                                <label>
+                                    Recojo la tarjeta en<span class="symbol required"></span>
+                                </label>
+                                <select name="Blast" id="Blast" class="validate[required] form-control" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Opción-1">Opción 1</option>
+                                    <option value="Opción-2">Opción 2</option>
+                                    <option value="Opción-3">Opción 3</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <label>
+                                    Oficina<span class="symbol required"></span>
+                                </label>
+                                <select name="Office" id="Office" class="validate[required] form-control" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Opción-1">Opción 1</option>
+                                    <option value="Opción-2">Opción 2</option>
+                                    <option value="Opción-3">Opción 3</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <label>
+                                    Tipo de Cuenta<span class="symbol required"></span>
+                                </label>
+                                <select name="AccountType" id="AccountType" class="validate[required] form-control" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="Opción-1">Opción 1</option>
+                                    <option value="Opción-2">Opción 2</option>
+                                    <option value="Opción-3">Opción 3</option>
+                                </select>
+                            </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 space">
+                            <input type="checkbox" class="grey greys validate[required]" value="" name="" checked="checked">
+                            <label class="check">
+                                Recibir mi extracto por email
+                            </label>
+                            <input type="checkbox" class="grey greys validate[required]" value="" name="" checked="checked">
+                            <label class="check">
+                                Recibir más información de productos
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 space" style="display:none;">
+                            <button type="submit" class="btn btn-danger pull-right enviar">
+                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 space">
+                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("RequestAproved", "Request")">
+                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>

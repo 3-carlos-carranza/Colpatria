@@ -39,6 +39,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFrameworkExtras.EF6, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkExtras.EF6.1.0.0\lib\net45\EntityFrameworkExtras.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -68,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\ExtendedFieldRepository.Extension.cs" />
     <Compile Include="ProcessDependencyRepository.cs" />
     <Compile Include="ProcessModel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -96,6 +101,8 @@
     <Compile Include="Repository\ExtendedListRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Extension\KeyValue.cs" />
+    <Compile Include="Repository\Extension\SetExtendedFields.cs" />
     <Compile Include="Repository\FieldInSectionRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
@@ -105,15 +112,15 @@
     <Compile Include="Repository\ProcessRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Repository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\ProductProcessRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ProductRepository.cs">
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\Repository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\SectionRepository.cs">
@@ -234,6 +241,10 @@
     <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj">
       <Project>{3f22aafc-92be-46b2-86b0-0bc8835c279e}</Project>
       <Name>Core.GlobalRepository.Definition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
+      <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
+      <Name>Crosscutting.Common.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>

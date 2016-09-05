@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
     public class RequestController : Controller
     {
-        // GET: Request
         public ActionResult Index()
         {
             return View();
@@ -17,10 +13,22 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public Task<ActionResult> SaveFields(FormCollection collection)
+        public ActionResult Index(string check = "false")
         {
-            return null;
+            if (check == null) throw new ArgumentNullException(nameof(check));
+
+            ViewBag.Checked = Convert.ToBoolean(check);
+            return View();
+        }
+
+        public ActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
+        public ActionResult Validacion()
+        {
+            return View();
         }
     }
 }

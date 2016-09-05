@@ -87,15 +87,15 @@
     <Compile Include="Repository\FieldToCreateUserRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Repository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
     <Compile Include="Repository\RoleRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Repository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRoleRepository.cs">

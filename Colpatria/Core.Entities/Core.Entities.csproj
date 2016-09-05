@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Mongo\ColpatriaLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\Enumerations\ExecutionState.cs" />
+    <Compile Include="SQL\Enumerations\StepType.cs" />
     <Compile Include="SQL\User\BaseDataList.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>

@@ -161,7 +161,7 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color:#f4f4f4;
-    background-image:url('../Images/Content/fondo-steps.jpg');
+    background-image:url('../Images/Content/fondo-steps2.jpg');
     background-position:top;
     background-attachment:fixed;
     background-repeat:no-repeat;
@@ -248,7 +248,6 @@ color:red;
 .step-content {
     padding: 4% 6% 10% 6%;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
     background: rgba(255, 255, 255, .7);
 }
 .step-content .class-date {
@@ -314,7 +313,6 @@ color:red;
    width:20px;
    height:20px;
    border-radius:50%;
-   -webkit-border-radius:50%;
    background:#f4f4f4;
    position:relative;
    display:inline-block;
@@ -334,7 +332,6 @@ color:red;
    width:20px;
    height:20px;
    border-radius:50%;
-   -webkit-border-radius:50%;
    background:#f4f4f4;
    position:relative;
    display:inline-block;
@@ -358,7 +355,7 @@ color:red;
 .step-content .enviar{
     background-color: #e20613;
     padding: 16px 50px;
-    margin-right: 16%;
+    margin-right: 0%;
     transition:.3s;
     font-size:16px;
 }
@@ -714,7 +711,6 @@ color:#000;
 
 .ac-radio label::before {
 	border-radius: 50%;
-    -webkit-border-radius:50%;
 }
 
 .ac-custom input[type="radio"]:checked + label {
@@ -844,8 +840,14 @@ footer .img-foot{
     position: relative;
     font-size: 3vw;
 }
+.form-step3 .form-group select {
+  margin-bottom: 10%;
 }
-@media(max-width: 736px) {
+.step-content .paddno {
+    padding: 0 15px;
+}
+}
+@media(max-width: 740px) {
 
 .step-content .check {
     width: 90%;
@@ -854,13 +856,19 @@ footer .img-foot{
   margin-bottom: 10%;
 }
 .step-content .grey {
-    width: 18px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 .modal-body {
     padding: 30px 20px 0 20px;
     text-align: center;
 }
+header .logo, header .logo-step {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 8%;
+}
+
 }
 @media(max-width: 568px) {
 
@@ -942,7 +950,7 @@ footer .img-foot {
 
     }
 .form-group select {
-
+    
 }
 .body-content .legal {
     left: 4%;

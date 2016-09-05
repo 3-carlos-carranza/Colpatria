@@ -2,9 +2,9 @@
 
 namespace Presentation.Web.Colpatria.Controllers
 {
-    public class RequestController : Controller
+    public class RequestsController : Controller
     {
-        // GET: Request
+        // GET: Requests
         public ActionResult Index()
         {
             return View();

@@ -19,7 +19,7 @@
         <div style="clear: both"></div>
     </div>
     <div class="conts">
-        <div class="col-xs-12 col-sm-4 bordes">
+        <div class="col-xs-12 col-md-4 bordes">
             <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
@@ -30,20 +30,23 @@
             <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
             <span class="proccess">Validado</span>
         </div>
-        <div class="col-xs-12 col-sm-8 paddmov">
+        <div class="col-xs-12 col-md-8 paddmov">
             <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Cuenta Cero</span>”</p>
             <div class="test">
                 <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus Datos</p>
                     <div class="form-group">
-                            <div class="col-xs-12 col-sm-6">
-                                <span class="input input--hoshi">
-                                    <input name="BirthDate" class="input__field input__field--hoshi validate[required,custom[date]]" type="text" id="BirthDate" placeholder="" value="">
-                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="BirthDate">
-                                        <span class="input__label-content input__label-content--hoshi">Fecha de Nacimiento<span class="symbol required"></span></span>
-                                    </label>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="BirthDate">
+                                Fecha de Nacimiento<span class="symbol required"></span>
+                            </label>
+                            <div class='input-group date' id='datepicker1'>
+                                <input name="BirthDate" class="validate[required,custom[date]] form-control inp" type="text" id="BirthDate" placeholder="" value="">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
+                        </div>
                             <div class="col-xs-12 col-sm-6">
                                 <label>
                                     Estado Civil<span class="symbol required"></span>

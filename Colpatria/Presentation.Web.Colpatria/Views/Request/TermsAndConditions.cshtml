@@ -8,12 +8,13 @@
 </div>
 <div class="step-content">
     <div class="linea-step">
-        <div class="col-xs-12 col-sm-6 desc-step">
+        <div class="col-xs-6 col-sm-6 desc-step">
             <p>Términos Legales</p>
         </div>
-        <div class="col-xs-12 col-sm-6 li-step">
-            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Alternate Text" /></a>
+        <div class="col-xs-6 col-sm-6 li-step">
+            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>
         </div>
+        <div style="clear: both"></div>
     </div>
     <div class="conts">
         <div class="title-term">
@@ -38,10 +39,15 @@
                 <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
             </div>
             <div class="col-xs-12 col-sm-6 print">
-                <a href="@Url.Action("Index", "Request")" class="btn btn-danger pull-right enviar acepto">
-                    Acepto los términos y Condiciones
-                </a>
+                <form action="@Url.Action("Index", "Request")" method="POST">
+                    <input name="check" hidden="hidden" class="" value="true" />
+                    <button type="submit" class="btn btn-danger pull-right enviar acepto">
+                        Acepto los términos y Condiciones
+                    </button>
+                </form>
+                
             </div>
         </div>
     </div>
+    <div style="clear: both"></div>
 </div>

@@ -39,7 +39,10 @@ namespace Presentation.Web.Colpatria
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Scripts/bootstrap.min.js"
+                "~/Scripts/momentJS/moment.js",
+                "~/Scripts/bootstrap/bootstrap.min.js",
+                "~/Scripts/bootstrap/bootstrap-datetimepicker.min.js"
+                
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/layout").Include(

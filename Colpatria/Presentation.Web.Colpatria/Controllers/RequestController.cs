@@ -23,5 +23,22 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+        public ActionResult FormAsks()
+        {
+            return View();
+        }
+        public ActionResult RequestAproved()
+        {
+            return View();
+        }
+        public ActionResult FinalSummary()
+        {
+            return View();
+        }
+
+        public ActionResult EmailRequest()
+        {
+            return View();
+        }
     }
 }

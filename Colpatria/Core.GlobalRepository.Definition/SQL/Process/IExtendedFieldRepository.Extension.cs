@@ -9,6 +9,6 @@ namespace Core.GlobalRepository.Definition.SQL.Process
     {
         void SetFields(List<FieldValueOrder> collection, long requestid, int ownerId);
         //PageDetail GetFieldsByPage(long userId, int pageId, long? sectionId, long request, int? appliccant = null);
-        //IEnumerable<Page> GetAllPagesWithSection();
+        IEnumerable<Page> GetAllPagesWithSection();
     }
 }

@@ -15,10 +15,10 @@ namespace Presentation.Web.Colpatria.Models
         public string SecondLastName { get; set; }
 
         [Required]
-        public string IdentificationType { get; set; }
+        public int IdentificationType { get; set; }
 
         [Required]
-        public long Identification { get; set; }
+        public string Identification { get; set; }
 
         [Required]
         public DateTime DateOfExpedition { get; set; }
@@ -33,7 +33,7 @@ namespace Presentation.Web.Colpatria.Models
         public string Email { get; set; }
 
         [Required]
-        public long Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [Required]
         public long Cellphone { get; set; }

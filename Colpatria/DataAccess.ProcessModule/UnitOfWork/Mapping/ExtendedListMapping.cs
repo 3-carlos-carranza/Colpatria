@@ -36,7 +36,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("ExtendedList","Req");
+                this.ToTable("ExtendedList","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Name).HasColumnName("Name");
         this.Property(t => t.Description).HasColumnName("Description");

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.DataType;
 using DataAccess.ProcessModule.Repository.Extension;
 using EntityFrameworkExtras.EF6;
 

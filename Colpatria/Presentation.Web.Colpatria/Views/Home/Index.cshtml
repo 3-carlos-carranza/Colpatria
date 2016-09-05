@@ -39,7 +39,9 @@
     </table>
 </div>
 
-<form class="frm-bind" action="@Url.Action("Index", "Request")" method="POST">
-    <input type="submit" value="Banner" />
-</form>
+@*<form class="frm-bind" action="@Url.Action("Register", "Request")" method="POST">
+    <input type="submit" name="banner" value="Banner"/>
+</form>*@
+
+<a class="frm-bind" href="@Url.Action("Register", "Request")">Banner</a>
 

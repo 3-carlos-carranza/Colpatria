@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.DataType;
 using EntityFrameworkExtras.EF6;
 
 namespace DataAccess.ProcessModule.Repository.Extension

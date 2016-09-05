@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Definition.Arguments
 {

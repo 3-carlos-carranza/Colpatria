@@ -73,13 +73,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FieldValueOrder.cs" />
+    <Compile Include="DataType\FieldValueOrder.cs" />
+    <Compile Include="FieldValueType.cs" />
     <Compile Include="JsonNetResult.cs" />
+    <Compile Include="DataType\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtension.cs" />
+    <Compile Include="Web\WebExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

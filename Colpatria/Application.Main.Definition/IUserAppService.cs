@@ -4,6 +4,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Entities.SQL.Process;
 using Core.Entities.SQL.User;
+using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.DataType;
 using Microsoft.AspNet.Identity;
 
 namespace Application.Main.Definition
@@ -25,5 +27,7 @@ namespace Application.Main.Definition
         Task<IdentityResult> UpdateUserAndPassword(User user, string newPassword);
         Task<IQueryable<string>> UsersAreRegistered(IEnumerable<string> cleanEmailsList);
         IEnumerable<Page> GetAllPagesWithSections();
+        IEnumerable<FieldToCreateUser> GetMappingFieldToCreateUsers();
+        Task<User> GetUserByMappingField(IEnumerable<FieldToCreateUser> mappingfields, IEnumerable<FieldValueOrder> fields);
     }
 }

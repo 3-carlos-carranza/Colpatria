@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Crosscutting.Common.Tools
+namespace Crosscutting.Common.Tools.DataType
 {
     public class FieldValueOrder
     {

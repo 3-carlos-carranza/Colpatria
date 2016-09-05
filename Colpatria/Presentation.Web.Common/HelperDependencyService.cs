@@ -15,6 +15,7 @@ namespace Presentation.Web.Common
     {
         public static void InitializeAppService(this IUnityContainer container)
         {
+            container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
 

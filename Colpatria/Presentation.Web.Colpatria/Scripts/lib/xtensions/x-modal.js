@@ -147,3 +147,9 @@
 //    var extend = jQuery.extend(data, options);
 //    XModal.init(e, extend);
 //};
+
+$(document).ready(function () {
+    $("#myBtn").click(function () {
+        $("#myModal").modal();
+    });
+});

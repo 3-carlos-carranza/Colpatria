@@ -45,7 +45,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("ExtendedFile","Req");
+                this.ToTable("ExtendedFile","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Data).HasColumnName("Data");
         this.Property(t => t.FileName).HasColumnName("FileName");

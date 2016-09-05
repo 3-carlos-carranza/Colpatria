@@ -58,7 +58,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("User","Req");
+                this.ToTable("User","User");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Email).HasColumnName("Email");
         this.Property(t => t.EmailConfirmed).HasColumnName("EmailConfirmed");

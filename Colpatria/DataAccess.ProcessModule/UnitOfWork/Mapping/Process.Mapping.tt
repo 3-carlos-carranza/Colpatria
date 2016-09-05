@@ -116,7 +116,7 @@ foreach (EntityType entity in typeMapper.GetItemsToGenerate<EntityType>(itemColl
     if (schemaName == "dbo" || string.IsNullOrWhiteSpace(schemaName))
     {
 #>
-            this.ToTable("<#= tableName #>","Req");
+            this.ToTable("<#= tableName #>","Process");
 <#
     }
     else

@@ -30,7 +30,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("Role","Req");
+                this.ToTable("Role","User");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Name).HasColumnName("Name");
     

@@ -26,7 +26,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
                 // Properties
     
-                this.ToTable("UserRole","Req");
+                this.ToTable("UserRole","User");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.UserId).HasColumnName("UserId");
         this.Property(t => t.RoleId).HasColumnName("RoleId");

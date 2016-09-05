@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Application.Main.Definition.Arguments;
 using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow.Arguments
 {

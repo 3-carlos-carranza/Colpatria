@@ -266,7 +266,7 @@ jQuery.extend({
             }
 
             if ((x + 1) < total) {
-                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
+                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + ' <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>');
                 $(".nextStep", $(el)).on("click", function () {
                     $("#x_" + (x + 1)).show("slow");
                     $(el).hide("slow");
@@ -278,4 +278,41 @@ jQuery.extend({
 });
 $(document).ready(function () {
     $.stepForm();
+});
+
+
+
+(function () {
+    if (!String.prototype.trim) {
+        (function () {
+            var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+            String.prototype.trim = function () {
+                return this.replace(rtrim, '');
+            };
+        })();
+    }
+    [].slice.call(document.querySelectorAll('input.input__field')).forEach(function (inputEl) {
+        // in case the input is already filled..
+        if (inputEl.value.trim() !== '') {
+            classie.add(inputEl.parentNode, 'input--filled');
+        }
+        // events:
+        inputEl.addEventListener('focus', onInputFocus);
+        inputEl.addEventListener('blur', onInputBlur);
+    });
+    function onInputFocus(ev) {
+        classie.add(ev.target.parentNode, 'input--filled');
+    }
+    function onInputBlur(ev) {
+        if (ev.target.value.trim() === '') {
+            classie.remove(ev.target.parentNode, 'input--filled');
+        }
+    }
+})();
+
+
+$(document).ready(function () {
+    $('#datepicker1').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
 });

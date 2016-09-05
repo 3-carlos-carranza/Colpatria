@@ -26,7 +26,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
                 // Properties
     
-                this.ToTable("FieldInSection","Req");
+                this.ToTable("FieldInSection","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.ExtendedFieldId).HasColumnName("ExtendedFieldId");
         this.Property(t => t.SectionId).HasColumnName("SectionId");

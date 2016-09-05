@@ -26,7 +26,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
                 // Properties
     
-                this.ToTable("ExecutionApplicant","Req");
+                this.ToTable("ExecutionApplicant","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.RequestId).HasColumnName("RequestId");
         this.Property(t => t.UserId).HasColumnName("UserId");

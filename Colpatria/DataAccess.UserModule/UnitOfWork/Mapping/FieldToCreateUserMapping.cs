@@ -36,7 +36,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("FieldToCreateUser","Req");
+                this.ToTable("FieldToCreateUser","User");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.BaseFieldId).HasColumnName("BaseFieldId");
         this.Property(t => t.ColumnName).HasColumnName("ColumnName");

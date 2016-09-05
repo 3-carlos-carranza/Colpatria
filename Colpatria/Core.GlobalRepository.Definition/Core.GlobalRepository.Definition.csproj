@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MongoRepository.Net45">
       <HintPath>..\packages\MongoRepository.1.6.11\lib\net45\MongoRepository.Net45.dll</HintPath>
     </Reference>
@@ -128,6 +132,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\User\IUserRepository.Extension.cs" />
     <Compile Include="SQL\User\IUserRoleRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -146,7 +151,9 @@
       <Name>Data.Common.Definition</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="SQL\Process\IRepository.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

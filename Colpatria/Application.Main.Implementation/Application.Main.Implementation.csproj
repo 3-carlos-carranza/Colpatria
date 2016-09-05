@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -70,6 +74,8 @@
   <ItemGroup>
     <Compile Include="DynamicAppService.cs" />
     <Compile Include="LoggingAppService.cs" />
+    <Compile Include="ProcessFlow\ProcessFlowArgument.cs" />
+    <Compile Include="ProcessFlow\ProcessFlowService.cs" />
     <Compile Include="ProcessFlow\Arguments\StepArgument.cs" />
     <Compile Include="ProcessFlow\Arguments\SubmitFormArgument.cs" />
     <Compile Include="ProcessFlow\Responses\ErrorResponse.cs" />
@@ -81,11 +87,16 @@
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitFormStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.Main.Definition\Application.Main.Definition.csproj">
       <Project>{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6}</Project>
       <Name>Application.Main.Definition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>

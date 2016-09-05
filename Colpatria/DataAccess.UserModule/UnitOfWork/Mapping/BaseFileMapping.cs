@@ -45,7 +45,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
     
     
-                this.ToTable("BaseFile","Req");
+                this.ToTable("BaseFile","User");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Data).HasColumnName("Data");
         this.Property(t => t.FileName).HasColumnName("FileName");

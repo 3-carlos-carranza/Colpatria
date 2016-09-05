@@ -234,6 +234,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984fc515-8235-4b7b-9821-84a7af8f4ee0}</Project>
       <Name>Core.Entities</Name>

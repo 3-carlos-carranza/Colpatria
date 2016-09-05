@@ -103,7 +103,12 @@ namespace DataAccess.UserModule.Repository
 
         public Task<IList<string>> GetRolesAsync(User user)
         {
-            throw new NotImplementedException();
+            var roles = from role in _context.Role
+                        join userrole in _context.UserRole on role.Id equals userrole.RoleId
+                        where userrole.UserId == user.Id
+                        select role.Name;
+
+            return Task.FromResult(roles.ToList() as IList<string>);
         }
 
         public Task<bool> IsInRoleAsync(User user, string roleName)

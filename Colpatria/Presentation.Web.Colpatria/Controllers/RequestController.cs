@@ -50,33 +50,35 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 usercreated = await _userAppService.CreateAsync(nuser, collection.Identification);
             }
-            if (usercreated.Succeeded || !usercreated.Errors.Any())
+            if (!usercreated.Succeeded && usercreated.Errors.Any()) return View("Index");
+            var identity =
+                await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
+            identity.Label = nuser.FullName;
+
+            var principal = new ClaimsPrincipal(identity);
+            Thread.CurrentPrincipal = principal;
+            HttpContext.User = principal;
+
+            ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
             {
-                var identity =
-                    await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
-                identity.Label = nuser.FullName;
+                IsPost = false,
+                UserId = long.Parse(identity.GetUserId()),
+                UserName = identity.GetUserName(),
+                ProductId = 1
 
-                var principal = new ClaimsPrincipal(identity);
-                Thread.CurrentPrincipal = principal;
-                HttpContext.User = principal;
+            };
+            ProcessFlowArgument.StepArgument = new StepArgument
+            {
+                Username = identity.GetUserName(),
+            };
 
-                var pages = _userAppService.GetAllPagesWithSections();
-                ViewBag.Pages = pages;
-                ViewBag.FullName = identity.Label;
+            var pages = _userAppService.GetAllPagesWithSections();
+            ViewBag.Pages = pages;
+            ViewBag.FullName = identity.Label;
 
-
-                ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
-                {
-                    IsPost = false,
-                    UserId = long.Parse(identity.GetUserId()),
-                    UserName = identity.GetUserName()
-                };
-
-                //En desarrollo
-                dynamic stepresult = await ExecuteFlow(identity, pages);
-                return stepresult;
-            }
-            return View("Index");
+            //En desarrollo
+            dynamic stepresult = await ExecuteFlow(identity, pages);
+            return stepresult;
         }
 
         #region Mapping User

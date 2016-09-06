@@ -15,7 +15,7 @@ namespace Core.Entities.SQL.Process
     public partial class WebServiceConsultation
     {
         public long Id { get; set; }
-        public long RequestId { get; set; }
+        public long ExecutionId { get; set; }
         public string Payload { get; set; }
         public string WebServiceName { get; set; }
         public int TypeOfConsultation { get; set; }

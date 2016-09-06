@@ -33,7 +33,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
                 this.ToTable("WebServiceConsultation","Process");
         this.Property(t => t.Id).HasColumnName("Id");
-        this.Property(t => t.RequestId).HasColumnName("RequestId");
+        this.Property(t => t.ExecutionId).HasColumnName("ExecutionId");
         this.Property(t => t.Payload).HasColumnName("Payload");
         this.Property(t => t.WebServiceName).HasColumnName("WebServiceName");
         this.Property(t => t.TypeOfConsultation).HasColumnName("TypeOfConsultation");

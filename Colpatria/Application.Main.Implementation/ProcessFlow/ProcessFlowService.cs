@@ -10,6 +10,7 @@ using Application.Main.Implementation.ProcessFlow.Arguments;
 using Core.Entities.SQL.Enumerations;
 using Core.Entities.SQL.Process;
 using Core.GlobalRepository.Definition.SQL.Process;
+using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow
 {
@@ -17,51 +18,73 @@ namespace Application.Main.Implementation.ProcessFlow
     {
         private readonly IStepRepository _stepRepository;
         private readonly IProductProcessRepository _productProcessRepository;
-        public ProcessFlowService(IEnumerable<IStep> steps, IStepRepository stepRepository, IProductProcessRepository productProcessRepository)
+        private readonly IExecutionRepository _executionRepository;
+        public ProcessFlowService(
+            IEnumerable<IStep> steps, 
+            IStepRepository stepRepository, 
+            IProductProcessRepository productProcessRepository,
+            IExecutionRepository executionRepository)
         {
             Steps = steps;
             _stepRepository = stepRepository;
             _productProcessRepository = productProcessRepository;
+            _executionRepository = executionRepository;
+            
         }
 
         public IEnumerable<IStep> Steps { get; }
 
-        public Task<IStepResponse> RunFlow(IProcessFlowArgument processFlowArgument)
+        public async Task<IStepResponse> RunFlow(IProcessFlowArgument processFlowArgument)
         {
-            throw new NotImplementedException();
+            InitializeStepArgument(processFlowArgument);
+
+            var step = processFlowArgument.StepArgument.Execution.CurrentStepId;
+
+            var stepobj = _stepRepository.Get(s => s.Id == step);
+            var steps = stepobj.NameClientAlias.Split(Convert.ToChar("|"));
+
+            if (processFlowArgument.IsSubmitting)
+            {
+                var submittableStep = Steps.First(s => s.Name == steps[1]);
+                if (submittableStep != null)
+                {
+                    return await submittableStep.Advance(processFlowArgument.StepArgument);
+                }
+            }
+            return await Steps.First(s => s.Name == steps[0]).Advance(processFlowArgument.StepArgument);
         }
 
         private void InitializeStepArgument(IProcessFlowArgument processFlowArgument)
         {
             processFlowArgument.StepArgument.Steps = Steps;
 
-            var processid = _productProcessRepository.GetFiltered(s => s.ProductId == processFlowArgument.ExecutionArgument.ProductId).FirstOrDefault();
+            var processid = 
+                _productProcessRepository.GetFiltered
+                (s => s.ProductId == processFlowArgument.ExecutionArgument.ProductId).FirstOrDefault();
 
             if (processFlowArgument.StepArgument.Execution == null)
             {
-                //Login 
-                var submitFormStepArgument = processFlowArgument.StepArgument as SubmitFormArgument;
-
                 var request = new Execution
                 {
                     CreateDate = DateTime.UtcNow,
                     IsActive = true,
-                    //ProductId = processFlowArgument.ExecutionArgument.ProductId,
-                    SimpleId = "123456",//Tools.GenSemiUniqueId(6),
+                    ProcessId = processid.Id,
+                    ProductId = processFlowArgument.ExecutionArgument.ProductId,
+                    SimpleId = ToolExtension.GenSemiUniqueId(),
                     UserId = processFlowArgument.ExecutionArgument.UserId,
-                    //CurrentStepId = _stepRepository.GetFirstStepbyProcess().Id,
+                    CurrentStepId = _stepRepository.GetFirstStepbyProcess(processid.ProcessId).Id,
                     State = (int) ExecutionState.Requesting,
                     ProductData = @"{}"
                 };
-                //processFlowArgument.StepArgument.Request = _requestRepository.CreateRequest(request);
+                processFlowArgument.StepArgument.Execution = _executionRepository.CreateRequest(request);
                 processFlowArgument.IsSubmitting = true;
             }
             else
             {
-                //processFlowArgument.StepArgument.Request =
-                //    _requestRepository.GetRequestById(processFlowArgument.StepArgument.Request.Id);
+                processFlowArgument.StepArgument.Execution =
+                    _executionRepository.GetRequestById(processFlowArgument.StepArgument.Execution.Id);
             }
-            //processFlowArgument.StepArgument.Request.UserId = processFlowArgument.RequestArgument.UserId;
+            processFlowArgument.StepArgument.Execution.UserId = processFlowArgument.ExecutionArgument.UserId;
         }
     }
 }

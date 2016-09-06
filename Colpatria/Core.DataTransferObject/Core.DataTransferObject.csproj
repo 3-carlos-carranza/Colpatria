@@ -45,6 +45,7 @@
     <Compile Include="SQL\ExecutionArgument.cs" />
     <Compile Include="SQL\MapperPagesWithSections.cs" />
     <Compile Include="SQL\MapperPagesWithSectionsExtension.cs" />
+    <Compile Include="SQL\PageSection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">

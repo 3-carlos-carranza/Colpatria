@@ -31,9 +31,10 @@ namespace Core.Entities.SQL.Process
         public int State { get; set; }
         public bool IsActive { get; set; }
         public int CurrentSectionId { get; set; }
-        public System.Guid ProductId { get; set; }
+        public long ProductId { get; set; }
     
         public virtual Process Process { get; set; }
+        public virtual Product Product { get; set; }
         public virtual Section Section { get; set; }
         public virtual Step Step { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

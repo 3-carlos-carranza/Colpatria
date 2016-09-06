@@ -53,7 +53,7 @@ namespace Presentation.Web.Colpatria.Controllers
             if (usercreated.Succeeded || !usercreated.Errors.Any())
             {
                 var identity =
-                await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
+                    await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
                 identity.Label = nuser.FullName;
 
                 var principal = new ClaimsPrincipal(identity);
@@ -64,25 +64,24 @@ namespace Presentation.Web.Colpatria.Controllers
                 ViewBag.Pages = pages;
                 ViewBag.FullName = identity.Label;
 
-                if (true)
+
+                ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
                 {
-                    ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
-                    {
-                        IsPost = false,
-                        UserId = long.Parse(identity.GetUserId()),
-                        UserName = identity.GetUserName()
-                    };
+                    IsPost = false,
+                    UserId = long.Parse(identity.GetUserId()),
+                    UserName = identity.GetUserName()
+                };
 
-                    //En desarrollo
-                    dynamic stepresult = await ExecuteFlow(identity, pages);
-
-                }
-
+                //En desarrollo
+                dynamic stepresult = await ExecuteFlow(identity, pages);
+                return stepresult;
             }
             return View("Index");
         }
 
-        public User MappingUser(UserViewModel collection) => new User()
+        #region Mapping User
+
+        public User MappingUser(UserViewModel collection) => new User
         {
             FirstName = collection.FirstName.Split(' ')[0],
             MiddleName = collection.FirstName.Split(' ')[1],
@@ -96,10 +95,13 @@ namespace Presentation.Web.Colpatria.Controllers
             UserName = collection.Identification
         };
 
+        #endregion
+
         public ActionResult TermsAndConditions()
         {
             return View();
         }
+
         public ActionResult Validation()
         {
             return View();
@@ -124,6 +126,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+
         public ActionResult Index2()
         {
             return View();

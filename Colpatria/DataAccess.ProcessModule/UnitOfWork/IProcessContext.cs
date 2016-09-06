@@ -32,5 +32,6 @@ namespace DataAccess.ProcessModule.UnitOfWork
         DbSet<State> State { get; set; }
         DbSet<Step> Step { get; set; }
         DbSet<StepSection> StepSection { get; set; }
+        DbSet<WebServiceConsultation> WebServiceConsultation { get; set; }
     }
 }

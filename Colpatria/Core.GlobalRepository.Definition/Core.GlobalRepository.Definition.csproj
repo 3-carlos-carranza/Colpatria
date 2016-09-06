@@ -100,7 +100,11 @@
     <Compile Include="SQL\Process\IStepRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\Process\IStepRepository.Extension.cs" />
     <Compile Include="SQL\Process\IStepSectionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Process\IWebServiceConsultationRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\User\IBaseDataListRepository.cs">

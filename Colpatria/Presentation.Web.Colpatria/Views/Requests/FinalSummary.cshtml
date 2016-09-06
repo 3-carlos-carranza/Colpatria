@@ -1,7 +1,7 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Resumen de datos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <div class="legal">
     <img src="~/Images/Content/legal.png" alt="Alternate Text" />
@@ -9,7 +9,7 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -20,11 +20,11 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
+            <p class="desc-step">Número de Solicitud: <span class="red">3602</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
-                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml");
+                    Html.RenderPartial("~/Views/Requests/_SummaryData.cshtml");
                 }
             </div>
             <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
@@ -38,45 +38,45 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <td>Nacimiento:</td>
-                                <th>30 Diciembre 1987</th>
+                                <td>Actividad:</td>
+                                <th>Asalariado</th>
                             </tr>
                             <tr>
-                                <td>Estado Civil:</td>
-                                <th>Soltero</th>
-                            </tr>
-                            <tr>
-                                <td>Actividad Económica:</td>
-                                <th>Asalariado</th>
+                                <td>Antiguedad:</td>
+                                <th>8 (Meses)</th>
                             </tr>
                             <tr>
                                 <td>Ingresos:</td>
                                 <th>$ 1.500.000</th>
                             </tr>
                             <tr>
-                                <td>Servidor Público:</td>
-                                <th>No.</th>
+                                <td>Edad:</td>
+                                <th>28 (Años)</th>
                             </tr>
                             
                             <tr>
-                                <td>Recojo la tarjeta en:</td>
-                                <th>Bogotá , Bogotá</th>
+                                <td>Estrato:</td>
+                                <th>3</th>
                             </tr>
                             <tr>
-                                <td>Oficina:</td>
-                                <th>Centro</th>
+                                <td>Personas a Cargo:</td>
+                                <th>0</th>
                             </tr>
                             <tr>
-                                <td>Tipo de Cuenta:</td>
-                                <th>Ahorros</th>
+                                <td>Prodicto:</td>
+                                <th>MasterCard</th>
                             </tr>
                             <tr>
-                                <td>Extracto mail:</td>
-                                <th>Si</th>
+                                <td>Dirección Residencia:</td>
+                                <th>Calle 114 Nº 7a - 71</th>
                             </tr>
                             <tr>
-                                <td>Más Información:</td>
-                                <th>No</th>
+                                <td>Ciudad de Residencia:</td>
+                                <th>Bogotá</th>
+                            </tr>
+                            <tr>
+                                <td>Teléfono Residencia:</td>
+                                <th>366 7627</th>
                             </tr>
                         </tbody>
                     </table>
@@ -87,12 +87,12 @@
                     <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>
                 </div>
                 <div class="img-summary">
-                    <img src="~/Images/Content/resumen.png" alt="Imagen" />
+                    <img src="~/Images/Content/resumenTarjeta.png" alt="Imagen" />
                 </div>
                 
             </div>
             <div class="col-xs-12 space">
-                <a class="btn btn-danger pull-right enviar marginnone" href="@Url.Action("Index", "Request")">
+                <a class="btn btn-danger pull-right enviar marginnone" href="@Url.Action("Index", "Requests")">
                     Cerrar <span class="glyphicon glyphicon-remove"></span>
                 </a>
             </div>

@@ -1,33 +1,31 @@
-﻿@model Presentation.Web.Colpatria.Models.UserViewModel
+﻿@model dynamic
 @{
     ViewBag.Title = "Datos personales";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
 </div>
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
-            <div class="col-xs-4 col-sm-4 bull active">
-                <span>1.</span> Ingresa
-            </div>
+            <div class="col-xs-4 col-sm-4 bull active"><span>1.</span> Ingresa</div>
             <div class="col-xs-4 col-sm-4 bull">2. Valida</div>
             <div class="col-xs-4 col-sm-4 bull">3. Solicita</div>
         </div>
     </div>
     <div class="col-xs-12 block radius">
-        <form data-x="x-validate" action="@Url.Action("Register", "Request")" method="POST" class="form-step" >
+        <form action="@Url.Action("Register", "Requests")" method="POST" data-x="x-validate" class="form-step">
             <div class="step-title">
                 <strong>PASO 1.</strong> Ingresa tus datos, no olvides llenar todos los campos.
             </div>
             <div class="form-group">
                     <div class="col-xs-12 col-md-6">
                         <span class="input input--hoshi">
-                            <input name="FirstName" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" value="Carlos Julian">
+                            <input name="FirstName" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level ">Nombre<span class="symbol required"></span></span>
                             </label>
@@ -35,7 +33,7 @@
                     </div>
                     <div class="col-xs-6 col-md-3">
                         <span class="input input--hoshi">
-                            <input name="FirstLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" value="Carranza">
+                            <input name="FirstLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstLastName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Apellidos<span class="symbol required"></span></span>
                             </label>
@@ -43,7 +41,7 @@
                     </div>
                     <div class="col-xs-6 col-md-3">
                         <span class="input input--hoshi">
-                            <input name="SecondLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" value="Garcia">
+                            <input name="SecondLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SecondLastName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level"><span class="symbol required"></span></span>
                             </label>
@@ -56,8 +54,8 @@
                         <label>
                             Tipo de documento<span class="symbol required"></span>
                         </label>
-                        <select name="IdentificationType" data-x="x-kdropdown" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-url="/Data/GetDataListValues/"
-                                data-value="Cedula de Ciudadania">
+                        <select name="DocType" data-x="x-kdropdown" class="validate[required] form-control" placeholder="Tipo de Documento" data-url="/Data/GetDataListValues/"
+                                data-value="">
                             <option value="">Seleccione...</option>
                             <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
                             <option value="Cedula Extranjera">Cedula Extranjera</option>
@@ -69,7 +67,7 @@
                     </div>
                     <div class="col-xs-12 col-md-3">
                         <span class="input input--hoshi">
-                            <input name="Identification" class="input__field input__field--hoshi validate[required]" data-x="x-autonum" data-asep="." data-adec="," data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" value="1030675786">
+                            <input name="Number" type="text" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" data-x="x-autonum" data-asep="" data-adec="," data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Number">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Número<span class="symbol required"></span></span>
                             </label>
@@ -81,7 +79,7 @@
                         </label>
                         
                             <div class='input-group date' id='datepicker1'>
-                                <input type='text' name="DateOfExpedition" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]]" value="14/09/2016"/>
+                                <input name="ExpeditionDate" class="validate[required,custom[date]] form-control inp" type="text" id="ExpeditionDate" placeholder="" value="">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -92,7 +90,7 @@
             <div class="form-group">
                     <div class="col-xs-12 col-md-6">
                         <span class="input input--hoshi">
-                            <input name="PlaceOfExpedition" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="Expedition" placeholder="" value="Bogotá D.C">
+                            <input name="Expedition" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="Expedition" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Expedition">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Lugar de expediciòn de Documento<span class="symbol required"></span></span>
                             </label>
@@ -100,7 +98,7 @@
                     </div>
                     <div class="col-xs-12 col-md-3">
                         <span class="input input--hoshi">
-                            <input name="Address" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
+                            <input name="address" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="address" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="address">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Dirección<span class="symbol required"></span></span>
                             </label>
@@ -108,7 +106,7 @@
                     </div>
                     <div class="col-xs-12 col-md-3">
                         <span class="input input--hoshi">
-                            <input name="Email" class="input__field input__field--hoshi validate[required,custom[email]]" type="text" id="email" placeholder="" value="carlosscarranza@banlinea.com">
+                            <input name="email" class="input__field input__field--hoshi validate[required,custom[email]]" type="email" id="email" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Correo electronico<span class="symbol required"></span></span>
                             </label>
@@ -119,7 +117,7 @@
             <div class="form-group">
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="Telephone" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" type="number" placeholder="" value="4038956">
+                        <input name="telephone" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" type="number" placeholder="" value="">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="telephone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Télefono<span class="symbol required"></span></span>
                         </label>
@@ -127,23 +125,23 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="Cellphone" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="cellphone" placeholder="" value="3006492610">
+                        <input name="cellphone" class="input__field input__field--hoshi validate[required]" data-mask="999-999-9999" data-x="x-masked" id="cellphone" placeholder="" value="">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="cellphone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Celular<span class="symbol required"></span></span>
                         </label>
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-3 space">
-                    <input name="TermsAndConditions" type="checkbox" class="grey validate[required]" checked="checked">
+                    <input type="checkbox" class="grey validate[required]" value="" name="" checked="@(ViewBag.Checked)">
                     <label class="check">
-                        Acepto términos y condiciones <a class="vermas" href="@Url.Action("TermsAndConditions", "Request")">VER+</a>
+                        Acepto términos y condiciones <a class="vermas" href="@Url.Action("TermsAndConditions", "Requests")">VER+</a>
                     </label>
                 </div>
-                <div class="col-xs-12 col-sm-3 space">
-                        <button type="submit" class="btn btn-danger pull-right enviar">
-                            Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                        </button>
-                        </div>
+                <div class="col-xs-12 col-md-3 space">
+                    <button type="submit" class="btn btn-danger pull-right enviar">
+                        Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                    </button>
+                </div>
                         <div style="clear: both"></div>
                     </div>
              </form>

@@ -12,13 +12,13 @@ namespace Core.Entities.SQL.Process
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductProcess
+    public partial class WebServiceConsultation
     {
-        public int Id { get; set; }
-        public int ProcessId { get; set; }
-        public long ProductId { get; set; }
-    
-        public virtual Process Process { get; set; }
-        public virtual Product Product { get; set; }
+        public long Id { get; set; }
+        public long RequestId { get; set; }
+        public string Payload { get; set; }
+        public string WebServiceName { get; set; }
+        public int TypeOfConsultation { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     }
 }

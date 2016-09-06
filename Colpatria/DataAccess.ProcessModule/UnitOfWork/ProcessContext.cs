@@ -39,6 +39,7 @@ namespace DataAccess.ProcessModule.UnitOfWork
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<Step> Step { get; set; }
         public virtual DbSet<StepSection> StepSection { get; set; }
+        public virtual DbSet<WebServiceConsultation> WebServiceConsultation { get; set; }
     
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
@@ -60,6 +61,7 @@ namespace DataAccess.ProcessModule.UnitOfWork
         modelBuilder.Configurations.Add(new StateMapping());
         modelBuilder.Configurations.Add(new StepMapping());
         modelBuilder.Configurations.Add(new StepSectionMapping());
+        modelBuilder.Configurations.Add(new WebServiceConsultationMapping());
     }
     
     

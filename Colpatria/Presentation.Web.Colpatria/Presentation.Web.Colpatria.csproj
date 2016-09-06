@@ -160,6 +160,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Logos\Banco_Colpatria_logo.svg.png" />
@@ -721,6 +722,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -860,6 +862,16 @@
     <Content Include="Views\Request\RequestAproved.cshtml" />
     <Content Include="Views\Request\FinalSummary.cshtml" />
     <Content Include="Views\Request\_SummaryData.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Requests\EmailRequest.cshtml" />
+    <Content Include="Views\Requests\FinalSummary.cshtml" />
+    <Content Include="Views\Requests\FormAsks.cshtml" />
+    <Content Include="Views\Requests\Index.cshtml" />
+    <Content Include="Views\Requests\RequestAproved.cshtml" />
+    <Content Include="Views\Requests\TermsAndConditions.cshtml" />
+    <Content Include="Views\Requests\Validation.cshtml" />
+    <Content Include="Views\Requests\_SummaryData.cshtml" />
+    <Content Include="Views\Request\EmailRequest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

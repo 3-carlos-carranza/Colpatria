@@ -15,7 +15,7 @@ namespace Core.Entities.SQL.Process
     public partial class ExecutionApplicant
     {
         public long Id { get; set; }
-        public long RequestId { get; set; }
+        public long ExecutionId { get; set; }
         public long UserId { get; set; }
         public bool IsMain { get; set; }
         public int Applicant { get; set; }

@@ -59,6 +59,7 @@
     <Compile Include="Arguments\IProcessFlowArgument.cs" />
     <Compile Include="Arguments\IStepArgument.cs" />
     <Compile Include="Arguments\ISubmitFormArgument.cs" />
+    <Compile Include="Arguments\StepArgument.cs" />
     <Compile Include="Enumerations\InterfaceTypeResponse.cs" />
     <Compile Include="IDynamicAppService.cs" />
     <Compile Include="ILoggingAppService.cs" />

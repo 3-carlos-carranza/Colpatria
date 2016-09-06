@@ -76,7 +76,6 @@
     <Compile Include="LoggingAppService.cs" />
     <Compile Include="ProcessFlow\ProcessFlowArgument.cs" />
     <Compile Include="ProcessFlow\ProcessFlowService.cs" />
-    <Compile Include="ProcessFlow\Arguments\StepArgument.cs" />
     <Compile Include="ProcessFlow\Arguments\SubmitFormArgument.cs" />
     <Compile Include="ProcessFlow\Responses\ErrorResponse.cs" />
     <Compile Include="ProcessFlow\Responses\RedirectResponse.cs" />

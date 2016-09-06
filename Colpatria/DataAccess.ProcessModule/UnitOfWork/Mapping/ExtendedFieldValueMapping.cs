@@ -29,7 +29,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 this.ToTable("ExtendedFieldValue","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.ExtendedFieldId).HasColumnName("ExtendedFieldId");
-        this.Property(t => t.RequestId).HasColumnName("RequestId");
+        this.Property(t => t.ExecutionId).HasColumnName("ExecutionId");
         this.Property(t => t.Value).HasColumnName("Value");
         this.Property(t => t.UserId).HasColumnName("UserId");
         this.Property(t => t.CollectionNumber).HasColumnName("CollectionNumber");
@@ -38,7 +38,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 // Relationships
                 this.HasRequired(t => t.Execution)
                     .WithMany(t => t.ExtendedFieldValue)
-                    .HasForeignKey(d => d.RequestId);
+                    .HasForeignKey(d => d.ExecutionId);
                 this.HasRequired(t => t.ExtendedField)
                     .WithMany(t => t.ExtendedFieldValue)
                     .HasForeignKey(d => d.ExtendedFieldId);

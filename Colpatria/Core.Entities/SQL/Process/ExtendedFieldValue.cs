@@ -22,7 +22,7 @@ namespace Core.Entities.SQL.Process
     
         public long Id { get; set; }
         public int ExtendedFieldId { get; set; }
-        public long RequestId { get; set; }
+        public long ExecutionId { get; set; }
         public byte[] Value { get; set; }
         public long UserId { get; set; }
         public int CollectionNumber { get; set; }

@@ -26,7 +26,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequestId" Type="bigint" Nullable="false" />
+          <Property Name="ExecutionId" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="IsMain" Type="bit" Nullable="false" />
           <Property Name="Applicant" Type="int" Nullable="false" />
@@ -63,7 +63,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExtendedFieldId" Type="int" Nullable="false" />
-          <Property Name="RequestId" Type="bigint" Nullable="false" />
+          <Property Name="ExecutionId" Type="bigint" Nullable="false" />
           <Property Name="Value" Type="varbinary(max)" />
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="CollectionNumber" Type="int" Nullable="false" />
@@ -203,7 +203,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequestId" Type="bigint" Nullable="false" />
+          <Property Name="ExecutionId" Type="bigint" Nullable="false" />
           <Property Name="Payload" Type="nvarchar(max)" />
           <Property Name="WebServiceName" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="TypeOfConsultation" Type="int" Nullable="false" />
@@ -265,7 +265,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExecutionApplicant">
-              <PropertyRef Name="RequestId" />
+              <PropertyRef Name="ExecutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -301,7 +301,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExtendedFieldValue">
-              <PropertyRef Name="RequestId" />
+              <PropertyRef Name="ExecutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -698,7 +698,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestId" Type="Int64" Nullable="false" />
+          <Property Name="ExecutionId" Type="Int64" Nullable="false" />
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="IsMain" Type="Boolean" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
@@ -741,7 +741,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExtendedFieldId" Type="Int32" Nullable="false" />
-          <Property Name="RequestId" Type="Int64" Nullable="false" />
+          <Property Name="ExecutionId" Type="Int64" Nullable="false" />
           <Property Name="Value" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="CollectionNumber" Type="Int32" Nullable="false" />
@@ -911,7 +911,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestId" Type="Int64" Nullable="false" />
+          <Property Name="ExecutionId" Type="Int64" Nullable="false" />
           <Property Name="Payload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="WebServiceName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="TypeOfConsultation" Type="Int32" Nullable="false" />
@@ -973,7 +973,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExecutionApplicant">
-              <PropertyRef Name="RequestId" />
+              <PropertyRef Name="ExecutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -985,7 +985,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExtendedFieldValue">
-              <PropertyRef Name="RequestId" />
+              <PropertyRef Name="ExecutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1169,7 +1169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1198,7 +1198,7 @@
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
                 <ScalarProperty Name="IsMain" ColumnName="IsMain" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="ExecutionId" ColumnName="ExecutionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1238,7 +1238,7 @@
                 <ScalarProperty Name="CollectionNumber" ColumnName="CollectionNumber" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="ExecutionId" ColumnName="ExecutionId" />
                 <ScalarProperty Name="ExtendedFieldId" ColumnName="ExtendedFieldId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1391,7 +1391,7 @@
                 <ScalarProperty Name="TypeOfConsultation" ColumnName="TypeOfConsultation" />
                 <ScalarProperty Name="WebServiceName" ColumnName="WebServiceName" />
                 <ScalarProperty Name="Payload" ColumnName="Payload" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="ExecutionId" ColumnName="ExecutionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

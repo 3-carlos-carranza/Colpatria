@@ -55,6 +55,7 @@
     <Compile Include="SQL\Process\IExecutionRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\Process\IExecutionRepository.Extension.cs" />
     <Compile Include="SQL\Process\IExtendedDataListRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>

@@ -72,14 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository\ExtendedFieldRepository.Extension.cs" />
-    <Compile Include="ProcessDependencyRepository.cs" />
-    <Compile Include="ProcessModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProcessModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ExecutionApplicantRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
@@ -92,6 +84,14 @@
     <Compile Include="Repository\ExtendedFieldRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\ExtendedFieldRepository.Extension.cs" />
+    <Compile Include="ProcessDependencyRepository.cs" />
+    <Compile Include="ProcessModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcessModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ExtendedFieldValueRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
@@ -112,15 +112,15 @@
     <Compile Include="Repository\ProcessRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Repository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
     <Compile Include="Repository\ProductProcessRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ProductRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Repository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\SectionRepository.cs">
@@ -132,7 +132,11 @@
     <Compile Include="Repository\StepRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\StepRepository.Extension.cs" />
     <Compile Include="Repository\StepSectionRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\WebServiceConsultationRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\IProcessContext.cs">
@@ -193,6 +197,9 @@
     <Compile Include="UnitOfWork\Mapping\StepSectionMapping.cs">
       <DependentUpon>Process.Mapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitOfWork\Mapping\WebServiceConsultationMapping.cs">
+      <DependentUpon>Process.Mapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnitOfWork\ProcessContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,6 +241,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984fc515-8235-4b7b-9821-84a7af8f4ee0}</Project>
       <Name>Core.Entities</Name>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Main.Definition;
 using Core.Entities.SQL.Process;
 using Core.Entities.SQL.User;
+using Core.GlobalRepository.Definition.SQL.Process;
 using Core.GlobalRepository.Definition.SQL.User;
 using Crosscutting.Common.Tools;
 using Crosscutting.Common.Tools.DataType;
@@ -14,13 +15,16 @@ namespace Application.Main.Implementation
 {
     public class UserAppService : UserManager<User, long>, IUserAppService
     {
+        private readonly IExtendedFieldRepository _extendedFieldRepository;
         private readonly IUserRepository _userRepository;
         private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
         public UserAppService(IUserRepository userRepository, 
-            IFieldToCreateUserRepository fieldToCreateUserRepository) : base(userRepository)
+            IFieldToCreateUserRepository fieldToCreateUserRepository,
+            IExtendedFieldRepository extendedFieldRepository) : base(userRepository)
         {
             _userRepository = userRepository;
             _fieldToCreateUserRepository = fieldToCreateUserRepository;
+            _extendedFieldRepository = extendedFieldRepository;
         }
 
         public override Task<User> FindByIdAsync(long userId)
@@ -50,7 +54,7 @@ namespace Application.Main.Implementation
 
         public IEnumerable<Page> GetAllPagesWithSections()
         {
-            throw new System.NotImplementedException();
+            return _extendedFieldRepository.GetAllPagesWithSection();
         }
 
         public IEnumerable<FieldToCreateUser> GetMappingFieldToCreateUsers()

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProcessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProcessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Execution">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,12 +14,12 @@
           <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="SimpleId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateDate" Type="datetime2" Precision="7" />
-          <Property Name="ProductData" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductData" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="CurrentStepId" Type="int" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CurrentSectionId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="ExecutionApplicant">
           <Key>
@@ -133,7 +133,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductProcess">
@@ -142,7 +142,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProcessId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -198,6 +198,17 @@
           <Property Name="StepId" Type="int" Nullable="false" />
           <Property Name="SectionId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="WebServiceConsultation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="bigint" Nullable="false" />
+          <Property Name="Payload" Type="nvarchar(max)" />
+          <Property Name="WebServiceName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="TypeOfConsultation" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Execution_Process_Id">
           <End Role="Process" Type="Self.Process" Multiplicity="1" />
           <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
@@ -207,6 +218,18 @@
             </Principal>
             <Dependent Role="Execution">
               <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Execution_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -455,8 +478,13 @@
           <EntitySet Name="State" EntityType="Self.State" Schema="Process" store:Type="Tables" />
           <EntitySet Name="Step" EntityType="Self.Step" Schema="Process" store:Type="Tables" />
           <EntitySet Name="StepSection" EntityType="Self.StepSection" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="WebServiceConsultation" EntityType="Self.WebServiceConsultation" Schema="Process" store:Type="Tables" />
           <AssociationSet Name="FK_Execution_Process_Id" Association="Self.FK_Execution_Process_Id">
             <End Role="Process" EntitySet="Process" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Product1" Association="Self.FK_Execution_Product1">
+            <End Role="Product" EntitySet="Product" />
             <End Role="Execution" EntitySet="Execution" />
           </AssociationSet>
           <AssociationSet Name="FK_Execution_Section" Association="Self.FK_Execution_Section">
@@ -536,11 +564,113 @@
             <End Role="StepSection" EntitySet="StepSection" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProcessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProcessModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Execution" EntityType="ProcessModel.Execution" />
+          <EntitySet Name="ExecutionApplicant" EntityType="ProcessModel.ExecutionApplicant" />
+          <EntitySet Name="ExtendedDataList" EntityType="ProcessModel.ExtendedDataList" />
+          <EntitySet Name="ExtendedField" EntityType="ProcessModel.ExtendedField" />
+          <EntitySet Name="ExtendedFieldValue" EntityType="ProcessModel.ExtendedFieldValue" />
+          <EntitySet Name="ExtendedFile" EntityType="ProcessModel.ExtendedFile" />
+          <EntitySet Name="ExtendedList" EntityType="ProcessModel.ExtendedList" />
+          <EntitySet Name="FieldInSection" EntityType="ProcessModel.FieldInSection" />
+          <EntitySet Name="Page" EntityType="ProcessModel.Page" />
+          <EntitySet Name="Process" EntityType="ProcessModel.Process" />
+          <EntitySet Name="Product" EntityType="ProcessModel.Product" />
+          <EntitySet Name="ProductProcess" EntityType="ProcessModel.ProductProcess" />
+          <EntitySet Name="Section" EntityType="ProcessModel.Section" />
+          <EntitySet Name="State" EntityType="ProcessModel.State" />
+          <EntitySet Name="Step" EntityType="ProcessModel.Step" />
+          <EntitySet Name="StepSection" EntityType="ProcessModel.StepSection" />
+          <EntitySet Name="WebServiceConsultation" EntityType="ProcessModel.WebServiceConsultation" />
+          <AssociationSet Name="FK_Execution_Process_Id" Association="ProcessModel.FK_Execution_Process_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Product1" Association="ProcessModel.FK_Execution_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Section" Association="ProcessModel.FK_Execution_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Execution_Step" Association="ProcessModel.FK_Execution_Step">
+            <End Role="Step" EntitySet="Step" />
+            <End Role="Execution" EntitySet="Execution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionApplicant_Execution" Association="ProcessModel.FK_ExecutionApplicant_Execution">
+            <End Role="Execution" EntitySet="Execution" />
+            <End Role="ExecutionApplicant" EntitySet="ExecutionApplicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtendedFieldValue_Execution" Association="ProcessModel.FK_ExtendedFieldValue_Execution">
+            <End Role="Execution" EntitySet="Execution" />
+            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtendedDataListValue_ExtendedDataList_Id" Association="ProcessModel.FK_ExtendedDataListValue_ExtendedDataList_Id">
+            <End Role="ExtendedList" EntitySet="ExtendedList" />
+            <End Role="ExtendedDataList" EntitySet="ExtendedDataList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtendedField_DataList_Id" Association="ProcessModel.FK_ExtendedField_DataList_Id">
+            <End Role="ExtendedList" EntitySet="ExtendedList" />
+            <End Role="ExtendedField" EntitySet="ExtendedField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtendedFieldValue_ExtendedField" Association="ProcessModel.FK_ExtendedFieldValue_ExtendedField">
+            <End Role="ExtendedField" EntitySet="ExtendedField" />
+            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Field_Process_Id" Association="ProcessModel.FK_Field_Process_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ExtendedField" EntitySet="ExtendedField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldInSection_ExtendedField" Association="ProcessModel.FK_FieldInSection_ExtendedField">
+            <End Role="ExtendedField" EntitySet="ExtendedField" />
+            <End Role="FieldInSection" EntitySet="FieldInSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtendedFile_ExtendedFieldValue" Association="ProcessModel.FK_ExtendedFile_ExtendedFieldValue">
+            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
+            <End Role="ExtendedFile" EntitySet="ExtendedFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldInSection_Section" Association="ProcessModel.FK_FieldInSection_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="FieldInSection" EntitySet="FieldInSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Page_Process" Association="ProcessModel.FK_Page_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Page_Id" Association="ProcessModel.FK_Section_Page_Id">
+            <End Role="Page" EntitySet="Page" />
+            <End Role="Section" EntitySet="Section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProcess_Process" Association="ProcessModel.FK_ProductProcess_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ProductProcess" EntitySet="ProductProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Process_Id" Association="ProcessModel.FK_Step_Process_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Step" EntitySet="Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProcess_Product" Association="ProcessModel.FK_ProductProcess_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductProcess" EntitySet="ProductProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StepPage_Section" Association="ProcessModel.FK_StepPage_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="StepSection" EntitySet="StepSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_State" Association="ProcessModel.FK_Step_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Step" EntitySet="Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StepPage_Step" Association="ProcessModel.FK_StepPage_Step">
+            <End Role="Step" EntitySet="Step" />
+            <End Role="StepSection" EntitySet="StepSection" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Execution">
           <Key>
             <PropertyRef Name="Id" />
@@ -548,19 +678,20 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProcessId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="SimpleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SimpleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="7" />
-          <Property Name="ProductData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductData" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CurrentStepId" Type="Int32" Nullable="false" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CurrentSectionId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Process" Relationship="Self.FK_Execution_Process_Id" FromRole="Execution" ToRole="Process" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_Execution_Section" FromRole="Execution" ToRole="Section" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_Execution_Step" FromRole="Execution" ToRole="Step" />
-          <NavigationProperty Name="ExecutionApplicant" Relationship="Self.FK_ExecutionApplicant_Execution" FromRole="Execution" ToRole="ExecutionApplicant" />
-          <NavigationProperty Name="ExtendedFieldValue" Relationship="Self.FK_ExtendedFieldValue_Execution" FromRole="Execution" ToRole="ExtendedFieldValue" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="ProcessModel.FK_Execution_Process_Id" FromRole="Execution" ToRole="Process" />
+          <NavigationProperty Name="Product" Relationship="ProcessModel.FK_Execution_Product1" FromRole="Execution" ToRole="Product" />
+          <NavigationProperty Name="Section" Relationship="ProcessModel.FK_Execution_Section" FromRole="Execution" ToRole="Section" />
+          <NavigationProperty Name="Step" Relationship="ProcessModel.FK_Execution_Step" FromRole="Execution" ToRole="Step" />
+          <NavigationProperty Name="ExecutionApplicant" Relationship="ProcessModel.FK_ExecutionApplicant_Execution" FromRole="Execution" ToRole="ExecutionApplicant" />
+          <NavigationProperty Name="ExtendedFieldValue" Relationship="ProcessModel.FK_ExtendedFieldValue_Execution" FromRole="Execution" ToRole="ExtendedFieldValue" />
         </EntityType>
         <EntityType Name="ExecutionApplicant">
           <Key>
@@ -571,7 +702,7 @@
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="IsMain" Type="Boolean" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Execution" Relationship="Self.FK_ExecutionApplicant_Execution" FromRole="ExecutionApplicant" ToRole="Execution" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_ExecutionApplicant_Execution" FromRole="ExecutionApplicant" ToRole="Execution" />
         </EntityType>
         <EntityType Name="ExtendedDataList">
           <Key>
@@ -579,18 +710,18 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ListId" Type="Int32" />
-          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IdParent" Type="Int32" />
           <Property Name="OriginalValue" Type="Int32" />
           <Property Name="Order" Type="Int32" />
-          <NavigationProperty Name="ExtendedList" Relationship="Self.FK_ExtendedDataListValue_ExtendedDataList_Id" FromRole="ExtendedDataList" ToRole="ExtendedList" />
+          <NavigationProperty Name="ExtendedList" Relationship="ProcessModel.FK_ExtendedDataListValue_ExtendedDataList_Id" FromRole="ExtendedDataList" ToRole="ExtendedList" />
         </EntityType>
         <EntityType Name="ExtendedField">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BaseFieldId" Type="Int32" Nullable="false" />
           <Property Name="DataType" Type="Int32" Nullable="false" />
@@ -599,10 +730,10 @@
           <Property Name="ProcessId" Type="Int32" Nullable="false" />
           <Property Name="HtmlData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NameService" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ExtendedList" Relationship="Self.FK_ExtendedField_DataList_Id" FromRole="ExtendedField" ToRole="ExtendedList" />
-          <NavigationProperty Name="ExtendedFieldValue" Relationship="Self.FK_ExtendedFieldValue_ExtendedField" FromRole="ExtendedField" ToRole="ExtendedFieldValue" />
-          <NavigationProperty Name="Process" Relationship="Self.FK_Field_Process_Id" FromRole="ExtendedField" ToRole="Process" />
-          <NavigationProperty Name="FieldInSection" Relationship="Self.FK_FieldInSection_ExtendedField" FromRole="ExtendedField" ToRole="FieldInSection" />
+          <NavigationProperty Name="ExtendedList" Relationship="ProcessModel.FK_ExtendedField_DataList_Id" FromRole="ExtendedField" ToRole="ExtendedList" />
+          <NavigationProperty Name="ExtendedFieldValue" Relationship="ProcessModel.FK_ExtendedFieldValue_ExtendedField" FromRole="ExtendedField" ToRole="ExtendedFieldValue" />
+          <NavigationProperty Name="Process" Relationship="ProcessModel.FK_Field_Process_Id" FromRole="ExtendedField" ToRole="Process" />
+          <NavigationProperty Name="FieldInSection" Relationship="ProcessModel.FK_FieldInSection_ExtendedField" FromRole="ExtendedField" ToRole="FieldInSection" />
         </EntityType>
         <EntityType Name="ExtendedFieldValue">
           <Key>
@@ -615,33 +746,33 @@
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="CollectionNumber" Type="Int32" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Execution" Relationship="Self.FK_ExtendedFieldValue_Execution" FromRole="ExtendedFieldValue" ToRole="Execution" />
-          <NavigationProperty Name="ExtendedField" Relationship="Self.FK_ExtendedFieldValue_ExtendedField" FromRole="ExtendedFieldValue" ToRole="ExtendedField" />
-          <NavigationProperty Name="ExtendedFile" Relationship="Self.FK_ExtendedFile_ExtendedFieldValue" FromRole="ExtendedFieldValue" ToRole="ExtendedFile" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_ExtendedFieldValue_Execution" FromRole="ExtendedFieldValue" ToRole="Execution" />
+          <NavigationProperty Name="ExtendedField" Relationship="ProcessModel.FK_ExtendedFieldValue_ExtendedField" FromRole="ExtendedFieldValue" ToRole="ExtendedField" />
+          <NavigationProperty Name="ExtendedFile" Relationship="ProcessModel.FK_ExtendedFile_ExtendedFieldValue" FromRole="ExtendedFieldValue" ToRole="ExtendedFile" />
         </EntityType>
         <EntityType Name="ExtendedFile">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Extension" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="ExtendedFieldValueId" Type="Int64" Nullable="false" />
-          <Property Name="InternetMimeType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ExtendedFieldValue" Relationship="Self.FK_ExtendedFile_ExtendedFieldValue" FromRole="ExtendedFile" ToRole="ExtendedFieldValue" />
+          <Property Name="InternetMimeType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExtendedFieldValue" Relationship="ProcessModel.FK_ExtendedFile_ExtendedFieldValue" FromRole="ExtendedFile" ToRole="ExtendedFieldValue" />
         </EntityType>
         <EntityType Name="ExtendedList">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IdListParent" Type="Int32" />
           <Property Name="IdListOriginal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExtendedDataList" Relationship="Self.FK_ExtendedDataListValue_ExtendedDataList_Id" FromRole="ExtendedList" ToRole="ExtendedDataList" />
-          <NavigationProperty Name="ExtendedField" Relationship="Self.FK_ExtendedField_DataList_Id" FromRole="ExtendedList" ToRole="ExtendedField" />
+          <NavigationProperty Name="ExtendedDataList" Relationship="ProcessModel.FK_ExtendedDataListValue_ExtendedDataList_Id" FromRole="ExtendedList" ToRole="ExtendedDataList" />
+          <NavigationProperty Name="ExtendedField" Relationship="ProcessModel.FK_ExtendedField_DataList_Id" FromRole="ExtendedList" ToRole="ExtendedField" />
         </EntityType>
         <EntityType Name="FieldInSection">
           <Key>
@@ -655,8 +786,8 @@
           <Property Name="IsReadOnly" Type="Boolean" Nullable="false" />
           <Property Name="IsRequired" Type="Boolean" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExtendedField" Relationship="Self.FK_FieldInSection_ExtendedField" FromRole="FieldInSection" ToRole="ExtendedField" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_FieldInSection_Section" FromRole="FieldInSection" ToRole="Section" />
+          <NavigationProperty Name="ExtendedField" Relationship="ProcessModel.FK_FieldInSection_ExtendedField" FromRole="FieldInSection" ToRole="ExtendedField" />
+          <NavigationProperty Name="Section" Relationship="ProcessModel.FK_FieldInSection_Section" FromRole="FieldInSection" ToRole="Section" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -664,20 +795,20 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProcessId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Order" Type="Int32" Nullable="false" />
           <Property Name="IsVisible" Type="Boolean" Nullable="false" />
           <Property Name="NameAlias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Enable" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Process" Relationship="Self.FK_Page_Process" FromRole="Page" ToRole="Process" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_Section_Page_Id" FromRole="Page" ToRole="Section" />
+          <NavigationProperty Name="Process" Relationship="ProcessModel.FK_Page_Process" FromRole="Page" ToRole="Process" />
+          <NavigationProperty Name="Section" Relationship="ProcessModel.FK_Section_Page_Id" FromRole="Page" ToRole="Section" />
         </EntityType>
         <EntityType Name="Process">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedBy" Type="Int32" />
@@ -685,19 +816,20 @@
           <Property Name="FormGenerationOption" Type="Int32" Nullable="false" />
           <Property Name="ProcessType" Type="Int32" Nullable="false" />
           <Property Name="FinancialEntityType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Execution" Relationship="Self.FK_Execution_Process_Id" FromRole="Process" ToRole="Execution" />
-          <NavigationProperty Name="ExtendedField" Relationship="Self.FK_Field_Process_Id" FromRole="Process" ToRole="ExtendedField" />
-          <NavigationProperty Name="Page" Relationship="Self.FK_Page_Process" FromRole="Process" ToRole="Page" />
-          <NavigationProperty Name="ProductProcess" Relationship="Self.FK_ProductProcess_Process" FromRole="Process" ToRole="ProductProcess" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_Step_Process_Id" FromRole="Process" ToRole="Step" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Process_Id" FromRole="Process" ToRole="Execution" />
+          <NavigationProperty Name="ExtendedField" Relationship="ProcessModel.FK_Field_Process_Id" FromRole="Process" ToRole="ExtendedField" />
+          <NavigationProperty Name="Page" Relationship="ProcessModel.FK_Page_Process" FromRole="Process" ToRole="Page" />
+          <NavigationProperty Name="ProductProcess" Relationship="ProcessModel.FK_ProductProcess_Process" FromRole="Process" ToRole="ProductProcess" />
+          <NavigationProperty Name="Step" Relationship="ProcessModel.FK_Step_Process_Id" FromRole="Process" ToRole="Step" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProductProcess" Relationship="Self.FK_ProductProcess_Product" FromRole="Product" ToRole="ProductProcess" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Product1" FromRole="Product" ToRole="Execution" />
+          <NavigationProperty Name="ProductProcess" Relationship="ProcessModel.FK_ProductProcess_Product" FromRole="Product" ToRole="ProductProcess" />
         </EntityType>
         <EntityType Name="ProductProcess">
           <Key>
@@ -705,9 +837,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProcessId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Process" Relationship="Self.FK_ProductProcess_Process" FromRole="ProductProcess" ToRole="Process" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductProcess_Product" FromRole="ProductProcess" ToRole="Product" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="ProcessModel.FK_ProductProcess_Process" FromRole="ProductProcess" ToRole="Process" />
+          <NavigationProperty Name="Product" Relationship="ProcessModel.FK_ProductProcess_Product" FromRole="ProductProcess" ToRole="Product" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -715,7 +847,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PageId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Order" Type="Int32" Nullable="false" />
           <Property Name="NameAlias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -723,25 +855,25 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="IsVisible" Type="Boolean" Nullable="false" />
           <Property Name="Enable" Type="Boolean" Nullable="false" />
-          <Property Name="ActionMethod" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Action" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Controller" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Execution" Relationship="Self.FK_Execution_Section" FromRole="Section" ToRole="Execution" />
-          <NavigationProperty Name="FieldInSection" Relationship="Self.FK_FieldInSection_Section" FromRole="Section" ToRole="FieldInSection" />
-          <NavigationProperty Name="Page" Relationship="Self.FK_Section_Page_Id" FromRole="Section" ToRole="Page" />
-          <NavigationProperty Name="StepSection" Relationship="Self.FK_StepPage_Section" FromRole="Section" ToRole="StepSection" />
+          <Property Name="ActionMethod" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Controller" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Section" FromRole="Section" ToRole="Execution" />
+          <NavigationProperty Name="FieldInSection" Relationship="ProcessModel.FK_FieldInSection_Section" FromRole="Section" ToRole="FieldInSection" />
+          <NavigationProperty Name="Page" Relationship="ProcessModel.FK_Section_Page_Id" FromRole="Section" ToRole="Page" />
+          <NavigationProperty Name="StepSection" Relationship="ProcessModel.FK_StepPage_Section" FromRole="Section" ToRole="StepSection" />
         </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NotificationEnabled" Type="Boolean" Nullable="false" />
           <Property Name="IsClosed" Type="Boolean" Nullable="false" />
           <Property Name="IsRequesting" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_Step_State" FromRole="State" ToRole="Step" />
+          <NavigationProperty Name="Step" Relationship="ProcessModel.FK_Step_State" FromRole="State" ToRole="Step" />
         </EntityType>
         <EntityType Name="Step">
           <Key>
@@ -749,7 +881,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProcessId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="AutoAdvance" Type="Boolean" />
           <Property Name="NameClientAlias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -759,10 +891,10 @@
           <Property Name="StateId" Type="Int32" />
           <Property Name="Enable" Type="Boolean" Nullable="false" />
           <Property Name="StepType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Execution" Relationship="Self.FK_Execution_Step" FromRole="Step" ToRole="Execution" />
-          <NavigationProperty Name="Process" Relationship="Self.FK_Step_Process_Id" FromRole="Step" ToRole="Process" />
-          <NavigationProperty Name="State" Relationship="Self.FK_Step_State" FromRole="Step" ToRole="State" />
-          <NavigationProperty Name="StepSection" Relationship="Self.FK_StepPage_Step" FromRole="Step" ToRole="StepSection" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Step" FromRole="Step" ToRole="Execution" />
+          <NavigationProperty Name="Process" Relationship="ProcessModel.FK_Step_Process_Id" FromRole="Step" ToRole="Process" />
+          <NavigationProperty Name="State" Relationship="ProcessModel.FK_Step_State" FromRole="Step" ToRole="State" />
+          <NavigationProperty Name="StepSection" Relationship="ProcessModel.FK_StepPage_Step" FromRole="Step" ToRole="StepSection" />
         </EntityType>
         <EntityType Name="StepSection">
           <Key>
@@ -771,12 +903,23 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StepId" Type="Int32" Nullable="false" />
           <Property Name="SectionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_StepPage_Section" FromRole="StepSection" ToRole="Section" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_StepPage_Step" FromRole="StepSection" ToRole="Step" />
+          <NavigationProperty Name="Section" Relationship="ProcessModel.FK_StepPage_Section" FromRole="StepSection" ToRole="Section" />
+          <NavigationProperty Name="Step" Relationship="ProcessModel.FK_StepPage_Step" FromRole="StepSection" ToRole="Step" />
+        </EntityType>
+        <EntityType Name="WebServiceConsultation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestId" Type="Int64" Nullable="false" />
+          <Property Name="Payload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebServiceName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfConsultation" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Execution_Process_Id">
-          <End Role="Process" Type="Self.Process" Multiplicity="1" />
-          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <End Type="ProcessModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Process">
               <PropertyRef Name="Id" />
@@ -786,9 +929,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Execution_Product1">
+          <End Type="ProcessModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Execution">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Execution_Section">
-          <End Role="Section" Type="Self.Section" Multiplicity="1" />
-          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <End Type="ProcessModel.Section" Role="Section" Multiplicity="1" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Section">
               <PropertyRef Name="Id" />
@@ -799,8 +954,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Execution_Step">
-          <End Role="Step" Type="Self.Step" Multiplicity="1" />
-          <End Role="Execution" Type="Self.Execution" Multiplicity="*" />
+          <End Type="ProcessModel.Step" Role="Step" Multiplicity="1" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Step">
               <PropertyRef Name="Id" />
@@ -811,8 +966,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExecutionApplicant_Execution">
-          <End Role="Execution" Type="Self.Execution" Multiplicity="1" />
-          <End Role="ExecutionApplicant" Type="Self.ExecutionApplicant" Multiplicity="*" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="1" />
+          <End Type="ProcessModel.ExecutionApplicant" Role="ExecutionApplicant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Execution">
               <PropertyRef Name="Id" />
@@ -823,8 +978,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExtendedFieldValue_Execution">
-          <End Role="Execution" Type="Self.Execution" Multiplicity="1" />
-          <End Role="ExtendedFieldValue" Type="Self.ExtendedFieldValue" Multiplicity="*" />
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="1" />
+          <End Type="ProcessModel.ExtendedFieldValue" Role="ExtendedFieldValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Execution">
               <PropertyRef Name="Id" />
@@ -835,8 +990,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExtendedDataListValue_ExtendedDataList_Id">
-          <End Role="ExtendedList" Type="Self.ExtendedList" Multiplicity="0..1" />
-          <End Role="ExtendedDataList" Type="Self.ExtendedDataList" Multiplicity="*" />
+          <End Type="ProcessModel.ExtendedList" Role="ExtendedList" Multiplicity="0..1" />
+          <End Type="ProcessModel.ExtendedDataList" Role="ExtendedDataList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExtendedList">
               <PropertyRef Name="Id" />
@@ -847,8 +1002,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExtendedField_DataList_Id">
-          <End Role="ExtendedList" Type="Self.ExtendedList" Multiplicity="0..1" />
-          <End Role="ExtendedField" Type="Self.ExtendedField" Multiplicity="*" />
+          <End Type="ProcessModel.ExtendedList" Role="ExtendedList" Multiplicity="0..1" />
+          <End Type="ProcessModel.ExtendedField" Role="ExtendedField" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExtendedList">
               <PropertyRef Name="Id" />
@@ -859,8 +1014,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExtendedFieldValue_ExtendedField">
-          <End Role="ExtendedField" Type="Self.ExtendedField" Multiplicity="1" />
-          <End Role="ExtendedFieldValue" Type="Self.ExtendedFieldValue" Multiplicity="*" />
+          <End Type="ProcessModel.ExtendedField" Role="ExtendedField" Multiplicity="1" />
+          <End Type="ProcessModel.ExtendedFieldValue" Role="ExtendedFieldValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExtendedField">
               <PropertyRef Name="Id" />
@@ -871,8 +1026,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Field_Process_Id">
-          <End Role="Process" Type="Self.Process" Multiplicity="1" />
-          <End Role="ExtendedField" Type="Self.ExtendedField" Multiplicity="*" />
+          <End Type="ProcessModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ProcessModel.ExtendedField" Role="ExtendedField" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Process">
               <PropertyRef Name="Id" />
@@ -883,8 +1038,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FieldInSection_ExtendedField">
-          <End Role="ExtendedField" Type="Self.ExtendedField" Multiplicity="1" />
-          <End Role="FieldInSection" Type="Self.FieldInSection" Multiplicity="*" />
+          <End Type="ProcessModel.ExtendedField" Role="ExtendedField" Multiplicity="1" />
+          <End Type="ProcessModel.FieldInSection" Role="FieldInSection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExtendedField">
               <PropertyRef Name="Id" />
@@ -895,8 +1050,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ExtendedFile_ExtendedFieldValue">
-          <End Role="ExtendedFieldValue" Type="Self.ExtendedFieldValue" Multiplicity="1" />
-          <End Role="ExtendedFile" Type="Self.ExtendedFile" Multiplicity="*" />
+          <End Type="ProcessModel.ExtendedFieldValue" Role="ExtendedFieldValue" Multiplicity="1" />
+          <End Type="ProcessModel.ExtendedFile" Role="ExtendedFile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExtendedFieldValue">
               <PropertyRef Name="Id" />
@@ -907,8 +1062,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FieldInSection_Section">
-          <End Role="Section" Type="Self.Section" Multiplicity="1" />
-          <End Role="FieldInSection" Type="Self.FieldInSection" Multiplicity="*" />
+          <End Type="ProcessModel.Section" Role="Section" Multiplicity="1" />
+          <End Type="ProcessModel.FieldInSection" Role="FieldInSection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Section">
               <PropertyRef Name="Id" />
@@ -919,8 +1074,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Page_Process">
-          <End Role="Process" Type="Self.Process" Multiplicity="1" />
-          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <End Type="ProcessModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ProcessModel.Page" Role="Page" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Process">
               <PropertyRef Name="Id" />
@@ -931,8 +1086,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Section_Page_Id">
-          <End Role="Page" Type="Self.Page" Multiplicity="1" />
-          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <End Type="ProcessModel.Page" Role="Page" Multiplicity="1" />
+          <End Type="ProcessModel.Section" Role="Section" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Page">
               <PropertyRef Name="Id" />
@@ -943,8 +1098,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductProcess_Process">
-          <End Role="Process" Type="Self.Process" Multiplicity="1" />
-          <End Role="ProductProcess" Type="Self.ProductProcess" Multiplicity="*" />
+          <End Type="ProcessModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ProcessModel.ProductProcess" Role="ProductProcess" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Process">
               <PropertyRef Name="Id" />
@@ -955,8 +1110,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Step_Process_Id">
-          <End Role="Process" Type="Self.Process" Multiplicity="1" />
-          <End Role="Step" Type="Self.Step" Multiplicity="*" />
+          <End Type="ProcessModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="ProcessModel.Step" Role="Step" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Process">
               <PropertyRef Name="Id" />
@@ -967,8 +1122,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductProcess_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductProcess" Type="Self.ProductProcess" Multiplicity="*" />
+          <End Type="ProcessModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ProcessModel.ProductProcess" Role="ProductProcess" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
@@ -979,8 +1134,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StepPage_Section">
-          <End Role="Section" Type="Self.Section" Multiplicity="1" />
-          <End Role="StepSection" Type="Self.StepSection" Multiplicity="*" />
+          <End Type="ProcessModel.Section" Role="Section" Multiplicity="1" />
+          <End Type="ProcessModel.StepSection" Role="StepSection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Section">
               <PropertyRef Name="Id" />
@@ -991,8 +1146,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Step_State">
-          <End Role="State" Type="Self.State" Multiplicity="0..1" />
-          <End Role="Step" Type="Self.Step" Multiplicity="*" />
+          <End Type="ProcessModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="ProcessModel.Step" Role="Step" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="State">
               <PropertyRef Name="Id" />
@@ -1003,8 +1158,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StepPage_Step">
-          <End Role="Step" Type="Self.Step" Multiplicity="1" />
-          <End Role="StepSection" Type="Self.StepSection" Multiplicity="*" />
+          <End Type="ProcessModel.Step" Role="Step" Multiplicity="1" />
+          <End Type="ProcessModel.StepSection" Role="StepSection" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Step">
               <PropertyRef Name="Id" />
@@ -1014,104 +1169,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProcessModelEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Execution" EntityType="Self.Execution" />
-          <EntitySet Name="ExecutionApplicant" EntityType="Self.ExecutionApplicant" />
-          <EntitySet Name="ExtendedDataList" EntityType="Self.ExtendedDataList" />
-          <EntitySet Name="ExtendedField" EntityType="Self.ExtendedField" />
-          <EntitySet Name="ExtendedFieldValue" EntityType="Self.ExtendedFieldValue" />
-          <EntitySet Name="ExtendedFile" EntityType="Self.ExtendedFile" />
-          <EntitySet Name="ExtendedList" EntityType="Self.ExtendedList" />
-          <EntitySet Name="FieldInSection" EntityType="Self.FieldInSection" />
-          <EntitySet Name="Page" EntityType="Self.Page" />
-          <EntitySet Name="Process" EntityType="Self.Process" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductProcess" EntityType="Self.ProductProcess" />
-          <EntitySet Name="Section" EntityType="Self.Section" />
-          <EntitySet Name="State" EntityType="Self.State" />
-          <EntitySet Name="Step" EntityType="Self.Step" />
-          <EntitySet Name="StepSection" EntityType="Self.StepSection" />
-          <AssociationSet Name="FK_Execution_Process_Id" Association="Self.FK_Execution_Process_Id">
-            <End Role="Process" EntitySet="Process" />
-            <End Role="Execution" EntitySet="Execution" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Execution_Section" Association="Self.FK_Execution_Section">
-            <End Role="Section" EntitySet="Section" />
-            <End Role="Execution" EntitySet="Execution" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Execution_Step" Association="Self.FK_Execution_Step">
-            <End Role="Step" EntitySet="Step" />
-            <End Role="Execution" EntitySet="Execution" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExecutionApplicant_Execution" Association="Self.FK_ExecutionApplicant_Execution">
-            <End Role="Execution" EntitySet="Execution" />
-            <End Role="ExecutionApplicant" EntitySet="ExecutionApplicant" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExtendedFieldValue_Execution" Association="Self.FK_ExtendedFieldValue_Execution">
-            <End Role="Execution" EntitySet="Execution" />
-            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExtendedDataListValue_ExtendedDataList_Id" Association="Self.FK_ExtendedDataListValue_ExtendedDataList_Id">
-            <End Role="ExtendedList" EntitySet="ExtendedList" />
-            <End Role="ExtendedDataList" EntitySet="ExtendedDataList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExtendedField_DataList_Id" Association="Self.FK_ExtendedField_DataList_Id">
-            <End Role="ExtendedList" EntitySet="ExtendedList" />
-            <End Role="ExtendedField" EntitySet="ExtendedField" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExtendedFieldValue_ExtendedField" Association="Self.FK_ExtendedFieldValue_ExtendedField">
-            <End Role="ExtendedField" EntitySet="ExtendedField" />
-            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Field_Process_Id" Association="Self.FK_Field_Process_Id">
-            <End Role="Process" EntitySet="Process" />
-            <End Role="ExtendedField" EntitySet="ExtendedField" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FieldInSection_ExtendedField" Association="Self.FK_FieldInSection_ExtendedField">
-            <End Role="ExtendedField" EntitySet="ExtendedField" />
-            <End Role="FieldInSection" EntitySet="FieldInSection" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ExtendedFile_ExtendedFieldValue" Association="Self.FK_ExtendedFile_ExtendedFieldValue">
-            <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
-            <End Role="ExtendedFile" EntitySet="ExtendedFile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FieldInSection_Section" Association="Self.FK_FieldInSection_Section">
-            <End Role="Section" EntitySet="Section" />
-            <End Role="FieldInSection" EntitySet="FieldInSection" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Page_Process" Association="Self.FK_Page_Process">
-            <End Role="Process" EntitySet="Process" />
-            <End Role="Page" EntitySet="Page" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Section_Page_Id" Association="Self.FK_Section_Page_Id">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="Section" EntitySet="Section" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductProcess_Process" Association="Self.FK_ProductProcess_Process">
-            <End Role="Process" EntitySet="Process" />
-            <End Role="ProductProcess" EntitySet="ProductProcess" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Step_Process_Id" Association="Self.FK_Step_Process_Id">
-            <End Role="Process" EntitySet="Process" />
-            <End Role="Step" EntitySet="Step" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductProcess_Product" Association="Self.FK_ProductProcess_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductProcess" EntitySet="ProductProcess" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StepPage_Section" Association="Self.FK_StepPage_Section">
-            <End Role="Section" EntitySet="Section" />
-            <End Role="StepSection" EntitySet="StepSection" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Step_State" Association="Self.FK_Step_State">
-            <End Role="State" EntitySet="State" />
-            <End Role="Step" EntitySet="Step" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StepPage_Step" Association="Self.FK_StepPage_Step">
-            <End Role="Step" EntitySet="Step" />
-            <End Role="StepSection" EntitySet="StepSection" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1121,209 +1178,221 @@
           <EntitySetMapping Name="Execution">
             <EntityTypeMapping TypeName="ProcessModel.Execution">
               <MappingFragment StoreEntitySet="Execution">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="SimpleId" ColumnName="SimpleId" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="ProductData" ColumnName="ProductData" />
-                <ScalarProperty Name="CurrentStepId" ColumnName="CurrentStepId" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CurrentSectionId" ColumnName="CurrentSectionId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CurrentSectionId" ColumnName="CurrentSectionId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CurrentStepId" ColumnName="CurrentStepId" />
+                <ScalarProperty Name="ProductData" ColumnName="ProductData" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="SimpleId" ColumnName="SimpleId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExecutionApplicant">
             <EntityTypeMapping TypeName="ProcessModel.ExecutionApplicant">
               <MappingFragment StoreEntitySet="ExecutionApplicant">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedDataList">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedDataList">
               <MappingFragment StoreEntitySet="ExtendedDataList">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ListId" ColumnName="ListId" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
-                <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedField">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedField">
               <MappingFragment StoreEntitySet="ExtendedField">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
-                <ScalarProperty Name="DataType" ColumnName="DataType" />
-                <ScalarProperty Name="ClientValidationClass" ColumnName="ClientValidationClass" />
-                <ScalarProperty Name="ListId" ColumnName="ListId" />
-                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
-                <ScalarProperty Name="HtmlData" ColumnName="HtmlData" />
                 <ScalarProperty Name="NameService" ColumnName="NameService" />
+                <ScalarProperty Name="HtmlData" ColumnName="HtmlData" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="ClientValidationClass" ColumnName="ClientValidationClass" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedFieldValue">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedFieldValue">
               <MappingFragment StoreEntitySet="ExtendedFieldValue">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ExtendedFieldId" ColumnName="ExtendedFieldId" />
-                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CollectionNumber" ColumnName="CollectionNumber" />
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
+                <ScalarProperty Name="CollectionNumber" ColumnName="CollectionNumber" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="ExtendedFieldId" ColumnName="ExtendedFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedFile">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedFile">
               <MappingFragment StoreEntitySet="ExtendedFile">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Extension" ColumnName="Extension" />
-                <ScalarProperty Name="ExtendedFieldValueId" ColumnName="ExtendedFieldValueId" />
                 <ScalarProperty Name="InternetMimeType" ColumnName="InternetMimeType" />
+                <ScalarProperty Name="ExtendedFieldValueId" ColumnName="ExtendedFieldValueId" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedList">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedList">
               <MappingFragment StoreEntitySet="ExtendedList">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IdListParent" ColumnName="IdListParent" />
                 <ScalarProperty Name="IdListOriginal" ColumnName="IdListOriginal" />
+                <ScalarProperty Name="IdListParent" ColumnName="IdListParent" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FieldInSection">
             <EntityTypeMapping TypeName="ProcessModel.FieldInSection">
               <MappingFragment StoreEntitySet="FieldInSection">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ExtendedFieldId" ColumnName="ExtendedFieldId" />
-                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
-                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="ExtendedFieldId" ColumnName="ExtendedFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Page">
             <EntityTypeMapping TypeName="ProcessModel.Page">
               <MappingFragment StoreEntitySet="Page">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="NameAlias" ColumnName="NameAlias" />
                 <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="NameAlias" ColumnName="NameAlias" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Process">
             <EntityTypeMapping TypeName="ProcessModel.Process">
               <MappingFragment StoreEntitySet="Process">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="FunctionaryAssignationProcessType" ColumnName="FunctionaryAssignationProcessType" />
-                <ScalarProperty Name="FormGenerationOption" ColumnName="FormGenerationOption" />
-                <ScalarProperty Name="ProcessType" ColumnName="ProcessType" />
                 <ScalarProperty Name="FinancialEntityType" ColumnName="FinancialEntityType" />
+                <ScalarProperty Name="ProcessType" ColumnName="ProcessType" />
+                <ScalarProperty Name="FormGenerationOption" ColumnName="FormGenerationOption" />
+                <ScalarProperty Name="FunctionaryAssignationProcessType" ColumnName="FunctionaryAssignationProcessType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="ProcessModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductProcess">
             <EntityTypeMapping TypeName="ProcessModel.ProductProcess">
               <MappingFragment StoreEntitySet="ProductProcess">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Section">
             <EntityTypeMapping TypeName="ProcessModel.Section">
               <MappingFragment StoreEntitySet="Section">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="NameAlias" ColumnName="NameAlias" />
-                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="Enable" ColumnName="Enable" />
-                <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
-                <ScalarProperty Name="Action" ColumnName="Action" />
                 <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+                <ScalarProperty Name="NameAlias" ColumnName="NameAlias" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="State">
             <EntityTypeMapping TypeName="ProcessModel.State">
               <MappingFragment StoreEntitySet="State">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="NotificationEnabled" ColumnName="NotificationEnabled" />
-                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
                 <ScalarProperty Name="IsRequesting" ColumnName="IsRequesting" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="NotificationEnabled" ColumnName="NotificationEnabled" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Step">
             <EntityTypeMapping TypeName="ProcessModel.Step">
               <MappingFragment StoreEntitySet="Step">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AutoAdvance" ColumnName="AutoAdvance" />
-                <ScalarProperty Name="NameClientAlias" ColumnName="NameClientAlias" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="IsPre" ColumnName="IsPre" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="Enable" ColumnName="Enable" />
                 <ScalarProperty Name="StepType" ColumnName="StepType" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="IsPre" ColumnName="IsPre" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="NameClientAlias" ColumnName="NameClientAlias" />
+                <ScalarProperty Name="AutoAdvance" ColumnName="AutoAdvance" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StepSection">
             <EntityTypeMapping TypeName="ProcessModel.StepSection">
               <MappingFragment StoreEntitySet="StepSection">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StepId" ColumnName="StepId" />
                 <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebServiceConsultation">
+            <EntityTypeMapping TypeName="ProcessModel.WebServiceConsultation">
+              <MappingFragment StoreEntitySet="WebServiceConsultation">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TypeOfConsultation" ColumnName="TypeOfConsultation" />
+                <ScalarProperty Name="WebServiceName" ColumnName="WebServiceName" />
+                <ScalarProperty Name="Payload" ColumnName="Payload" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

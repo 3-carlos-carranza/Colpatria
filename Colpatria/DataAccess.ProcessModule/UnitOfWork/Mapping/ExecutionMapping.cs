@@ -31,7 +31,8 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
     
      
-                    this.Property(t => t.ProductData).IsRequired();
+                    this.Property(t => t.ProductData).IsRequired()
+    .HasMaxLength(500);
     
     
     
@@ -52,6 +53,9 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 this.HasRequired(t => t.Process)
                     .WithMany(t => t.Execution)
                     .HasForeignKey(d => d.ProcessId);
+                this.HasRequired(t => t.Product)
+                    .WithMany(t => t.Execution)
+                    .HasForeignKey(d => d.ProductId);
                 this.HasRequired(t => t.Section)
                     .WithMany(t => t.Execution)
                     .HasForeignKey(d => d.CurrentSectionId);
@@ -75,6 +79,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         
     
+        
         
         
         

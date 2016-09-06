@@ -100,8 +100,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
-
-        public ActionResult Validacion()
+        public ActionResult Validation()
         {
             return View();
         }
@@ -122,6 +121,10 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         public ActionResult EmailRequest()
+        {
+            return View();
+        }
+        public ActionResult Index2()
         {
             return View();
         }

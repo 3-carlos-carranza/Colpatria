@@ -280,8 +280,9 @@ $(document).ready(function () {
     $.stepForm();
 });
 
+//Fin Paginacion formulario de validacion de datos
 
-
+//Borde dinamico
 (function () {
     if (!String.prototype.trim) {
         (function () {
@@ -310,7 +311,7 @@ $(document).ready(function () {
     }
 })();
 
-
+// Datapicker
 $(document).ready(function () {
     $('#datepicker1').datetimepicker({
         format: 'DD/MM/YYYY'

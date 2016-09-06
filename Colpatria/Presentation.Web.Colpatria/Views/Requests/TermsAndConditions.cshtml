@@ -1,7 +1,7 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Términos y condiciones";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <div class="legal">
     <img src="~/Images/Content/legal.png" alt="Alternate Text" />
@@ -39,7 +39,7 @@
                 <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
             </div>
             <div class="col-xs-12 col-md-6 print">
-                <form action="@Url.Action("Index", "Request")" method="POST">
+                <form action="@Url.Action("Index", "Requests")" method="POST">
                     <input name="check" hidden="hidden" class="" value="true" />
                     <button type="submit" class="btn btn-danger pull-right enviar acepto">
                         Acepto los términos y Condiciones

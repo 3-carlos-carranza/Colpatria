@@ -148,8 +148,17 @@
 //    XModal.init(e, extend);
 //};
 
+
+
+//Modales de aprobacion
 $(document).ready(function () {
     $("#myBtn").click(function () {
         $("#myModal").modal();
+    });
+});
+
+$(document).ready(function () {
+    $("#BtnTarjeta").click(function () {
+        $("#tarjeta").modal();
     });
 });

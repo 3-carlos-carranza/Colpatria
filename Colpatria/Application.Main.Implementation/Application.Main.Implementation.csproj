@@ -89,6 +89,7 @@
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
     <Compile Include="ProcessFlow\Services\SubmitFormAppService.cs" />
     <Compile Include="ProcessFlow\Step\BaseStep.cs" />
+    <Compile Include="ProcessFlow\Step\EvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitFormStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

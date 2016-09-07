@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition;
 using Application.Main.Definition.Arguments;
+using Application.Main.Implementation.ProcessFlow.Arguments;
+using Core.DataTransferObject.SQL;
 using Core.Entities.SQL.Process;
+using Crosscutting.Common.Tools.DataType;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -15,11 +19,15 @@ namespace Presentation.Web.Colpatria.Controllers
     {
         public IProcessFlowArgument ProcessFlowArgument;
         public IProcessFlowService ProcessFlowService;
+        public ISubmitFormArgument SubmitFormArgument;
 
-        public BaseController(IProcessFlowArgument processFlowArgument, IProcessFlowService processFlowService)
+        public BaseController(IProcessFlowArgument processFlowArgument,
+            IProcessFlowService processFlowService,
+            ISubmitFormArgument submitFormArgument)
         {
             ProcessFlowArgument = processFlowArgument;
             ProcessFlowService = processFlowService;
+            SubmitFormArgument = submitFormArgument;
         }
 
         public long ExecutionId
@@ -74,6 +82,29 @@ namespace Presentation.Web.Colpatria.Controllers
             dynamic stepresult = await ProcessFlowService.RunFlow(ProcessFlowArgument);
 
             return stepresult;
+        }
+
+        public void InitSetFormArguments(List<FieldValueOrder> form, bool ismanualrequest = false)
+        {
+            ProcessFlowArgument.IsSubmitting = true;
+            var userId = long.Parse(User.Identity.GetUserId());
+            ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
+            {
+                IsPost = false,
+                UserId = userId,
+                UserName = User.Identity.GetUserName(),
+                ProductId = 1
+            };
+            ProcessFlowArgument.StepArgument =
+                (StepArgument)SubmitFormArgument.Make(form, User.Identity.GetUserName(), 1);
+            if (ExecutionId != 0)
+            {
+                ProcessFlowArgument.StepArgument.Execution = new Execution
+                {
+                    Id = ExecutionId,
+                    UserId = userId
+                };
+            }
         }
     }
 }

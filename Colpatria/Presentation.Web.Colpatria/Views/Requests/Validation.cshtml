@@ -27,7 +27,6 @@
                     Html.RenderPartial("~/Views/Requests/_SummaryData.cshtml");
                 }
             </div>
-
             <p class="desc-step">Validación de identidad:</p>
             <span class="proccess">En Proceso...</span>
         </div>
@@ -36,32 +35,32 @@
 
             <div class="test">
                 
-                <form action="/"method="post" class="stepMe ac-custom ac-radio ac-fill">
+                <form action="/" method="post" class="stepMe ac-custom ac-radio ac-fill">
                     <fieldset>
                         <p class="bolds"><span>1.</span> ¿Su cuenta de ahorros con "bancolombia (conavi, bic)" ha tenido alguna vez problemas como embargos o cancelacion o suspension?</p>
                         <ul>
-                            <li><input id="r1" name="r1" type="radio"><label for="r1">Si.</label></li>
-                            <li><input id="r2" name="r1" type="radio"><label for="r2">No.</label></li>
-                            <li><input id="r3" name="r1" type="radio"><label for="r3">No tengo cuenta con la entidad.</label></li>
+                            <li><input id="r1" name="r1" type="radio" value="Si"><label for="r1">Si.</label></li>
+                            <li><input id="r2" name="r1" type="radio" value="No"><label for="r2">No.</label></li>
+                            <li><input id="r3" name="r1" type="radio" value="No tengo cuenta con la entidad."><label for="r3">No tengo cuenta con la entidad.</label></li>
                         </ul>
                         <div class="pag"><span class="red">1/</span>4</div>
                     </fieldset>
                     <fieldset>
                         <p class="bolds"><span>2.</span> ¿De los siguientes telefonos indique con cual usted ha tenido o tiene algun vínculo?</p>
                         <ul>
-                            <li><input id="r4" name="r1" type="radio"><label for="r4">7032565</label></li>
-                            <li><input id="r5" name="r1" type="radio"><label for="r5">7033214</label></li>
-                            <li><input id="r6" name="r1" type="radio"><label for="r6">7032145</label></li>
-                            <li><input id="r7" name="r1" type="radio"><label for="r7">Ninguna de las Anteriores</label></li>
+                            <li><input id="r4" name="r2" type="radio" value=""><label for="r4">7032565</label></li>
+                            <li><input id="r5" name="r2" type="radio" value=""><label for="r5">7033214</label></li>
+                            <li><input id="r6" name="r2" type="radio" value=""><label for="r6">7032145</label></li>
+                            <li><input id="r7" name="r2" type="radio" value=""><label for="r7">Ninguna de las Anteriores</label></li>
                         </ul>
                         <div class="pag"><span class="red">2/</span>4</div>
                     </fieldset>
                     <fieldset>
                         <p class="bolds"><span>3.</span> ¿En junio de 2016 su cuenta corriente con "BCO COLPATRIA" :</p>
                         <ul>
-                            <li><input id="r8" name="r1" type="radio"><label for="r8">Estaba abierta/vigente</label></li>
-                            <li><input id="r9" name="r1" type="radio"><label for="r9">Estaba cancelada/saldada/cerrada</label></li>
-                            <li><input id="r10" name="r1" type="radio"><label for="r10">Nunca he tenido cuenta corriente con la entidad</label></li>
+                            <li><input id="r8" name="r3" type="radio"><label for="r8">Estaba abierta/vigente</label></li>
+                            <li><input id="r9" name="r3" type="radio"><label for="r9">Estaba cancelada/saldada/cerrada</label></li>
+                            <li><input id="r10" name="r3" type="radio"><label for="r10">Nunca he tenido cuenta corriente con la entidad</label></li>
                         </ul>
                         <div class="pag"><span class="red">3/</span>4</div>
                     </fieldset>
@@ -69,28 +68,26 @@
                         <p class="bolds"><span>4.</span> ¿El valor de la cuota de junio de 2016 de su cuenta/contrato/credito con "Bancolombia leasing" estaba entre:</p>
                         <div class="col-xs-12 col-sm-6">
                             <ul>
-                                <li><input id="r11" name="r1" type="radio"><label for="r11">$462,001 - $647,000</label></li>
-                                <li><input id="r12" name="r1" type="radio"><label for="r12">$462,001 - $647,000</label></li>
-                                <li><input id="r13" name="r1" type="radio"><label for="r13">$462,001 - $647,000</label></li>
+                                <li><input id="r11" name="r4" type="radio"><label for="r11">$462,001 - $647,000</label></li>
+                                <li><input id="r12" name="r4" type="radio"><label for="r12">$462,001 - $647,000</label></li>
+                                <li><input id="r13" name="r4" type="radio"><label for="r13">$462,001 - $647,000</label></li>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <ul>
-                                <li><input id="r14" name="r1" type="radio"><label for="r14">$462,001 - $647,000</label></li>
-                                <li><input id="r15" name="r1" type="radio"><label for="r15">$462,001 - $647,000</label></li>
-                                <li><input id="r16" name="r1" type="radio"><label for="r16">$462,001 - $647,000</label></li>
+                                <li><input id="r14" name="r4" type="radio"><label for="r14">$462,001 - $647,000</label></li>
+                                <li><input id="r15" name="r4" type="radio"><label for="r15">$462,001 - $647,000</label></li>
+                                <li><input id="r16" name="r4" type="radio"><label for="r16">$462,001 - $647,000</label></li>
                             </ul>
                         </div>
                         <div class="pag"><span class="red">4/</span>4</div>
                         <div style="display:none;">
                             <button type="submit" class="btn btn-danger pull-right enviar valid">
-                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                                Siguiente 
                             </button>
                         </div>
                         <div>
-                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("FormAsks", "Requests")">
-                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-</a>
+                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("FormAsks", "Requests")">Siguiente</a>
                         </div>
 
                     </fieldset>

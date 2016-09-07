@@ -150,6 +150,18 @@
 
 
 
+
+//Modales Terminos y condiciones
+$(document).ready(function () {
+    $("#terms-cuenta").click(function () {
+        $("#terms").modal();
+    });
+});
+$(document).ready(function () {
+    $("#terms-tarjeta").click(function () {
+        $("#terms2").modal();
+    });
+});
 //Modales de aprobacion
 $(document).ready(function () {
     $("#myBtn").click(function () {

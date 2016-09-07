@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Application.Main.Definition.Arguments;
 using Application.Main.Definition.Responses;
 using Application.Main.Definition.Steps;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {

@@ -45,7 +45,12 @@
     <Compile Include="SQL\ExecutionArgument.cs" />
     <Compile Include="SQL\MapperPagesWithSections.cs" />
     <Compile Include="SQL\MapperPagesWithSectionsExtension.cs" />
+    <Compile Include="WebServiceConsultation\ServiceNameType.cs" />
+    <Compile Include="WebServiceConsultation\TypeOfConsultation.cs" />
+    <Compile Include="WebServiceConsultation\WebServiceConsultationSettings.cs" />
+    <Compile Include="WebServiceConsultation\WebSettingsConsultationSettingsBuilder.cs" />
     <Compile Include="SQL\PageSection.cs" />
+    <Compile Include="SQL\StepDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">

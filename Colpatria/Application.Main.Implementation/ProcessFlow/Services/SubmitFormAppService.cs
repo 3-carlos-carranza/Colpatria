@@ -3,7 +3,7 @@ using System.Linq;
 using Application.Main.Definition.Arguments;
 using Application.Main.Definition.Services;
 using Application.Main.Implementation.ProcessFlow.Arguments;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {

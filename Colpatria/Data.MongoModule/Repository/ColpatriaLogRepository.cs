@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using Core.Entities.Mongo;
-using Core.GlobalRepository.Definition.Mongo;
+using Core.GlobalRepository.Mongo;
 using MongoRepository;
 
 namespace Data.MongoModule.Repository

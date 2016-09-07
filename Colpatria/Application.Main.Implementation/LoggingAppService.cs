@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Application.Main.Definition;
 using Core.Entities.Mongo;
-using Core.GlobalRepository.Definition.Mongo;
+using Core.GlobalRepository.Mongo;
 
 namespace Application.Main.Implementation
 {

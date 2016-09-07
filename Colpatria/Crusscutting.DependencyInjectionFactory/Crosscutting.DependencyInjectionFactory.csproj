@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.DataCredito\Data.DataCredito.csproj">
+      <Project>{FDC0BC2C-7487-4F35-9AC5-561F64B7F54D}</Project>
+      <Name>Data.DataCredito</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Application.Main.Definition\Application.Main.Definition.csproj">
       <Project>{d4b7dd82-31c4-4013-98d1-f02d92e6bfa6}</Project>
       <Name>Application.Main.Definition</Name>

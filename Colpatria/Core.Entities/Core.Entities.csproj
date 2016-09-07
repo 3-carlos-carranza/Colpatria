@@ -48,6 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evidente\Answer.cs" />
+    <Compile Include="Evidente\AnswerRequest.cs" />
+    <Compile Include="Evidente\AnswerResponse.cs" />
+    <Compile Include="Evidente\AnswerSettings.cs" />
+    <Compile Include="Evidente\AnswerSettingsBuilder.cs" />
+    <Compile Include="Evidente\BaseSettings.cs" />
+    <Compile Include="Evidente\ExpeditionDate.cs" />
+    <Compile Include="Evidente\Identification.cs" />
+    <Compile Include="Evidente\Question.cs" />
+    <Compile Include="Evidente\QuestionsRequest.cs" />
+    <Compile Include="Evidente\QuestionsResponse.cs" />
+    <Compile Include="Evidente\QuestionsSettings.cs" />
+    <Compile Include="Evidente\QuestionsSettingsBuilder.cs" />
+    <Compile Include="Evidente\ValidateUserSettings.cs" />
+    <Compile Include="Evidente\ValidateUserSettingsBuilder.cs" />
+    <Compile Include="Evidente\ValidationRequest.cs" />
+    <Compile Include="Evidente\ValidationResponse.cs" />
+    <Compile Include="Evidente\ValidationResponseBuilder.cs" />
     <Compile Include="Mongo\ColpatriaLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\Enumerations\ExecutionState.cs" />
@@ -158,6 +176,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crosscutting.Common\Crosscutting.Common.csproj">
+      <Project>{31541f2d-b903-4c21-ae5f-116633fd9e65}</Project>
+      <Name>Crosscutting.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

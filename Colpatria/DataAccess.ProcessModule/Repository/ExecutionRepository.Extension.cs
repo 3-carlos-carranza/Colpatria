@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using Core.DataTransferObject.SQL;
+using Core.Entities.SQL.Enumerations;
 using Core.Entities.SQL.Process;
 
 namespace DataAccess.ProcessModule.Repository
@@ -17,6 +18,8 @@ namespace DataAccess.ProcessModule.Repository
             execution.CurrentSectionId = nextSectionAndPage.SectionId;
 
             Add(execution);
+
+            AssociateUserWithRequest(execution.Id, execution.UserId);
             UnitOfWork.Commit();
 
             execution.CurrentPageId = _context.Section.First(s => s.Id == execution.CurrentSectionId).PageId;
@@ -46,6 +49,19 @@ namespace DataAccess.ProcessModule.Repository
             throw new NotImplementedException();
         }
 
+        public StepDetail GetNextStepWithType(int step, int section, int processId, StepType type)
+        {
+            var context = UnitOfWork as DbContext;
+            return
+                context?.Database.SqlQuery<StepDetail>(
+                    "GetNextStepbyStepType @CurrentStepId,@CurrentSectionId, @ProcessId, @StepType",
+                    new SqlParameter { ParameterName = "CurrentStepId", Value = step },
+                    new SqlParameter { ParameterName = "CurrentSectionId", Value = section },
+                    new SqlParameter { ParameterName = "ProcessId", Value = processId },
+                    new SqlParameter { ParameterName = "StepType", Value = (int)type }
+                    ).First();
+        }
+
         public PageSection GetNextSectionAndPage(int sectionId, int processId)
         {
             var context = UnitOfWork as DbContext;
@@ -53,6 +69,18 @@ namespace DataAccess.ProcessModule.Repository
                 context?.Database.SqlQuery<PageSection>("GetNextSectionAndPage @CurrentSectionId, @ProcessId",
                     new SqlParameter { ParameterName = "CurrentSectionId", Value = sectionId },
                     new SqlParameter { ParameterName = "ProcessId", Value = processId }).First();
+        }
+
+        private void AssociateUserWithRequest(long executionId, long userId)
+        {
+            var executionApplicant = new ExecutionApplicant()
+            {
+                ExecutionId = executionId,
+                UserId = userId,
+                Applicant = 1,
+                IsMain = true
+            };
+            _context.ExecutionApplicant.Add(executionApplicant);
         }
     }
 }

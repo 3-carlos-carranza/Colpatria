@@ -250,7 +250,7 @@
       <Project>{984fc515-8235-4b7b-9821-84a7af8f4ee0}</Project>
       <Name>Core.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.Definition.csproj">
+    <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
       <Project>{3f22aafc-92be-46b2-86b0-0bc8835c279e}</Project>
       <Name>Core.GlobalRepository.Definition</Name>
     </ProjectReference>

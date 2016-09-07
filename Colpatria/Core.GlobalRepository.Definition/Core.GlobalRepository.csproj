@@ -7,8 +7,8 @@
     <ProjectGuid>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core.GlobalRepository.Definition</RootNamespace>
-    <AssemblyName>Core.GlobalRepository.Definition</AssemblyName>
+    <RootNamespace>Core.GlobalRepository</RootNamespace>
+    <AssemblyName>Core.GlobalRepository</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evidente\IEvidenteRepository.cs" />
     <Compile Include="Mongo\IColpatriaLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\Process\IExecutionApplicantRepository.cs">
@@ -143,6 +144,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
       <Name>Core.Entities</Name>

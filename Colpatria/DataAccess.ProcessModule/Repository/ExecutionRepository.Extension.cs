@@ -17,6 +17,8 @@ namespace DataAccess.ProcessModule.Repository
             execution.CurrentSectionId = nextSectionAndPage.SectionId;
 
             Add(execution);
+
+            AssociateUserWithRequest(execution.Id, execution.UserId);
             UnitOfWork.Commit();
 
             execution.CurrentPageId = _context.Section.First(s => s.Id == execution.CurrentSectionId).PageId;
@@ -53,6 +55,18 @@ namespace DataAccess.ProcessModule.Repository
                 context?.Database.SqlQuery<PageSection>("GetNextSectionAndPage @CurrentSectionId, @ProcessId",
                     new SqlParameter { ParameterName = "CurrentSectionId", Value = sectionId },
                     new SqlParameter { ParameterName = "ProcessId", Value = processId }).First();
+        }
+
+        private void AssociateUserWithRequest(long executionId, long userId)
+        {
+            var executionApplicant = new ExecutionApplicant()
+            {
+                ExecutionId = executionId,
+                UserId = userId,
+                Applicant = 1,
+                IsMain = true
+            };
+            _context.ExecutionApplicant.Add(executionApplicant);
         }
     }
 }

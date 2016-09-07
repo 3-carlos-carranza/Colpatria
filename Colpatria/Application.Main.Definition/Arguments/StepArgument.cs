@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Application.Main.Definition.Arguments;
 using Application.Main.Definition.Steps;
 using Core.Entities.SQL.Process;
 
-namespace Application.Main.Implementation.ProcessFlow.Arguments
+namespace Application.Main.Definition.Arguments
 {
     public class StepArgument : IStepArgument
     {

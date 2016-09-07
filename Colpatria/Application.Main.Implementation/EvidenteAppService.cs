@@ -153,7 +153,7 @@ namespace Application.Main.Implementation
             var item = new WebServiceConsultation
             {
                 Payload = settings.Payload,
-                RequestId = settings.ExecutionId,
+                ExecutionId = settings.ExecutionId,
                 TypeOfConsultation = settings.TypeOfConsultation,
                 WebServiceName = settings.WebServiceName,
                 CreatedDate = DateTime.UtcNow

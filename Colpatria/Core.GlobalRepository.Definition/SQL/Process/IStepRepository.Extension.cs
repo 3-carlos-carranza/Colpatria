@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Entities.SQL.Process;
 
-namespace Core.GlobalRepository.Definition.SQL.Process
+namespace Core.GlobalRepository.SQL.Process
 {
     partial interface IStepRepository
     {

@@ -28,7 +28,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
                 this.ToTable("ExecutionApplicant","Process");
         this.Property(t => t.Id).HasColumnName("Id");
-        this.Property(t => t.RequestId).HasColumnName("RequestId");
+        this.Property(t => t.ExecutionId).HasColumnName("ExecutionId");
         this.Property(t => t.UserId).HasColumnName("UserId");
         this.Property(t => t.IsMain).HasColumnName("IsMain");
         this.Property(t => t.Applicant).HasColumnName("Applicant");
@@ -36,7 +36,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 // Relationships
                 this.HasRequired(t => t.Execution)
                     .WithMany(t => t.ExecutionApplicant)
-                    .HasForeignKey(d => d.RequestId);
+                    .HasForeignKey(d => d.ExecutionId);
     
     
     

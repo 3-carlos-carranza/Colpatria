@@ -20,7 +20,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public string Name => GetType().Name;
         public Task<IStepResponse> Advance(IStepArgument stepArgument)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
         }
     }
 }

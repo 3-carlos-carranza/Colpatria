@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Application.Main.Definition;
 using Core.Entities.SQL.Process;
 using Core.Entities.SQL.User;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 using Core.GlobalRepository.Definition.SQL.User;
 using Crosscutting.Common.Tools;
 using Crosscutting.Common.Tools.DataType;

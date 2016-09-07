@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Main.Definition.Responses;
 using Application.Main.Definition.Steps;
@@ -41,6 +43,21 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         protected Task<IStep> OnSuccess(Execution execution)
         {
+            var nextStep = _executionRepository.GetNextStepWithType(execution.CurrentStepId, execution.CurrentSectionId, execution.ProcessId, StepType.OnSuccess);
+
+            //GetNextSectionAndStep
+
+            execution.CurrentPageId = nextStep.PageId;
+            execution.CurrentSectionId = nextStep.SectionId;
+            execution.CurrentStepId = nextStep.Id;
+
+            string[] steps = nextStep.NameClientAlias.Split(Convert.ToChar("|"));
+            _stepOnSuccess = _steps.FirstOrDefault(s => s.Name == steps[0]);
+
+            //save Request
+            _executionRepository.Update(execution);
+            _executionRepository.UnitOfWork.Commit();
+
             return Task.FromResult(_stepOnSuccess);
         }
 

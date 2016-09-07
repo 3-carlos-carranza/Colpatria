@@ -20,106 +20,106 @@
         </div>
     </div>
     <div class="col-xs-12 block radius">
-        <form data-x="x-validate" action="@Url.Action("Register", "Request")" method="POST" class="form-step" >
+        <form data-x="x-validate" id="FormRegister" action="@Url.Action("Register")" method="POST" class="form-step">
             <div class="step-title">
                 <strong>PASO 1.</strong> Ingresa tus datos, no olvides llenar todos los campos.
             </div>
             <div class="form-group">
-                    <div class="col-xs-12 col-md-6">
-                        <span class="input input--hoshi">
-                            <input name="FirstName" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" value="Carlos Julian">
+                <div class="col-xs-12 col-md-6">
+                    <span class="input input--hoshi">
+                            <input name="1" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" value="Carlos Julian">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level ">Nombre<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <span class="input input--hoshi">
-                            <input name="FirstLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" value="Carranza">
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="2" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" value="Carranza">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstLastName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Apellidos<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <span class="input input--hoshi">
-                            <input name="SecondLastName" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" value="Garcia">
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="3" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" value="Garcia">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SecondLastName">
                                 <span class="input__label-content input__label-content--hoshi input-block-level"><span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
+                </div>
                 <div style="clear: both"></div>
             </div>
             <div class="form-group">
-                    <div class="col-xs-12 col-md-3">
-                        <label>
-                            Tipo de documento<span class="symbol required"></span>
-                        </label>
-                        <select name="IdentificationType" data-x="x-kdropdown" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-url="/Data/GetDataListValues/"
-                                data-value="Cedula de Ciudadania">
-                            <option value="">Seleccione...</option>
-                            <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
-                            <option value="Cedula Extranjera">Cedula Extranjera</option>
-                            <option value="Carnet Diplomatico">Carnet Diplomatico</option>
-                            <option value="Pasaporte">Pasaporte</option>
-                            <option value="Registro Civil">Registro Civil</option>
-                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-md-3">
-                        <span class="input input--hoshi">
-                            <input name="Identification" class="input__field input__field--hoshi validate[required]" data-x="x-autonum" data-asep="." data-adec="," data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" value="1030675786">
+                <div class="col-xs-12 col-md-3">
+                    <label>
+                        Tipo de documento<span class="symbol required"></span>
+                    </label>
+                    <select name="4" data-x="x-kdropdown" class="input-block-level -w100 validate[funcCall[XGeneral.dropdownlistvalidate]] form-control" placeholder="Tipo de Documento" data-url="/Data/GetDataListValues/"
+                            data-value="Cedula de Ciudadania">
+                        <option value="">Seleccione...</option>
+                        <option value="5">Cedula de Ciudadania</option>
+                        <option value="4">Cedula Extranjera</option>
+                        <option value="6">Carnet Diplomatico</option>
+                        <option value="9">Pasaporte</option>
+                        <option value="7">Registro Civil</option>
+                        <option value="3">Tarjeta de Identidad</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="5" class="input__field input__field--hoshi validate[required]" data-x="x-autonum" data-asep="." data-adec="," data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" value="1030675786">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Number">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Número<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <label for="ExpeditionDate">
-                            Fecha de Expedicion<span class="symbol required"></span>
-                        </label>
-                        
-                            <div class='input-group date' id='datepicker1'>
-                                <input type='text' name="DateOfExpedition" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]]" value="14/09/2016"/>
-                                <span class="input-group-addon">
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <label for="ExpeditionDate">
+                        Fecha de Expedicion<span class="symbol required"></span>
+                    </label>
+
+                    <div class="input-group date" id="datepicker1">
+                        <input type="text" name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]]" value="14/09/2016"/>
+                        <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                            </div>
-                   </div>
+                    </div>
+                </div>
                 <div style="clear: both"></div>
             </div>
             <div class="form-group">
-                    <div class="col-xs-12 col-md-6">
-                        <span class="input input--hoshi">
-                            <input name="PlaceOfExpedition" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="Expedition" placeholder="" value="Bogotá D.C">
+                <div class="col-xs-12 col-md-6">
+                    <span class="input input--hoshi">
+                            <input name="31" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="Expedition" placeholder="" value="Bogotá D.C">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Expedition">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Lugar de expediciòn de Documento<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                    <div class="col-xs-12 col-md-3">
-                        <span class="input input--hoshi">
-                            <input name="Address" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="20" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="address">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Dirección<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                    <div class="col-xs-12 col-md-3">
-                        <span class="input input--hoshi">
-                            <input name="Email" class="input__field input__field--hoshi validate[required,custom[email]]" type="text" id="email" placeholder="" value="carlosscarranza@banlinea.com">
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="8" class="input__field input__field--hoshi validate[required,custom[email]]" type="text" id="email" placeholder="" value="carlosscarranza@banlinea.com">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
                                 <span class="input__label-content input__label-content--hoshi input-block-level">Correo electronico<span class="symbol required"></span></span>
                             </label>
                         </span>
-                    </div>
-                <div style="clear: both"></div>
                 </div>
+                <div style="clear: both"></div>
+            </div>
             <div class="form-group">
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="Telephone" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" type="number" placeholder="" value="4038956">
+                        <input name="9" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" type="number" placeholder="" value="4038956">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="telephone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Télefono<span class="symbol required"></span></span>
                         </label>
@@ -127,26 +127,37 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="Cellphone" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="cellphone" placeholder="" value="3006492610">
+                        <input name="10" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="cellphone" placeholder="" value="3006492610">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="cellphone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Celular<span class="symbol required"></span></span>
                         </label>
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-3 space">
-                    <input name="TermsAndConditions" type="checkbox" class="grey validate[required]" checked="checked">
+                    <input name="13" type="checkbox" class="grey validate[required]" checked="checked">
                     <label class="check">
                         Acepto términos y condiciones <a class="vermas" href="@Url.Action("TermsAndConditions", "Request")">VER+</a>
                     </label>
                 </div>
                 <div class="col-xs-12 col-sm-3 space">
-                        <button type="submit" class="btn btn-danger pull-right enviar">
-                            Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                        </button>
-                        </div>
-                        <div style="clear: both"></div>
-                    </div>
-             </form>
+                    <button data-url='@Url.Action("Register")' class="btn btn-danger pull-right enviar" onclick="return SendForm(this);">
+                        Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </form>
     </div>
     <div style="clear: both"></div>
 </div>
+
+@section scripts
+{
+
+    <script>
+        function SendForm(e) {
+            $('#FormRegister').attr("action", $(e).attr("data-url"));
+            $('#FormRegister').submit();
+        }
+    </script>
+}

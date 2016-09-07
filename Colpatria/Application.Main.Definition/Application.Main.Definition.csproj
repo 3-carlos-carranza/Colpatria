@@ -71,6 +71,13 @@
     <Compile Include="Responses\IStepResponse.cs" />
     <Compile Include="Responses\IWebServiceResponse.cs" />
     <Compile Include="Services\ISubmitFormAppService.cs" />
+    <Compile Include="Steps\IErrorEvidenteStep.cs" />
+    <Compile Include="Steps\IErrorScoreStep.cs" />
+    <Compile Include="Steps\IErrorSendSmsStep.cs" />
+    <Compile Include="Steps\IEvidenteStep.cs" />
+    <Compile Include="Steps\IResponseRequestStep.cs" />
+    <Compile Include="Steps\IScoreStep.cs" />
+    <Compile Include="Steps\ISendSmsStep.cs" />
     <Compile Include="Steps\IStartFlowStep.cs" />
     <Compile Include="Steps\IStep.cs" />
     <Compile Include="Steps\ISubmittableStep.cs" />

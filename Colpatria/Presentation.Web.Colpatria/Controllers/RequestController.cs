@@ -82,32 +82,11 @@ namespace Presentation.Web.Colpatria.Controllers
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
 
-            //En desarrollo
-            
-
             ProcessFlowArgument.StepArgument = (StepArgument)
                         SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
             dynamic stepresult = await ExecuteFlow(identity, pages);
             return stepresult;
         }
-
-        #region Mapping User
-
-        public User MappingUser(UserViewModel collection) => new User
-        {
-            FirstName = collection.FirstName.Split(' ')[0],
-            MiddleName = collection.FirstName.Split(' ')[1],
-            LastName = collection.FirstLastName,
-            SecondLastName = collection.SecondLastName,
-            IdentificationType = collection.IdentificationType,
-            Identification = collection.Identification,
-            DateOfExpedition = collection.DateOfExpedition,
-            Email = collection.Email,
-            PhoneNumber = collection.Telephone,
-            UserName = collection.Identification
-        };
-
-        #endregion
 
         public ActionResult TermsAndConditions()
         {

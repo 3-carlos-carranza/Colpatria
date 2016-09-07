@@ -27,6 +27,7 @@ namespace Presentation.Web.Common
             container.RegisterType<ISubmitFormAppService, SubmitFormAppService>();
 
             //Config Steps
+            container.RegisterType<IStep, EvidenteStep>("EvidenteStep");
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");
             container.RegisterType<IEnumerable<IStep>, IStep[]>();

@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.DataTransferObject.SQL;
 using Core.Entities.SQL.Enumerations;
 using Core.Entities.SQL.Process;
 
@@ -10,5 +11,6 @@ namespace Core.GlobalRepository.Definition.SQL.Process
         Execution GetRequestById(long id);
         Execution GetLatestRequest(long userId, long product, int process, string requestType);
         Execution GetRequestbyUserAndRequestSimpleId(long userId, string simpleId, long product);
+        StepDetail GetNextStepWithType(int step, int section, int processId, StepType type);
     }
 }

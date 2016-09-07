@@ -706,6 +706,7 @@
     <Content Include="Scripts\Tools\Trigger.Actions.js" />
     <Content Include="Scripts\Tools\Trigger.js" />
     <Content Include="Scripts\Tools\TriggerClientValidator.js" />
+    <Content Include="Views\Requests\Validation.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -865,7 +866,6 @@
     <Content Include="Views\Requests\Index.cshtml" />
     <Content Include="Views\Requests\RequestAproved.cshtml" />
     <Content Include="Views\Requests\TermsAndConditions.cshtml" />
-    <Content Include="Views\Requests\Validation.cshtml" />
     <Content Include="Views\Requests\_SummaryData.cshtml" />
     <Content Include="Views\Request\EmailRequest.cshtml" />
     <None Include="Web.Debug.config">

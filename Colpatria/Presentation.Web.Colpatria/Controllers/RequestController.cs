@@ -59,8 +59,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;
 
-            var submitFormStepArgument = SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
-
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;

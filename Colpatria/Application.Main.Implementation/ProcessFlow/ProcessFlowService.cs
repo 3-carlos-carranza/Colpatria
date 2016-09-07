@@ -9,7 +9,7 @@ using Application.Main.Definition.Steps;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Core.Entities.SQL.Enumerations;
 using Core.Entities.SQL.Process;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 
 namespace Application.Main.Implementation.ProcessFlow
 {

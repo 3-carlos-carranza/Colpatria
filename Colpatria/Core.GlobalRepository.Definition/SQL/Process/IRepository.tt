@@ -71,7 +71,7 @@ foreach (var complex in ItemCollection.GetItems<ComplexType>().OrderBy(e => e.Na
     fileManager.StartNewFile(complex.Name + ".cs");
     BeginNamespace(namespaceName, code);
 #>
-using Data.Common.Definition;
+using Data.Common;
 
 <#=Accessibility.ForType(complex)#> partial interface I<#=code.Escape(complex)#>
 {

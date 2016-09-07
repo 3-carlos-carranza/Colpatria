@@ -13,7 +13,7 @@ namespace Core.Entities.Evidente
         private string _product;
         private string _identificationType;
         private string _secondLastName;
-        private long _requestId;
+        private long _executionId;
         public ValidateUserSettingsBuilder()
         {
             _channel = string.Empty;
@@ -39,7 +39,7 @@ namespace Core.Entities.Evidente
                 ParamProduct = _paramProduct,
                 Product = _product,
                 IdentificationType = _identificationType,
-                RequestId = _requestId
+                ExecutionId = _executionId
             };
         }
         public ValidateUserSettingsBuilder WithChannel(string item)
@@ -87,9 +87,9 @@ namespace Core.Entities.Evidente
             _secondLastName = value;
             return this;
         }
-        public ValidateUserSettingsBuilder WithRequestId(long id)
+        public ValidateUserSettingsBuilder WithExecutionId(long id)
         {
-            _requestId = id;
+            _executionId = id;
             return this;
         }
     }

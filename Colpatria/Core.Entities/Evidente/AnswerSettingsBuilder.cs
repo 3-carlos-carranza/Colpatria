@@ -14,7 +14,7 @@
 
         private string _identificationType;
 
-        private long _requestId;
+        private long _executionId;
 
         public AnswerSettingsBuilder()
         {
@@ -35,7 +35,7 @@
                 ParamProduct = _paramProduct,
                 Product = _product,
                 IdentificationType = _identificationType,
-                RequestId = _requestId
+                ExecutionId = _executionId
             };
         }
         public AnswerSettingsBuilder WithChannel(string item)
@@ -69,9 +69,9 @@
             _identificationType = item;
             return this;
         }
-        public AnswerSettingsBuilder WithRequestId(long id)
+        public AnswerSettingsBuilder WithExecutionId(long id)
         {
-            _requestId = id;
+            _executionId = id;
             return this;
         }
     }

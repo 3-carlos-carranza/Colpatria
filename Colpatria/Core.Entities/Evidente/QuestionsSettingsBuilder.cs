@@ -8,7 +8,7 @@
         private string _product;
         private string _identificationType;
         private long _validationNumber;
-        private long _requestId;
+        private long _executionId;
         public QuestionsSettingsBuilder()
         {
             _channel = string.Empty;
@@ -28,7 +28,7 @@
                 Product = _product,
                 IdentificationType = _identificationType,
                 ValidationNumber = _validationNumber,
-                RequestId = _requestId
+                ExecutionId = _executionId
             };
         }
         public QuestionsSettingsBuilder WithChannel(string item)
@@ -61,9 +61,9 @@
             _validationNumber = item;
             return this;
         }
-        public QuestionsSettingsBuilder WithRequestId(long requestId)
+        public QuestionsSettingsBuilder WithExecutionId(long requestId)
         {
-            _requestId = requestId;
+            _executionId = requestId;
             return this;
         }
     }

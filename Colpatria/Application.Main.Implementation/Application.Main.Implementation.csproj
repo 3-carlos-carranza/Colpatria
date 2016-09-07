@@ -62,7 +62,12 @@
       <HintPath>..\packages\MongoRepository.1.6.11\lib\net45\MongoRepository.Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -110,6 +115,10 @@
     <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
       <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
       <Name>Crosscutting.Common.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crosscutting.Common\Crosscutting.Common.csproj">
+      <Project>{31541F2D-B903-4C21-AE5F-116633FD9E65}</Project>
+      <Name>Crosscutting.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470AB1B1-B29E-4360-AA44-0D83825ECFCD}</Project>

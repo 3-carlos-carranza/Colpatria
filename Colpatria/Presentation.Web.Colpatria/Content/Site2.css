@@ -180,7 +180,8 @@ text-decoration:none;
     position:relative;
 }
 
-.body-content .legal {
+.body-content .legal,
+.legal {
     position: absolute;
     bottom: 10%;
     left: 8%;
@@ -218,17 +219,7 @@ label {
     font-weight: bold;
     color: #6e6e6e;
 }
-.form-validation-field-0formError.parentFormundefined.formError {
-    opacity: 0.87;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin-top: 0px;
-}
-.formErrorContent {
-background:#000;
-width:300px
-}
+
 /* Styles registration form  */
 img {
 width:auto;
@@ -353,17 +344,17 @@ color:red;
 
 }
 .step-content .enviar{
-    background-color: #e20613;
+    background: #e20613;
     padding: 16px 50px;
     margin-right: 0%;
     transition:.3s;
     font-size:16px;
 }
 .step-content .enviar:hover{
-    background-color: rgba(226, 6, 19, 0.7);
+    background: rgba(226, 6, 19, 0.7);
 }
 .step-content .valid {
-    margin: 10% 0;
+    margin: 1% 0;
     padding: 2% 8%;
   }
 .step-content .grey {
@@ -562,7 +553,7 @@ header .logo-step {
     position:relative;
     margin:0 auto;
     padding:4% 0;
-    font-size:14px;
+    font-size:13px;
     color:#6e6e6e;
 }
 .step-content .title-term{
@@ -601,6 +592,7 @@ color:#e20613;
 .step-content .botons{
 }
 .step-content .print{
+    
 }
 .step-content .prtn{
     background-color: #7d7d7d;
@@ -624,9 +616,15 @@ color:#e20613;
     color:#e20613;
 }
 .step-content .bordes{
- box-shadow: 8px 0px 10px -8px rgba(0,0,0,0.5);   
+    border-right:solid 4px rgba(0, 0, 0, .02);
+    -webkit-border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;
+    -moz-border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;
+   /* border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;*/
 }
 .step-content .ok-rgtr{
+
+}
+.step-content .resumen-data {
 
 }
 .step-content .ok-rgtr::after{
@@ -661,7 +659,7 @@ color:#000;
 
 .ac-custom ul,
 .ac-custom ol {
-	list-style: none;
+	list-style:none ;
 	padding: 0;
 	margin: 0 auto;
 	max-width: 800px;
@@ -689,6 +687,7 @@ color:#000;
 	left: 0;
 	position: absolute;
 	cursor: pointer;
+    clear:both
 }
 
 
@@ -707,6 +706,7 @@ color:#000;
 	transition: opacity 0.3s;
     transition:0.3s;
     -webkit-transition:0.3s;
+    clear:both
 }
 
 .ac-radio label::before {
@@ -722,10 +722,13 @@ color:#000;
 	opacity: 1;
     content:url('../Images/Content/ok.png');
     border:none;
+    clear:both
 }
 .step-content .pag {
-    position: absolute;
-    bottom: 18%;
+    position: relative;
+    width: 50%;
+    display: inline-block;
+    vertical-align: bottom;
   }
 
 .step-content .answer{
@@ -780,30 +783,6 @@ margin: 4% 0;
 }
 /* Fin styles aprovacion */
 
-
-
-/* modal*/
-.modal-header, h4, .close {
-      background-color: #7d7d7d;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
-  }
-.modal-footer {
-      background-color: #f9f9f9;
-  }
-.container .terminar {
-display:block;
-margin:0 auto;
-padding: 10px 24px;
-}
-.modal-body {
-    padding: 30px 50px 0 50px;
-    text-align: center;
-}
-
-/* Fin modal*/
-
 /* Resumen data */
 .step-content .img-summary{
 margin: 30% 0 0 0;
@@ -823,6 +802,67 @@ footer .img-foot{
     text-align:right;
     
 }
+
+
+/* Reseteo de estilos bootstrap */
+/* modal*/
+.modal-header, h4, .close {
+      background-color: #7d7d7d;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+.modal-footer {
+      background-color: #f9f9f9;
+  }
+.container .terminar {
+display:block;
+margin:0 auto;
+padding: 10px 24px;
+}
+.modal-body {
+    padding: 30px 50px 0 50px;
+    text-align: center;
+}
+/* Fin modal*/
+
+
+.text-left {
+text-align:left !important;
+ padding: 30px 50px;
+}
+.mhead,
+.closes {
+      background-color: #f4f4f4;
+      color:#000 !important;
+      text-align: center;
+      font-size: 40px;
+}
+.modal-header .close.closes {
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
+    left: auto;
+    right: auto;
+}
+.modal-content.fond-terms {
+    background-color: #f4f4f4;
+    background-image: url('../Images/Content/fondo-steps.jpg');
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media (min-width: 769px) {
+    .modal-dialog.modal-terms {
+        width: 1140px;
+        max-width:98%;
+        margin: 30px auto;
+    }
+}
+
+/* Fin Reseteo de estilos bootstrap */
+
 
 
 /* Media Querys steps*/
@@ -871,6 +911,9 @@ header .logo, header .logo-step {
 
 }
 @media(max-width: 568px) {
+    .step-content .print {
+    padding: 0;
+}
 
 .step-content .bull,
 .step-content .validado {

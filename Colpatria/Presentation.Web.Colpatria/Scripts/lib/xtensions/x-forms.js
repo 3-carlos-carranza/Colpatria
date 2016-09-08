@@ -1,4 +1,4 @@
-!function ($) {
+﻿!function ($) {
     "use strict";
 
     $.fn.xformvalidate = function (option) {
@@ -266,10 +266,17 @@ jQuery.extend({
             }
 
             if ((x + 1) < total) {
-                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + ' <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>');
+                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
+
                 $(".nextStep", $(el)).on("click", function () {
-                    $("#x_" + (x + 1)).show("slow");
-                    $(el).hide("slow");
+
+                    if ($('input[name="r' + (x + 1) + '"]').is(':checked')) {
+                        $("#x_" + (x + 1)).slideDown();
+                        $(el).slideUp();
+                    }else{
+                        console.log('Ninguna opci�n seleccionada');
+                    }
+
                 });
             }
             $(el).attr("id", "x_" + x);
@@ -282,7 +289,7 @@ $(document).ready(function () {
 
 //Fin Paginacion formulario de validacion de datos
 
-//Borde dinamico
+//Borde dinamico del formulario
 (function () {
     if (!String.prototype.trim) {
         (function () {

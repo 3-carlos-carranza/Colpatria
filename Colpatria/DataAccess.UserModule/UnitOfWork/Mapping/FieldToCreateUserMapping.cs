@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class FieldToCreateUserMapping:EntityTypeConfiguration<Core.Entities.SQL.User.FieldToCreateUser>
+    public partial class FieldToCreateUserMapping:EntityTypeConfiguration<Core.Entities.User.FieldToCreateUser>
     {
         
         public FieldToCreateUserMapping()

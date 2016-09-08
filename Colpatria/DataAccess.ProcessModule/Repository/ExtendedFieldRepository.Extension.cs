@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Core.DataTransferObject.SQL;
-using Core.Entities.SQL.Process;
+using Core.DataTransferObject.Vib;
+using Core.Entities.Process;
 using Crosscutting.Common.Tools.DataType;
 using DataAccess.ProcessModule.Repository.Extension;
 using EntityFrameworkExtras.EF6;

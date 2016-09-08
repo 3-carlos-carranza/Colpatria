@@ -1,14 +1,30 @@
-﻿using System.Linq;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=RequestController.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-08  - 2:34 p. m.</Date>
+//   <Update> 2016-09-08 - 2:37 p. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Application.Main.Definition;
-using Application.Main.Definition.Arguments;
-using Core.DataTransferObject.SQL;
-using Core.Entities.SQL.User;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Core.Entities.Process;
+using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
-using Presentation.Web.Colpatria.Models;
+
+#endregion
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -16,12 +32,12 @@ namespace Presentation.Web.Colpatria.Controllers
     {
         private readonly IUserAppService _userAppService;
 
-        public RequestController(IProcessFlowArgument processFlowArgument,
-            IProcessFlowService processFlowService, IUserAppService userAppService, ISubmitFormArgument submitFormStepArgument) :
-                base(processFlowArgument, processFlowService, submitFormStepArgument)
+        public RequestController(IProcessFlowArgument processFlowArgument, IProcessFlowManager processFlowManager,
+            IUserAppService userAppService) : base(processFlowArgument, processFlowManager)
         {
             _userAppService = userAppService;
         }
+
 
         public ActionResult Register()
         {
@@ -30,10 +46,12 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Register(UserViewModel collection)
+        public async Task<ActionResult> Register(FormCollection collection)
         {
-            var user = await _userAppService.FindAsync(collection.Identification, collection.Identification);
-            var nuser = MappingUser(collection);
+            var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
+
+            var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
+            var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
 
             if (user == null)
             {
@@ -48,56 +66,34 @@ namespace Presentation.Web.Colpatria.Controllers
             var usercreated = new IdentityResult();
             if (nuser.IsNewUser)
             {
-                usercreated = await _userAppService.CreateAsync(nuser, collection.Identification);
+                usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification);
             }
             if (!usercreated.Succeeded && usercreated.Errors.Any()) return View("Index");
             var identity =
                 await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;
 
+            //var submitFormStepArgument = SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
+
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
 
-            ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
+            ProcessFlowArgument.Execution = new Execution
             {
-                IsPost = false,
                 UserId = long.Parse(identity.GetUserId()),
-                UserName = identity.GetUserName(),
                 ProductId = 1
+            };
 
-            };
-            ProcessFlowArgument.StepArgument = new StepArgument
-            {
-                Username = identity.GetUserName(),
-            };
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
 
-            //En desarrollo
+            //ProcessFlowArgument.StepArgument = (StepArgument) SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
             dynamic stepresult = await ExecuteFlow(identity, pages);
             return stepresult;
         }
-
-        #region Mapping User
-
-        public User MappingUser(UserViewModel collection) => new User
-        {
-            FirstName = collection.FirstName.Split(' ')[0],
-            MiddleName = collection.FirstName.Split(' ')[1],
-            LastName = collection.FirstLastName,
-            SecondLastName = collection.SecondLastName,
-            IdentificationType = collection.IdentificationType,
-            Identification = collection.Identification,
-            DateOfExpedition = collection.DateOfExpedition,
-            Email = collection.Email,
-            PhoneNumber = collection.Telephone,
-            UserName = collection.Identification
-        };
-
-        #endregion
 
         public ActionResult TermsAndConditions()
         {
@@ -129,5 +125,9 @@ namespace Presentation.Web.Colpatria.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+            return View();
+        }
     }
 }

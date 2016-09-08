@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IFieldInSectionRepository : IRepository<Entities.SQL.Process.FieldInSection>
+    public  partial interface IFieldInSectionRepository : IRepository<Entities.Process.FieldInSection>
     {
      
     

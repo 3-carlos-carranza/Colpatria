@@ -1,4 +1,4 @@
-﻿using Core.GlobalRepository.Definition.SQL.User;
+﻿using Core.GlobalRepository.SQL.User;
 using DataAccess.UserModule.Repository;
 using DataAccess.UserModule.UnitOfWork;
 using Microsoft.Practices.Unity;

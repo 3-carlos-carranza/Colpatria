@@ -1,26 +1,25 @@
 ﻿using System.Collections.Generic;
 using Application.Main.Definition.Enumerations;
-using Application.Main.Definition.Responses;
-using Core.Entities.SQL.Enumerations;
-using Core.Entities.SQL.Process;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Core.Entities.Enumerations;
+using Core.Entities.Process;
+using Core.Entities.ProcessModel;
+using Execution = Core.Entities.ProcessModel.Execution;
+using Page = Core.Entities.Process.Page;
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
     public class ShowScreenResponse : IShowScreenResponse
     {
-        public InterfaceTypeResponse InterfaceTypeResponse => InterfaceTypeResponse.ShowForm;
+        public Execution Execution { get; set; }
+        public ResponseDetail ResponseDetail { get; set; }
         public string FriendlyUrl { get; set; }
         public string ActionMethod { get; set; }
         public string PartialView { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
-        public IShowScreenResponse Make => new ShowScreenResponse();
+        public InterfaceTypeResponse InterfaceTypeResponse { get; }
+        public IShowScreenResponse Make { get; }
         public IEnumerable<Page> Pages { get; set; }
-        public long RequestId { get; set; }
-        public int PageId { get; set; }
-        public int SectionId { get; set; }
-        public string Code { get; set; }
-        public ExecutionState ExecutionState { get; set; }
-        //public PageDetail PageDetail { get; set; }
     }
 }

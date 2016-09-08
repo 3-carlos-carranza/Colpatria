@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class BaseFieldValueMapping:EntityTypeConfiguration<Core.Entities.SQL.User.BaseFieldValue>
+    public partial class BaseFieldValueMapping:EntityTypeConfiguration<Core.Entities.User.BaseFieldValue>
     {
         
         public BaseFieldValueMapping()

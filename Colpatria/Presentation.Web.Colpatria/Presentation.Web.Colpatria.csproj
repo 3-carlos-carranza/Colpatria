@@ -890,6 +890,10 @@
       <Project>{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6}</Project>
       <Name>Application.Main.Definition</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Application.Main.Implementation\Application.Main.Implementation.csproj">
+      <Project>{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}</Project>
+      <Name>Application.Main.Implementation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
       <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
       <Name>Core.DataTransferObject</Name>

@@ -67,98 +67,112 @@
     <Compile Include="Evidente\ValidationRequest.cs" />
     <Compile Include="Evidente\ValidationResponse.cs" />
     <Compile Include="Evidente\ValidationResponseBuilder.cs" />
-    <Compile Include="Mongo\ColpatriaLog.cs" />
+    <Compile Include="Logging\ColpatriaLog.cs" />
+    <Compile Include="ProcessModel\Execution.cs" />
+    <Compile Include="ProcessModel\Field.cs" />
+    <Compile Include="ProcessModel\FieldInSection.cs" />
+    <Compile Include="ProcessModel\Input.cs" />
+    <Compile Include="ProcessModel\InputType.cs" />
+    <Compile Include="ProcessModel\IProcessFlowUser.cs" />
+    <Compile Include="ProcessModel\Page.cs" />
+    <Compile Include="ProcessModel\Process.cs" />
+    <Compile Include="ProcessModel\ReponseStatus.cs" />
+    <Compile Include="ProcessModel\ResponseDetail.cs" />
+    <Compile Include="ProcessModel\Section.cs" />
+    <Compile Include="ProcessModel\State.cs" />
+    <Compile Include="ProcessModel\Step.cs" />
+    <Compile Include="ProcessModel\StepSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQL\Enumerations\ExecutionState.cs" />
-    <Compile Include="SQL\Enumerations\StepType.cs" />
-    <Compile Include="SQL\Process\Execution.Extension.cs" />
-    <Compile Include="SQL\Process\WebServiceConsultation.cs">
+    <Compile Include="Enumerations\ExecutionState.cs" />
+    <Compile Include="Enumerations\StepType.cs" />
+    <Compile Include="Process\Execution.Extension.cs" />
+    <Compile Include="Process\WebServiceConsultation.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\BaseDataList.cs">
+    <Compile Include="User\BaseDataList.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\BaseDataListValue.cs">
+    <Compile Include="User\BaseDataListValue.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\BaseField.cs">
+    <Compile Include="User\BaseField.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\BaseFieldValue.cs">
+    <Compile Include="User\BaseFieldValue.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\BaseFile.cs">
+    <Compile Include="User\BaseFile.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Execution.cs">
+    <Compile Include="Process\Execution.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExecutionApplicant.cs">
+    <Compile Include="Process\ExecutionApplicant.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExtendedDataList.cs">
+    <Compile Include="Process\ExtendedDataList.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExtendedField.cs">
+    <Compile Include="Process\ExtendedField.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExtendedFieldValue.cs">
+    <Compile Include="Process\ExtendedFieldValue.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExtendedFile.cs">
+    <Compile Include="Process\ExtendedFile.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ExtendedList.cs">
+    <Compile Include="Process\ExtendedList.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\FieldInSection.cs">
+    <Compile Include="Process\FieldInSection.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\FieldToCreateUser.cs">
+    <Compile Include="User\FieldToCreateUser.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Page.cs">
+    <Compile Include="Process\Page.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Process.cs">
+    <Compile Include="Process\Process.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ProcessModel.cs">
+    <Compile Include="Process\ProcessModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Product.cs">
+    <Compile Include="Process\Product.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\ProductProcess.cs">
+    <Compile Include="Process\ProductProcess.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\Role.cs">
+    <Compile Include="User\Role.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Section.cs">
+    <Compile Include="Process\Section.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\State.cs">
+    <Compile Include="Process\State.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\Step.cs">
+    <Compile Include="Process\Step.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\StepSection.cs">
+    <Compile Include="Process\StepSection.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\User.cs">
+    <Compile Include="User\User.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\User.Extension.cs" />
-    <Compile Include="SQL\User\UserModel.cs">
+    <Compile Include="User\User.Extension.cs" />
+    <Compile Include="User\UserModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\User\UserRole.cs">
+    <Compile Include="User\UserRole.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -169,11 +183,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SQL\Process\ProcessModel.tt">
+    <Content Include="Process\ProcessModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ProcessModel.cs</LastGenOutput>
     </Content>
-    <Content Include="SQL\User\UserModel.tt">
+    <Content Include="User\UserModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
@@ -184,6 +198,7 @@
       <Name>Crosscutting.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

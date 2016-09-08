@@ -1,11 +1,25 @@
+#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=EvidenteStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-07  - 3:26 p. m.</Date>
+//   <Update> 2016-09-08 - 11:46 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
 using System;
+using System.Threading;
 using System.Threading.Tasks;
-using Application.Main.Definition;
-using Application.Main.Definition.Arguments;
-using Application.Main.Definition.Responses;
-using Application.Main.Definition.Steps;
-using Core.Entities.Evidente;
-using Core.GlobalRepository.SQL.Process;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Application.Main.Definition.ProcessFlow.Api.Steps;
+#endregion
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -14,10 +28,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
         private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
         private readonly IEvidenteAppService _evidenteAppService;
-        public EvidenteStep(IExecutionRepository executionRepository, 
-            IStepRepository stepRepository,
-            IExtendedFieldRepository extendedFieldRepository, IEvidenteAppService evidenteAppService) 
-            : base(executionRepository, stepRepository, extendedFieldRepository)
         {
             _evidenteAppService = evidenteAppService;
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
@@ -27,7 +37,8 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public int SectionId { get; set; }
         public int StepId { get; set; }
         public string Name => GetType().Name;
-        public Task<IStepResponse> Advance(IStepArgument stepArgument)
+
+        public override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             //var validationSettings =
             //    _validateUserSettingsBuilder.WithIdentification("1023924856")
@@ -74,6 +85,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             
             throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
 
+        }
+
+        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
+            CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
         }
     }
 }

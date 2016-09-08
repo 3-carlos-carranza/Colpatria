@@ -252,7 +252,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
       <Project>{3f22aafc-92be-46b2-86b0-0bc8835c279e}</Project>
-      <Name>Core.GlobalRepository.Definition</Name>
+      <Name>Core.GlobalRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
       <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>

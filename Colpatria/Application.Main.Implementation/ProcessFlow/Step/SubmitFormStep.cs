@@ -1,34 +1,53 @@
-﻿using System.Threading.Tasks;
-using Application.Main.Definition.Arguments;
-using Application.Main.Definition.Responses;
-using Application.Main.Definition.Services;
-using Application.Main.Definition.Steps;
-using Core.GlobalRepository.SQL.Process;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=SubmitFormStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
+//   <Update> 2016-09-08 - 11:51 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Application.Main.Definition.ProcessFlow.Api;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Application.Main.Definition.ProcessFlow.Api.Steps;
+
+#endregion
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitFormStep : BaseStep, IStep
     {
-        private readonly ISubmitFormAppService _submitFormService;
+        private readonly ISaveFieldsAppService _saveFieldsService;
 
-        public SubmitFormStep(IExecutionRepository executionRepository, IStepRepository stepRepository,
-            IExtendedFieldRepository extendedFieldRepository, ISubmitFormAppService submitFormService)
-            : base(executionRepository, stepRepository, extendedFieldRepository)
+        public SubmitFormStep(IProcessFlowStore store, ISaveFieldsAppService saveFieldsService) : base(store)
         {
-            _submitFormService = submitFormService;
+            _saveFieldsService = saveFieldsService;
         }
 
-        public int SectionId { get; set; }
-        public int StepId { get; set; }
         public string Name => GetType().Name;
 
-        public async Task<IStepResponse> Advance(IStepArgument stepArgument)
+        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument arg)
         {
-            SetSteps(stepArgument.Steps);
+            _saveFieldsService.SaveForm(arg);
 
-            _submitFormService.SaveForm(stepArgument);
+            return await (await OnSucess(arg)).Advance(arg);
+        }
 
-            return await(await OnSuccess(stepArgument.Execution)).Advance(stepArgument);
+        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
+            CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
         }
     }
 }

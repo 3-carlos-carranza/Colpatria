@@ -1,14 +1,14 @@
 
 using Data.Common.Definition;
 
-namespace Core.GlobalRepository.Definition.SQL.User
+namespace Core.GlobalRepository.SQL.User
 {
     
     
     
     
     
-    public  partial interface IUserRepository : IRepository<Entities.SQL.User.User>
+    public  partial interface IUserRepository : IRepository<Entities.User.User>
     {
      
     

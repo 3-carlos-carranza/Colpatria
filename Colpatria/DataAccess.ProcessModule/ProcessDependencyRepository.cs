@@ -26,6 +26,7 @@ namespace DataAccess.ProcessModule
             container.RegisterType<IStateRepository, StateRepository>();
             container.RegisterType<IStepRepository, StepRepository>();
             container.RegisterType<IStepSectionRepository, StepSectionRepository>();
+            container.RegisterType<IWebServiceConsultationRepository, WebServiceConsultationRepository>();
         }
     }
 }

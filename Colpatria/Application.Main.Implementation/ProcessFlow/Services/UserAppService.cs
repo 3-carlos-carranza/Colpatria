@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Main.Definition;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.Entities.Process;
 using Core.Entities.User;
@@ -12,7 +11,7 @@ using Crosscutting.Common.Tools;
 using Crosscutting.Common.Tools.DataType;
 using Microsoft.AspNet.Identity;
 
-namespace Application.Main.Implementation
+namespace Application.Main.Implementation.ProcessFlow.Services
 {
     public class UserAppService : UserManager<User, long>, IUserAppService
     {

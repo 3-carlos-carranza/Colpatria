@@ -1,12 +1,12 @@
 ﻿#region Signature
 
 //   -----------------------------------------------------------------------
-//   <copyright file=IStepRepository.Extension.cs company="Banlinea S.A.S">
+//   <copyright file=IProcessAppService.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
-//   <Update> 2016-09-08 - 11:16 a. m.</Update>
+//   <Date>  2016 -09-08  - 3:10 p. m.</Date>
+//   <Update> 2016-09-08 - 3:14 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -18,12 +18,10 @@ using Core.Entities.Process;
 
 #endregion
 
-namespace Core.GlobalRepository.SQL.Process
+namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services
 {
-    partial interface IStepRepository
+    public interface IProcessAppService
     {
-        Step GetFirstStepbyProcess(int processid);
-
         IEnumerable<Step> GetAllStepsEnablesByProduct(int productId);
     }
 }

@@ -5,8 +5,8 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
-//   <Update> 2016-09-08 - 12:09 p. m.</Update>
+//   <Date>  2016 -09-08  - 2:34 p. m.</Date>
+//   <Update> 2016-09-08 - 2:44 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -33,8 +33,8 @@ namespace Presentation.Web.Colpatria.Controllers
 {
     public class BaseController : Controller
     {
-        public IProcessFlowArgument ProcessFlowArgument;
         public readonly IProcessFlowManager ProcessFlowManager;
+        public IProcessFlowArgument ProcessFlowArgument;
 
         public BaseController(IProcessFlowArgument processFlowArgument,
             IProcessFlowManager processFlowManager)
@@ -93,7 +93,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public async Task<dynamic> ExecuteFlow(ClaimsIdentity identity = null, IEnumerable<Page> pages = null)
         {
-            dynamic stepresult = await ProcessFlowManager.StartFlow(ProcessFlowArgument,null);
+            dynamic stepresult = await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
             return stepresult;
         }
 
@@ -103,10 +103,10 @@ namespace Presentation.Web.Colpatria.Controllers
             var userId = long.Parse(User.Identity.GetUserId());
             ProcessFlowArgument = new ProcessFlowArgument
             {
-              User = new User
-              {
-                  Id = userId
-              }
+                User = new User
+                {
+                    Id = userId
+                }
             };
             if (ExecutionId != 0)
             {

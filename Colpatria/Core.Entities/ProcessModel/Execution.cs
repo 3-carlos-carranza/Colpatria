@@ -25,6 +25,7 @@ namespace Core.Entities.ProcessModel
         public int CurrentSectionId { get; set; }
         public Section CurrentSection { get; set; }
         public int ProcessId { get; set; }
+        public int ProductId { get; set; }
         private Process Process { get; set; }
     }
 }

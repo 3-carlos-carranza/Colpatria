@@ -21,7 +21,7 @@ using Core.GlobalRepository.SQL.Process;
 
 #endregion
 
-namespace Application.Main.Implementation
+namespace Application.Main.Implementation.ProcessFlow.Services
 {
     public class DynamicAppService : IDynamicAppService
     {

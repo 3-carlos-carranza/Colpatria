@@ -2,6 +2,11 @@
 
 namespace Core.Entities.Process
 {
+    partial class Step : Core.Entities.ProcessModel.Step
+    {
+
+    }
+
     partial class Execution :Core.Entities.ProcessModel.Execution
     {
         [NotMapped]

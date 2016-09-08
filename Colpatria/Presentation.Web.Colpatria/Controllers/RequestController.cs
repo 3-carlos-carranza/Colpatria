@@ -5,8 +5,8 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
-//   <Update> 2016-09-08 - 12:19 p. m.</Update>
+//   <Date>  2016 -09-08  - 2:34 p. m.</Date>
+//   <Update> 2016-09-08 - 2:37 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -20,8 +20,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Implementation.ProcessFlow.Arguments;
-using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
@@ -81,13 +79,12 @@ namespace Presentation.Web.Colpatria.Controllers
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
 
-            ProcessFlowArgument.Execution= new Execution
+            ProcessFlowArgument.Execution = new Execution
             {
-                
                 UserId = long.Parse(identity.GetUserId()),
                 ProductId = 1
             };
-            
+
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;

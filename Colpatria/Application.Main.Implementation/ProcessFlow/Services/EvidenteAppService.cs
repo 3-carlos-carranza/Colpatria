@@ -1,4 +1,4 @@
-﻿#region Signature
+#region Signature
 
 //   -----------------------------------------------------------------------
 //   <copyright file=EvidenteAppService.cs company="Banlinea S.A.S">
@@ -26,7 +26,7 @@ using Newtonsoft.Json;
 
 #endregion
 
-namespace Application.Main.Implementation
+namespace Application.Main.Implementation.ProcessFlow.Services
 {
     public class EvidenteAppService : IEvidenteAppService
     {

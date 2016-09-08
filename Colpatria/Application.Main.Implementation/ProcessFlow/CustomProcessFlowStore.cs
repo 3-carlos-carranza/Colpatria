@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 
 #endregion
@@ -26,8 +27,28 @@ namespace Application.Main.Implementation.ProcessFlow
 {
     public class CustomProcessFlowStore : IProcessFlowStore
     {
-        public IEnumerable<Core.Entities.ProcessModel.Step> Steps;
 
+        private IEnumerable<Core.Entities.Process.Step> _steps;
+        private int productId;
+        public IEnumerable<Core.Entities.ProcessModel.Step> Steps
+        {
+            get
+            {
+                if (_steps != null)
+                {
+                    return _steps;
+                }
+                _steps = _processAppService.GetAllStepsEnablesByProduct(productId);
+                return _steps;
+            }
+        }
+
+        private readonly IProcessAppService _processAppService;
+
+        public CustomProcessFlowStore(IProcessAppService processAppService)
+        {
+            _processAppService = processAppService;
+        }
 
         public void TrackingStep(IProcessFlowArgument argument)
         {
@@ -36,6 +57,7 @@ namespace Application.Main.Implementation.ProcessFlow
 
         public async Task<Core.Entities.ProcessModel.Step> GetNextStep(IProcessFlowArgument argument, StepType stepType)
         {
+            productId = argument.Execution.ProductId;
             var currentstep = await GetCurrentStep(argument);
             return
                 Steps.OrderBy(s => s.Order)

@@ -40,7 +40,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IProcessFlowManager, ColpatriaProcessFlowManager>();
             container.RegisterType<IProcessFlowArgument, ProcessFlowArgument>();
             container.RegisterType<IProcessFlowStore, CustomProcessFlowStore>();
-
+            container.RegisterType<IProcessAppService, ProcessAppService>();
             container.RegisterType<ISaveFieldsAppService, SaveFieldsAppService>();
 
             //Config Steps

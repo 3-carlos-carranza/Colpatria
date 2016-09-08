@@ -88,6 +88,7 @@
     <Compile Include="ProcessFlow\Responses\RedirectResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowModalResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
+    <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Step\EvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />

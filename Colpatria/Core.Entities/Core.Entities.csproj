@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Evidente\Answer.cs" />
     <Compile Include="Evidente\AnswerRequest.cs" />
     <Compile Include="Evidente\AnswerResponse.cs" />
     <Compile Include="Evidente\AnswerSettings.cs" />
@@ -56,11 +55,13 @@
     <Compile Include="Evidente\BaseSettings.cs" />
     <Compile Include="Evidente\ExpeditionDate.cs" />
     <Compile Include="Evidente\Identification.cs" />
+    <Compile Include="Evidente\OptionsAnswer.cs" />
     <Compile Include="Evidente\Question.cs" />
     <Compile Include="Evidente\QuestionsRequest.cs" />
     <Compile Include="Evidente\QuestionsResponse.cs" />
     <Compile Include="Evidente\QuestionsSettings.cs" />
     <Compile Include="Evidente\QuestionsSettingsBuilder.cs" />
+    <Compile Include="Evidente\SelectAnswer.cs" />
     <Compile Include="Evidente\ValidateUserSettings.cs" />
     <Compile Include="Evidente\ValidateUserSettingsBuilder.cs" />
     <Compile Include="Evidente\ValidationRequest.cs" />

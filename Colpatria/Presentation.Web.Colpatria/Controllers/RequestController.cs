@@ -109,7 +109,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return View();
         }
 
-        public ActionResult FormAsks()
+        public ActionResult FormQuestions()
         {
             return View();
         }

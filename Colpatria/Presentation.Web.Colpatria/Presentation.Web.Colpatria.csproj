@@ -857,7 +857,7 @@
     <Content Include="Scripts\kendo\2014.3.1119\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2014.3.1119\kendo.window.min.js.map" />
     <Content Include="Views\Request\TermsAndConditions.cshtml" />
-    <Content Include="Views\Request\FormAsks.cshtml" />
+    <Content Include="Views\Request\FormQuestions.cshtml" />
     <Content Include="Views\Request\RequestAproved.cshtml" />
     <Content Include="Views\Request\FinalSummary.cshtml" />
     <Content Include="Views\Request\_SummaryData.cshtml" />
@@ -872,6 +872,7 @@
     <Content Include="Views\Requests\_SummaryData.cshtml" />
     <Content Include="Views\Request\EmailRequest.cshtml" />
     <Content Include="Views\Request\Validation.cshtml" />
+    <Content Include="Views\Request\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

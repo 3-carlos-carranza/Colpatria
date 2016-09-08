@@ -16,7 +16,9 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public HomeController(ILoggingAppService loggingAppService, 
             IProcessFlowArgument processFlowArgument, 
-            IProcessFlowService processFlowService) : base(processFlowArgument, processFlowService)
+            IProcessFlowService processFlowService,
+            ISubmitFormArgument submitFormStepArgument) 
+            : base(processFlowArgument, processFlowService, submitFormStepArgument)
         {
             _loggingAppService = loggingAppService;
             this._processFlowArgument = processFlowArgument;

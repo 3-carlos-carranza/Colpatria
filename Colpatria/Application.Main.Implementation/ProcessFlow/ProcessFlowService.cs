@@ -9,7 +9,7 @@ using Application.Main.Definition.Steps;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Core.Entities.SQL.Enumerations;
 using Core.Entities.SQL.Process;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow
@@ -36,6 +36,7 @@ namespace Application.Main.Implementation.ProcessFlow
 
         public async Task<IStepResponse> RunFlow(IProcessFlowArgument processFlowArgument)
         {
+            //Creo la solicitud
             InitializeStepArgument(processFlowArgument);
 
             var step = processFlowArgument.StepArgument.Execution.CurrentStepId;
@@ -64,6 +65,8 @@ namespace Application.Main.Implementation.ProcessFlow
 
             if (processFlowArgument.StepArgument.Execution == null)
             {
+                var submitFormArgument = processFlowArgument.StepArgument as SubmitFormArgument;
+                var c = submitFormArgument?.Form.ToList();
                 var request = new Execution
                 {
                     CreateDate = DateTime.UtcNow,

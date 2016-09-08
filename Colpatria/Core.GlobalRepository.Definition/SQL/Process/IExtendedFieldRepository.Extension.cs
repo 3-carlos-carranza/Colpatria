@@ -3,7 +3,7 @@ using Core.Entities.SQL.Process;
 using Crosscutting.Common.Tools;
 using Crosscutting.Common.Tools.DataType;
 
-namespace Core.GlobalRepository.Definition.SQL.Process
+namespace Core.GlobalRepository.SQL.Process
 {
     public partial interface IExtendedFieldRepository
     {

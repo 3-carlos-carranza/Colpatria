@@ -2,7 +2,7 @@
 using System.Linq;
 using Application.Main.Definition;
 using Core.Entities.SQL.Process;
-using Core.GlobalRepository.Definition.SQL.Process;
+using Core.GlobalRepository.SQL.Process;
 
 namespace Application.Main.Implementation
 {

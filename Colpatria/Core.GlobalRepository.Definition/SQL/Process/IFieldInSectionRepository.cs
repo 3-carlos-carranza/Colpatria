@@ -1,7 +1,7 @@
 
 using Data.Common.Definition;
 
-namespace Core.GlobalRepository.Definition.SQL.Process
+namespace Core.GlobalRepository.SQL.Process
 {
     
     

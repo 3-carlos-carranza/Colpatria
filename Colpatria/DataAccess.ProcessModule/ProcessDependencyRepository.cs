@@ -1,4 +1,4 @@
-﻿using Core.GlobalRepository.Definition.SQL.Process;
+﻿using Core.GlobalRepository.SQL.Process;
 using DataAccess.ProcessModule.Repository;
 using DataAccess.ProcessModule.UnitOfWork;
 using Microsoft.Practices.Unity;

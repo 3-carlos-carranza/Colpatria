@@ -7,6 +7,7 @@ using Application.Main.Definition;
 using Application.Main.Definition.Arguments;
 using Core.DataTransferObject.SQL;
 using Core.Entities.SQL.User;
+using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Presentation.Web.Colpatria.Models;
 
@@ -17,8 +18,9 @@ namespace Presentation.Web.Colpatria.Controllers
         private readonly IUserAppService _userAppService;
 
         public RequestController(IProcessFlowArgument processFlowArgument,
-            IProcessFlowService processFlowService, IUserAppService userAppService) :
-                base(processFlowArgument, processFlowService)
+            IProcessFlowService processFlowService, IUserAppService userAppService,
+            ISubmitFormArgument submitFormStepArgument) :
+                base(processFlowArgument, processFlowService, submitFormStepArgument)
         {
             _userAppService = userAppService;
         }
@@ -30,10 +32,12 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Register(UserViewModel collection)
+        public async Task<ActionResult> Register(FormCollection collection)
         {
-            var user = await _userAppService.FindAsync(collection.Identification, collection.Identification);
-            var nuser = MappingUser(collection);
+            var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
+
+            var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
+            var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
 
             if (user == null)
             {
@@ -48,7 +52,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var usercreated = new IdentityResult();
             if (nuser.IsNewUser)
             {
-                usercreated = await _userAppService.CreateAsync(nuser, collection.Identification);
+                usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification);
             }
             if (!usercreated.Succeeded && usercreated.Errors.Any()) return View("Index");
             var identity =
@@ -76,28 +80,11 @@ namespace Presentation.Web.Colpatria.Controllers
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
 
-            //En desarrollo
+            ProcessFlowArgument.StepArgument = (StepArgument)
+                        SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
             dynamic stepresult = await ExecuteFlow(identity, pages);
             return stepresult;
         }
-
-        #region Mapping User
-
-        public User MappingUser(UserViewModel collection) => new User
-        {
-            FirstName = collection.FirstName.Split(' ')[0],
-            MiddleName = collection.FirstName.Split(' ')[1],
-            LastName = collection.FirstLastName,
-            SecondLastName = collection.SecondLastName,
-            IdentificationType = collection.IdentificationType,
-            Identification = collection.Identification,
-            DateOfExpedition = collection.DateOfExpedition,
-            Email = collection.Email,
-            PhoneNumber = collection.Telephone,
-            UserName = collection.Identification
-        };
-
-        #endregion
 
         public ActionResult TermsAndConditions()
         {

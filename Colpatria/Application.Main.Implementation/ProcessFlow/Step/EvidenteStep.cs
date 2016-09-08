@@ -1,39 +1,27 @@
-#region Signature
-
-//   -----------------------------------------------------------------------
-//   <copyright file=EvidenteStep.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-07  - 3:26 p. m.</Date>
-//   <Update> 2016-09-08 - 11:46 a. m.</Update>
-//   -----------------------------------------------------------------------
-
-#endregion
-
-#region
-
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Definition.ProcessFlow.Api.Steps;
-#endregion
+using Core.Entities.Evidente;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class EvidenteStep : BaseStep, IEvidenteStep
     {
-        private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
-        private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
         private readonly IEvidenteAppService _evidenteAppService;
+        private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
+        private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
+
+        public EvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
             _questionsSettingsBuilder = new QuestionsSettingsBuilder();
         }
-
         public int SectionId { get; set; }
         public int StepId { get; set; }
         public string Name => GetType().Name;
@@ -64,10 +52,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var questionsResponse =
                 _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
-                        .WithTypeOfDocument("1")
-                        .WithValidationNumber(1)
-                        .WithExecutionId(stepArgument.Execution.Id)
-                        .Build());
+                    .WithTypeOfDocument("1")
+                    .WithValidationNumber(1)
+                    .WithExecutionId(argument.Execution.Id)
+                    .Build());
 
             if (questionsResponse.MaximumAttemptsPerDay)
             {
@@ -82,9 +70,8 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             {
                 //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             }
-            
-            throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
 
+            throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,

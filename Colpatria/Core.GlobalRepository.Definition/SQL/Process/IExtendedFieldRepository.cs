@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IExtendedFieldRepository : IRepository<Entities.SQL.Process.ExtendedField>
+    public  partial interface IExtendedFieldRepository : IRepository<Entities.Process.ExtendedField>
     {
      
     

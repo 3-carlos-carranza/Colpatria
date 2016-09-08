@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Main.Definition.Responses;
-using Application.Main.Definition.Steps;
-using Core.Entities.SQL.Enumerations;
-using Core.Entities.SQL.Process;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Application.Main.Definition.ProcessFlow.Api;
+using Core.Entities.Enumerations;
+using Core.Entities.ProcessModel;
 using Core.GlobalRepository.SQL.Process;
 
 namespace Application.Main.Implementation.ProcessFlow.Step

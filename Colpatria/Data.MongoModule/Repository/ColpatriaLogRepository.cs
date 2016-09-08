@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Core.Entities.Mongo;
+using Core.Entities.Logging;
 using Core.GlobalRepository.Mongo;
 using MongoRepository;
 

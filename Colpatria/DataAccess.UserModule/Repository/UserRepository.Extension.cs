@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Entities.SQL.User;
+using Core.Entities.User;
 
 namespace DataAccess.UserModule.Repository
 {

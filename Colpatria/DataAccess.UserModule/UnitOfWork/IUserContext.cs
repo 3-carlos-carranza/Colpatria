@@ -11,7 +11,7 @@
 namespace DataAccess.UserModule.UnitOfWork
 {
     using System.Data.Entity;
-    using Core.Entities.SQL.User;
+    using Core.Entities.User;
     using Data.Common.Definition;
     
     public partial interface IUserContext : IQueryableUnitOfWork

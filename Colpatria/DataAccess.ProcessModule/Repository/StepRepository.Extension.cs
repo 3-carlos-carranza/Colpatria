@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Core.Entities.SQL.Process;
+using Core.Entities.Process;
 
 namespace DataAccess.ProcessModule.Repository
 {

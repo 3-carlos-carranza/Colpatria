@@ -11,7 +11,7 @@
 namespace DataAccess.ProcessModule.UnitOfWork
 {
     using System.Data.Entity;
-    using Core.Entities.SQL.Process;
+    using Core.Entities.Process;
     using Data.Common.Definition;
     
     public partial interface IProcessContext : IQueryableUnitOfWork

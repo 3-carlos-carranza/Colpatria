@@ -1,4 +1,4 @@
-﻿using Core.DataTransferObject.SQL;
+﻿using Core.DataTransferObject.Vib;
 
 namespace Application.Main.Definition.Arguments
 {

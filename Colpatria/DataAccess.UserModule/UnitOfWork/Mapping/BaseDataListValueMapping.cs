@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class BaseDataListValueMapping:EntityTypeConfiguration<Core.Entities.SQL.User.BaseDataListValue>
+    public partial class BaseDataListValueMapping:EntityTypeConfiguration<Core.Entities.User.BaseDataListValue>
     {
         
         public BaseDataListValueMapping()

@@ -1,15 +1,28 @@
-﻿using Application.Main.Definition.Responses;
-using Core.Entities.SQL.Enumerations;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=ErrorResponse.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-05  - 11:34 a. m.</Date>
+//   <Update> 2016-09-08 - 2:22 p. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Core.Entities.ProcessModel;
+
+#endregion
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
     public class ErrorResponse : IStepResponse
     {
-        public long ProductId { get; set; }
-        public long ExecutionId { get; set; }
-        public int PageId { get; set; }
-        public int SectionId { get; set; }
-        public string Code { get; set; }
-        public ExecutionState ExecutionState { get; set; }
+        public Execution Execution { get; set; }
+        public ResponseDetail ResponseDetail { get; set; }
     }
 }

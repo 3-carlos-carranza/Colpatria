@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
 
-namespace Core.GlobalRepository.Definition.SQL.User
+namespace Core.GlobalRepository.SQL.User
 {
     public partial interface IUserRepository : 
-        IUserPasswordStore<Entities.SQL.User.User, long>, 
-        IUserEmailStore<Entities.SQL.User.User, long>,  
-        IUserRoleStore<Entities.SQL.User.User, long>
+        IUserPasswordStore<Entities.User.User, long>, 
+        IUserEmailStore<Entities.User.User, long>,  
+        IUserRoleStore<Entities.User.User, long>
     {
     }
 }

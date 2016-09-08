@@ -1,33 +1,46 @@
-﻿using System.Collections.Generic;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=BaseController.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
+//   <Update> 2016-09-08 - 12:09 p. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Application.Main.Definition;
-using Application.Main.Definition.Arguments;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Implementation.ProcessFlow.Arguments;
-using Core.DataTransferObject.SQL;
-using Core.Entities.SQL.Process;
+using Core.Entities.Process;
+using Core.Entities.User;
 using Crosscutting.Common.Tools.DataType;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+
+#endregion
 
 namespace Presentation.Web.Colpatria.Controllers
 {
     public class BaseController : Controller
     {
         public IProcessFlowArgument ProcessFlowArgument;
-        public IProcessFlowService ProcessFlowService;
-        public ISubmitFormArgument SubmitFormArgument;
+        public readonly IProcessFlowManager ProcessFlowManager;
 
         public BaseController(IProcessFlowArgument processFlowArgument,
-            IProcessFlowService processFlowService,
-            ISubmitFormArgument submitFormArgument)
+            IProcessFlowManager processFlowManager)
         {
             ProcessFlowArgument = processFlowArgument;
-            ProcessFlowService = processFlowService;
-            SubmitFormArgument = submitFormArgument;
+            ProcessFlowManager = processFlowManager;
         }
 
         public long ExecutionId
@@ -35,7 +48,7 @@ namespace Presentation.Web.Colpatria.Controllers
             get
             {
                 //Get the current claims principal
-                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var identity = (ClaimsPrincipal) Thread.CurrentPrincipal;
                 var data = identity.Claims.FirstOrDefault(c => c.Type == "ExecutionId")?.Value;
                 return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
             }
@@ -46,7 +59,7 @@ namespace Presentation.Web.Colpatria.Controllers
             get
             {
                 //Get the current claims principal
-                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var identity = (ClaimsPrincipal) Thread.CurrentPrincipal;
                 var data = identity.Claims.Where(c => c.Type == "Pages").Select(c => c.Value).FirstOrDefault();
                 if (!string.IsNullOrEmpty(data))
                 {
@@ -61,17 +74,18 @@ namespace Presentation.Web.Colpatria.Controllers
             get
             {
                 //Get the current claims principal
-                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var identity = (ClaimsPrincipal) Thread.CurrentPrincipal;
                 var data = identity.Claims.Where(c => c.Type == "FullName").Select(c => c.Value).FirstOrDefault();
                 return data;
             }
         }
+
         public string Code
         {
             get
             {
                 //Get the current claims principal
-                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var identity = (ClaimsPrincipal) Thread.CurrentPrincipal;
                 var data = identity.Claims.Where(c => c.Type == "Code").Select(c => c.Value).FirstOrDefault();
                 return data;
             }
@@ -79,8 +93,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public async Task<dynamic> ExecuteFlow(ClaimsIdentity identity = null, IEnumerable<Page> pages = null)
         {
-            dynamic stepresult = await ProcessFlowService.RunFlow(ProcessFlowArgument);
-
+            dynamic stepresult = await ProcessFlowManager.StartFlow(ProcessFlowArgument,null);
             return stepresult;
         }
 
@@ -88,18 +101,16 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             ProcessFlowArgument.IsSubmitting = true;
             var userId = long.Parse(User.Identity.GetUserId());
-            ProcessFlowArgument.ExecutionArgument = new ExecutionArgument
+            ProcessFlowArgument = new ProcessFlowArgument
             {
-                IsPost = false,
-                UserId = userId,
-                UserName = User.Identity.GetUserName(),
-                ProductId = 1
+              User = new User
+              {
+                  Id = userId
+              }
             };
-            ProcessFlowArgument.StepArgument =
-                (StepArgument)SubmitFormArgument.Make(form, User.Identity.GetUserName(), 1);
             if (ExecutionId != 0)
             {
-                ProcessFlowArgument.StepArgument.Execution = new Execution
+                ProcessFlowArgument.Execution = new Execution
                 {
                     Id = ExecutionId,
                     UserId = userId

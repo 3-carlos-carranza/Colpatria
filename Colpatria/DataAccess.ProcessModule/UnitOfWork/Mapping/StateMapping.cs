@@ -7,7 +7,7 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL.Process;
+using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
@@ -15,7 +15,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class StateMapping:EntityTypeConfiguration<Core.Entities.SQL.Process.State>
+    public partial class StateMapping:EntityTypeConfiguration<Core.Entities.Process.State>
     {
         
         public StateMapping()

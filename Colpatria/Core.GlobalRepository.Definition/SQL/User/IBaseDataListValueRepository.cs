@@ -1,14 +1,14 @@
 
 using Data.Common.Definition;
 
-namespace Core.GlobalRepository.Definition.SQL.User
+namespace Core.GlobalRepository.SQL.User
 {
     
     
     
     
     
-    public  partial interface IBaseDataListValueRepository : IRepository<Entities.SQL.User.BaseDataListValue>
+    public  partial interface IBaseDataListValueRepository : IRepository<Entities.User.BaseDataListValue>
     {
      
     

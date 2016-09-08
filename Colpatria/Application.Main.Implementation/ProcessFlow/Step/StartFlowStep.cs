@@ -1,18 +1,33 @@
-﻿using System;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=StartFlowStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
+//   <Update> 2016-09-08 - 11:49 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System;
+using System.Threading;
 using System.Threading.Tasks;
-using Application.Main.Definition.Arguments;
-using Application.Main.Definition.Responses;
-using Application.Main.Definition.Steps;
-using Core.Entities.SQL.Enumerations;
-using Core.GlobalRepository.SQL.Process;
+using Application.Main.Definition.MyCustomProcessFlow.Steps;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Application.Main.Definition.ProcessFlow.Api.Steps;
+
+#endregion
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class StartFlowStep : BaseStep, IStartFlowStep
     {
-        public StartFlowStep(IExecutionRepository executionRepository, IStepRepository stepRepository,
-            IExtendedFieldRepository extendedFieldRepository)
-            : base(executionRepository, stepRepository, extendedFieldRepository)
+        public StartFlowStep(IProcessFlowStore store) : base(store)
         {
         }
 
@@ -20,17 +35,19 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public int StepId { get; set; }
         public string Name => GetType().Name;
 
-        public async Task<IStepResponse> Advance(IStepArgument stepArgument)
+        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-            SetSteps(stepArgument.Steps);
-
-            MakeCustomProcess(stepArgument);
-
-            return ValidateNextStep(stepArgument.Execution, StepType.OnSuccess) ??
-                   await (await OnSuccess(stepArgument.Execution)).Advance(stepArgument);
+            MakeCustomProcess(argument);
+            return await (await OnSucess(argument)).Advance(argument);
         }
 
-        public void MakeCustomProcess(IStepArgument stepArgument)
+        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
+            CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MakeCustomProcess(IProcessFlowArgument stepArgument)
         {
             throw new NotImplementedException();
         }

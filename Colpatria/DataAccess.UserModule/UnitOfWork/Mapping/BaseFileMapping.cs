@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class BaseFileMapping:EntityTypeConfiguration<Core.Entities.SQL.User.BaseFile>
+    public partial class BaseFileMapping:EntityTypeConfiguration<Core.Entities.User.BaseFile>
     {
         
         public BaseFileMapping()

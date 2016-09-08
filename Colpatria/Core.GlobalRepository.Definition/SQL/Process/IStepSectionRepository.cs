@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IStepSectionRepository : IRepository<Entities.SQL.Process.StepSection>
+    public  partial interface IStepSectionRepository : IRepository<Entities.Process.StepSection>
     {
      
     

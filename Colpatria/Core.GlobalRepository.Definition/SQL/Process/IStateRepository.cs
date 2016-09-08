@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IStateRepository : IRepository<Entities.SQL.Process.State>
+    public  partial interface IStateRepository : IRepository<Entities.Process.State>
     {
      
     

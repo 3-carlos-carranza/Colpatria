@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IExtendedListRepository : IRepository<Entities.SQL.Process.ExtendedList>
+    public  partial interface IExtendedListRepository : IRepository<Entities.Process.ExtendedList>
     {
      
     

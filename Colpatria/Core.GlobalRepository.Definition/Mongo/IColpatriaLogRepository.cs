@@ -1,4 +1,4 @@
-﻿using Core.Entities.Mongo;
+﻿using Core.Entities.Logging;
 using MongoRepository;
 
 namespace Core.GlobalRepository.Mongo

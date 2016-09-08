@@ -82,9 +82,9 @@ foreach (var complex in ItemCollection.GetItems<ComplexType>().OrderBy(e => e.Na
     fileManager.StartNewFile(complex.Name + ".cs");
     BeginNamespace(namespaceName, code);
 #>
-using Core.GlobalRepository.Definition.SQL.User;
+using Core.GlobalRepository.Definition.User;
 using DataAccess.UserModule.UnitOfWork;
-using Core.Entities.SQL.User;
+using Core.Entities.User;
 <#=Accessibility.ForType(complex)#> partial class <#=code.Escape(complex)#>
 {
 <#
@@ -128,8 +128,8 @@ void WriteHeader(EntityFrameworkTemplateFileManager fileManager)
 {
     fileManager.StartHeader();
 #>
-using Core.GlobalRepository.Definition.SQL.User;
-using Core.Entities.SQL.User;
+using Core.GlobalRepository.SQL.User;
+using Core.Entities.User;
 using Data.Common.Implementation;
 using DataAccess.UserModule.UnitOfWork;
 

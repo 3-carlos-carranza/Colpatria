@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class UserMapping:EntityTypeConfiguration<Core.Entities.SQL.User.User>
+    public partial class UserMapping:EntityTypeConfiguration<Core.Entities.User.User>
     {
         
         public UserMapping()

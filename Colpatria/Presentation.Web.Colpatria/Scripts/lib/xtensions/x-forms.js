@@ -274,7 +274,7 @@ jQuery.extend({
                         $("#x_" + (x + 1)).slideDown();
                         $(el).slideUp();
                     }else{
-                        console.log('Ninguna opción seleccionada');
+                        console.log('Ninguna opciï¿½n seleccionada');
                     }
 
                 });

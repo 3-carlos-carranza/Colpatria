@@ -17,8 +17,8 @@ namespace Presentation.Web.Colpatria.Controllers
         private readonly IUserAppService _userAppService;
 
         public RequestController(IProcessFlowArgument processFlowArgument,
-            IProcessFlowService processFlowService, IUserAppService userAppService) :
-                base(processFlowArgument, processFlowService)
+            IProcessFlowService processFlowService, IUserAppService userAppService, ISubmitFormArgument submitFormStepArgument) :
+                base(processFlowArgument, processFlowService, submitFormStepArgument)
         {
             _userAppService = userAppService;
         }

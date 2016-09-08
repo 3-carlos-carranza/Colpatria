@@ -92,7 +92,7 @@
                         <span class="input input--hoshi">
                             <input name="Expedition" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="Expedition" placeholder="" value="">
                             <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Expedition">
-                                <span class="input__label-content input__label-content--hoshi input-block-level">Lugar de expediciòn de Documento<span class="symbol required"></span></span>
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Lugar de expedición de Documento<span class="symbol required"></span></span>
                             </label>
                         </span>
                     </div>
@@ -132,14 +132,14 @@
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-3 space">
-                    <input type="checkbox" class="grey validate[required]" value="" name="" checked="@(ViewBag.Checked)">
+                    <input name="TermsAndConditions" type="checkbox" class="grey validate[required]" checked="checked">
                     <label class="check">
-                        Acepto términos y condiciones <a class="vermas" href="@Url.Action("TermsAndConditions", "Requests")">VER+</a>
+                        Acepto términos y condiciones <a class="vermas" href="#" id="terms-tarjeta">VER+</a>
                     </label>
                 </div>
                 <div class="col-xs-12 col-md-3 space">
                     <button type="submit" class="btn btn-danger pull-right enviar">
-                        Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                        Siguiente
                     </button>
                 </div>
                         <div style="clear: both"></div>

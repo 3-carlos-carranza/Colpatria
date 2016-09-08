@@ -157,6 +157,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Site2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -888,10 +890,6 @@
       <Project>{D4B7DD82-31C4-4013-98D1-F02D92E6BFA6}</Project>
       <Name>Application.Main.Definition</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Application.Main.Implementation\Application.Main.Implementation.csproj">
-      <Project>{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}</Project>
-      <Name>Application.Main.Implementation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
       <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
       <Name>Core.DataTransferObject</Name>
@@ -905,7 +903,7 @@
       <Name>Crosscutting.Common.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crusscutting.DependencyInjectionFactory\Crosscutting.DependencyInjectionFactory.csproj">
-      <Project>{dc094f7c-1264-420e-9b4e-a2b83a63ad48}</Project>
+      <Project>{DC094F7C-1264-420E-9B4E-A2B83A63AD48}</Project>
       <Name>Crosscutting.DependencyInjectionFactory</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crusscutting.Mappers\Crosscutting.Mappers.csproj">

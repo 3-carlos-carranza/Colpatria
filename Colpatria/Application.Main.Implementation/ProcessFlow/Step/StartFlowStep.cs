@@ -30,9 +30,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public StartFlowStep(IProcessFlowStore store) : base(store)
         {
         }
-
-        public int SectionId { get; set; }
-        public int StepId { get; set; }
         public string Name => GetType().Name;
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)

@@ -18,6 +18,7 @@ namespace DataAccess.ProcessModule.UnitOfWork
     {
         DbSet<Execution> Execution { get; set; }
         DbSet<ExecutionApplicant> ExecutionApplicant { get; set; }
+        DbSet<ExecutionStep> ExecutionStep { get; set; }
         DbSet<ExtendedDataList> ExtendedDataList { get; set; }
         DbSet<ExtendedField> ExtendedField { get; set; }
         DbSet<ExtendedFieldValue> ExtendedFieldValue { get; set; }

@@ -31,10 +31,8 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             _stepRepository = stepRepository;
         }
 
-        public IEnumerable<Core.Entities.Process.Step> GetAllStepsEnablesByProduct(int productId)
+        public IEnumerable<Core.Entities.Process.Step> GetAllStepsEnablesByProduct(long productId)
         {
-
-
             return _stepRepository.GetAllStepsEnablesByProduct(productId);
         }
     }

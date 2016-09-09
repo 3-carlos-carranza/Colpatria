@@ -20,7 +20,7 @@ namespace Application.Main.Implementation.ProcessFlow.Arguments
         //    };
         //}
 
-        public Execution Execution { get; set; }
+        public ExecutionFlow Execution { get; set; }
         public IProcessFlowUser User { get; set; }
         public bool IsSubmitting { get; set; }
         public IEnumerable<IStep> Steps { get; set; }

@@ -20,7 +20,9 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         public ExecutionMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     
@@ -79,6 +81,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         
     
+        
         
         
         

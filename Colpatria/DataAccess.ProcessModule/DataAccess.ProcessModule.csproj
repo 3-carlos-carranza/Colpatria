@@ -79,6 +79,9 @@
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ExecutionRepository.Extension.cs" />
+    <Compile Include="Repository\ExecutionStepRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\ExtendedDataListRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
@@ -149,6 +152,9 @@
       <DependentUpon>Process.Mapping.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\Mapping\ExecutionMapping.cs">
+      <DependentUpon>Process.Mapping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\Mapping\ExecutionStepMapping.cs">
       <DependentUpon>Process.Mapping.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\Mapping\ExtendedDataListMapping.cs">

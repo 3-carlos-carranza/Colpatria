@@ -25,6 +25,7 @@ namespace DataAccess.ProcessModule.UnitOfWork
     
         public virtual DbSet<Execution> Execution { get; set; }
         public virtual DbSet<ExecutionApplicant> ExecutionApplicant { get; set; }
+        public virtual DbSet<ExecutionStep> ExecutionStep { get; set; }
         public virtual DbSet<ExtendedDataList> ExtendedDataList { get; set; }
         public virtual DbSet<ExtendedField> ExtendedField { get; set; }
         public virtual DbSet<ExtendedFieldValue> ExtendedFieldValue { get; set; }
@@ -44,9 +45,11 @@ namespace DataAccess.ProcessModule.UnitOfWork
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
          base.OnModelCreating(modelBuilder);
+
     
         modelBuilder.Configurations.Add(new ExecutionMapping());
         modelBuilder.Configurations.Add(new ExecutionApplicantMapping());
+        modelBuilder.Configurations.Add(new ExecutionStepMapping());
         modelBuilder.Configurations.Add(new ExtendedDataListMapping());
         modelBuilder.Configurations.Add(new ExtendedFieldMapping());
         modelBuilder.Configurations.Add(new ExtendedFieldValueMapping());

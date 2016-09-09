@@ -20,7 +20,9 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         public SectionMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     

@@ -29,8 +29,8 @@ namespace Application.Main.Implementation.ProcessFlow
     {
 
         private IEnumerable<Core.Entities.Process.Step> _steps;
-        private int productId;
-        public IEnumerable<Core.Entities.ProcessModel.Step> Steps
+        private long productId;
+        public IEnumerable<Core.Entities.ProcessModel.StepFlow> Steps
         {
             get
             {
@@ -55,8 +55,9 @@ namespace Application.Main.Implementation.ProcessFlow
             Console.WriteLine("Entra al Paso " + argument.Execution.CurrentStepId);
         }
 
-        public async Task<Core.Entities.ProcessModel.Step> GetNextStep(IProcessFlowArgument argument, StepType stepType)
+        public async Task<Core.Entities.ProcessModel.StepFlow> GetNextStep(IProcessFlowArgument argument, StepType stepType)
         {
+
             productId = argument.Execution.ProductId;
             var currentstep = await GetCurrentStep(argument);
             return
@@ -64,12 +65,12 @@ namespace Application.Main.Implementation.ProcessFlow
                     .First(s => s.Order == (currentstep.Order + 1) && s.StepType == (int) stepType);
         }
 
-        public async Task<Core.Entities.ProcessModel.Step> GetCurrentStep(IProcessFlowArgument argument)
+        public async Task<Core.Entities.ProcessModel.StepFlow> GetCurrentStep(IProcessFlowArgument argument)
         {
             return Steps.First(s => s.Id == argument.Execution.CurrentStepId);
         }
 
-        public async Task<Core.Entities.ProcessModel.Step> GetNextStepAsync(IProcessFlowArgument argument,
+        public async Task<Core.Entities.ProcessModel.StepFlow> GetNextStepAsync(IProcessFlowArgument argument,
             StepType stepType,
             CancellationToken cancellationToken = new CancellationToken())
         {

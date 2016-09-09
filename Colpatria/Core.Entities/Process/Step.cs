@@ -18,6 +18,7 @@ namespace Core.Entities.Process
         public Step()
         {
             this.Execution = new HashSet<Execution>();
+            this.ExecutionStep = new HashSet<ExecutionStep>();
             this.StepSection = new HashSet<StepSection>();
         }
     
@@ -30,12 +31,14 @@ namespace Core.Entities.Process
         public Nullable<int> ParentId { get; set; }
         public Nullable<int> Order { get; set; }
         public Nullable<bool> IsPre { get; set; }
-        public Nullable<int> StateId { get; set; }
+        public int StateId { get; set; }
         public bool Enable { get; set; }
         public int StepType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Execution> Execution { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExecutionStep> ExecutionStep { get; set; }
         public virtual Process Process { get; set; }
         public virtual State State { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

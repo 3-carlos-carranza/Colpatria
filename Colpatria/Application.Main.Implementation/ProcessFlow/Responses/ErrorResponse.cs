@@ -22,7 +22,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
 {
     public class ErrorResponse : IStepResponse
     {
-        public Execution Execution { get; set; }
-        public ResponseDetail ResponseDetail { get; set; }
+        public ExecutionFlow Execution { get; set; }
+        public ResponseDetailFlow ResponseDetail { get; set; }
     }
 }

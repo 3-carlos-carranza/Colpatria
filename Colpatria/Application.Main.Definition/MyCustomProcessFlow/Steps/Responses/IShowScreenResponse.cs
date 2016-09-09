@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core.Entities.Process;
+using Core.Entities.ProcessModel;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
@@ -7,6 +8,5 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
     {
         IShowScreenResponse Make { get; }
         IEnumerable<Page> Pages { get; set; }
-        //PageDetail PageDetail { get; set; }
     }
 }

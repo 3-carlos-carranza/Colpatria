@@ -5,7 +5,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
 {
     public interface IProcessFlowArgument
     {
-        Execution Execution { get; set; }
+        ExecutionFlow Execution { get; set; }
 
         IProcessFlowUser User { get; set; }
 

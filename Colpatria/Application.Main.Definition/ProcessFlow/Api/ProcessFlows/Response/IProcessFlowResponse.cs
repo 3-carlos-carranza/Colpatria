@@ -27,7 +27,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response
 {
     public interface IProcessFlowResponse
     {
-        Execution Execution { get; set; }
-        ResponseDetail ResponseDetail { get; set; }
+        ExecutionFlow Execution { get; set; }
+        ResponseDetailFlow ResponseDetail { get; set; }
     }
 }

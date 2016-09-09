@@ -41,7 +41,9 @@ foreach (EntityType entity in typeMapper.GetItemsToGenerate<EntityType>(itemColl
     
     public <#=schema+code.Escape(entity)#>Mapping()
     {
+	this.Map(s => s.MapInheritedProperties());
             // Primary Key
+			
 <#
     if (entity.KeyMembers.Count() == 1)
     {

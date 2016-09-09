@@ -22,6 +22,6 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
 {
     public interface IProcessAppService
     {
-        IEnumerable<Step> GetAllStepsEnablesByProduct(int productId);
+        IEnumerable<Step> GetAllStepsEnablesByProduct(long productId);
     }
 }

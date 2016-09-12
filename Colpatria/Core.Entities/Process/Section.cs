@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Core.Entities.ProcessModel;
+
 namespace Core.Entities.Process
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Section
+    public partial class Section :SectionFlow
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
@@ -28,7 +30,7 @@ namespace Core.Entities.Process
         public string Description { get; set; }
         public int Order { get; set; }
         public string NameAlias { get; set; }
-        public Nullable<bool> ReadOnly { get; set; }
+        public bool? ReadOnly { get; set; }
         public int Type { get; set; }
         public bool IsVisible { get; set; }
         public bool Enable { get; set; }
@@ -36,12 +38,9 @@ namespace Core.Entities.Process
         public string Action { get; set; }
         public string Controller { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Execution> Execution { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FieldInSection> FieldInSection { get; set; }
         public virtual Page Page { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StepSection> StepSection { get; set; }
     }
 }

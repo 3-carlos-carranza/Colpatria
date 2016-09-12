@@ -5,8 +5,8 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 1:57 p. m.</Date>
-//   <Update> 2016-09-08 - 1:57 p. m.</Update>
+//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
+//   <Update> 2016-09-12 - 11:47 a. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -20,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -27,10 +28,17 @@ namespace Application.Main.Implementation.ProcessFlow
 {
     public class CustomProcessFlowStore : IProcessFlowStore
     {
+        private readonly IProcessAppService _processAppService;
 
         private IEnumerable<Core.Entities.Process.Step> _steps;
         private long productId;
-        public IEnumerable<Core.Entities.ProcessModel.StepFlow> Steps
+
+        public CustomProcessFlowStore(IProcessAppService processAppService)
+        {
+            _processAppService = processAppService;
+        }
+
+        public IEnumerable<StepFlow> Steps
         {
             get
             {
@@ -43,34 +51,31 @@ namespace Application.Main.Implementation.ProcessFlow
             }
         }
 
-        private readonly IProcessAppService _processAppService;
-
-        public CustomProcessFlowStore(IProcessAppService processAppService)
-        {
-            _processAppService = processAppService;
-        }
-
         public void TrackingStep(IProcessFlowArgument argument)
         {
             Console.WriteLine("Entra al Paso " + argument.Execution.CurrentStepId);
         }
 
-        public async Task<Core.Entities.ProcessModel.StepFlow> GetNextStep(IProcessFlowArgument argument, StepType stepType)
+        public StepFlow GetNextStep(IProcessFlowArgument argument, StepType stepType)
         {
-
             productId = argument.Execution.ProductId;
-            var currentstep = await GetCurrentStep(argument);
-            return
-                Steps.OrderBy(s => s.Order)
-                    .First(s => s.Order == (currentstep.Order + 1) && s.StepType == (int) stepType);
+            var currentstep = GetCurrentStep(argument);
+            if (currentstep != null)
+            {
+                return
+                    Steps.OrderBy(s => s.Order)
+                        .FirstOrDefault(s => s.Order == (currentstep.Order + 1) && s.StepType == (int) stepType);
+            }
+            return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == (int) stepType);
         }
 
-        public async Task<Core.Entities.ProcessModel.StepFlow> GetCurrentStep(IProcessFlowArgument argument)
+        public StepFlow GetCurrentStep(IProcessFlowArgument argument)
         {
-            return Steps.First(s => s.Id == argument.Execution.CurrentStepId);
+            productId = argument.Execution.ProductId;
+            return Steps.FirstOrDefault(s => s.Id == argument.Execution.CurrentStepId);
         }
 
-        public async Task<Core.Entities.ProcessModel.StepFlow> GetNextStepAsync(IProcessFlowArgument argument,
+        public async Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument,
             StepType stepType,
             CancellationToken cancellationToken = new CancellationToken())
         {

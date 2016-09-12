@@ -54,6 +54,17 @@ namespace Presentation.Web.Colpatria.Controllers
             }
         }
 
+        public long ProductId
+        {
+            get
+            {
+                //Get the current claims principal
+                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var data = identity.Claims.FirstOrDefault(c => c.Type == "ProductId")?.Value;
+                return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
+            }
+        }
+
         public IEnumerable<Page> Pages
         {
             get

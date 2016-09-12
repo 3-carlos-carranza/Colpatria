@@ -25,6 +25,7 @@ using Core.Entities.Enumerations;
 using Core.Entities.Process;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.DataType;
+using StepType = Application.Main.Definition.ProcessFlow.Api.ProcessFlows.StepType;
 
 #endregion
 
@@ -39,14 +40,14 @@ namespace Application.Main.Implementation.ProcessFlow
         {
             _executionRepository = executionRepository;
         }
-
-        public new async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
-            Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
+        public override async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
+                   Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
         {
             InitializeArgument(arg);
             //arg.Steps = Steps;
-            return await base.StartFlow(arg,actionToStart);
+            return await base.StartFlow(arg, actionToStart);
         }
+       
 
         private void InitializeArgument(IProcessFlowArgument arg)
         {
@@ -56,7 +57,7 @@ namespace Application.Main.Implementation.ProcessFlow
             }
             if (arg.Execution.Id == 0)
             {
-                var stepFlow =(Core.Entities.Process.Step) Store.Steps.OrderByDescending(s => s.Order).First();
+                var stepFlow =((Core.Entities.Process.Step) Store.GetNextStep(arg,StepType.Success));
                 var request = new Execution
                 {
                     CreateDate = DateTime.UtcNow,

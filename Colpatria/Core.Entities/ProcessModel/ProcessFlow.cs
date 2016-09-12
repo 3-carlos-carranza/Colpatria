@@ -22,14 +22,14 @@ namespace Core.Entities.ProcessModel
 {
     public abstract class ProcessFlow
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime CreateDate { get; set; }
-        public int? CreatedBy { get; set; }
-        public int FinancialEntityId { get; set; }
-        public int FunctionaryAssignationProcess { get; set; }
-        public int ProcessType { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual DateTime CreateDate { get; set; }
+        public virtual int? CreatedBy { get; set; }
+        public virtual int FinancialEntityId { get; set; }
+        public virtual int FunctionaryAssignationProcess { get; set; }
+        public virtual int ProcessType { get; set; }
 
         //public virtual ICollection<StepFlow> Steps { get; set; } = new HashSet<StepFlow>();
     }

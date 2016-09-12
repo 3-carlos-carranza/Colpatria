@@ -45,7 +45,11 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             
             var step =  _store.GetNextStep(processFlowArgument, StepType.Success);
             processFlowArgument.Execution.CurrentStepId = step.Id;
-            var nextstep = processFlowArgument.Steps.First(s => s.Name == step.NameClientAlias);
+            var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
+            if (nextstep == null)
+            {
+               throw  new Exception("Not Find Next Step Success");
+            }
             return nextstep;
         }
 
@@ -53,7 +57,11 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
         {
             var step =  _store.GetNextStep(processFlowArgument, StepType.Error);
             processFlowArgument.Execution.CurrentStepId = step.Id;
-            var nextstep = processFlowArgument.Steps.First(s => s.Name == step.NameClientAlias);
+            var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
+            if (nextstep == null)
+            {
+                throw new Exception("Not Find Next Step Error");
+            }
             return nextstep;
         }
 

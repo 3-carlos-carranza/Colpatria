@@ -108,7 +108,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return stepresult;
         }
 
-        public void InitSetFormArguments(List<FieldValueOrder> form, bool ismanualrequest = false)
+        public void InitSetFormArguments(List<FieldValueOrder> form)
         {
             ProcessFlowArgument.IsSubmitting = true;
             var userId = long.Parse(User.Identity.GetUserId());
@@ -117,16 +117,13 @@ namespace Presentation.Web.Colpatria.Controllers
                 User = new User
                 {
                     Id = userId
+                },
+                Execution = new Execution
+                {
+                    ProductId = 1,
+                    Id = ExecutionId,
                 }
             };
-            if (ExecutionId != 0)
-            {
-                ProcessFlowArgument.Execution = new Execution
-                {
-                    Id = ExecutionId,
-                    UserId = userId
-                };
-            }
         }
     }
 }

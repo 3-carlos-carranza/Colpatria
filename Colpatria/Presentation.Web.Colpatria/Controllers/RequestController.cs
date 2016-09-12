@@ -75,25 +75,16 @@ namespace Presentation.Web.Colpatria.Controllers
             var identity =
                 await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;
-
-            //var submitFormStepArgument = SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
-
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
-
-            ProcessFlowArgument.Execution = new Execution
-            {
-                UserId = long.Parse(identity.GetUserId()),
-                ProductId = 1
-            };
-
+            InitSetFormArguments(fields);
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
-
-            //ProcessFlowArgument.StepArgument = (StepArgument) SubmitFormArgument.Make(fields, identity.GetUserName(), 1);
+            
+            
             dynamic stepresult = await ExecuteFlow(identity, pages);
             return stepresult;
         }

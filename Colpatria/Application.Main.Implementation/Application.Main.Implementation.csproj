@@ -91,6 +91,7 @@
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Step\EvidenteStep.cs" />
+    <Compile Include="ProcessFlow\Step\ShowEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitFormStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

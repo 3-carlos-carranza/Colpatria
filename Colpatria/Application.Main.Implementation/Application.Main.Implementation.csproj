@@ -77,23 +77,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EvidenteAppService.cs" />
-    <Compile Include="DynamicAppService.cs" />
-    <Compile Include="LoggingAppService.cs" />
-    <Compile Include="ProcessFlow\ProcessFlowArgument.cs" />
-    <Compile Include="ProcessFlow\ProcessFlowService.cs" />
-    <Compile Include="ProcessFlow\Arguments\SubmitFormArgument.cs" />
+    <Compile Include="DependencyService.cs" />
+    <Compile Include="ProcessFlow\Services\EvidenteAppService.cs" />
+    <Compile Include="ProcessFlow\Services\DynamicAppService.cs" />
+    <Compile Include="ProcessFlow\Services\LoggingAppService.cs" />
+    <Compile Include="ProcessFlow\ColpatriaProcessFlowManager.cs" />
+    <Compile Include="ProcessFlow\Arguments\ProcessFlowArgument.cs" />
+    <Compile Include="ProcessFlow\CustomProcessFlowStore.cs" />
     <Compile Include="ProcessFlow\Responses\ErrorResponse.cs" />
     <Compile Include="ProcessFlow\Responses\RedirectResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowModalResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
-    <Compile Include="ProcessFlow\Services\SubmitFormAppService.cs" />
-    <Compile Include="ProcessFlow\Step\BaseStep.cs" />
+    <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
+    <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Step\EvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitFormStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserAppService.cs" />
+    <Compile Include="ProcessFlow\Services\UserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.Main.Definition\Application.Main.Definition.csproj">

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Core.DataTransferObject.Mongo;
-using Core.Entities.Mongo;
+using Core.DataTransferObject.Vib;
+using Core.Entities.Logging;
 
 namespace Crosscutting.Mappers
 {

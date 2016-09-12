@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IProcessRepository : IRepository<Entities.SQL.Process.Process>
+    public  partial interface IProcessRepository : IRepository<Entities.Process.Process>
     {
      
     

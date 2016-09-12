@@ -162,7 +162,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
       <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
-      <Name>Core.GlobalRepository.Definition</Name>
+      <Name>Core.GlobalRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>

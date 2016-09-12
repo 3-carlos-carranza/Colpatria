@@ -2,9 +2,9 @@
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-using Core.DataTransferObject.SQL;
-using Core.Entities.SQL.Enumerations;
-using Core.Entities.SQL.Process;
+using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
+using Core.Entities.Process;
 
 namespace DataAccess.ProcessModule.Repository
 {

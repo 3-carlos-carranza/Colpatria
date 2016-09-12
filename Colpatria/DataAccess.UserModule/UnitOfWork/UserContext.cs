@@ -9,7 +9,7 @@
 
 namespace DataAccess.UserModule.UnitOfWork
 {
-    using Core.Entities.SQL.User;
+    using Core.Entities.User;
     using System.Data.Entity;
     using DataAccess.UserModule.UnitOfWork.Mapping;
     

@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IExecutionApplicantRepository : IRepository<Entities.SQL.Process.ExecutionApplicant>
+    public  partial interface IExecutionApplicantRepository : IRepository<Entities.Process.ExecutionApplicant>
     {
      
     

@@ -7,7 +7,7 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL.Process;
+using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
@@ -15,12 +15,14 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class ExecutionApplicantMapping:EntityTypeConfiguration<Core.Entities.SQL.Process.ExecutionApplicant>
+    public partial class ExecutionApplicantMapping:EntityTypeConfiguration<Core.Entities.Process.ExecutionApplicant>
     {
         
         public ExecutionApplicantMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     

@@ -15,7 +15,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class RoleMapping:EntityTypeConfiguration<Core.Entities.SQL.User.Role>
+    public partial class RoleMapping:EntityTypeConfiguration<Core.Entities.User.Role>
     {
         
         public RoleMapping()

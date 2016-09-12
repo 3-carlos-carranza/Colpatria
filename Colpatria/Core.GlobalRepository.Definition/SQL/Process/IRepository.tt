@@ -25,7 +25,7 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 
 
 
-<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> partial interface I<#=code.Escape(entity)#><#=code.StringBefore(" : ", code.Escape(entity.BaseType))#>Repository : IRepository<Entities.SQL.Process.<#=code.Escape(entity)#>>
+<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> partial interface I<#=code.Escape(entity)#><#=code.StringBefore(" : ", code.Escape(entity.BaseType))#>Repository : IRepository<Entities.Process.<#=code.Escape(entity)#>>
 {
 <#
     

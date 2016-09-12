@@ -7,7 +7,7 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.SQL.Process;
+using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
@@ -15,12 +15,14 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class StepMapping:EntityTypeConfiguration<Core.Entities.SQL.Process.Step>
+    public partial class StepMapping:EntityTypeConfiguration<Core.Entities.Process.Step>
     {
         
         public StepMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     
@@ -53,7 +55,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 this.HasRequired(t => t.Process)
                     .WithMany(t => t.Step)
                     .HasForeignKey(d => d.ProcessId);
-                this.HasOptional(t => t.State)
+                this.HasRequired(t => t.State)
                     .WithMany(t => t.Step)
                     .HasForeignKey(d => d.StateId);
     
@@ -74,6 +76,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         
     
+        
         
         
         

@@ -8,7 +8,7 @@ namespace Core.GlobalRepository.SQL.Process
     
     
     
-    public  partial interface IExtendedFileRepository : IRepository<Entities.SQL.Process.ExtendedFile>
+    public  partial interface IExtendedFileRepository : IRepository<Entities.Process.ExtendedFile>
     {
      
     

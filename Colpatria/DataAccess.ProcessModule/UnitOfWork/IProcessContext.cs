@@ -11,13 +11,14 @@
 namespace DataAccess.ProcessModule.UnitOfWork
 {
     using System.Data.Entity;
-    using Core.Entities.SQL.Process;
+    using Core.Entities.Process;
     using Data.Common.Definition;
     
     public partial interface IProcessContext : IQueryableUnitOfWork
     {
         DbSet<Execution> Execution { get; set; }
         DbSet<ExecutionApplicant> ExecutionApplicant { get; set; }
+        DbSet<ExecutionStep> ExecutionStep { get; set; }
         DbSet<ExtendedDataList> ExtendedDataList { get; set; }
         DbSet<ExtendedField> ExtendedField { get; set; }
         DbSet<ExtendedFieldValue> ExtendedFieldValue { get; set; }

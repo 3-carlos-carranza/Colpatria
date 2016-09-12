@@ -454,7 +454,7 @@ public class CodeStringGenerator
             Accessibility.ForType(entity),
             _code.SpaceAfter(_code.AbstractOption(entity)),
            schema+ _code.Escape(entity)+"Mapping",
-           ":EntityTypeConfiguration<Core.Entities.SQL.User."+schema+ _code.Escape(entity)+">");
+           ":EntityTypeConfiguration<Core.Entities.User."+schema+ _code.Escape(entity)+">");
     }
     
     public string EnumOpening(SimpleType enumType)

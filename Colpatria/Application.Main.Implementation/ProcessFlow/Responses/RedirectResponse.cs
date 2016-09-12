@@ -1,23 +1,19 @@
 ﻿using Application.Main.Definition.Enumerations;
-using Application.Main.Definition.Responses;
-using Core.Entities.SQL.Enumerations;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Core.Entities.Enumerations;
+using Core.Entities.ProcessModel;
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
-    public class RedirectResponse : IInterfaceResponse
+    public class RedirectResponse : IInterfaceWebResponse
     {
-        public InterfaceTypeResponse InterfaceTypeResponse => InterfaceTypeResponse.Redirect;
+        public ExecutionFlow Execution { get; set; }
+        public ResponseDetailFlow ResponseDetail { get; set; }
         public string FriendlyUrl { get; set; }
         public string ActionMethod { get; set; }
         public string PartialView { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
-        public long ProductId { get; set; }
-        public long RequestId { get; set; }
-        public int PageId { get; set; }
-        public int SectionId { get; set; }
-        public string Code { get; set; }
-        public ExecutionState RequestState { get; set; }        
-        //public PageDetail PageDetail { get; set; }
+        public InterfaceTypeResponse InterfaceTypeResponse { get; }
     }
 }

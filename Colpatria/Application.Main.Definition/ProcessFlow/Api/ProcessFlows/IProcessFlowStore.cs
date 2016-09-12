@@ -28,8 +28,8 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
 
         void TrackingStep(IProcessFlowArgument argument);
 
-        Task<StepFlow> GetNextStep(IProcessFlowArgument argument, StepType stepType);
-        Task<StepFlow> GetCurrentStep(IProcessFlowArgument argument);
+        StepFlow GetNextStep(IProcessFlowArgument argument, StepType stepType);
+        StepFlow GetCurrentStep(IProcessFlowArgument argument);
 
         Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument, StepType stepType,
             CancellationToken cancellationToken = default(CancellationToken));

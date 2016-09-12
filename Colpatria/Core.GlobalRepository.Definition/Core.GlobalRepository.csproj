@@ -85,15 +85,16 @@
     <Compile Include="SQL\Process\IProcessRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Process\IRepository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IRepository.tt</DependentUpon>
-    </Compile>
     <Compile Include="SQL\Process\IProductProcessRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\Process\IProductRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Process\IRepository.cs" />
+    <Compile Include="SQL\Process\IRepository1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\Process\ISectionRepository.cs">
@@ -170,7 +171,7 @@
   <ItemGroup>
     <Content Include="SQL\Process\IRepository.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IRepository.cs</LastGenOutput>
+      <LastGenOutput>IRepository1.cs</LastGenOutput>
     </Content>
     <Content Include="SQL\User\IRepository.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

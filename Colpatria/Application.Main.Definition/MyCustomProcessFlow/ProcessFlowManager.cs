@@ -25,9 +25,9 @@ using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 
 namespace Application.Main.Definition.MyCustomProcessFlow
 {
-    public class ProcessFlowManager : IProcessFlowManager
+    public abstract class ProcessFlowManager : IProcessFlowManager
     {
-        public ProcessFlowManager(IEnumerable<IStep> steps, IProcessFlowStore store)
+        protected ProcessFlowManager(IEnumerable<IStep> steps, IProcessFlowStore store)
         {
             Steps = steps;
             Store = store;
@@ -37,7 +37,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow
         public IProcessFlowStore Store { get; }
 
 
-        public async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
+        public virtual async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
             Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
         {
             arg.Steps = Steps;
@@ -45,7 +45,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow
             {
                 return actionToStart.Invoke(arg);
             }
-            var step = await Store.GetCurrentStep(arg);
+            var step =  Store.GetCurrentStep(arg);
             return await Steps.First(s => s.Name == step.Name).Advance(arg);
         }
 
@@ -53,7 +53,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow
             Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
         {
             arg.Steps = Steps;
-            var step = await Store.GetCurrentStep(arg);
+            var step =  Store.GetCurrentStep(arg);
             return await Steps.First(s => s.Name == step.Name).Advance(arg);
         }
     }

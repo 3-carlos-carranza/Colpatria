@@ -43,7 +43,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
         public async Task<IStep> OnSucess(IProcessFlowArgument processFlowArgument)
         {
             
-            var step = await _store.GetNextStep(processFlowArgument, StepType.Success);
+            var step =  _store.GetNextStep(processFlowArgument, StepType.Success);
             processFlowArgument.Execution.CurrentStepId = step.Id;
             var nextstep = processFlowArgument.Steps.First(s => s.Name == step.NameClientAlias);
             return nextstep;
@@ -51,7 +51,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
 
         public async Task<IStep> OnError(IProcessFlowArgument processFlowArgument)
         {
-            var step = await _store.GetNextStep(processFlowArgument, StepType.Error);
+            var step =  _store.GetNextStep(processFlowArgument, StepType.Error);
             processFlowArgument.Execution.CurrentStepId = step.Id;
             var nextstep = processFlowArgument.Steps.First(s => s.Name == step.NameClientAlias);
             return nextstep;

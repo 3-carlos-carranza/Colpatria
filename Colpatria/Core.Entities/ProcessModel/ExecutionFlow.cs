@@ -19,13 +19,13 @@ namespace Core.Entities.ProcessModel
 {
     public abstract class ExecutionFlow
     {
-        public long Id { get; set; }
-        public int CurrentStepId { get; set; }
-        public virtual StepFlow CurrentStep { get; set; }
-        public int CurrentSectionId { get; set; }
-        public virtual SectionFlow CurrentSection { get; set; }
-        public int ProcessId { get; set; }
-        public long ProductId { get; set; }
-        public virtual ProcessFlow Process { get; set; }
+        public virtual long Id { get; set; }
+        public virtual int CurrentStepId { get; set; }
+       // public virtual StepFlow CurrentStep { get; set; }
+        public virtual int CurrentSectionId { get; set; }
+       // public virtual SectionFlow CurrentSection { get; set; }
+        public virtual int ProcessId { get; set; }
+        public virtual long ProductId { get; set; }
+       // public virtual ProcessFlow Process { get; set; }
     }
 }

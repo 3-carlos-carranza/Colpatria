@@ -514,8 +514,6 @@ if (!window.location.origin) {
                 var $this = $(this), data = $(this).data();
                 $this.kcombobox(data);
             });
-
-
         });
 
 

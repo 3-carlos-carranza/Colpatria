@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
@@ -31,11 +32,13 @@ namespace Presentation.Web.Colpatria.Controllers
     public class RequestController : BaseController
     {
         private readonly IUserAppService _userAppService;
+        private readonly IEvidenteAppService _evidenteAppService;
 
         public RequestController(IProcessFlowArgument processFlowArgument, IProcessFlowManager processFlowManager,
-            IUserAppService userAppService) : base(processFlowArgument, processFlowManager)
+            IUserAppService userAppService, IEvidenteAppService evidenteAppService) : base(processFlowArgument, processFlowManager)
         {
             _userAppService = userAppService;
+            _evidenteAppService = evidenteAppService;
         }
 
 
@@ -102,7 +105,8 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public ActionResult Validation()
         {
-            return View();
+            var model = _evidenteAppService.GetQuestions(new QuestionsSettings());
+            return View(model);
         }
 
         public ActionResult FormQuestions()

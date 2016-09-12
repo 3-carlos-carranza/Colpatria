@@ -44,7 +44,7 @@ namespace Application.Main.Implementation
             container.RegisterType<ISaveFieldsAppService, SaveFieldsAppService>();
 
             //Config Steps
-            container.RegisterType<IStep, EvidenteStep>("EvidenteStep");
+            container.RegisterType<IStep, SubmitEvidenteStep>("EvidenteStep");
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");
             container.RegisterType<IEnumerable<IStep>, IStep[]>();

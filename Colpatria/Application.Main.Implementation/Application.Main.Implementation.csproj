@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyService.cs" />
+    <Compile Include="ProcessFlow\Responses\EvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Services\EvidenteAppService.cs" />
     <Compile Include="ProcessFlow\Services\DynamicAppService.cs" />
     <Compile Include="ProcessFlow\Services\LoggingAppService.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
-    <Compile Include="ProcessFlow\Step\EvidenteStep.cs" />
+    <Compile Include="ProcessFlow\Step\SubmitEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitFormStep.cs" />

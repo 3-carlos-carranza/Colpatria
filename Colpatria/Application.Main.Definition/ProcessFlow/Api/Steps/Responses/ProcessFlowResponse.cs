@@ -23,7 +23,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps.Responses
 {
     public class ProcessFlowResponse : IProcessFlowResponse
     {
-        public Execution Execution { get; set; }
-        public ResponseDetail ResponseDetail { get; set; }
+        public ExecutionFlow Execution { get; set; }
+        public ResponseDetailFlow ResponseDetail { get; set; }
     }
 }

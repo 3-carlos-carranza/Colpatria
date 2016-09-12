@@ -5,14 +5,15 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-05  - 4:09 p. m.</Date>
-//   <Update> 2016-09-06 - 3:48 p. m.</Update>
+//   <Date>  2016 -09-08  - 10:09 a. m.</Date>
+//   <Update> 2016-09-09 - 12:51 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
 
 #region
 
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Entities.ProcessModel;
@@ -23,11 +24,14 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
 {
     public interface IProcessFlowStore
     {
+        IEnumerable<StepFlow> Steps { get; }
+
         void TrackingStep(IProcessFlowArgument argument);
 
-        Task<Step> GetNextStep(IProcessFlowArgument argument, StepType stepType);
-        Task<Step> GetCurrentStep(IProcessFlowArgument argument);
-        Task<Step> GetNextStepAsync(IProcessFlowArgument argument, StepType stepType,
+        Task<StepFlow> GetNextStep(IProcessFlowArgument argument, StepType stepType);
+        Task<StepFlow> GetCurrentStep(IProcessFlowArgument argument);
+
+        Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument, StepType stepType,
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

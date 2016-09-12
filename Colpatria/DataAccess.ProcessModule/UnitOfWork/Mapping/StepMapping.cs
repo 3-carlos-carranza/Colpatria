@@ -20,7 +20,9 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         public StepMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     
@@ -53,7 +55,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 this.HasRequired(t => t.Process)
                     .WithMany(t => t.Step)
                     .HasForeignKey(d => d.ProcessId);
-                this.HasOptional(t => t.State)
+                this.HasRequired(t => t.State)
                     .WithMany(t => t.Step)
                     .HasForeignKey(d => d.StateId);
     
@@ -74,6 +76,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         
     
+        
         
         
         

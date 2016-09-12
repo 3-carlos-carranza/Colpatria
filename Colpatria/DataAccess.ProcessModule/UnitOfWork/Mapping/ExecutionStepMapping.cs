@@ -15,10 +15,10 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class ExtendedFieldValueMapping:EntityTypeConfiguration<Core.Entities.Process.ExtendedFieldValue>
+    public partial class ExecutionStepMapping:EntityTypeConfiguration<Core.Entities.Process.ExecutionStep>
     {
         
-        public ExtendedFieldValueMapping()
+        public ExecutionStepMapping()
         {
     	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
@@ -28,22 +28,20 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
                 // Properties
     
-                this.ToTable("ExtendedFieldValue","Process");
+                this.ToTable("ExecutionStep","Process");
         this.Property(t => t.Id).HasColumnName("Id");
-        this.Property(t => t.ExtendedFieldId).HasColumnName("ExtendedFieldId");
         this.Property(t => t.ExecutionId).HasColumnName("ExecutionId");
-        this.Property(t => t.Value).HasColumnName("Value");
+        this.Property(t => t.StepId).HasColumnName("StepId");
+        this.Property(t => t.CreatedOn).HasColumnName("CreatedOn");
         this.Property(t => t.UserId).HasColumnName("UserId");
-        this.Property(t => t.CollectionNumber).HasColumnName("CollectionNumber");
-        this.Property(t => t.Applicant).HasColumnName("Applicant");
     
                 // Relationships
                 this.HasRequired(t => t.Execution)
-                    .WithMany(t => t.ExtendedFieldValue)
+                    .WithMany(t => t.ExecutionStep)
                     .HasForeignKey(d => d.ExecutionId);
-                this.HasRequired(t => t.ExtendedField)
-                    .WithMany(t => t.ExtendedFieldValue)
-                    .HasForeignKey(d => d.ExtendedFieldId);
+                this.HasRequired(t => t.Step)
+                    .WithMany(t => t.ExecutionStep)
+                    .HasForeignKey(d => d.StepId);
     
     
     
@@ -54,10 +52,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         
         
-        
-        
     
-        
         
         
     }

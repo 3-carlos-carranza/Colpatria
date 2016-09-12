@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Core.Entities.ProcessModel
 {
-    public class Step
+    public abstract class StepFlow
     {
         public string Description { get; set; }
         public bool Enable { get; set; }
@@ -27,10 +27,11 @@ namespace Core.Entities.ProcessModel
         public string Name { get; set; }
         public string NameClientAlias { get; set; }
         public int Order { get; set; }
-        public int FlowId { get; set; }
-        public int StateId { get; set; }
+        //public virtual int ProcessId { get; set; }
+        //public int StateId { get; set; }
         public int StepType { get; set; }
-        public IEnumerable<StepSection> StepSection { get; set; }
-        public Process Process { get; set; }
+        //public virtual ICollection<StepSectionFlow> StepSection { get; set; } = new HashSet<StepSectionFlow>();
+        //public virtual ProcessFlow Process { get; set; }
+        //public virtual StateFlow State { get; set; }
     }
 }

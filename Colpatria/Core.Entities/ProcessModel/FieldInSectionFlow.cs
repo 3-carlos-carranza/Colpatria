@@ -13,17 +13,17 @@
 
 namespace Core.Entities.ProcessModel
 {
-    public class FieldInSection
+    public abstract class FieldInSectionFlow
     {
         public int Id { get; set; }
-        public long FieldId { get; set; }
+        public int FieldId { get; set; }
         public int SectionId { get; set; }
         public int Order { get; set; }
         public bool IsVisible { get; set; }
         public bool IsReadOnly { get; set; }
         public bool IsRequired { get; set; }
         public int Applicant { get; set; }
-        public Field Field { get; set; }
-        public Section Section { get; set; }
+        public virtual FieldFlow Field { get; set; }
+        public virtual SectionFlow Section { get; set; }
     }
 }

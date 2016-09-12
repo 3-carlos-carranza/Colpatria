@@ -1,12 +1,12 @@
 ﻿#region Signature
 
 //   -----------------------------------------------------------------------
-//   <copyright file=Process.cs company="Banlinea S.A.S">
+//   <copyright file=ProcessFlow.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -08-26  - 10:01 a. m.</Date>
-//   <Update> 2016-08-26 - 10:01 a. m.</Update>
+//   <Date>  2016 -09-08  - 11:02 a. m.</Date>
+//   <Update> 2016-09-09 - 11:23 a. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -20,9 +20,9 @@ using System.Collections.Generic;
 
 namespace Core.Entities.ProcessModel
 {
-    public class Process
+    public abstract class ProcessFlow
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
@@ -31,6 +31,6 @@ namespace Core.Entities.ProcessModel
         public int FunctionaryAssignationProcess { get; set; }
         public int ProcessType { get; set; }
 
-        public IEnumerable<Step> Steps { get; set; }
+        //public virtual ICollection<StepFlow> Steps { get; set; } = new HashSet<StepFlow>();
     }
 }

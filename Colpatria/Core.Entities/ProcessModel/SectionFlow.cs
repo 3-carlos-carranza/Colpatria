@@ -19,23 +19,23 @@ using System.Collections.Generic;
 
 namespace Core.Entities.ProcessModel
 {
-    public class Section
+    public class SectionFlow
     {
         public string Action { get; set; }
         public string ActionMethod { get; set; }
         public string Controller { get; set; }
         public string Description { get; set; }
         public bool Enable { get; set; }
-        public long Id { get; set; }
+        public int Id { get; set; }
         public bool IsVisible { get; set; }
         public string Name { get; set; }
         public string NameAlias { get; set; }
         public int Order { get; set; }
-        public long PageId { get; set; }
+        public int PageId { get; set; }
         public bool? ReadOnly { get; set; }
         public int Type { get; set; }
-        public Page Page { get; set; }
-        public IEnumerable<FieldInSection> FieldInSection { get; set; }
-        public IEnumerable<StepSection> StepSection { get; set; }
+        public virtual PageFlow Page { get; set; }
+        public virtual IEnumerable<FieldInSectionFlow> FieldInSection { get; set; } = new HashSet<FieldInSectionFlow>();
+        public virtual IEnumerable<StepSectionFlow> StepSection { get; set; } = new HashSet<StepSectionFlow>();
     }
 }

@@ -5,29 +5,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="708d1cc6dbe44656927b60cc6191802f" Name="Diagram1">
-        <EntityTypeShape EntityType="ProcessModel.Execution" Width="1.5" PointX="8.25" PointY="17.875" />
-        <EntityTypeShape EntityType="ProcessModel.ExecutionApplicant" Width="1.5" PointX="10.5" PointY="22.625" />
-        <EntityTypeShape EntityType="ProcessModel.ExtendedDataList" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="ProcessModel.ExtendedField" Width="1.5" PointX="3" PointY="11.625" />
-        <EntityTypeShape EntityType="ProcessModel.ExtendedFieldValue" Width="1.5" PointX="10.5" PointY="14.375" />
-        <EntityTypeShape EntityType="ProcessModel.ExtendedFile" Width="1.5" PointX="12.75" PointY="14.75" />
-        <EntityTypeShape EntityType="ProcessModel.ExtendedList" Width="1.5" PointX="0.75" PointY="8.25" />
-        <EntityTypeShape EntityType="ProcessModel.FieldInSection" Width="1.5" PointX="7.5" PointY="23.625" />
-        <EntityTypeShape EntityType="ProcessModel.Page" Width="1.5" PointX="3" PointY="29.125" />
-        <EntityTypeShape EntityType="ProcessModel.Process" Width="1.5" PointX="0.75" PointY="11.625" />
-        <EntityTypeShape EntityType="ProcessModel.Product" Width="1.5" PointX="3.75" PointY="16.5" />
-        <EntityTypeShape EntityType="ProcessModel.ProductProcess" Width="1.5" PointX="6" PointY="12.5" />
-        <EntityTypeShape EntityType="ProcessModel.Section" Width="1.5" PointX="5.25" PointY="28.375" />
-        <EntityTypeShape EntityType="ProcessModel.State" Width="1.5" PointX="3.75" PointY="8.25" />
-        <EntityTypeShape EntityType="ProcessModel.Step" Width="1.5" PointX="6" PointY="7.375" />
-        <EntityTypeShape EntityType="ProcessModel.StepSection" Width="1.5" PointX="11.25" PointY="19" />
+        <EntityTypeShape EntityType="ProcessModel.Execution" Width="1.5" PointX="7.5" PointY="19.375" />
+        <EntityTypeShape EntityType="ProcessModel.ExecutionApplicant" Width="1.5" PointX="9.75" PointY="27.375" />
+        <EntityTypeShape EntityType="ProcessModel.ExecutionStep" Width="1.5" PointX="9.75" PointY="12.25" />
+        <EntityTypeShape EntityType="ProcessModel.ExtendedDataList" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="ProcessModel.ExtendedField" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="ProcessModel.ExtendedFieldValue" Width="1.5" PointX="9.75" PointY="16.125" />
+        <EntityTypeShape EntityType="ProcessModel.ExtendedFile" Width="1.5" PointX="12" PointY="16.5" />
+        <EntityTypeShape EntityType="ProcessModel.ExtendedList" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="ProcessModel.FieldInSection" Width="1.5" PointX="10.5" PointY="20.125" />
+        <EntityTypeShape EntityType="ProcessModel.Page" Width="1.5" PointX="3" PointY="26.25" />
+        <EntityTypeShape EntityType="ProcessModel.Process" Width="1.5" PointX="0.75" PointY="13.375" />
+        <EntityTypeShape EntityType="ProcessModel.Product" Width="1.5" PointX="3.75" PointY="18.375" />
+        <EntityTypeShape EntityType="ProcessModel.ProductProcess" Width="1.5" PointX="6" PointY="14.25" />
+        <EntityTypeShape EntityType="ProcessModel.Section" Width="1.5" PointX="5.25" PointY="25.5" />
+        <EntityTypeShape EntityType="ProcessModel.State" Width="1.5" PointX="3.75" PointY="10.125" />
+        <EntityTypeShape EntityType="ProcessModel.Step" Width="1.5" PointX="6" PointY="9.125" />
+        <EntityTypeShape EntityType="ProcessModel.StepSection" Width="1.5" PointX="7.5" PointY="26.75" />
         <EntityTypeShape EntityType="ProcessModel.WebServiceConsultation" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="ProcessModel.FK_Execution_Process_Id" />
         <AssociationConnector Association="ProcessModel.FK_Execution_Product1" />
         <AssociationConnector Association="ProcessModel.FK_Execution_Section" />
         <AssociationConnector Association="ProcessModel.FK_Execution_Step" />
         <AssociationConnector Association="ProcessModel.FK_ExecutionApplicant_Execution" />
+        <AssociationConnector Association="ProcessModel.FK_ExecutionStateStep_Execution" />
         <AssociationConnector Association="ProcessModel.FK_ExtendedFieldValue_Execution" />
+        <AssociationConnector Association="ProcessModel.FK_ExecutionStateStep_Step" />
         <AssociationConnector Association="ProcessModel.FK_ExtendedDataListValue_ExtendedDataList_Id" />
         <AssociationConnector Association="ProcessModel.FK_ExtendedField_DataList_Id" />
         <AssociationConnector Association="ProcessModel.FK_ExtendedFieldValue_ExtendedField" />

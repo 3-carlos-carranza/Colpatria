@@ -25,8 +25,8 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
 {
     public class ShowModalResponse : IShowScreenResponse
     {
-        public Execution Execution { get; set; }
-        public ResponseDetail ResponseDetail { get; set; }
+        public ExecutionFlow Execution { get; set; }
+        public ResponseDetailFlow ResponseDetail { get; set; }
         public string FriendlyUrl { get; set; }
         public string ActionMethod { get; set; }
         public string PartialView { get; set; }

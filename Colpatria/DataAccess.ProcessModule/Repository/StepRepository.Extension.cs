@@ -28,11 +28,11 @@ namespace DataAccess.ProcessModule.Repository
             return _context.Step.Where(s => s.ProcessId == processid).OrderBy(z => z.Order).FirstOrDefault();
         }
 
-        public IEnumerable<Step> GetAllStepsEnablesByProduct(int productId)
+        public IEnumerable<Step> GetAllStepsEnablesByProduct(long productId)
         {
             return (from pp in _context.ProductProcess
                 join p in _context.Process on pp.ProcessId equals p.Id
-                join s in _context.Step on p.Id equals s.ProcessId
+                join s in  _context.Step on p.Id equals s.ProcessId
                 where s.Enable
                 select s).ToList();
         }

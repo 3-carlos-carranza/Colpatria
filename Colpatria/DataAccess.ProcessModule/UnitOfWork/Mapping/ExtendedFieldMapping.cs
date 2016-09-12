@@ -20,7 +20,9 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         
         public ExtendedFieldMapping()
         {
+    	this.Map(s => s.MapInheritedProperties());
                 // Primary Key
+    			
                 this.HasKey(t => t.Id);
     
     

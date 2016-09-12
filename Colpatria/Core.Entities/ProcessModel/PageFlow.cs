@@ -1,4 +1,4 @@
-﻿#region Signature
+#region Signature
 
 //   -----------------------------------------------------------------------
 //   <copyright file=Page.cs company="Banlinea S.A.S">
@@ -19,15 +19,14 @@ using System.Collections.Generic;
 
 namespace Core.Entities.ProcessModel
 {
-    public class Page
+    public abstract class PageFlow
     {
         public bool Enable { get; set; }
-        public long Id { get; set; }
+        public int Id { get; set; }
         public bool IsVisible { get; set; }
         public string Name { get; set; }
         public string NameAlias { get; set; }
         public int Order { get; set; }
-        public int ProcessId { get; set; }
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<SectionFlow> Section { get; set; }
     }
 }

@@ -68,20 +68,29 @@
     <Compile Include="Evidente\ValidationResponse.cs" />
     <Compile Include="Evidente\ValidationResponseBuilder.cs" />
     <Compile Include="Logging\ColpatriaLog.cs" />
-    <Compile Include="ProcessModel\Execution.cs" />
-    <Compile Include="ProcessModel\Field.cs" />
-    <Compile Include="ProcessModel\FieldInSection.cs" />
-    <Compile Include="ProcessModel\Input.cs" />
+    <Compile Include="ProcessModel\ExecutionFlow.cs" />
+    <Compile Include="ProcessModel\FieldFlow.cs" />
+    <Compile Include="ProcessModel\FieldInSectionFlow.cs" />
+    <Compile Include="ProcessModel\InputFlow.cs" />
     <Compile Include="ProcessModel\InputType.cs" />
     <Compile Include="ProcessModel\IProcessFlowUser.cs" />
-    <Compile Include="ProcessModel\Page.cs" />
-    <Compile Include="ProcessModel\Process.cs" />
+    <Compile Include="ProcessModel\PageFlow.cs" />
+    <Compile Include="ProcessModel\ProcessFlow.cs" />
     <Compile Include="ProcessModel\ReponseStatus.cs" />
-    <Compile Include="ProcessModel\ResponseDetail.cs" />
-    <Compile Include="ProcessModel\Section.cs" />
-    <Compile Include="ProcessModel\State.cs" />
-    <Compile Include="ProcessModel\Step.cs" />
-    <Compile Include="ProcessModel\StepSection.cs" />
+    <Compile Include="ProcessModel\ResponseDetailFlow.cs" />
+    <Compile Include="ProcessModel\SectionFlow.cs" />
+    <Compile Include="ProcessModel\StateFlow.cs" />
+    <Compile Include="ProcessModel\StepFlow.cs" />
+    <Compile Include="ProcessModel\StepSectionFlow.cs" />
+    <Compile Include="Process\Execution.cs">
+      <DependentUpon>ProcessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Process\ExecutionApplicant.cs">
+      <DependentUpon>ProcessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Process\ExecutionStep.cs">
+      <DependentUpon>ProcessModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enumerations\ExecutionState.cs" />
     <Compile Include="Enumerations\StepType.cs" />
@@ -103,12 +112,6 @@
     </Compile>
     <Compile Include="User\BaseFile.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Process\Execution.cs">
-      <DependentUpon>ProcessModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Process\ExecutionApplicant.cs">
-      <DependentUpon>ProcessModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Process\ExtendedDataList.cs">
       <DependentUpon>ProcessModel.tt</DependentUpon>

@@ -31,6 +31,16 @@
           <Property Name="IsMain" Type="bit" Nullable="false" />
           <Property Name="Applicant" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ExecutionStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExecutionId" Type="bigint" Nullable="false" />
+          <Property Name="StepId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="ExtendedDataList">
           <Key>
             <PropertyRef Name="Id" />
@@ -186,7 +196,7 @@
           <Property Name="ParentId" Type="int" />
           <Property Name="Order" Type="int" />
           <Property Name="IsPre" Type="bit" />
-          <Property Name="StateId" Type="int" />
+          <Property Name="StateId" Type="int" Nullable="false" />
           <Property Name="Enable" Type="bit" Nullable="false" />
           <Property Name="StepType" Type="int" Nullable="false" />
         </EntityType>
@@ -266,6 +276,30 @@
             </Principal>
             <Dependent Role="ExecutionApplicant">
               <PropertyRef Name="ExecutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionStateStep_Execution">
+          <End Role="Execution" Type="Self.Execution" Multiplicity="1" />
+          <End Role="ExecutionStep" Type="Self.ExecutionStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Execution">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExecutionStep">
+              <PropertyRef Name="ExecutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionStateStep_Step">
+          <End Role="Step" Type="Self.Step" Multiplicity="1" />
+          <End Role="ExecutionStep" Type="Self.ExecutionStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Step">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExecutionStep">
+              <PropertyRef Name="StepId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -426,7 +460,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Step_State">
-          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="1" />
           <End Role="Step" Type="Self.Step" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="State">
@@ -464,6 +498,7 @@
         <EntityContainer Name="ProcessModelStoreContainer">
           <EntitySet Name="Execution" EntityType="Self.Execution" Schema="Process" store:Type="Tables" />
           <EntitySet Name="ExecutionApplicant" EntityType="Self.ExecutionApplicant" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="ExecutionStep" EntityType="Self.ExecutionStep" Schema="Process" store:Type="Tables" />
           <EntitySet Name="ExtendedDataList" EntityType="Self.ExtendedDataList" Schema="Process" store:Type="Tables" />
           <EntitySet Name="ExtendedField" EntityType="Self.ExtendedField" Schema="Process" store:Type="Tables" />
           <EntitySet Name="ExtendedFieldValue" EntityType="Self.ExtendedFieldValue" Schema="Process" store:Type="Tables" />
@@ -498,6 +533,14 @@
           <AssociationSet Name="FK_ExecutionApplicant_Execution" Association="Self.FK_ExecutionApplicant_Execution">
             <End Role="Execution" EntitySet="Execution" />
             <End Role="ExecutionApplicant" EntitySet="ExecutionApplicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionStateStep_Execution" Association="Self.FK_ExecutionStateStep_Execution">
+            <End Role="Execution" EntitySet="Execution" />
+            <End Role="ExecutionStep" EntitySet="ExecutionStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionStateStep_Step" Association="Self.FK_ExecutionStateStep_Step">
+            <End Role="Step" EntitySet="Step" />
+            <End Role="ExecutionStep" EntitySet="ExecutionStep" />
           </AssociationSet>
           <AssociationSet Name="FK_ExtendedDataListValue_ExtendedDataList_Id" Association="Self.FK_ExtendedDataListValue_ExtendedDataList_Id">
             <End Role="ExtendedList" EntitySet="ExtendedList" />
@@ -571,6 +614,7 @@
         <EntityContainer Name="ProcessModelEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Execution" EntityType="ProcessModel.Execution" />
           <EntitySet Name="ExecutionApplicant" EntityType="ProcessModel.ExecutionApplicant" />
+          <EntitySet Name="ExecutionStep" EntityType="ProcessModel.ExecutionStep" />
           <EntitySet Name="ExtendedDataList" EntityType="ProcessModel.ExtendedDataList" />
           <EntitySet Name="ExtendedField" EntityType="ProcessModel.ExtendedField" />
           <EntitySet Name="ExtendedFieldValue" EntityType="ProcessModel.ExtendedFieldValue" />
@@ -606,9 +650,17 @@
             <End Role="Execution" EntitySet="Execution" />
             <End Role="ExecutionApplicant" EntitySet="ExecutionApplicant" />
           </AssociationSet>
+          <AssociationSet Name="FK_ExecutionStateStep_Execution" Association="ProcessModel.FK_ExecutionStateStep_Execution">
+            <End Role="Execution" EntitySet="Execution" />
+            <End Role="ExecutionStep" EntitySet="ExecutionStep" />
+          </AssociationSet>
           <AssociationSet Name="FK_ExtendedFieldValue_Execution" Association="ProcessModel.FK_ExtendedFieldValue_Execution">
             <End Role="Execution" EntitySet="Execution" />
             <End Role="ExtendedFieldValue" EntitySet="ExtendedFieldValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionStateStep_Step" Association="ProcessModel.FK_ExecutionStateStep_Step">
+            <End Role="Step" EntitySet="Step" />
+            <End Role="ExecutionStep" EntitySet="ExecutionStep" />
           </AssociationSet>
           <AssociationSet Name="FK_ExtendedDataListValue_ExtendedDataList_Id" Association="ProcessModel.FK_ExtendedDataListValue_ExtendedDataList_Id">
             <End Role="ExtendedList" EntitySet="ExtendedList" />
@@ -691,6 +743,7 @@
           <NavigationProperty Name="Section" Relationship="ProcessModel.FK_Execution_Section" FromRole="Execution" ToRole="Section" />
           <NavigationProperty Name="Step" Relationship="ProcessModel.FK_Execution_Step" FromRole="Execution" ToRole="Step" />
           <NavigationProperty Name="ExecutionApplicant" Relationship="ProcessModel.FK_ExecutionApplicant_Execution" FromRole="Execution" ToRole="ExecutionApplicant" />
+          <NavigationProperty Name="ExecutionStep" Relationship="ProcessModel.FK_ExecutionStateStep_Execution" FromRole="Execution" ToRole="ExecutionStep" />
           <NavigationProperty Name="ExtendedFieldValue" Relationship="ProcessModel.FK_ExtendedFieldValue_Execution" FromRole="Execution" ToRole="ExtendedFieldValue" />
         </EntityType>
         <EntityType Name="ExecutionApplicant">
@@ -703,6 +756,18 @@
           <Property Name="IsMain" Type="Boolean" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_ExecutionApplicant_Execution" FromRole="ExecutionApplicant" ToRole="Execution" />
+        </EntityType>
+        <EntityType Name="ExecutionStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExecutionId" Type="Int64" Nullable="false" />
+          <Property Name="StepId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_ExecutionStateStep_Execution" FromRole="ExecutionStep" ToRole="Execution" />
+          <NavigationProperty Name="Step" Relationship="ProcessModel.FK_ExecutionStateStep_Step" FromRole="ExecutionStep" ToRole="Step" />
         </EntityType>
         <EntityType Name="ExtendedDataList">
           <Key>
@@ -888,10 +953,11 @@
           <Property Name="ParentId" Type="Int32" />
           <Property Name="Order" Type="Int32" />
           <Property Name="IsPre" Type="Boolean" />
-          <Property Name="StateId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
           <Property Name="Enable" Type="Boolean" Nullable="false" />
           <Property Name="StepType" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Step" FromRole="Step" ToRole="Execution" />
+          <NavigationProperty Name="ExecutionStep" Relationship="ProcessModel.FK_ExecutionStateStep_Step" FromRole="Step" ToRole="ExecutionStep" />
           <NavigationProperty Name="Process" Relationship="ProcessModel.FK_Step_Process_Id" FromRole="Step" ToRole="Process" />
           <NavigationProperty Name="State" Relationship="ProcessModel.FK_Step_State" FromRole="Step" ToRole="State" />
           <NavigationProperty Name="StepSection" Relationship="ProcessModel.FK_StepPage_Step" FromRole="Step" ToRole="StepSection" />
@@ -977,6 +1043,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExecutionStateStep_Execution">
+          <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="1" />
+          <End Type="ProcessModel.ExecutionStep" Role="ExecutionStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Execution">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExecutionStep">
+              <PropertyRef Name="ExecutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ExtendedFieldValue_Execution">
           <End Type="ProcessModel.Execution" Role="Execution" Multiplicity="1" />
           <End Type="ProcessModel.ExtendedFieldValue" Role="ExtendedFieldValue" Multiplicity="*" />
@@ -986,6 +1064,18 @@
             </Principal>
             <Dependent Role="ExtendedFieldValue">
               <PropertyRef Name="ExecutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionStateStep_Step">
+          <End Type="ProcessModel.Step" Role="Step" Multiplicity="1" />
+          <End Type="ProcessModel.ExecutionStep" Role="ExecutionStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Step">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExecutionStep">
+              <PropertyRef Name="StepId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1146,7 +1236,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Step_State">
-          <End Type="ProcessModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="ProcessModel.State" Role="State" Multiplicity="1" />
           <End Type="ProcessModel.Step" Role="Step" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="State">
@@ -1198,6 +1288,17 @@
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
                 <ScalarProperty Name="IsMain" ColumnName="IsMain" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExecutionId" ColumnName="ExecutionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExecutionStep">
+            <EntityTypeMapping TypeName="ProcessModel.ExecutionStep">
+              <MappingFragment StoreEntitySet="ExecutionStep">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
                 <ScalarProperty Name="ExecutionId" ColumnName="ExecutionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

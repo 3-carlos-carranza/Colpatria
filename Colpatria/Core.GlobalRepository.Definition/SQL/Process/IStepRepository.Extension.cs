@@ -24,6 +24,6 @@ namespace Core.GlobalRepository.SQL.Process
     {
         Step GetFirstStepbyProcess(int processid);
 
-        IEnumerable<Step> GetAllStepsEnablesByProduct(int productId);
+        IEnumerable<Step> GetAllStepsEnablesByProduct(long productId);
     }
 }

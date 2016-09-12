@@ -18,6 +18,7 @@ namespace Core.Entities.Process
         public Execution()
         {
             this.ExecutionApplicant = new HashSet<ExecutionApplicant>();
+            this.ExecutionStep = new HashSet<ExecutionStep>();
             this.ExtendedFieldValue = new HashSet<ExtendedFieldValue>();
         }
     
@@ -39,6 +40,8 @@ namespace Core.Entities.Process
         public virtual Step Step { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExecutionApplicant> ExecutionApplicant { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExecutionStep> ExecutionStep { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExtendedFieldValue> ExtendedFieldValue { get; set; }
     }

@@ -201,6 +201,20 @@ textarea {
 .form-control {
     padding: 6px 1px;
 }
+
+.step-content .bord-red {
+    border: inherit;
+    border-bottom: solid 1px #e20613;
+    border-radius: 0;
+    background: transparent;
+}
+
+.k-dropdown-wrap.k-state-hover {
+    background-color:transparent;
+    border:none;
+    box-shadow:0 0 0 0;
+}
+
 input[type=text],
 .form-group select{
     border: none;

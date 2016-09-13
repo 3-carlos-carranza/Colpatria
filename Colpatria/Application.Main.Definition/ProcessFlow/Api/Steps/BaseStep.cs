@@ -48,7 +48,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
             if (nextstep == null)
             {
-               throw  new Exception("Not Find Next Step Success");
+               throw  new Exception("Not Found Next Step Success");
             }
             return nextstep;
         }
@@ -60,7 +60,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
             if (nextstep == null)
             {
-                throw new Exception("Not Find Next Step Error");
+                throw new Exception("Not Found Next Step Error");
             }
             return nextstep;
         }

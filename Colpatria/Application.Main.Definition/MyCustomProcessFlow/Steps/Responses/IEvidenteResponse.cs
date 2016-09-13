@@ -3,7 +3,7 @@ using Core.Entities.Evidente;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
-    public interface IEvidenteResponse : IInterfaceWebResponse
+    public interface IEvidenteResponse : IShowScreenResponse
     {
         IEnumerable<Question> Questions { get; set; }
     }

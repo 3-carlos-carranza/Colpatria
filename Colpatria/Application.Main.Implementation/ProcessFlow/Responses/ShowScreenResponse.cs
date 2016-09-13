@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Application.Main.Definition.Enumerations;
+using Application.Main.Definition.MyCustomProcessFlow;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Core.Entities.Enumerations;
 using Core.Entities.Process;
@@ -19,7 +20,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string Action { get; set; }
         public string Controller { get; set; }
         public InterfaceTypeResponse InterfaceTypeResponse { get; }
-        public IShowScreenResponse Make { get; }
+        
         public IEnumerable<Page> Pages { get; set; }
     }
 }

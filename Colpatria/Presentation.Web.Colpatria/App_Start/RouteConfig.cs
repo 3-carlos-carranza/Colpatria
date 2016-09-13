@@ -14,6 +14,15 @@ namespace Presentation.Web.Colpatria
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+             "FormTrackingRoute",
+             "Formularios/{RequestStep}",
+             new
+             {
+                 controller = "Request",
+                 action = "HandleRequest"
+             },
+             new { allowedUrl = new AllowedUrlConstraint() });
         }
     }
 }

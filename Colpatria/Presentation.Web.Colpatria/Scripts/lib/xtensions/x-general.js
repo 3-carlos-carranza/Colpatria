@@ -505,6 +505,11 @@ if (!window.location.origin) {
                 $this.kdropdown(data);
             });
 
+            $('[data-x="x-kdropdownauto"]').livequery(function () {
+                var $this = $(this), data = $(this).data();
+                $this.kdropdownauto(data);
+            });
+
             $('[data-xktooltip]').livequery(function () {
                 var $this = $(this), data = $(this).data();
                 $this.ktooltip(data);

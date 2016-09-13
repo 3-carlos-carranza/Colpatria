@@ -152,8 +152,13 @@ namespace Presentation.Web.Colpatria.Controllers
                             Icon = "remove"
                         };
                         return View("~/Views/Error/Index.cshtml", error);
+                        
                     }
-                    return View(result.Action, stepresult);
+                    if (result.Action != null)
+                    {
+                        return View(result.Action, stepresult);
+                    }
+                    return PartialView(result.PartialView, stepresult);
                 case InterfaceTypeResponse.ShowModal:
                     var json = new JsonResponse {Status = true};
                     json.SetModalWithPartial(ModalType.Kendo, Url.Action(result.Action, "Modals"));

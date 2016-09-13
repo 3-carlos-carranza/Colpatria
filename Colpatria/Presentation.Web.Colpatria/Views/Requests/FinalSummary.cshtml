@@ -1,0 +1,102 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Resumen de datos";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
+            <div class="col-xs-4 col-sm-4 validado">2. Valida</div>
+            <div class="col-xs-4 col-sm-4 validado">3. Solicita</div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="col-xs-12 col-md-4 bordes">
+            <p class="desc-step">Número de Solicitud: <span class="red">3602</span></p>
+            <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
+            <div class="resumen-data">
+                @{
+                    Html.RenderPartial("~/Views/Requests/_SummaryData.cshtml");
+                }
+            </div>
+            <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
+            <span class="proccess">Validado</span>
+        </div>
+        <div class="col-xs-12 col-md-8 paddmov">
+            <p class="bolds"><strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">APROBADA</span></p>
+             
+            <div class="col-xs-12 col-sm-7 paddnov">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>Actividad:</td>
+                                <th>Asalariado</th>
+                            </tr>
+                            <tr>
+                                <td>Antiguedad:</td>
+                                <th>8 (Meses)</th>
+                            </tr>
+                            <tr>
+                                <td>Ingresos:</td>
+                                <th>$ 1.500.000</th>
+                            </tr>
+                            <tr>
+                                <td>Edad:</td>
+                                <th>28 (Años)</th>
+                            </tr>
+                            
+                            <tr>
+                                <td>Estrato:</td>
+                                <th>3</th>
+                            </tr>
+                            <tr>
+                                <td>Personas a Cargo:</td>
+                                <th>0</th>
+                            </tr>
+                            <tr>
+                                <td>Prodicto:</td>
+                                <th>MasterCard</th>
+                            </tr>
+                            <tr>
+                                <td>Dirección Residencia:</td>
+                                <th>Calle 114 Nº 7a - 71</th>
+                            </tr>
+                            <tr>
+                                <td>Ciudad de Residencia:</td>
+                                <th>Bogotá</th>
+                            </tr>
+                            <tr>
+                                <td>Teléfono Residencia:</td>
+                                <th>366 7627</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+                <div class="li-step">
+                    <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>
+                </div>
+                <div class="img-summary">
+                    <img src="~/Images/Content/resumenTarjeta.png" alt="Imagen" />
+                </div>
+                
+            </div>
+            <div class="col-xs-12 space">
+                <a class="btn btn-danger pull-right enviar marginnone" href="@Url.Action("Index", "Requests")">
+                    Cerrar <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>

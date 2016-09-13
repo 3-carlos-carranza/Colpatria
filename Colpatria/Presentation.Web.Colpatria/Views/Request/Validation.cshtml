@@ -1,0 +1,88 @@
+﻿@model  Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IEvidenteResponse
+@{
+    ViewBag.Title = "Validación de datos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
+            <div class="col-xs-4 col-sm-4 bull active"><span>2.</span> Valida</div>
+            <div class="col-xs-4 col-sm-4 bull">3. Solicita</div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="col-xs-12 col-md-4 bordes">
+            <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
+            <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
+            <div class="resumen-data">
+                @{
+                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml");
+                }
+            </div>
+
+            <p class="desc-step">Validación de identidad:</p>
+            <span class="proccess">En Proceso...</span>
+        </div>
+        <div class="col-xs-12 col-md-8 answer">
+            <p class=""><strong>Camilo,</strong> en este paso vamos a validar tu identidad</p>
+
+            <div class="test">
+
+
+
+                <form action="/"method="post" class="stepMe ac-custom ac-radio ac-fill">
+
+                    @{
+                        var i = 0;
+                        var p = 1;
+                        var q = 1;
+                        var countList = Model.Questions.Count();
+                    }
+                        @foreach (var question in Model.Questions)
+                        {
+                            var questionValue = question.Order.ToString().Length == 1 ? "0" + question.Order : question.Order.ToString();
+                            <fieldset>
+                                <p class="bolds">
+                                    <span>@p.</span> @question.Text
+                                    <input class="" type="hidden" name="Answers[@i].QuestionId" value="@questionValue"/>
+                                </p>
+                                <ul>
+                                    @foreach (var answer in question.Answers)
+                                    {
+                                        var answerId = answer.Id;
+                                        var answerValue = answerId;
+
+                                        <li><input id="@("r" + p)" name="@("r" + q)" @*value="@answerValue"*@ type="radio"><label for="@("r" + p)">@answer.Text</label></li>
+                                        p++;
+                                    }
+                                </ul>
+                                <div class="pag">
+                                    <span class="red">@q/</span>4
+                                </div>
+                                @if (countList == q)
+                                {
+                                    <div>
+                                        <a class="btn btn-danger pull-right enviar" href="@Url.Action("FormQuestions", "Request")">
+                                            Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                }
+                                
+                            </fieldset>
+                            i++;
+                            q++;
+                        }
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>

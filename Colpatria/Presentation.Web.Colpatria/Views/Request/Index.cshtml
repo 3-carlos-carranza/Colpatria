@@ -1,0 +1,142 @@
+﻿@model Presentation.Web.Colpatria.Models.UserViewModel
+@{
+    ViewBag.Title = "Datos personales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 bull active">
+                <span>1.</span> Ingresa
+            </div>
+            <div class="col-xs-4 col-sm-4 bull">2. Valida</div>
+            <div class="col-xs-4 col-sm-4 bull">3. Solicita</div>
+        </div>
+    </div>
+    <div class="col-xs-12 block radius">
+        <form data-x="x-validate" action="@Url.Action("Register", "Request")" method="POST" class="form-step">
+            <div class="step-title">
+                <strong>PASO 1.</strong> Ingresa tus datos, no olvides llenar todos los campos.
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-md-6">
+                    <span class="input input--hoshi">
+                        <input name="1" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" value="Carlos Julian">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
+                            <span class="input__label-content input__label-content--hoshi input-block-level ">Nombre<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="2" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" value="Carranza">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstLastName">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Apellidos<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="3" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" value="Garcia">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SecondLastName">
+                            <span class="input__label-content input__label-content--hoshi input-block-level"><span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-md-3">
+                    <label>
+                        Tipo de Documento<span class="symbol required"></span>
+                    </label>
+                    <select name="4" data-x="x-kdropdown" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListValues/"></select>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="5" class="input__field input__field--hoshi validate[required]" data-x="x-autonum" data-asep="." data-adec="," data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" value="1030675786">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Number">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Número<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <label for="ExpeditionDate">
+                        Fecha de Expedición<span class="symbol required"></span>
+                    </label>
+
+                    <div class='input-group date' id='datepicker1'>
+                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]]" value="14/09/2016" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-md-6">
+                    <label>
+                        Lugar de Expedición de Documento<span class="symbol required"></span>
+                    </label>
+                    <select id="31" name="31" data-x="x-kdropdown" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListValues/"></select>
+                </div>
+                        
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="20" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="address">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Dirección<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                            <input name="8" class="input__field input__field--hoshi validate[required,custom[email]]" type="text" id="email" placeholder="" value="carlosscarranza@banlinea.com">
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
+                                <span class="input__label-content input__label-content--hoshi input-block-level">Correo Electrónico<span class="symbol required"></span></span>
+                            </label>
+                        </span>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="9" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp]]" type="number" placeholder="" value="4038956">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="telephone">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Teléfono<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <span class="input input--hoshi">
+                        <input name="10" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="cellphone" placeholder="" value="3006492610">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="cellphone">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Celular<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-md-3 space">
+                    <input name="13" type="checkbox" class="grey validate[required]" checked="checked">
+                    <label class="check">
+                        Acepto términos y condiciones <a class="vermas" href="#" id="terms-cuenta">VER+</a>
+                    </label>
+                </div>
+                <div class="col-xs-12 col-md-3 space">
+                    <button type="submit" class="btn btn-danger pull-right enviar">
+                        Siguiente
+                    </button>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </form>
+    </div>
+    <div style="clear: both"></div>
+</div>

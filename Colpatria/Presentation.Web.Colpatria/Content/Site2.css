@@ -1,0 +1,1052 @@
+﻿@font-face {
+    font-family: 'latoblack';
+    src: url('../fonts/lato-font/lato-black-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoblack_italic';
+    src: url('../fonts/lato-font/lato-blackitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latobold';
+    src: url('../fonts/lato-font/lato-bold-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latobold_italic';
+    src: url('../fonts/lato-font/lato-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latohairline';
+    src: url('../fonts/lato-font/lato-hairline-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-hairline-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latohairline_italic';
+    src: url('../fonts/lato-font/lato-hairlineitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-hairlineitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoheavy';
+    src: url('../fonts/lato-font/lato-heavy-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-heavy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoheavy_italic';
+    src: url('../fonts/lato-font/lato-heavyitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-heavyitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoitalic';
+    src: url('../fonts/lato-font/lato-italic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latolight';
+    src: url('../fonts/lato-font/lato-light-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latolight_italic';
+    src: url('../fonts/lato-font/lato-lightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latomedium';
+    src: url('../fonts/lato-font/lato-medium-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'latomedium_italic';
+    src: url('../fonts/lato-font/lato-mediumitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'latoregular';
+    src: url('../fonts/lato-font/lato-regular-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latosemibold';
+    src: url('../fonts/lato-font/lato-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latosemibold_italic';
+    src: url('../fonts/lato-font/lato-semibolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-semibolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latothin';
+    src: url('../fonts/lato-font/lato-thin-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latothin_italic';
+    src: url('../fonts/lato-font/lato-thinitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-font/lato-thinitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:#f4f4f4;
+    background-image:url('../Images/Content/fondo-steps2.jpg');
+    background-position:top;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family: 'latoregular';
+
+}
+a:hover {
+text-decoration:none;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 1%;
+    position:relative;
+}
+
+.body-content .legal,
+.legal {
+    position: absolute;
+    bottom: 10%;
+    left: 8%;
+ }
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,*/
+select,
+textarea {
+    max-width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: 0 0 0 0;
+    border-radius: 0;
+}
+.form-control {
+    padding: 6px 1px;
+}
+input[type=text],
+.form-group select{
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: 0 0 0 0;
+    border-radius: 0;
+}
+.form-group  select {
+/*border-bottom: solid 1px #bdbdbd;*/
+border-bottom: solid 1px #e20613;
+}
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6e6e6e;
+}
+
+/* Styles registration form  */
+img {
+width:auto;
+max-width:100%;
+position:relative;
+margin:0 auto;
+padding:0;
+height:auto;
+}
+
+h2.h2 {
+color:red;
+}
+.form-control {
+    height: 32px;
+}
+.step-content {
+    padding: 4% 6% 10% 6%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .7);
+}
+.step-content .class-date {
+        border-bottom: 1px solid #bdbdbd;
+    }
+.step-content form.form-step{
+    width: 90%;
+    margin: 0 auto;
+    /*overflow: hidden;*/
+}
+.step-content form.form-step3{
+    width: 100%;
+}
+.step-content .step-title {
+    font-size: 14px;
+    color: #000;
+    padding: 6% 0 4% 1%;
+}
+.step-content .step-title strong {
+    color: #e20613;
+}
+.step-content .block-left {
+  background-color:#e80c25;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 491px;
+}
+.step-content .block {
+    padding: 0;
+}
+.step-content .text-left {
+    color: #fff;
+    width: 50%;
+    font-size: 22px;
+    margin: 0 auto;
+    text-align: center;
+}
+.step-content .radius {
+
+}
+.step-content .linea-step{
+
+}
+
+.step-content .desc-step{
+ font-weight:bold;
+ font-size: 14px;
+ font-family: 'latobold';
+ color:#000;
+}
+.step-content .li-step{
+    text-align: right;
+}
+.step-content .bull{
+  font-size: 16px;
+}
+.step-content .bull span{
+  color:#e20613;
+  font-weight:bold; 
+}
+.step-content .bull::after{
+   content: "";
+   width:20px;
+   height:20px;
+   border-radius:50%;
+   background:#f4f4f4;
+   position:relative;
+   display:inline-block;
+   vertical-align:text-bottom;
+   margin-left: 2%;
+   border:solid 1px #b4b4b4;
+}
+.step-content .bull.active::after{
+    border:solid 2px #e20b18;
+}
+.step-content .required::after{
+    content:"*";
+    color:red;
+}
+.step-content .validado::after{
+   content: url('../Images/Content/ok.png');
+   width:20px;
+   height:20px;
+   border-radius:50%;
+   background:#f4f4f4;
+   position:relative;
+   display:inline-block;
+   vertical-align:text-bottom;
+   margin-left: 2%;
+}
+.step-content .vermas{
+    text-decoration:none;
+    color:#e20613;
+   display:inline-block;
+   vertical-align:top;
+
+}
+.step-content .check{
+   display:inline-block;
+   vertical-align:bottom;
+   width: 80%;
+   font-size:12px;
+
+}
+.step-content .enviar{
+    background: #e20613;
+    padding: 16px 50px;
+    margin-right: 0%;
+    transition:.3s;
+    font-size:16px;
+}
+.step-content .enviar:hover{
+    background: rgba(226, 6, 19, 0.7);
+}
+.step-content .valid {
+    margin: 1% 0;
+    padding: 2% 8%;
+  }
+.step-content .grey {
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    }
+.step-content .greys {
+    width: 24px;
+    height: 20px;
+    }
+header .logo,
+header .logo-step {
+
+}
+.input {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	margin: 0 0;
+	max-width: 100%;
+	width: 100%;
+	vertical-align: top;
+}
+.input__field {
+	position: relative;
+	display: block;
+	float: right;
+	padding: 0.8em;
+	width: 60%;
+	border: none;
+	border-radius: 0;
+	background: #000;
+	color: #aaa;
+	font-weight: normal;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__label {
+	display: inline-block;
+	float: right;
+	padding: 0 1em;
+	width: 40%;
+	color: #6e6e6e;
+	font-weight: bold;
+	font-size: 14px;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input__label-content {
+	position: relative;
+	display: block;
+	padding: 1em 0;
+	width: 100%;
+}
+
+.graphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: none;
+}
+
+.icon {
+	color: #ddd;
+	font-size: 150%;
+}
+.input--hoshi {
+	/*overflow: hidden;*/
+}
+
+.input__field--hoshi {
+	margin-top: 1.3em;
+	padding: 1.3em 0em;
+	width: 100%;
+	background: transparent;
+	color: #000;
+}
+
+.input__label--hoshi {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0 0.25em;
+	width: 100%;
+	height: calc(100% - 1em);
+	text-align: left;
+	pointer-events: none;
+}
+
+.input__label-content--hoshi {
+	position: absolute;
+}
+
+.input__label--hoshi::before,
+.input__label--hoshi::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100% - 10px);
+	border-bottom: 1px solid #bdbdbd;
+}
+
+.input__label--hoshi::after {
+	margin-top: 0px;
+	border-bottom: 1px solid #e20613;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+    opacity: 0;
+}
+
+.input__label--hoshi-color-1::after {
+	border-color: #e20613;
+}
+
+.input__label--hoshi-color-2::after {
+	border-color: #e20613;
+}
+
+.input__label--hoshi-color-3::after {
+	border-color: #e20613;
+}
+
+.input__field--hoshi:focus + .input__label--hoshi::after,
+.input--filled .input__label--hoshi::after {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+    opacity:1;
+}
+
+.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+.input--filled .input__label-content--hoshi {
+	-webkit-animation: anim-1 0.3s forwards;
+	animation: anim-1 0.3s forwards;
+     opacity:1;
+}
+
+@-webkit-keyframes anim-1 {
+	50% {
+		opacity: 0;
+		-webkit-transform: translate3d(1em, 0, 0);
+		transform: translate3d(1em, 0, 0);
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translate3d(-1em, -40%, 0);
+		transform: translate3d(-1em, -40%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+	}
+}
+
+@keyframes anim-1 {
+	50% {
+		opacity: 0;
+		-webkit-transform: translate3d(1em, 0, 0);
+		transform: translate3d(1em, 0, 0);
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translate3d(-1em, -40%, 0);
+		transform: translate3d(-1em, -40%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+	}
+}
+
+/*Styles terminos*/
+
+.step-content .conts{
+    width:90%;
+    height:auto;
+    position:relative;
+    margin:0 auto;
+    padding:4% 0;
+    font-size:13px;
+    color:#6e6e6e;
+}
+.step-content .title-term{
+   color:#e20613;
+   font-size:16px;
+   font-family: 'latobold';
+
+}
+.step-content .subtitle-term {
+font-family: 'latobold';
+ font-size:16px;
+ color:#000;
+}
+.step-content .contents {
+ padding:2% 0;
+}
+.step-content .contents p>span {
+color:#e20613;
+}
+.step-content .aproved p {
+ padding:0% 0 1% 0;
+}
+.aprovedd p {
+ padding:0% 0 4% 0;
+}
+.step-content .italic {
+font-family: 'latosemibold_italic';
+}
+.step-content .bolds {
+font-family: 'latobold';
+    padding: 2% 0;
+}
+.step-content .bolds span {
+color:#e20613;
+}
+.step-content .botons{
+}
+.step-content .print{
+    
+}
+.step-content .prtn{
+    background-color: #7d7d7d;
+    padding: 4% 16%;
+    transition:.3s;
+    font-size:16px;
+}
+.step-content .acepto{
+    margin-right: 0%;
+}
+.step-content .prtn:hover{
+    background-color: rgba(125, 125, 125, 0.8);
+}
+
+/*Fin styles terminos*/
+
+/* styles validacion*/
+
+.step-content .red,
+.red{
+    color:#e20613;
+}
+.step-content .bordes{
+    border-right:solid 4px rgba(0, 0, 0, .02);
+    -webkit-border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;
+    -moz-border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;
+   /* border-image:url('../Images/Content/borde.png') 0% 100% 0% 0%;*/
+}
+.step-content .ok-rgtr{
+
+}
+.step-content .resumen-data {
+
+}
+.step-content .ok-rgtr::after{
+    content:url('../Images/Content/ok-green.png');
+}
+.step-content .test {
+color:#000;
+}
+strong {
+color:#000;
+}
+.step-content .backStep {
+        color: red;
+        float: left;
+}
+.step-content fieldset {
+    border: none;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+.ac-custom {
+	margin: 0 auto;
+}
+
+.ac-custom h2 {
+	font-size: 3em;
+	font-weight: 300;
+	padding: 0 0 0.5em;
+	margin: 0 0 30px;
+}
+
+.ac-custom ul,
+.ac-custom ol {
+	list-style:none ;
+	padding: 0;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.ac-custom li {
+    margin: 4% 0;
+}
+
+.ac-custom label {
+	display: inline-block;
+	position: relative;
+	padding: 0 0 0 30px;
+	vertical-align: top;
+	cursor: pointer;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+
+.ac-custom input[type="radio"],
+.ac-custom label::before {
+	width: 20px;
+	height: 20px;
+	left: 0;
+	position: absolute;
+	cursor: pointer;
+    clear:both
+}
+
+
+.ac-custom input[type="radio"] {
+	opacity: 0;
+	-webkit-appearance: none;
+	display: inline-block;
+	vertical-align: middle;
+	z-index: 100;
+}
+
+.ac-custom label::before {
+	content: '';
+	border: 1px solid #e20613;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+    transition:0.3s;
+    -webkit-transition:0.3s;
+    clear:both
+}
+
+.ac-radio label::before {
+	border-radius: 50%;
+}
+
+.ac-custom input[type="radio"]:checked + label {
+	color: #000;
+} 
+
+
+.ac-custom input[type="radio"]:checked + label::before {
+	opacity: 1;
+    content:url('../Images/Content/ok.png');
+    border:none;
+    clear:both
+}
+.step-content .pag {
+    position: relative;
+    width: 50%;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+.step-content .answer{
+    padding: 0 0 0 6%;
+    box-sizing: border-box;
+}
+
+/* fin styles validacion*/
+
+/* styles solicitud*/
+.step-content .space{
+    margin-top:4%;
+}
+.step-content .paddno{
+    padding:0;
+}
+.step-content .marginnone{
+    margin:0;
+}
+
+.step-content .form-control:focus {
+    border-bottom:solid 1px #e20613;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 0px rgba(226,6,19,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 0px rgba(226,6,19,.6);
+}
+.step-content .inp {
+    border-bottom:solid 1px #bdbdbd; 
+}
+/* fin styles solicitud*/
+
+/* Style aprovacion */
+
+.step-content .info{
+margin: 4% 0;
+}
+.step-content .desc-info{
+    font-size: 12px;
+    padding:0;
+}
+
+.step-content .info-log {
+
+}
+.step-content .logo-info {
+    width: 60%;
+    margin: 10% auto 0 auto;
+    float: right;
+}
+.table {
+    margin-top: 1%;
+}
+/* Fin styles aprovacion */
+
+/* Resumen data */
+.step-content .img-summary{
+margin: 30% 0 0 0;
+    position: relative;
+    width: 100%;
+    border: 1px solid #bdbdbd;
+    padding: 10% 0%;
+    box-sizing: border-box;
+    background:#fff;
+}
+/* Fin resumen data*/
+
+footer .text-foot{
+    text-align:left;
+}
+footer .img-foot{
+    text-align:right;
+    
+}
+
+
+/* Reseteo de estilos bootstrap */
+/* modal*/
+.modal-header, h4, .close {
+      background-color: #7d7d7d;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+.modal-footer {
+      background-color: #f9f9f9;
+  }
+.container .terminar {
+display:block;
+margin:0 auto;
+padding: 10px 24px;
+}
+.modal-body {
+    padding: 30px 50px 0 50px;
+    text-align: center;
+}
+/* Fin modal*/
+
+
+.text-left {
+text-align:left !important;
+ padding: 30px 50px;
+}
+.mhead,
+.closes {
+      background-color: #f4f4f4;
+      color:#000 !important;
+      text-align: center;
+      font-size: 40px;
+}
+.modal-header .close.closes {
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
+    left: auto;
+    right: auto;
+}
+.modal-content.fond-terms {
+    background-color: #f4f4f4;
+    background-image: url('../Images/Content/fondo-steps.jpg');
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media (min-width: 769px) {
+    .modal-dialog.modal-terms {
+        width: 1140px;
+        max-width:98%;
+        margin: 30px auto;
+    }
+}
+
+/* Fin Reseteo de estilos bootstrap */
+
+
+
+/* Media Querys steps*/
+@media(max-width: 769px) {
+
+.step-content .bull {
+    font-size: 15px;
+}
+.step-content .enviar,
+.step-content .prtn {
+    width: 100%;
+    margin: 14px auto;
+    display: block;
+    padding: 16px 0px;
+    position: relative;
+    font-size: 3vw;
+}
+.form-step3 .form-group select {
+  margin-bottom: 10%;
+}
+.step-content .paddno {
+    padding: 0 15px;
+}
+}
+@media(max-width: 740px) {
+
+.step-content .check {
+    width: 90%;
+    }
+.form-step3 .form-group select {
+  margin-bottom: 10%;
+}
+.step-content .grey {
+    width: 25px;
+    height: 25px;
+}
+.modal-body {
+    padding: 30px 20px 0 20px;
+    text-align: center;
+}
+header .logo, header .logo-step {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 8%;
+}
+
+}
+@media(max-width: 568px) {
+    .step-content .print {
+    padding: 0;
+}
+
+.step-content .bull,
+.step-content .validado {
+    font-size: 4vw;
+    padding: 0;
+    text-align:center;
+}
+.step-content .bull::after{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    }
+    
+.step-content .validado::after {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.step-content .desc-step {
+    font-weight: bold;
+    font-size: 4.5vw;
+   
+    padding: 0;
+}
+.step-content {
+    padding: 4% 2% 22% 2%;
+}
+header .logo, header .logo-step {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 8%;
+}
+.step-content .step-title {
+    font-size: 4vw;
+    padding: 12% 0 4% 1%;
+}
+.step-content .li-step {
+    padding-top: 0%;
+    margin-top: 10%;
+}
+footer .text-foot {
+    text-align: center;
+    font-size: 2.5vw;
+}
+.step-content .vermas {
+    vertical-align: bottom;
+}
+.step-content .check {
+    font-size: 3vw;
+}
+
+.step-content .enviar {
+    width: 100%;
+    margin: 14px auto;
+    display: block;
+    padding: 16px 0px;
+    position: relative;
+    font-size: 4vw;
+}
+footer .img-foot {
+    text-align: center;
+    padding-top: 2%;
+}
+.input {
+    width:100%;
+    }
+
+.input__label {
+
+    }
+.form-group select {
+    
+}
+.body-content .legal {
+    left: 4%;
+}
+.step-content .prtn {
+        display: block;
+        float: none !important;
+ }
+
+.step-content .bordes {
+    padding: 0;
+    box-shadow: 0 0;
+}
+.step-content .answer {
+    padding: 18% 0 0 0;
+    box-sizing: border-box;
+}
+
+.step-content form ul {
+     margin-bottom: 14%;
+}
+
+.step-content .paddmov {
+padding:0; 
+margin-top: 16%;
+}
+.step-content .paddno {
+    padding: 0 15px;
+}
+.step-content .logo-info {
+    width: 80%;
+    margin: 10% auto;
+    float: none;
+    display: block;
+}
+.step-content .desc-info {
+    font-size: 12px;
+    padding: 0;
+}
+.step-content .paddnov{
+    padding:0;
+}
+.step-content .img-summary {
+        margin: 14% 0 0 0;
+    }
+}
+@media(max-width:360px) {
+    .input__label {
+    font-size: 12px;
+}
+}
+/* Fin Media Querys steps*/
+
+
+
+/* End Styles registration form*/

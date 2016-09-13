@@ -1,0 +1,179 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Solicitud";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
+            <div class="col-xs-4 col-sm-4 validado"><span>2.</span> Valida</div>
+            <div class="col-xs-4 col-sm-4 bull active"><span>3.</span> Solicita</div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="col-xs-12 col-md-4 bordes">
+            <p class="desc-step">Número de Solicitud: <span class="red">3602</span></p>
+            <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
+            <div class="resumen-data">
+                @{
+                    Html.RenderPartial("~/Views/Requests/_SummaryData.cshtml");
+                }
+            </div>
+            <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
+            <span class="proccess">Validado</span>
+        </div>
+        <div class="col-xs-12 col-md-8 paddmov">
+            <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Tarjeta de Crédito</span>”</p>
+            <div class="test">
+                <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
+                    <p class="bolds">Tus Datos</p>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-4">
+                            <label>
+                                Actividad Económica <span class="symbol required"></span>
+                            </label>
+                            <select name="EconomicActivity" id="EconomicActivity" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                    data-value="">
+                                <option value="">Seleccione...</option>
+                                <option value="Asalariado">Asalariado</option>
+                                <option value="Independiente">Independiente</option>
+                                <option value="Pensionado">Pensionado</option>
+                                <option value="Estudiante">Estudiante</option>
+                                <option value="Ama de casa">Ama de casa</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <span class="input input--hoshi">
+                                <input name="Antiquity" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Antiquity" placeholder="" value="">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Antiquity">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Antigüedad (Meses)<span class="symbol required"></span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <span class="input input--hoshi">
+                                <input name="Income" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-3">
+                            <span class="input input--hoshi">
+                                <input name="Age" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber],maxSize[2]]" type="number" id="Age" placeholder="" value="">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Age">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Edad<span class="symbol required"></span></span>
+                                </label>
+                            </span>
+                        </div>
+                            <div class="col-xs-12 col-md-3">
+                                <label>
+                                    Estrato<span class="symbol required"></span>
+                                </label>
+                                <select name="Stratum" id="Stratum" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="">Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        <div class="col-xs-12 col-md-3">
+                            <label>
+                                Personas a Cargo<span class="symbol required"></span>
+                            </label>
+                            <select name="People" id="People" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                    data-value="">
+                                <option value="">Seleccione...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-md-3 paddno">
+                            <label>
+                                Producto Solicitado<span class="symbol required"></span>
+                            </label>
+                            <select name="ProductRequested" id="ProductRequested" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                    data-value="">
+                                <option value="">Seleccione...</option>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                            </select>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-xs-12 col-md-4">
+                                <label>
+                                    Ciudad de Residencia<span class="symbol required"></span>
+                                </label>
+                                <select name="City" id="City" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                        data-value="">
+                                    <option value="">Seleccione...</option>
+                                    <option value="Opción-1">Opción 1</option>
+                                    <option value="Opción-2">Opción 2</option>
+                                    <option value="Opción-3">Opción 3</option>
+                                </select>
+                            </div>
+                        <div class="col-xs-12 col-md-4">
+                            <span class="input input--hoshi">
+                                <input name="ResidenceAddress" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="ResidenceAddress" placeholder="" value="">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="ResidenceAddress">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Dirección de Residencia<span class="symbol required"></span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <span class="input input--hoshi">
+                                <input name="ResidenceTelephone" id="ResidenceTelephone" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp],maxSize[10]]" type="number" placeholder="" value="">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="ResidenceTelephone">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Teléfono (Residencia)<span class="symbol required"></span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-6 space">
+                            
+                        </div>
+                        <div class="col-xs-12 col-md-6 space" style="display:none;">
+                            <button type="submit" class="btn btn-danger pull-right enviar">
+                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 space">
+                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("RequestAproved", "Requests")">
+                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>

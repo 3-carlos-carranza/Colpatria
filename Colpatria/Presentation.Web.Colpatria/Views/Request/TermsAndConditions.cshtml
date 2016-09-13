@@ -1,0 +1,55 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Términos y condiciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-6 col-sm-6 desc-step">
+            <p>Términos Legales</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 li-step">
+            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="title-term">
+            Autorización Manejo de Datos
+        </div>
+        <div class="subtitle-term">
+            Solicitud de productos a través de la web www.colpatria.com
+        </div>
+        <div class="contents">
+            <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
+            <p class="bolds"><span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.</p>
+            <p class="bolds"><span>2.</span>  Autoriza a Banco Colpatria para:</p>
+            <p><strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.</p>
+            <p><strong>B.</strong>  Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.</p>
+            <p><strong>C.</strong>  Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.</p>
+            <p><strong>D.</strong>  Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.</p>
+            <p><strong>E.</strong>  Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.</p>
+            <p class="bolds"><span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.</p>
+        </div>
+        <div class="botons">
+            <div class="col-xs-12 col-md-6 print">
+                <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
+            </div>
+            <div class="col-xs-12 col-md-6 print">
+                <form action="@Url.Action("Register")" method="POST" hidden="hidden">
+                    <input name="check" hidden="hidden" class="" value="true"/>
+                    <button type="submit" class="btn btn-danger pull-right enviar acepto">
+                        Acepto los términos y Condiciones
+                    </button>
+                </form>
+
+                <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Register")">Acepto los Términos y Condiciones</a>
+
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>

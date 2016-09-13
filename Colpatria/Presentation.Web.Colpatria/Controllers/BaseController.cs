@@ -47,7 +47,6 @@ namespace Presentation.Web.Colpatria.Controllers
             ProcessFlowArgument = processFlowArgument;
             ProcessFlowManager = processFlowManager;
         }
-
         public long ExecutionId
         {
             get
@@ -58,7 +57,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
             }
         }
-
         public long ProductId
         {
             get
@@ -69,7 +67,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
             }
         }
-
         public IEnumerable<Page> Pages
         {
             get
@@ -84,7 +81,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 return null;
             }
         }
-
         public string FullName
         {
             get
@@ -95,7 +91,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 return data;
             }
         }
-
         public string Code
         {
             get
@@ -106,13 +101,12 @@ namespace Presentation.Web.Colpatria.Controllers
                 return data;
             }
         }
-
         public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
+
             return await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
         }
-
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
             ProcessFlowArgument.IsSubmitting = true;
@@ -130,8 +124,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 }
             };
         }
-
-
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {
             if (!(stepresult is IShowScreenResponse))
@@ -172,9 +164,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 default:
                     return Json(new JsonResponse {Status = false, Message = "interfaz deconocida"});
             }
-
-
-            return null;
         }
     }
 }

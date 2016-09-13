@@ -46,7 +46,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow
                 return actionToStart.Invoke(arg);
             }
             var step =  Store.GetCurrentStep(arg);
-            return await Steps.First(s => s.Name == step.Name).Advance(arg);
+            return await Steps.First(s => s.Name == step.NameClientAlias).Advance(arg);
         }
 
         public async Task<IProcessFlowResponse> StartFlowAsync(IProcessFlowArgument arg,
@@ -54,7 +54,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow
         {
             arg.Steps = Steps;
             var step =  Store.GetCurrentStep(arg);
-            return await Steps.First(s => s.Name == step.Name).Advance(arg);
+            return await Steps.First(s => s.Name == step.NameClientAlias).Advance(arg);
         }
     }
 }

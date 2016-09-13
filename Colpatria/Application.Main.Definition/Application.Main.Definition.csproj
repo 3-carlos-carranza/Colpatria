@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="MyCustomProcessFlow\ProcessFlowManager.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\BaseStep.cs" />
     <Compile Include="ProcessFlow\Api\Steps\Responses\ProcessFlowResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\ShowFormStep.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="MyCustomProcessFlow\Steps\IErrorEvidenteStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IErrorScoreStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IErrorSendSmsStep.cs" />
-    <Compile Include="MyCustomProcessFlow\Steps\IEvidenteStep.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\ISubmitEvidenteStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IResponseRequestStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IScoreStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\ISendSmsStep.cs" />

@@ -4,8 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>@ViewBag.Title - Template Application</title>
+
+
+
+    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/xtensions")
+    @RenderSection("stylesheet", required: false)
+
     <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/lib/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
@@ -65,8 +72,13 @@
 
 @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>*@
-<script type="text/javascript">
 
+    <script>
+        "use strict";
+        $(document)
+            .ready(function () {
+                BLExt.Init();
+            });
     </script>
 </body>
 </html>

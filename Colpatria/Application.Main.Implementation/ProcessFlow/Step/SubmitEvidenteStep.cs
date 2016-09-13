@@ -10,13 +10,13 @@ using Core.Entities.Evidente;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class EvidenteStep : BaseStep, IEvidenteStep
+    public class SubmitEvidenteStep : BaseStep, ISubmitEvidenteStep
     {
         private readonly IEvidenteAppService _evidenteAppService;
         private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
         private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
 
-        public EvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService) : base(store)
+        public SubmitEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
@@ -49,7 +49,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //{
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar.", true));
             //}
-
+            
             var questionsResponse =
                 _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
                     .WithTypeOfDocument("1")

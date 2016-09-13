@@ -19,6 +19,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -63,6 +64,11 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
                 throw new Exception("Not Found Next Step Error");
             }
             return nextstep;
+        }
+
+        public SectionFlow GetCurrentSection(IProcessFlowArgument argument)
+        {
+            return _store.GetCurrentSection(argument);
         }
 
         public void TraceFlow(IProcessFlowArgument processFlowArgument)

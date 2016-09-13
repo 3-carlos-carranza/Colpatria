@@ -29,6 +29,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
         void TrackingStep(IProcessFlowArgument argument);
 
         StepFlow GetNextStep(IProcessFlowArgument argument, StepType stepType);
+        SectionFlow GetCurrentSection(IProcessFlowArgument argument);
         StepFlow GetCurrentStep(IProcessFlowArgument argument);
 
         Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument, StepType stepType,

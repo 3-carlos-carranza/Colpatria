@@ -77,6 +77,11 @@ namespace Application.Main.Implementation.ProcessFlow
             return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == (int) stepType);
         }
 
+        public SectionFlow GetCurrentSection(IProcessFlowArgument argument)
+        {
+            return _processAppService.GetCurrentSectionByExecutionId(argument.Execution.Id);
+        }
+
         public StepFlow GetCurrentStep(IProcessFlowArgument argument)
         {
             productId = argument.Execution.ProductId;

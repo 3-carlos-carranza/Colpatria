@@ -15,9 +15,9 @@ using System;
 
 namespace Core.Entities.ProcessModel
 {
-    public abstract class ResponseDetailFlow
+    public class ResponseDetailFlow
     {
-        private ReponseStatus Status { get; set; }
+        public ReponseStatus Status { get; set; }
         public virtual Exception Exception { get; set; }
         public string Description { get; set; }
     }

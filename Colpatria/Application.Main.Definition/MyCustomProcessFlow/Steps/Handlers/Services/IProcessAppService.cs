@@ -23,5 +23,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
     public interface IProcessAppService
     {
         IEnumerable<Step> GetAllStepsEnablesByProduct(long productId);
+        Section GetCurrentSectionByExecutionId(long executionId);
+
     }
 }

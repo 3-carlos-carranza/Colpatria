@@ -21,6 +21,13 @@ using Crosscutting.Common.Tools.DataType;
 
 namespace Core.GlobalRepository.SQL.Process
 {
+
+    public partial interface ISectionRepository
+    {
+        Section GetSectionByExecution(long executionId);
+
+    }
+
     public partial interface IExtendedFieldRepository
     {
         void SetFields(List<FieldValueOrder> collection, long requestid, int ownerId);

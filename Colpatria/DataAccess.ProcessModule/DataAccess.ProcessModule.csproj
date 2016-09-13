@@ -95,6 +95,7 @@
       <DependentUpon>ProcessModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\SectionRepository.Extension.cs" />
     <Compile Include="Repository\ExtendedFieldRepository.Extension.cs" />
     <Compile Include="Repository\ExtendedFieldValueRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>

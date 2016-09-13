@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Core.Entities.Process;
 using Core.GlobalRepository.SQL.Process;
 
 #endregion
@@ -25,15 +26,22 @@ namespace Application.Main.Implementation.ProcessFlow.Services
     public class ProcessAppService : IProcessAppService
     {
         private readonly IStepRepository _stepRepository;
+        private readonly ISectionRepository _sectionRepository;
 
-        public ProcessAppService(IStepRepository stepRepository)
+        public ProcessAppService(IStepRepository stepRepository, ISectionRepository sectionRepository)
         {
             _stepRepository = stepRepository;
+            _sectionRepository = sectionRepository;
         }
 
         public IEnumerable<Core.Entities.Process.Step> GetAllStepsEnablesByProduct(long productId)
         {
             return _stepRepository.GetAllStepsEnablesByProduct(productId);
+        }
+
+        public Section GetCurrentSectionByExecutionId(long executionId)
+        {
+            return _sectionRepository.GetSectionByExecution(executionId);
         }
     }
 }

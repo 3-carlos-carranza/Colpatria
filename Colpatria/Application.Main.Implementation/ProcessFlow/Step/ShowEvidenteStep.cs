@@ -7,6 +7,7 @@ using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Definition.ProcessFlow.Api.Steps;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Core.Entities.Evidente;
+using Core.Entities.ProcessModel;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -68,10 +69,20 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             //}
 
+            var section = GetCurrentSection(argument);
             return new EvidenteResponse
             {
                 Execution = argument.Execution,
-                Questions = questionsResponse.Questions
+                Questions = questionsResponse.Questions,
+                Action = section.Action,
+                ActionMethod = section.ActionMethod,
+                Controller = section.Controller,
+                FriendlyUrl = section.Name.Replace(" ","-"),
+                ResponseDetail = new ResponseDetailFlow
+                {
+                    Status   = ReponseStatus.Success
+                }
+               
             };
         }
 

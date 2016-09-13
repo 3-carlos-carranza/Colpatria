@@ -58,12 +58,14 @@
                                     <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 print">
-                                    <form action="@Url.Action("Register", "Request")" method="POST">
+                                    <form action="@Url.Action("Register")" method="POST" hidden="hidden">
                                         <input name="check" hidden="hidden" class="" value="true" />
                                         <button type="submit" class="btn btn-danger pull-right enviar acepto">
                                             Acepto los términos y Condiciones
                                         </button>
                                     </form>
+
+                                    <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Register")">Acepto los términos y Condiciones</a>
 
                                 </div>
                             </div>
@@ -130,12 +132,14 @@
                                     <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 print">
-                                    <form action="@Url.Action("Index", "Requests")" method="POST">
+                                    <form action="@Url.Action("Index")" method="POST" hidden="hidden">
                                         <input name="check" hidden="hidden" class="" value="true" />
                                         <button type="submit" class="btn btn-danger pull-right enviar acepto">
                                             Acepto los términos y Condiciones
                                         </button>
                                     </form>
+
+                                    <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Index")">Acepto los términos y Condiciones</a>
 
                                 </div>
                             </div>
@@ -170,7 +174,7 @@
                     <h6>Número de Solicitud: <span>56524</span></h6>
                 </div>
                 <div class="modal-body aprovedd">
-                  <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “TuCuenta de Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
+                  <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
                     <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
                 </div>
                 <div class="modal-footer">
@@ -199,7 +203,7 @@
                     <h6>Número de Solicitud: <span>3602</span></h6>
                 </div>
                 <div class="modal-body aprovedd">
-                    <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “TuCuenta de Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
+                    <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
                     <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
                 </div>
                 <div class="modal-footer">

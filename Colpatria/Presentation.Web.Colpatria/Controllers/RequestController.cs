@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Implementation.ProcessFlow.Responses;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
-using Newtonsoft.Json;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -68,10 +66,7 @@ namespace Presentation.Web.Colpatria.Controllers
             
             
             var stepresult = await ExecuteFlow(identity, pages);
-            identity.AddClaim(new Claim("RequestId", stepresult.Execution.Id.ToString()));
-            identity.AddClaim(new Claim("ProductId", stepresult.Execution.ProductId.ToString()));
-            identity.AddClaim(new Claim("FullName", identity.Label));
-            identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
+            
             return ValidateStepResult(stepresult);
         }
 

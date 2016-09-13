@@ -15,10 +15,6 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response
 {
     public interface IInterfaceResponse : IProcessFlowResponse
     {
-        string FriendlyUrl { get; set; }
-        string ActionMethod { get; set; }
-        string PartialView { get; set; }
-        string Action { get; set; }
-        string Controller { get; set; }
+       
     }
 }

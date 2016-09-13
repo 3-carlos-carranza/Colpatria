@@ -89,10 +89,7 @@ namespace Presentation.Web.Colpatria.Controllers
             
             
             IProcessFlowResponse stepresult = await ExecuteFlow(identity, pages);
-            identity.AddClaim(new Claim("RequestId", stepresult.Execution.Id.ToString()));
-            identity.AddClaim(new Claim("ProductId", stepresult.Execution.ProductId.ToString()));
-            identity.AddClaim(new Claim("FullName", identity.Label));
-            identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
+            
             return ValidateStepResult(stepresult);
         }
 

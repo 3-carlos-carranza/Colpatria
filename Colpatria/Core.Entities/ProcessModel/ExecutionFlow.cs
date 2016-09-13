@@ -28,11 +28,11 @@ namespace Core.Entities.ProcessModel
     {
         public virtual long Id { get; set; }
         public virtual int CurrentStepId { get; set; }
-       // public virtual StepFlow CurrentStep { get; set; }
+       
         public virtual int CurrentSectionId { get; set; }
-       // public virtual SectionFlow CurrentSection { get; set; }
+       
         public virtual int ProcessId { get; set; }
         public virtual long ProductId { get; set; }
-       // public virtual ProcessFlow Process { get; set; }
+       
     }
 }

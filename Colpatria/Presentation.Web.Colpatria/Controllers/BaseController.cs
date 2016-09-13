@@ -6,7 +6,7 @@
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
 //   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-12 - 6:12 p. m.</Update>
+//   <Update> 2016-09-13 - 3:48 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -110,7 +110,18 @@ namespace Presentation.Web.Colpatria.Controllers
         public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
-            return await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
+            var result = await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
+            if (identity != null)
+            {
+                identity.AddClaim(new Claim("RequestId", result.Execution.Id.ToString()));
+                identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
+                identity.AddClaim(new Claim("FullName", identity.Label));
+                if (pages != null)
+                {
+                    identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
+                }
+            }
+            return result;
         }
 
         public void InitSetFormArguments(List<FieldValueOrder> form)
@@ -152,7 +163,6 @@ namespace Presentation.Web.Colpatria.Controllers
                             Icon = "remove"
                         };
                         return View("~/Views/Error/Index.cshtml", error);
-                        
                     }
                     if (result.Action != null)
                     {

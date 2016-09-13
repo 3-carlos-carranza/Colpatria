@@ -13,10 +13,5 @@
 
 namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
 {
-    public enum StepType
-    {
-        Success = 1,
-        Faile = 2,
-        Error = 0
-    }
+   
 }

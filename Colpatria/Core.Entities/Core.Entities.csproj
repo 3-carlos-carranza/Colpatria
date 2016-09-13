@@ -106,7 +106,6 @@
     <Compile Include="Process\WebServiceConsultation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enumerations\ExecutionState.cs" />
-    <Compile Include="Enumerations\StepType.cs" />
     <Compile Include="User\BaseDataList.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>

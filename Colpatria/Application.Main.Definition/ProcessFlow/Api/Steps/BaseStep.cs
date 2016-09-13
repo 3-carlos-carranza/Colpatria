@@ -5,8 +5,8 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-05  - 4:09 p. m.</Date>
-//   <Update> 2016-09-06 - 5:01 p. m.</Update>
+//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
+//   <Update> 2016-09-13 - 10:37 a. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -34,7 +34,7 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             if (store == null) throw new ArgumentNullException(nameof(store));
             _store = store;
         }
-        
+
         public string Name => GetType().Name;
         public abstract Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument);
 
@@ -43,21 +43,20 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
 
         public async Task<IStep> OnSucess(IProcessFlowArgument processFlowArgument)
         {
-            
-            var step =  _store.GetNextStep(processFlowArgument, StepType.Success);
-            processFlowArgument.Execution.CurrentStepId = step.Id;
+            _store.SetNextStep(processFlowArgument,StepType.Success);
+            var step =_store.GetCurrentStep(processFlowArgument);
             var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
             if (nextstep == null)
             {
-               throw  new Exception("Not Found Next Step Success");
+                throw new Exception("Not Found Next Step Success");
             }
             return nextstep;
         }
 
         public async Task<IStep> OnError(IProcessFlowArgument processFlowArgument)
         {
-            var step =  _store.GetNextStep(processFlowArgument, StepType.Error);
-            processFlowArgument.Execution.CurrentStepId = step.Id;
+            _store.SetNextStep(processFlowArgument,StepType.Success);
+            var step = _store.GetCurrentStep(processFlowArgument);
             var nextstep = processFlowArgument.Steps.FirstOrDefault(s => s.Name == step.NameClientAlias);
             if (nextstep == null)
             {
@@ -66,14 +65,19 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             return nextstep;
         }
 
-        public SectionFlow GetCurrentSection(IProcessFlowArgument argument)
-        {
-            return _store.GetCurrentSection(argument);
-        }
-
         public void TraceFlow(IProcessFlowArgument processFlowArgument)
         {
             _store.TrackingStep(processFlowArgument);
+        }
+
+        public StepFlow GetCurrentStep(IProcessFlowArgument argument)
+        {
+            var section = _store.StepDetail(argument);
+            if (section == null)
+            {
+                throw new Exception("Not Found Next Section");
+            }
+            return section;
         }
     }
 }

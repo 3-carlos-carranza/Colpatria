@@ -20,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Core.Entities.Process;
 using Core.Entities.ProcessModel;
 
 #endregion
@@ -56,6 +57,11 @@ namespace Application.Main.Implementation.ProcessFlow
             Console.WriteLine("Entra al Paso " + argument.Execution.CurrentStepId);
         }
 
+        public StepFlow StepDetail(IProcessFlowArgument argument)
+        {
+            return _processAppService.GetCurrentStepDetailByExecutionId(argument.Execution.Id);
+        }
+
         public StepFlow GetNextStep(IProcessFlowArgument argument, StepType stepType)
         {
             productId = argument.Execution.ProductId;
@@ -77,10 +83,18 @@ namespace Application.Main.Implementation.ProcessFlow
             return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == (int) stepType);
         }
 
-        public SectionFlow GetCurrentSection(IProcessFlowArgument argument)
+        public void SetNextStep(IProcessFlowArgument argument,StepType stepType)
         {
-            return _processAppService.GetCurrentSectionByExecutionId(argument.Execution.Id);
+            var nextStepWithType = _processAppService.GetNextStepWithType(argument.Execution.CurrentStepId, argument.Execution.CurrentSectionId,
+                argument.Execution.ProcessId, stepType);
+
+            argument.Execution.CurrentSectionId = nextStepWithType.SectionId;
+            argument.Execution.CurrentStepId = nextStepWithType.Id;
+
+            _processAppService.UpdateExecution((Execution)argument.Execution);
         }
+
+       
 
         public StepFlow GetCurrentStep(IProcessFlowArgument argument)
         {

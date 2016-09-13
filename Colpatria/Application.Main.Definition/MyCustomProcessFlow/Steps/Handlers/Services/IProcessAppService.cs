@@ -14,7 +14,10 @@
 #region
 
 using System.Collections.Generic;
+using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Core.Entities.Process;
+using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -23,7 +26,9 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
     public interface IProcessAppService
     {
         IEnumerable<Step> GetAllStepsEnablesByProduct(long productId);
-        Section GetCurrentSectionByExecutionId(long executionId);
+        StepDetail GetCurrentStepDetailByExecutionId(long executionId);
+        StepDetail GetNextStepWithType(int step, int section, int processId, StepType type);
+        void UpdateExecution(Execution execution);
 
     }
 }

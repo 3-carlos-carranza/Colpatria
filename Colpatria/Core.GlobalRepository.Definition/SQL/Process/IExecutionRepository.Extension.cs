@@ -1,7 +1,23 @@
-﻿using System;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=IExecutionRepository.Extension.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
+//   <Update> 2016-09-13 - 11:37 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
 using Core.DataTransferObject.Vib;
-using Core.Entities.Enumerations;
 using Core.Entities.Process;
+using Core.Entities.ProcessModel;
+
+#endregion
 
 namespace Core.GlobalRepository.SQL.Process
 {
@@ -9,8 +25,6 @@ namespace Core.GlobalRepository.SQL.Process
     {
         Execution CreateRequest(Execution execution);
         Execution GetRequestById(long id);
-        Execution GetLatestRequest(long userId, long product, int process, string requestType);
-        Execution GetRequestbyUserAndRequestSimpleId(long userId, string simpleId, long product);
         StepDetail GetNextStepWithType(int step, int section, int processId, StepType type);
     }
 }

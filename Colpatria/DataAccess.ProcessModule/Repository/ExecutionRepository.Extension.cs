@@ -1,10 +1,27 @@
-﻿using System;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=ExecutionRepository.Extension.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-12  - 10:18 a. m.</Date>
+//   <Update> 2016-09-13 - 11:38 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using Core.DataTransferObject.Vib;
-using Core.Entities.Enumerations;
 using Core.Entities.Process;
+using Core.Entities.ProcessModel;
+
+#endregion
 
 namespace DataAccess.ProcessModule.Repository
 {
@@ -28,6 +45,9 @@ namespace DataAccess.ProcessModule.Repository
             return execution;
         }
 
+        
+
+
         public Execution GetRequestById(long id)
         {
             var request = GetFiltered(s => s.Id == id).FirstOrDefault();
@@ -39,27 +59,17 @@ namespace DataAccess.ProcessModule.Repository
             return request;
         }
 
-        public Execution GetLatestRequest(long userId, long product, int process, string requestType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Execution GetRequestbyUserAndRequestSimpleId(long userId, string simpleId, long product)
-        {
-            throw new NotImplementedException();
-        }
-
         public StepDetail GetNextStepWithType(int step, int section, int processId, StepType type)
         {
             var context = UnitOfWork as DbContext;
             return
                 context?.Database.SqlQuery<StepDetail>(
                     "GetNextStepbyStepType @CurrentStepId,@CurrentSectionId, @ProcessId, @StepType",
-                    new SqlParameter { ParameterName = "CurrentStepId", Value = step },
-                    new SqlParameter { ParameterName = "CurrentSectionId", Value = section },
-                    new SqlParameter { ParameterName = "ProcessId", Value = processId },
-                    new SqlParameter { ParameterName = "StepType", Value = (int)type }
-                    ).First();
+                    new SqlParameter {ParameterName = "CurrentStepId", Value = step},
+                    new SqlParameter {ParameterName = "CurrentSectionId", Value = section},
+                    new SqlParameter {ParameterName = "ProcessId", Value = processId},
+                    new SqlParameter {ParameterName = "StepType", Value = (int) type}
+                ).First();
         }
 
         public PageSection GetNextSectionAndPage(int sectionId, int processId)
@@ -67,13 +77,13 @@ namespace DataAccess.ProcessModule.Repository
             var context = UnitOfWork as DbContext;
             return
                 context?.Database.SqlQuery<PageSection>("GetNextSectionAndPage @CurrentSectionId, @ProcessId",
-                    new SqlParameter { ParameterName = "CurrentSectionId", Value = sectionId },
-                    new SqlParameter { ParameterName = "ProcessId", Value = processId }).First();
+                    new SqlParameter {ParameterName = "CurrentSectionId", Value = sectionId},
+                    new SqlParameter {ParameterName = "ProcessId", Value = processId}).First();
         }
 
         private void AssociateUserWithRequest(long executionId, long userId)
         {
-            var executionApplicant = new ExecutionApplicant()
+            var executionApplicant = new ExecutionApplicant
             {
                 ExecutionId = executionId,
                 UserId = userId,

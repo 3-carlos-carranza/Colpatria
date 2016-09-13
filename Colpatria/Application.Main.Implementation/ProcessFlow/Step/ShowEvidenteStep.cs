@@ -6,6 +6,7 @@ using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Definition.ProcessFlow.Api.Steps;
 using Application.Main.Implementation.ProcessFlow.Responses;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Evidente;
 using Core.Entities.ProcessModel;
 
@@ -69,15 +70,15 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             //}
 
-            var section = GetCurrentSection(argument);
+            var step =(StepDetail) GetCurrentStep(argument);
             return new EvidenteResponse
             {
                 Execution = argument.Execution,
                 Questions = questionsResponse.Questions,
-                Action = section.Action,
-                ActionMethod = section.ActionMethod,
-                Controller = section.Controller,
-                FriendlyUrl = section.Name.Replace(" ","-"),
+                Action = step.Action,
+                ActionMethod = step.ActionMethod,
+                Controller = step.Controller,
+                FriendlyUrl = (step.PageName+"/"+step.SectionName).Replace(" ","-"),
                 ResponseDetail = new ResponseDetailFlow
                 {
                     Status   = ReponseStatus.Success

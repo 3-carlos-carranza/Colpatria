@@ -6,7 +6,7 @@
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
 //   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-09 - 12:58 p. m.</Update>
+//   <Update> 2016-09-13 - 11:40 a. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -15,7 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow;
 using Application.Main.Definition.ProcessFlow.Api;
@@ -23,9 +22,9 @@ using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Core.Entities.Enumerations;
 using Core.Entities.Process;
+using Core.Entities.ProcessModel;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.DataType;
-using StepType = Application.Main.Definition.ProcessFlow.Api.ProcessFlows.StepType;
 
 #endregion
 
@@ -40,23 +39,25 @@ namespace Application.Main.Implementation.ProcessFlow
         {
             _executionRepository = executionRepository;
         }
+
         public override async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
-                   Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
+            Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
         {
             InitializeArgument(arg);
             return await base.StartFlow(arg, actionToStart);
         }
-       
+
 
         private void InitializeArgument(IProcessFlowArgument arg)
         {
             if (arg.Execution.ProductId == 0)
             {
-                throw new Exception("Falta el Producto!!!"); ;
+                throw new Exception("Falta el Producto!!!");
+                ;
             }
             if (arg.Execution.Id == 0)
             {
-                var stepFlow =((Core.Entities.Process.Step) Store.GetNextStep(arg,StepType.Success));
+                var stepFlow = ((Core.Entities.Process.Step) Store.GetNextStep(arg, StepType.Success));
                 var request = new Execution
                 {
                     CreateDate = DateTime.UtcNow,

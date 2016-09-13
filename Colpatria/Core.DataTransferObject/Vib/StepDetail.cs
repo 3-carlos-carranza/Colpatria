@@ -26,5 +26,7 @@ namespace Core.DataTransferObject.Vib
         public int PageId { get; set; }
         public string PageName { get; set; }
         public string Action { get; set; }
+        public string Controller { get; set; }
+        public string ActionMethod { get; set; }
     }
 }

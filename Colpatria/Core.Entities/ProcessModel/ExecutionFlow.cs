@@ -17,6 +17,13 @@
 
 namespace Core.Entities.ProcessModel
 {
+    public enum StepType
+    {
+        Success = 1,
+        Faile = 2,
+        Error = 0
+    }
+
     public abstract class ExecutionFlow
     {
         public virtual long Id { get; set; }

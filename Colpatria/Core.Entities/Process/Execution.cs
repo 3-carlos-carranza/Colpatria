@@ -22,6 +22,7 @@ using Core.Entities.ProcessModel;
 
 namespace Core.Entities.Process
 {
+
     public class Execution : ExecutionFlow
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

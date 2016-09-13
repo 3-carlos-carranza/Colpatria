@@ -30,9 +30,5 @@ namespace Core.Entities.ProcessModel
         public virtual int ProcessId { get; set; }
         public virtual int StateId { get; set; }
         public virtual int StepType { get; set; }
-
-      //  public virtual ICollection<StepSectionFlow> StepSection { get; set; } = new HashSet<StepSectionFlow>();
-      //  public virtual ProcessFlow Process { get; set; }
-      //  public virtual StateFlow State { get; set; }
     }
 }

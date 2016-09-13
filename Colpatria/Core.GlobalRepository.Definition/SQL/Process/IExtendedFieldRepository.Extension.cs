@@ -14,6 +14,7 @@
 #region
 
 using System.Collections.Generic;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Crosscutting.Common.Tools.DataType;
 
@@ -24,7 +25,7 @@ namespace Core.GlobalRepository.SQL.Process
 
     public partial interface ISectionRepository
     {
-        Section GetSectionByExecution(long executionId);
+        StepDetail GetCurrentStepDetailByExecutionId(long executionId);
 
     }
 

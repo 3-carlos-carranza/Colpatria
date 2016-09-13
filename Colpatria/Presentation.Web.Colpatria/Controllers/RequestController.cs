@@ -20,10 +20,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
+using Core.Entities.User;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 
 #endregion
 
@@ -85,9 +88,27 @@ namespace Presentation.Web.Colpatria.Controllers
             ViewBag.FullName = identity.Label;
             
             
-            dynamic stepresult = await ExecuteFlow(identity, pages);
+            IProcessFlowResponse stepresult = await ExecuteFlow(identity, pages);
+            identity.AddClaim(new Claim("RequestId", stepresult.Execution.Id.ToString()));
+            identity.AddClaim(new Claim("ProductId", stepresult.Execution.ProductId.ToString()));
+            identity.AddClaim(new Claim("FullName", identity.Label));
+            identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
+            return ValidateStepResult(stepresult);
+        }
+
+
+        public async Task<ActionResult> HandleRequest()
+        {
+            var userId = long.Parse(User.Identity.GetUserId());
+            ProcessFlowArgument.User = new User {Id = userId};
+            ProcessFlowArgument.IsSubmitting = false;
+            ProcessFlowArgument.Execution = new Execution {Id   =  ExecutionId,ProductId = ProductId };
+            
+            dynamic stepresult = await ExecuteFlow();
             return stepresult;
         }
+
+
 
         public ActionResult TermsAndConditions()
         {

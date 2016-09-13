@@ -62,10 +62,18 @@ namespace Application.Main.Implementation.ProcessFlow
             var currentstep = GetCurrentStep(argument);
             if (currentstep != null)
             {
-                return
-                    Steps.OrderBy(s => s.Order)
-                        .FirstOrDefault(s => s.Order == (currentstep.Order + 1) && s.StepType == (int) stepType);
+                var stepsintorder = Steps
+                    .Select((r, i) => new {Row = r, Index = i+1})
+                    .OrderBy(x => x.Row.Order);
+
+                var firstOrDefault = stepsintorder.FirstOrDefault(s=>
+                {
+                    var orDefault = stepsintorder.FirstOrDefault(d => d.Row.Id == currentstep.Id);
+                    return orDefault != null && s.Index ==orDefault.Row.Order + 1;
+                });
+                return firstOrDefault != null ? firstOrDefault.Row : Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.Order == (currentstep.Order + 1) );
             }
+            //first Step
             return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == (int) stepType);
         }
 

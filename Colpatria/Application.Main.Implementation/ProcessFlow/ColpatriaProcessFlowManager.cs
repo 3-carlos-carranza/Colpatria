@@ -44,7 +44,6 @@ namespace Application.Main.Implementation.ProcessFlow
                    Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
         {
             InitializeArgument(arg);
-            //arg.Steps = Steps;
             return await base.StartFlow(arg, actionToStart);
         }
        

@@ -5,8 +5,8 @@
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 2:34 p. m.</Date>
-//   <Update> 2016-09-08 - 2:44 p. m.</Update>
+//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
+//   <Update> 2016-09-12 - 6:12 p. m.</Update>
 //   -----------------------------------------------------------------------
 
 #endregion
@@ -19,13 +19,18 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Application.Main.Definition.Enumerations;
+using Application.Main.Definition.MyCustomProcessFlow;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Core.Entities.Process;
 using Core.Entities.User;
+using Crosscutting.Common.JSON;
 using Crosscutting.Common.Tools.DataType;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+using Presentation.Web.Colpatria.Models;
 
 #endregion
 
@@ -59,7 +64,7 @@ namespace Presentation.Web.Colpatria.Controllers
             get
             {
                 //Get the current claims principal
-                var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+                var identity = (ClaimsPrincipal) Thread.CurrentPrincipal;
                 var data = identity.Claims.FirstOrDefault(c => c.Type == "ProductId")?.Value;
                 return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
             }
@@ -102,10 +107,10 @@ namespace Presentation.Web.Colpatria.Controllers
             }
         }
 
-        public async Task<dynamic> ExecuteFlow(ClaimsIdentity identity = null, IEnumerable<Page> pages = null)
+        public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
+            IEnumerable<Page> pages = null)
         {
-            dynamic stepresult = await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
-            return stepresult;
+            return await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
         }
 
         public void InitSetFormArguments(List<FieldValueOrder> form)
@@ -121,9 +126,50 @@ namespace Presentation.Web.Colpatria.Controllers
                 Execution = new Execution
                 {
                     ProductId = 1,
-                    Id = ExecutionId,
+                    Id = ExecutionId
                 }
             };
+        }
+
+
+        protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
+        {
+            if (!(stepresult is IShowScreenResponse))
+            {
+                return Json(new JsonResponse {Status = true, Message = "Paso no Devuelve una interfaz"});
+            }
+            var result = stepresult as IShowScreenResponse;
+            switch (result.InterfaceTypeResponse)
+            {
+                case InterfaceTypeResponse.ShowForm:
+                    if (result.Action == null && result.PartialView == null)
+                    {
+                        var error = new ErrorViewModel
+                        {
+                            Message =
+                                "No se pudo obtener la información necesaria para mostrar esta pantalla.",
+                            Title = "Error al obtener la Pagina",
+                            Icon = "remove"
+                        };
+                        return View("~/Views/Error/Index.cshtml", error);
+                    }
+                    return View(result.Action, stepresult);
+                case InterfaceTypeResponse.ShowModal:
+                    var json = new JsonResponse {Status = true};
+                    json.SetModalWithPartial(ModalType.Kendo, Url.Action(result.Action, "Modals"));
+                    TempData["Jsonresponse"] = json;
+                    return RedirectToAction("Index", "Home");
+                case InterfaceTypeResponse.Redirect:
+                    var url =
+                        Pages.Select(s => s.Section.FirstOrDefault(sc => sc.Id == stepresult.Execution.CurrentSectionId))
+                            .FirstOrDefault()?.Name.Replace(" ", "-");
+                    return Redirect("~/Formularios/" + url);
+                default:
+                    return Json(new JsonResponse {Status = false, Message = "interfaz deconocida"});
+            }
+
+
+            return null;
         }
     }
 }

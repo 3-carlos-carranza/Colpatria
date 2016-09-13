@@ -81,7 +81,6 @@
     <Compile Include="ProcessFlow\Api\ProcessFlows\StepType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IInterfaceResponse.cs" />
-    <Compile Include="MyCustomProcessFlow\Steps\Responses\IShowScreenResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IStepResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\ISaveFieldsAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IErrorEvidenteStep.cs" />

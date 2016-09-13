@@ -62,9 +62,6 @@ namespace Application.Main.Implementation.ProcessFlow
             var currentstep = GetCurrentStep(argument);
             if (currentstep != null)
             {
-
-
-
                 var stepsintorder = Steps
                     .Select((r, i) => new {Row = r, Index = i+1})
                     .OrderBy(x => x.Row.Order);

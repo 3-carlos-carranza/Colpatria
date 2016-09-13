@@ -44,6 +44,8 @@
     <Compile Include="ClientExtensions.cs" />
     <Compile Include="DateTimeExtension.cs" />
     <Compile Include="EnumExtensions.cs" />
+    <Compile Include="JSON\JsonResponse.cs" />
+    <Compile Include="JSON\ModalType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

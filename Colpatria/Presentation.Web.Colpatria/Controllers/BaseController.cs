@@ -181,9 +181,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 default:
                     return Json(new JsonResponse {Status = false, Message = "interfaz deconocida"});
             }
-
-
-            return null;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
@@ -9,6 +10,7 @@ using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -55,6 +57,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var identity =
                 await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;
+            GetAuthenticationManager().SignIn(identity);
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
@@ -70,6 +73,12 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        private IAuthenticationManager GetAuthenticationManager()
+        {
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+            return authManager;
+        }
 
         public async Task<ActionResult> HandleRequest()
         {

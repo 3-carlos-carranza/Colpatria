@@ -56,9 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\MessageClassification.cs" />
     <Compile Include="MyCustomProcessFlow\ProcessFlowManager.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IResponseAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\IRequestResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\BaseStep.cs" />
     <Compile Include="ProcessFlow\Api\Steps\Responses\ProcessFlowResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\ShowFormStep.cs" />

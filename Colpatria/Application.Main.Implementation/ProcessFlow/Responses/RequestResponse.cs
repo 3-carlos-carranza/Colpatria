@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
-using Core.Entities.Evidente;
 using Core.Entities.ProcessModel;
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
-    public class EvidenteResponse : IEvidenteResponse
+    public class RequestResponse : IRequestResponse
     {
-        public IEnumerable<Question> Questions { get; set; }
+        public string Name { get; set; }
+        public DateTime DateOfExpedition { get; set; }
+        public Definition.Enumerations.MessageClassification MessageClassification { get; set; }
+        public bool IsResponsePersonalized { get; set; }
         public ExecutionFlow Execution { get; set; }
         public ResponseDetailFlow ResponseDetail { get; set; }
         public string FriendlyUrl { get; set; }

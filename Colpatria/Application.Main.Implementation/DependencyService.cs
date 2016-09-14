@@ -34,6 +34,8 @@ namespace Application.Main.Implementation
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
+            
+            container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
 
             //Process
@@ -48,6 +50,8 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
+            container.RegisterType<IStep, ResponseRequestStep>("ResponseRequestStep");
+            container.RegisterType<IStep, WsMotorStep>("WsMotorStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

@@ -218,8 +218,17 @@
                 var $element = this.$element;
                 if (this.$element.data("url")) {
                     this.$element.kendoAutoComplete({
+
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
+
+                        dataValueField: this.$element.data("valuefield"),
+                        value: this.$element.data("value"),
+                        autoBind: this.$element.data("autobind"),
+                        cascadeFrom: this.$element.data("cascadefrom"),
+                        suggest: true,
+
                         filter: "startswith",
+
                         dataSource: {
                             type: "json",
                             serverFiltering: this.$element.data("cascadefrom") == undefined ? false : true,

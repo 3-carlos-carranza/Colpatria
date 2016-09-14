@@ -70,21 +70,30 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             //}
 
-            var step =(StepDetail) GetCurrentStep(argument);
-            return new EvidenteResponse
+            TraceFlow(argument);
+            if (!argument.IsSubmitting)
             {
-                Execution = argument.Execution,
-                Questions = questionsResponse.Questions,
-                Action = step.Action,
-                ActionMethod = step.ActionMethod,
-                Controller = step.Controller,
-                FriendlyUrl = (step.PageName+"/"+step.SectionName).Replace(" ","-"),
-                ResponseDetail = new ResponseDetailFlow
+                var step = (StepDetail)GetCurrentStep(argument);
+                return new EvidenteResponse
                 {
-                    Status   = ReponseStatus.Success
-                }
-               
-            };
+                    Execution = argument.Execution,
+                    Questions = questionsResponse.Questions,
+                    Action = step.Action,
+                    ActionMethod = step.ActionMethod,
+                    Controller = step.Controller,
+                    FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
+                    ResponseDetail = new ResponseDetailFlow
+                    {
+                        Status = ReponseStatus.Success
+                    }
+
+                };
+            }
+            Console.WriteLine("Submitting form...Guardando campos");
+            argument.IsSubmitting = false;
+            return await OnSucess(argument).Result.Advance(argument);
+
+          
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())

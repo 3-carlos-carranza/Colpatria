@@ -79,6 +79,28 @@
             .ready(function () {
                 BLExt.Init();
             });
+
+        function PrintElement(e) {
+            popup(e.html());
+        }
+
+        function popup(html) {
+            var mywindow = window.open("", "_blank");
+            mywindow.document.write("<html><head><title>Respuesta de la solicitud</title>");
+            mywindow.document.write("<link href=\"/Content/bootstrap.css\" rel=\"stylesheet\" />");
+            mywindow.document.write("<link href=\"/Content/portal/styles.css\" rel=\"stylesheet\" /> <link href=\"http://fonts.googleapis.com/css?family=Roboto+Condensed\" rel=\"stylesheet\" type=\"text/css\">");
+            mywindow.document.write("<link href=\"/Content/portal/requestProcess.css\" rel=\"stylesheet\" />");
+            mywindow.document.write("<style>.it-crd li{;margin-left:20px;}</style></head><body style=\"padding:40px; font-family: arial; font-size:10px;\" >");
+            mywindow.document.write(html);
+            mywindow.document.write("</body></html>");
+            console.log(mywindow.document);
+            setTimeout(function () {
+                $(mywindow.document).ready(function () {
+                    mywindow.print();
+                });
+            }, 400);
+        }
+
     </script>
 </body>
 </html>

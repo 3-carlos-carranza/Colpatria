@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="MyCustomProcessFlow\ProcessFlowManager.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\IAdditionalInformationResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\BaseStep.cs" />
     <Compile Include="ProcessFlow\Api\Steps\Responses\ProcessFlowResponse.cs" />

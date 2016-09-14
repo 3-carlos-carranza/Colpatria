@@ -51,6 +51,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
             container.RegisterType<IStep, ShowFormStep>("ShowFormStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
+            container.RegisterType<IStep, ShowAdditionalInformationStep>("ShowAdditionalInformationStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

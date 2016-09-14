@@ -70,7 +70,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             //}
 
-
             TraceFlow(argument);
             if (!argument.IsSubmitting)
             {

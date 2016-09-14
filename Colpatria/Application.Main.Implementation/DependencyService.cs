@@ -17,11 +17,13 @@ using System.Collections.Generic;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Application.Main.Definition.ProcessFlow.Api.Steps;
 using Application.Main.Implementation.ProcessFlow;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Application.Main.Implementation.ProcessFlow.Services;
 using Application.Main.Implementation.ProcessFlow.Step;
 using Microsoft.Practices.Unity;
+using SubmitFormStep = Application.Main.Implementation.ProcessFlow.Step.SubmitFormStep;
 
 #endregion
 
@@ -47,6 +49,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
+            container.RegisterType<IStep, ShowFormStep>("ShowFormStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();

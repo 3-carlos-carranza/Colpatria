@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Implementation.ProcessFlow.Arguments;
@@ -113,7 +114,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var result = await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
             if (identity != null)
             {
-                identity.AddClaim(new Claim("RequestId", result.Execution.Id.ToString()));
+                identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
                 identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
                 identity.AddClaim(new Claim("FullName", identity.Label));
                 if (pages != null)
@@ -126,20 +127,18 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
-            ProcessFlowArgument.IsSubmitting = true;
+            
             var userId = long.Parse(User.Identity.GetUserId());
-            ProcessFlowArgument = new ProcessFlowArgument
+            ProcessFlowArgument.User = new User
             {
-                User = new User
-                {
-                    Id = userId
-                },
-                Execution = new Execution
-                {
-                    ProductId = 1,
-                    Id = ExecutionId
-                }
+                Id = userId
             };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = 1,
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
         }
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {

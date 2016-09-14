@@ -57,19 +57,19 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                     .WithExecutionId(argument.Execution.Id)
                     .Build());
 
-            if (questionsResponse.MaximumAttemptsPerDay)
-            {
-                //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Intentos superados", "Salir", "Ha superado los intentos diarios permitidos. Intentar mañana", true));
-            }
+            //if (questionsResponse.MaximumAttemptsPerDay)
+            //{
+            //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Intentos superados", "Salir", "Ha superado los intentos diarios permitidos. Intentar mañana", true));
+            //}
 
-            if (questionsResponse.MaximumAttemptsPerMonth)
-            {
-                //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Intentos superados", "Salir", "Ha superado los intentos mensuales permitidos. Intentar en un mes", true));
-            }
-            if (questionsResponse.MaximumAttemptsPerYear)
-            {
-                //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
-            }
+            //if (questionsResponse.MaximumAttemptsPerMonth)
+            //{
+            //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Intentos superados", "Salir", "Ha superado los intentos mensuales permitidos. Intentar en un mes", true));
+            //}
+            //if (questionsResponse.MaximumAttemptsPerYear)
+            //{
+            //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
+            //}
 
             throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
         }

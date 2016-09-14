@@ -111,6 +111,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             var fields = collection.ToFieldValueOrder();
             InitSetFormArguments(fields);
+
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }

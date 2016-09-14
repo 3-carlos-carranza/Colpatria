@@ -1,24 +1,32 @@
-﻿using System.Collections.Generic;
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
+//   <copyright file=ProcessFlowArgument.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
+//   <Update> 2016-09-14 - 9:03 a. m.</Update>
+//   -----------------------------------------------------------------------
+
+#endregion
+
+#region
+
+using System.Collections.Generic;
 using Application.Main.Definition.ProcessFlow.Api;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Core.Entities.ProcessModel;
 using Crosscutting.Common.Tools.DataType;
 
+#endregion
+
 namespace Application.Main.Implementation.ProcessFlow.Arguments
 {
-    public class ProcessFlowArgument :  IProcessFlowArgument
+    public class ProcessFlowArgument : IProcessFlowArgument
     {
         public IList<FieldValueOrder> Form { get; set; }
         public int OwnerId { get; set; }
-
-        //public IProcessFlowArgument Make(IList<FieldValueOrder> form, int ownerId)
-        //{
-        //    return new ProcessFlowArgument()
-        //    {
-        //        Form = form,
-        //        OwnerId = ownerId
-        //    };
-        //}
 
         public ExecutionFlow Execution { get; set; }
         public IProcessFlowUser User { get; set; }

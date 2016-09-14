@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Core.Entities.Process;
 using Core.Entities.ProcessModel;
 

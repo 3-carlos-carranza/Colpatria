@@ -139,6 +139,11 @@
     <Compile Include="User\UserRole.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WsMotor\Parameters.cs" />
+    <Compile Include="WsMotor\Petition.cs" />
+    <Compile Include="WsMotor\PetitionSettingsBuilder.cs" />
+    <Compile Include="WsMotor\Reason.cs" />
+    <Compile Include="WsMotor\ScoreResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

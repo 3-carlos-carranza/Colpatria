@@ -125,6 +125,22 @@ namespace Presentation.Web.Colpatria.Controllers
             return result;
         }
 
+        public void MockSubmitInitSetFormArguments()
+        {
+            var userId = long.Parse(User.Identity.GetUserId());
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = 1,
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
+        }
+
+
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
             

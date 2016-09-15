@@ -12,11 +12,11 @@
             <p>Respuesta de Solicitud</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
-            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Alternate Text" /></a>
+            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Alternate Text" onclick="PrintElement($('#respuesta-solicitud'))"/></a>
         </div>
         <div style="clear: both"></div>
     </div>
-    <div class="conts">
+    <div class="conts" id="respuesta-solicitud">
         <p class="desc-step"><span class="red">Felicitaciones,</span>Model.Status</p>
         <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>Aprobada</strong>  </p>
         <div class="contents aproved">
@@ -70,7 +70,7 @@
         </div>
             <div class="botons">
                 <div class="col-xs-12 col-sm-6 print">
-                    <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
+                    <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud'))"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
                 </div>
                 <div class="col-xs-12 col-sm-6 print">
                     <!-- Trigger the modal with a button -->

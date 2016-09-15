@@ -8,9 +8,4 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
         QuestionsResponse GetQuestions(QuestionsSettings settings);
         ValidationResponse Validate(ValidateUserSettings settings);
     }
-
-    public interface IWsMotorAppService
-    {
-        
-    }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Enumerations\MessageClassification.cs" />
     <Compile Include="MyCustomProcessFlow\ProcessFlowManager.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IAdditionalInformationResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IResponseAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />

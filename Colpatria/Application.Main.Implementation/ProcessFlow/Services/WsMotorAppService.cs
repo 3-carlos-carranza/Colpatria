@@ -1,27 +1,20 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
 using Core.Entities.WsMotor;
 
-namespace Application.Main.Implementation.ProcessFlow.Step
+namespace Application.Main.Implementation.ProcessFlow.Services
 {
-    public class SubmitWsMotorStep : BaseStep
+    public class WsMotorAppService : IWsMotorAppService
     {
-        private readonly IWsMotorAppService _wsMotorAppService;
         private readonly PetitionSettingsBuilder _petitionSettingsBuilder;
 
-        public SubmitWsMotorStep(IProcessFlowStore store, IWsMotorAppService wsMotorAppService, PetitionSettingsBuilder petitionSettingsBuilder) : base(store)
+        public WsMotorAppService(PetitionSettingsBuilder petitionSettingsBuilder)
         {
-            _wsMotorAppService = wsMotorAppService;
             _petitionSettingsBuilder = new PetitionSettingsBuilder();
         }
 
-        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
+        public ScoreResponse GetScoreResponse(Petition petition)
         {
-            var response = _wsMotorAppService.GetScoreResponse(_petitionSettingsBuilder
+            var response = _petitionSettingsBuilder
                 .WithKey("10cuu")
                 .WithIdentificaction("59854768")
                 .WithLastName("monroy")
@@ -65,16 +58,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                         Name = "_edad",
                         Value = "30"
                     }
-                }).Build());
+                });
 
-            //Metodo para validar la respuesta devuelta - Score
-
-            return await OnSucess(argument).Result.Advance(argument);
-        }
-
-        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new System.NotImplementedException();
+            return new ScoreResponse()
+            {
+                
+            };
         }
     }
 }

@@ -36,10 +36,11 @@ namespace Application.Main.Implementation
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
+            container.RegisterType<IWsMotorAppService, WsMotorAppService>();
             
             container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
-
+            
             //Process
             container.RegisterType<IProcessFlowManager, ColpatriaProcessFlowManager>();
             container.RegisterType<IProcessFlowArgument, ProcessFlowArgument>();

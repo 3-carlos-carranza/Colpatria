@@ -1,4 +1,4 @@
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
@@ -6,21 +6,15 @@ using Application.Main.Definition.ProcessFlow.Api.Steps;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class WsMotorStep : BaseStep
+    public class SubmitWsMotorStep : BaseStep
     {
-        public WsMotorStep(IProcessFlowStore store) : base(store)
+        public SubmitWsMotorStep(IProcessFlowStore store) : base(store)
         {
         }
 
-        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
+        public override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-
-
-            //Mock respuesta de preguntas
-            //WsMotor app service
-
-
-            return await OnSucess(argument).Result.Advance(argument);
+            throw new System.NotImplementedException();
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())

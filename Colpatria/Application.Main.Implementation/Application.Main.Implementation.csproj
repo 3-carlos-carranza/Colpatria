@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyService.cs" />
+    <Compile Include="ProcessFlow\Responses\AdditionalInformationResponse.cs" />
     <Compile Include="ProcessFlow\Responses\EvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Responses\MessageClassification.cs" />
     <Compile Include="ProcessFlow\Responses\RequestResponse.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Step\ShowFormStep.cs" />
+    <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\WsMotorStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowFinishRequestStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitEvidenteStep.cs" />

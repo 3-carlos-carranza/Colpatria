@@ -18,6 +18,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Core.DataTransferObject.Vib;
+using Core.Entities.Process;
+using Core.Entities.ProcessModel;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Application.Main.Definition.ProcessFlow.Api.Steps.Responses;
 
 #endregion
 
@@ -35,8 +40,16 @@ namespace Application.Main.Definition.ProcessFlow.Api.Steps
             Console.WriteLine("Advance Step " + Name);
             if (!argument.IsSubmitting)
             {
-                Console.WriteLine("Showing data...");
-                return await OnSucess(argument).Result.Advance(argument);
+                var step = (StepDetail)GetCurrentStep(argument);
+                return new ProcessFlowResponse
+                {
+                    Execution = argument.Execution,
+                    ResponseDetail = new ResponseDetailFlow
+                    {
+                        Status = ReponseStatus.Success
+                    }
+
+                };
             }
             argument.IsSubmitting = false;
             Console.WriteLine("Submitting data...");

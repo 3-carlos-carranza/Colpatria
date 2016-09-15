@@ -170,7 +170,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     var json = new JsonResponse {Status = true};
                     json.SetModalWithPartial(ModalType.Kendo, Url.Action(result.Action, "Modals"));
                     TempData["Jsonresponse"] = json;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Register", "Request");
                 case InterfaceTypeResponse.Redirect:
                     var url =
                         Pages.Select(s => s.Section.FirstOrDefault(sc => sc.Id == stepresult.Execution.CurrentSectionId))

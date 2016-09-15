@@ -50,8 +50,9 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
-            container.RegisterType<IStep, ResponseRequestStep>("ResponseRequestStep");
+            container.RegisterType<IStep, ShowFinishRequestStep>("ShowFinishRequestStep");
             container.RegisterType<IStep, WsMotorStep>("WsMotorStep");
+            container.RegisterType<IStep, ShowFormStep>("ShowFormStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

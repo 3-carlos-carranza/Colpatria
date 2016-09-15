@@ -94,8 +94,9 @@
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
+    <Compile Include="ProcessFlow\Step\ShowFormStep.cs" />
     <Compile Include="ProcessFlow\Step\WsMotorStep.cs" />
-    <Compile Include="ProcessFlow\Step\ResponseRequestStep.cs" />
+    <Compile Include="ProcessFlow\Step\ShowFinishRequestStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\StartFlowStep.cs" />

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
@@ -6,9 +7,9 @@ using Application.Main.Definition.ProcessFlow.Api.Steps;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class WsMotorStep : BaseStep
+    public class ShowFormStep : BaseStep
     {
-        public WsMotorStep(IProcessFlowStore store) : base(store)
+        public ShowFormStep(IProcessFlowStore store) : base(store)
         {
         }
 
@@ -17,9 +18,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             return await OnSucess(argument).Result.Advance(argument);
         }
 
-        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
+        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
+            CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

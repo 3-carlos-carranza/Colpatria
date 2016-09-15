@@ -12,11 +12,11 @@ using MessageClassification = Application.Main.Definition.Enumerations.MessageCl
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class ResponseRequestStep : BaseStep
+    public class ShowFinishRequestStep : BaseStep
     {
         private readonly IResponseRequestAppService _responseRequestAppService;
 
-        public ResponseRequestStep(IProcessFlowStore store, IResponseRequestAppService responseRequestAppService) : base(store)
+        public ShowFinishRequestStep(IProcessFlowStore store, IResponseRequestAppService responseRequestAppService) : base(store)
         {
             _responseRequestAppService = responseRequestAppService;
         }
@@ -24,11 +24,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var step = (StepDetail)GetCurrentStep(argument);
-            var name = _responseRequestAppService.Get();
-
-            return new RequestResponse
+            //var name = _responseRequestAppService.Get();
+            var response = new RequestResponse
             {
-                Name = name,
+                Name = "Carlos Carranza",
                 DateOfExpedition = DateTime.UtcNow,
                 MessageClassification = MessageClassification.Approved,
                 IsResponsePersonalized = false,
@@ -44,6 +43,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 }
 
             };
+            return response;
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())

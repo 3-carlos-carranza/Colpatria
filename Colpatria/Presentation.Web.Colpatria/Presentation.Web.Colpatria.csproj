@@ -1109,15 +1109,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\GlobalVariables.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
-    <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1128,7 +1125,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1258,14 +1254,14 @@
     <Content Include="Views\Request\FinalSummary.cshtml" />
     <Content Include="Views\Request\_SummaryData.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
-    <Content Include="Views\Requests\EmailRequest.cshtml" />
-    <Content Include="Views\Requests\FinalSummary.cshtml" />
-    <Content Include="Views\Requests\FormAsks.cshtml" />
-    <Content Include="Views\Requests\Index.cshtml" />
-    <Content Include="Views\Requests\RequestAproved.cshtml" />
-    <Content Include="Views\Requests\TermsAndConditions.cshtml" />
-    <Content Include="Views\Requests\Validation.cshtml" />
-    <Content Include="Views\Requests\_SummaryData.cshtml" />
+    <Content Include="Views\SecondFlowTemp\EmailRequest.cshtml" />
+    <Content Include="Views\SecondFlowTemp\FinalSummary.cshtml" />
+    <Content Include="Views\SecondFlowTemp\FormAsks.cshtml" />
+    <Content Include="Views\SecondFlowTemp\Index.cshtml" />
+    <Content Include="Views\SecondFlowTemp\RequestAproved.cshtml" />
+    <Content Include="Views\SecondFlowTemp\TermsAndConditions.cshtml" />
+    <Content Include="Views\SecondFlowTemp\Validation.cshtml" />
+    <Content Include="Views\SecondFlowTemp\_SummaryData.cshtml" />
     <Content Include="Views\Request\EmailRequest.cshtml" />
     <Content Include="Views\Request\Validation.cshtml" />
     <Content Include="Views\Request\Register.cshtml" />
@@ -1279,8 +1275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Data\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.Main.Definition\Application.Main.Definition.csproj">

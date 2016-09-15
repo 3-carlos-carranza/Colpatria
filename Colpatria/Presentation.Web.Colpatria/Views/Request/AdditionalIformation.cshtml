@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-md-8 paddmov">
             <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Cuenta Cero</span>”</p>
             <div class="test">
-                <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
+                <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus Datos</p>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-6">
@@ -121,9 +121,9 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-6 space">
-                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("RequestAproved", "Request")">
-                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                            </a>
+                            <input
+                                  class="btn btn-danger pull-right enviar" value="Siguiente" type="submit" >
+                                <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
                         </div>
                         <div style="clear: both"></div>
                     </div>

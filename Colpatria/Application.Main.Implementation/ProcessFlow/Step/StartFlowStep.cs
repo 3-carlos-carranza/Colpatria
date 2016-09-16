@@ -17,6 +17,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
 using Application.Main.Definition.ProcessFlow.Api.Steps;
@@ -27,9 +28,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class StartFlowStep : BaseStep, IStartFlowStep
     {
-        public StartFlowStep(IProcessFlowStore store) : base(store)
+        private readonly ISaveFieldsAppService _saveFieldsAppService;
+        public StartFlowStep(IProcessFlowStore store, ISaveFieldsAppService saveFieldsAppService) : base(store)
         {
+            _saveFieldsAppService = saveFieldsAppService;
         }
+
         public string Name => GetType().Name;
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
@@ -47,7 +51,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public void MakeCustomProcess(IProcessFlowArgument stepArgument)
         {
-            
+            _saveFieldsAppService.SaveForm(stepArgument);
         }
     }
 }

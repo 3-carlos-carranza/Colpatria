@@ -85,9 +85,14 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _wsMotorAppService.ValidateScore(response);
 
             //Guardar en base de datos la respuesta del score
+
             //var saveFieldsAppService = argument as ProcessFlowArgument;
-            //saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
+            //_saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
             //_saveFieldsAppService.SaveForm(saveFieldsAppService);
+
+
+
+            _saveFieldsAppService.SaveForm(argument);
 
             return await OnSucess(argument).Result.Advance(argument);
         }

@@ -1,0 +1,71 @@
+﻿@page {
+    margin: 0;
+}
+.step-content {
+    padding: 4% 6% 0% 6% !important;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: #fff;
+   
+}
+
+
+/*Styles terminos*/
+.step-content .bolds {
+    font-family: 'latobold';
+    padding: 2% 0;
+}
+.step-content .italic {
+font-family: 'latosemibold_italic';
+}
+.step-content .desc-step{
+ font-weight:bold;
+ font-size: 14px;
+ font-family: 'latobold';
+ color:#000 !important;
+}
+.step-content .conts{
+    width:90%;
+    height:auto;
+    position:relative;
+    margin:0 auto;
+    padding:4% 0;
+    font-size:14px;
+    color:#6e6e6e !important;
+}
+.step-content .title-term{
+   color:#e20613 !important;
+   font-size:16px;
+   font-family: 'latobold';
+
+}
+.step-content .subtitle-term {
+font-family: 'latobold';
+ font-size:16px;
+ color:#000 !important;
+}
+.step-content .contents {
+ padding:2% 0;
+}
+.step-content .contents p>span {
+color:#e20613 !important;
+}
+.step-content .aproved p {
+ padding:0% 0 1% 0;
+}
+.aprovedd p {
+ padding:0% 0 4% 0;
+}
+.step-content .italic {
+font-family: 'latosemibold_italic';
+}
+.step-content .bolds {
+font-family: 'latobold';
+padding: 2% 0;
+}
+.step-content .bolds span {
+color:#e20613 !important;
+}
+
+/*Fin styles terminos*/
+

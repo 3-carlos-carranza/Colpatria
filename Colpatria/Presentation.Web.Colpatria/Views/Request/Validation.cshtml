@@ -60,7 +60,7 @@
                                         var answerId = answer.Id;
                                         var answerValue = answerId;
 
-                                        <li><input class="validate[required]" id="@("r" + p)" name="@("r" + q)" value="@answerValue"  type="radio"><label for="@("r" + p)">@answer.Text</label></li>
+                                        <li><input class="validate[required] radio" id="@("r" + p)" name="@("r" + q)" value="@answerValue"  type="radio"><label for="@("r" + p)">@answer.Text</label></li>
                                         p++;
                                     }
                                 </ul>

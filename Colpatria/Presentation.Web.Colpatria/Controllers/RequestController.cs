@@ -102,10 +102,12 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
-
-        public ActionResult RequestAproved()
+        public async Task<ActionResult> RequestAproved()
         {
-            return View();
+            MockSubmitInitSetFormArguments();
+
+            dynamic stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
         }
 
         public ActionResult FinalSummary()
@@ -120,6 +122,15 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [HttpPost]
         public async Task<ActionResult> ValidateAnswer(FormCollection collection)
+        {
+            var fields = collection.ToFieldValueOrder();
+            InitSetFormArguments(fields);
+
+            var stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
+        }
+        [HttpPost]
+        public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {
             var fields = collection.ToFieldValueOrder();
             InitSetFormArguments(fields);

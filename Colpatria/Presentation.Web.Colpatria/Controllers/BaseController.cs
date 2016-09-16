@@ -1,9 +1,13 @@
-﻿//   -----------------------------------------------------------------------
+﻿#region Signature
+
+//   -----------------------------------------------------------------------
 //   <copyright file=BaseController.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
+
+#endregion
 
 #region
 
@@ -107,6 +111,7 @@ namespace Presentation.Web.Colpatria.Controllers
             if (identity != null)
             {
                 identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
+                
                 identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
                 identity.AddClaim(new Claim("FullName", identity.Label));
                 if (pages != null)
@@ -116,6 +121,22 @@ namespace Presentation.Web.Colpatria.Controllers
             }
             return result;
         }
+
+        public void MockSubmitInitSetFormArguments()
+        {
+            var userId = long.Parse(User.Identity.GetUserId());
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = 1,
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
+        }
+
 
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
@@ -162,7 +183,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     var json = new JsonResponse {Status = true};
                     json.SetModalWithPartial(ModalType.Kendo, Url.Action(result.Action, "Modals"));
                     TempData["Jsonresponse"] = json;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Register", "Request");
                 case ShowScreenType.Redirect:
                     var url =
                         Pages.Select(s => s.Section.FirstOrDefault(sc => sc.Id == stepresult.Execution.CurrentSectionId))

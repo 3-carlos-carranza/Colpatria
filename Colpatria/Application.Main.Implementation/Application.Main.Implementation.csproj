@@ -91,6 +91,7 @@
     <Compile Include="ProcessFlow\Responses\EvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Responses\MessageClassification.cs" />
     <Compile Include="ProcessFlow\Responses\RequestResponse.cs" />
+    <Compile Include="ProcessFlow\Responses\WsMotorResponse.cs" />
     <Compile Include="ProcessFlow\Services\EvidenteAppService.cs" />
     <Compile Include="ProcessFlow\Services\DynamicAppService.cs" />
     <Compile Include="ProcessFlow\Services\LoggingAppService.cs" />
@@ -104,8 +105,10 @@
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
+    <Compile Include="ProcessFlow\Services\WsMotorAppService.cs" />
     <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
-    <Compile Include="ProcessFlow\Step\WsMotorStep.cs" />
+    <Compile Include="ProcessFlow\Step\SubmitAdditionalInformationStep.cs" />
+    <Compile Include="ProcessFlow\Step\SubmitWsMotorStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowFinishRequestStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitEvidenteStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowEvidenteStep.cs" />

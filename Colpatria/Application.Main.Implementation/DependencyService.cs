@@ -37,10 +37,11 @@ namespace Application.Main.Implementation
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
+            container.RegisterType<IWsMotorAppService, WsMotorAppService>();
             
             container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
-
+            
             //Process
             container.RegisterType<IProcessFlowManager, ColpatriaProcessFlowManager>();
             container.RegisterType<IProcessFlowArgument, ProcessFlowArgument>();
@@ -54,9 +55,11 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
             container.RegisterType<IStep, ShowFormStep>("ShowFormStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
+            container.RegisterType<IStep, SubmitWsMotorStep>("SubmitWsMotorStep");
             container.RegisterType<IStep, ShowAdditionalInformationStep>("ShowAdditionalInformationStep");
             container.RegisterType<IStep, ShowFinishRequestStep>("ShowFinishRequestStep");
-            container.RegisterType<IStep, WsMotorStep>("WsMotorStep");
+            container.RegisterType<IStep, SubmitAdditionalInformationStep>("SubmitAdditionalInformationStep");
+            
             
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();

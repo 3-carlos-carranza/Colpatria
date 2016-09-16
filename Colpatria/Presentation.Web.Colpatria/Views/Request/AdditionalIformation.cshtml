@@ -1,6 +1,6 @@
 ﻿@model dynamic
 @{
-    ViewBag.Title = "Solicitud";
+    ViewBag.Title = "Información complementaria";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="legal">
@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-md-8 paddmov">
             <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Cuenta Cero</span>”</p>
             <div class="test">
-                <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
+                <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus Datos</p>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-6">
@@ -41,7 +41,7 @@
                                 Fecha de Nacimiento<span class="symbol required"></span>
                             </label>
                             <div class='input-group date' id='datepicker1'>
-                                <input name="BirthDate" class="validate[required,custom[date]] form-control inp" type="text" id="BirthDate" placeholder="" value="">
+                                <input name="11" class="validate[required,custom[date]] form-control inp" type="text" id="BirthDate" placeholder="" value="">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -51,15 +51,7 @@
                                 <label>
                                     Estado Civil<span class="symbol required"></span>
                                 </label>
-                                <select name="CivilStatus" id="CivilStatus" class="validate[required] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="">Seleccione...</option>
-                                    <option value="Soltero">Soltero</option>
-                                    <option value="Casado">Casado</option>
-                                    <option value="Unión libre">Unión libre</option>
-                                    <option value="Separado">Separado</option>
-                                    <option value="Viudo">Viudo</option>
-                                </select>
+                                <select name="34" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"> </select>
                             </div>
                         <div style="clear: both"></div>
                     </div>
@@ -68,18 +60,11 @@
                                 <label>
                                     Actividad Económica <span class="symbol required"></span>
                                 </label>
-                                <select name="EconomicActivity" id="EconomicActivity" class="validate[required] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="Asalariado">Asalariado</option>
-                                    <option value="Independiente">Independiente</option>
-                                    <option value="Pensionado">Pensionado</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Ama de casa">Ama de casa</option>
-                                </select>
+                                <select name="26" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"></select>
                             </div>
                             <div class="col-xs-12 col-sm-3">
                                 <span class="input input--hoshi">
-                                    <input name="Income" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="">
+                                    <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="">
                                     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
                                         <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                     </label>
@@ -89,11 +74,7 @@
                                 <label>
                                     Servidor Público<span class="symbol required"></span>
                                 </label>
-                                <select name="PublicServer" id="PublicServer" class="validate[required] form-control bord-red" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <select name="35" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"></select>
                             </div>
                         <div style="clear: both"></div>
                     </div>
@@ -103,47 +84,32 @@
                     </div>
                     <div class="form-group">
                             <div class="col-xs-12 col-sm-4">
-                                <label>
-                                    Recojo la Tarjeta en<span class="symbol required"></span>
+                                <input name="19" data-x="x-kdropdownauto" class="input__field input__field--hoshi validate[maxSize[30]]" data-url="/Data/GetDataListValues/" type="text" id="19">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" >
+                                    <span class="input__label-content input__label-content--hoshi input-block-level ">Recojo la Tarjeta en<span class="symbol required"></span></span>
                                 </label>
-                                <select name="Blast" id="Blast" class="validate[required] form-control bord-red" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="Opción-1">Opción 1</option>
-                                    <option value="Opción-2">Opción 2</option>
-                                    <option value="Opción-3">Opción 3</option>
-                                </select>
                             </div>
                             <div class="col-xs-12 col-sm-4">
-                                <label>
-                                    Oficina<span class="symbol required"></span>
+                               <input name="38" data-x="x-kdropdownauto" class="input__field input__field--hoshi validate[maxSize[30]]" data-url="/Data/GetDataListValues/" type="text" id="38">
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+                                    <span class="input__label-content input__label-content--hoshi input-block-level ">Oficina<span class="symbol required"></span></span>
                                 </label>
-                                <select name="Office" id="Office" class="validate[required] form-control bord-red" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="Opción-1">Opción 1</option>
-                                    <option value="Opción-2">Opción 2</option>
-                                    <option value="Opción-3">Opción 3</option>
-                                </select>
                             </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label>
                                     Tipo de Cuenta<span class="symbol required"></span>
                                 </label>
-                                <select name="AccountType" id="AccountType" class="validate[required] form-control bord-red" placeholder="Servidor Público" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="Opción-1">Opción 1</option>
-                                    <option value="Opción-2">Opción 2</option>
-                                    <option value="Opción-3">Opción 3</option>
-                                </select>
+                                <select name="18" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"></select>
                             </div>
                         <div style="clear: both"></div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-6 space">
-                            <input type="checkbox" class="grey greys validate[required]" value="" name="" checked="checked">
+                            <input type="checkbox" class="grey greys validate[required]" value="" name="29" checked="checked">
                             <label class="check">
                                 Recibir mi extracto por email
                             </label>
-                            <input type="checkbox" class="grey greys validate[required]" value="" name="" checked="checked">
+                            <input type="checkbox" class="grey greys validate[required]" value="" name="37" checked="checked">
                             <label class="check">
                                 Recibir más información de productos
                             </label>
@@ -155,9 +121,9 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-6 space">
-                            <a class="btn btn-danger pull-right enviar" href="@Url.Action("RequestAproved", "Request")">
-                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                            </a>
+                            <input
+                                  class="btn btn-danger pull-right enviar" value="Siguiente" type="submit" >
+                                <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
                         </div>
                         <div style="clear: both"></div>
                     </div>

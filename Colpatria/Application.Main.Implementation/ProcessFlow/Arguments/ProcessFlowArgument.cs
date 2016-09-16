@@ -7,6 +7,7 @@
 
 #region
 
+using System.Collections;
 using System.Collections.Generic;
 using Banlinea.ProcessFlow.Engine.Api;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;

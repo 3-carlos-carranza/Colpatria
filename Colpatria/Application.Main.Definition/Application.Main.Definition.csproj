@@ -67,10 +67,14 @@
   <ItemGroup>
     <Compile Include="Enumerations\MessageClassification.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\ISubmitAdditionalInformationStep.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\ISubmitWsMotorStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IAdditionalInformationResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IResponseAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IRequestResponse.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\IWsMotorResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IEvidenteAppService.cs" />
     <Compile Include="Enumerations\InterfaceTypeResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IDynamicAppService.cs" />

@@ -68,6 +68,7 @@
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IRequestResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IWsMotorResponse.cs" />
+    <Compile Include="ProcessFlow\Api\ProcessFlows\ISubmitFormArgument.cs" />
     <Compile Include="ProcessFlow\Api\Steps\BaseStep.cs" />
     <Compile Include="ProcessFlow\Api\Steps\Responses\ProcessFlowResponse.cs" />
     <Compile Include="ProcessFlow\Api\Steps\ShowFormStep.cs" />

@@ -9,7 +9,7 @@ namespace DataAccess.ProcessModule.Repository.Extension
     [StoredProcedure("dbo.SetExtendedFields")]
     public class SetExtendedFields
     {
-        public SetExtendedFields(IEnumerable<FieldValueOrder> collection, long executionid, int companyid)
+        public SetExtendedFields(IEnumerable<FieldValueOrder> collection, long executionid)
         {
             KeyValues = collection.Select(kv => new KeyValue
             {
@@ -21,7 +21,6 @@ namespace DataAccess.ProcessModule.Repository.Extension
             }).ToList();
 
             ExecutionId = executionid;
-            CompanyId = companyid;
         }
 
         [StoredProcedureParameter(SqlDbType.Udt)]

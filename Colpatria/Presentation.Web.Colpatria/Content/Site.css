@@ -208,7 +208,11 @@ textarea {
     border-radius: 0;
     background: transparent;
 }
-
+.step-content .lugg {
+    border: inherit;
+    background: transparent;
+    box-shadow:0 0 0 0;
+}
 .k-dropdown-wrap.k-state-hover {
     background-color:transparent;
     border:none;
@@ -1057,7 +1061,6 @@ margin-top: 16%;
 }
 }
 /* Fin Media Querys steps*/
-
 
 
 /* End Styles registration form*/

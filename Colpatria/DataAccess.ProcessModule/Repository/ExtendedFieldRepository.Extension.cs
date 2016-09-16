@@ -11,11 +11,11 @@ namespace DataAccess.ProcessModule.Repository
 {
     partial class ExtendedFieldRepository
     {
-        public void SetFields(List<FieldValueOrder> collection, long requestid, int ownerId)
+        public void SetFields(List<FieldValueOrder> collection, long requestid)
         {
             var context = UnitOfWork as DbContext;
 
-            var procedure = new SetExtendedFields(collection, requestid, ownerId);
+            var procedure = new SetExtendedFields(collection, requestid);
 
             context?.Database.ExecuteStoredProcedure(procedure);
         }

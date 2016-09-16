@@ -25,8 +25,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             {
                 _extendedFieldRepository.SetFields(
                     submitFormArgument.Form.ToList(),
-                    submitFormArgument.Execution.Id,
-                    submitFormArgument.OwnerId);
+                    submitFormArgument.Execution.Id);
             }
             else
             {

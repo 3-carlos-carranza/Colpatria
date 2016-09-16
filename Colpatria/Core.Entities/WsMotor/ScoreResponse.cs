@@ -6,16 +6,16 @@ namespace Core.Entities.WsMotor
     [XmlType("score")]
     public class ScoreResponse
     {
-        [XmlAttribute("tipo")]
+        [XmlAttribute(AttributeName = "tipo")]
         public string Type { get; set; }
 
-        [XmlAttribute("puntaje")]
+        [XmlAttribute(AttributeName = "puntaje")]
         public string Score { get; set; }
-
-        [XmlAttribute("clasificacion")]
+        
+        [XmlAttribute(AttributeName = "clasificacion")]
         public string Classification { get; set; }
 
-        [XmlAttribute("razon")]
+        [XmlAttribute(AttributeName = "razon")]
         public IEnumerable<Reason> Reason { get; set; }
     }
 }

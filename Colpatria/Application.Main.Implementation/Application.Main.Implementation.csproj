@@ -82,6 +82,7 @@
     <Compile Include="ProcessFlow\Responses\EvidenteResponse.cs" />
     <Compile Include="ProcessFlow\Responses\MessageClassification.cs" />
     <Compile Include="ProcessFlow\Responses\RequestResponse.cs" />
+    <Compile Include="ProcessFlow\Responses\WsMotorResponse.cs" />
     <Compile Include="ProcessFlow\Services\EvidenteAppService.cs" />
     <Compile Include="ProcessFlow\Services\DynamicAppService.cs" />
     <Compile Include="ProcessFlow\Services\LoggingAppService.cs" />

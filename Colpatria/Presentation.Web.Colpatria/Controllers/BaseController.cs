@@ -20,11 +20,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.Enumerations;
-using Application.Main.Definition.MyCustomProcessFlow;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
 using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Implementation.ProcessFlow.Arguments;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.JSON;
@@ -146,6 +144,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             
             var userId = long.Parse(User.Identity.GetUserId());
+
             ProcessFlowArgument.User = new User
             {
                 Id = userId
@@ -156,6 +155,9 @@ namespace Presentation.Web.Colpatria.Controllers
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;
+            var arg =( ProcessFlowArgument as ISubmitFormArgument);
+            arg.Form = form;
+            ProcessFlowArgument = arg;
         }
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {
@@ -163,7 +165,7 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return Json(new JsonResponse {Status = true, Message = "Paso no Devuelve una interfaz"});
             }
-            var result = stepresult as IShowScreenResponse;
+            var result = (IShowScreenResponse) stepresult;
             switch (result.InterfaceTypeResponse)
             {
                 case InterfaceTypeResponse.ShowForm:

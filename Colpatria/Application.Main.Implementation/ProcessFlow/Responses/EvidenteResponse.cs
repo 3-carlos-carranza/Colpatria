@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Banlinea.ProcessFlow.Model;
 using Core.Entities.Evidente;
-using Core.Entities.ProcessModel;
+
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
@@ -17,5 +18,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string Action { get; set; }
         public string Controller { get; set; }
         public InterfaceTypeResponse InterfaceTypeResponse => InterfaceTypeResponse.ShowForm;
+        public string Name { get; set; }
     }
 }

@@ -1,8 +1,15 @@
+//   -----------------------------------------------------------------------
+//   <copyright file=WsMotorStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   -----------------------------------------------------------------------
+
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine.Api.Steps;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -14,10 +21,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-            return await OnSucess(argument).Result.Advance(argument);
+            return await OnSuccess(argument).Result.Advance(argument);
         }
 
-        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
+        public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
+            CancellationToken cancellationToken = new CancellationToken())
         {
             throw new System.NotImplementedException();
         }

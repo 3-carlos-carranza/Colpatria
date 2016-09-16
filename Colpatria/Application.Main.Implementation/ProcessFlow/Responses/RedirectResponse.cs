@@ -1,7 +1,6 @@
 ﻿using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
-using Core.Entities.Enumerations;
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
 {
@@ -15,5 +14,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string Action { get; set; }
         public string Controller { get; set; }
         public InterfaceTypeResponse InterfaceTypeResponse { get; }
+        public string Name { get; set; }
     }
 }

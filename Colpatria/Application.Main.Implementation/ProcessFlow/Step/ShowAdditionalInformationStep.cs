@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
 using Application.Main.Implementation.ProcessFlow.Responses;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine.Api.Steps;
+using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
-using Core.Entities.ProcessModel;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -38,7 +38,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             }
             Console.WriteLine("Submitting form...Guardando campos");
             argument.IsSubmitting = false;
-            return await OnSucess(argument).Result.Advance(argument);
+            return await OnSuccess(argument).Result.Advance(argument);
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())

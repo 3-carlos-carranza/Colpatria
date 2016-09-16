@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.User;
 
+
 namespace DataAccess.UserModule.Repository
 {
     partial class UserRepository

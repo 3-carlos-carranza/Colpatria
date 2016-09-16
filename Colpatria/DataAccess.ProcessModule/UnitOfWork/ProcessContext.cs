@@ -45,7 +45,6 @@ namespace DataAccess.ProcessModule.UnitOfWork
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
          base.OnModelCreating(modelBuilder);
-
     
         modelBuilder.Configurations.Add(new ExecutionMapping());
         modelBuilder.Configurations.Add(new ExecutionApplicantMapping());

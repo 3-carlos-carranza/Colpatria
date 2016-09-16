@@ -13,7 +13,7 @@
 
 #region
 
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 #endregion
 

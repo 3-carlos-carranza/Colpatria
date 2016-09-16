@@ -1,22 +1,16 @@
-﻿#region Signature
-
-//   -----------------------------------------------------------------------
+﻿//   -----------------------------------------------------------------------
 //   <copyright file=ProcessFlowArgument.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-14 - 9:03 a. m.</Update>
 //   -----------------------------------------------------------------------
-
-#endregion
 
 #region
 
 using System.Collections.Generic;
-using Application.Main.Definition.ProcessFlow.Api;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Engine.Api;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Model;
 using Crosscutting.Common.Tools.DataType;
 
 #endregion

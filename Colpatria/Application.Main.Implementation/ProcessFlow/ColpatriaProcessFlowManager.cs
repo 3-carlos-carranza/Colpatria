@@ -1,15 +1,9 @@
-﻿#region Signature
-
-//   -----------------------------------------------------------------------
+﻿//   -----------------------------------------------------------------------
 //   <copyright file=ColpatriaProcessFlowManager.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-13 - 11:40 a. m.</Update>
 //   -----------------------------------------------------------------------
-
-#endregion
 
 #region
 
@@ -17,12 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow;
-using Application.Main.Definition.ProcessFlow.Api;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine;
+using Banlinea.ProcessFlow.Engine.Api;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Model;
 using Core.Entities.Enumerations;
 using Core.Entities.Process;
-using Core.Entities.ProcessModel;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.DataType;
 
@@ -40,20 +35,16 @@ namespace Application.Main.Implementation.ProcessFlow
             _executionRepository = executionRepository;
         }
 
-        public override async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg,
-            Func<IProcessFlowArgument, IProcessFlowResponse> actionToStart)
+        public override async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg)
         {
             InitializeArgument(arg);
-            return await base.StartFlow(arg, actionToStart);
+            return await base.StartFlow(arg);
         }
-
-
         private void InitializeArgument(IProcessFlowArgument arg)
         {
             if (arg.Execution.ProductId == 0)
             {
                 throw new Exception("Falta el Producto!!!");
-                ;
             }
             if (arg.Execution.Id == 0)
             {

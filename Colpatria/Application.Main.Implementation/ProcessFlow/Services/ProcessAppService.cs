@@ -16,9 +16,7 @@
 using System.Collections.Generic;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.Vib;
-using Core.Entities.Enumerations;
 using Core.Entities.Process;
-using Core.Entities.ProcessModel;
 using Core.GlobalRepository.SQL.Process;
 
 #endregion
@@ -43,7 +41,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             return _stepRepository.GetAllStepsEnablesByProduct(productId);
         }
 
-        public StepDetail GetNextStepWithType(int step, int section, int processId, StepType type)
+        public StepDetail GetNextStepWithType(int step, int section, int processId, int type)
         {
             return _executionRepository.GetNextStepWithType(step, section, processId,type);
         }

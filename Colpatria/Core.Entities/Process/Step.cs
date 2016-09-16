@@ -14,7 +14,7 @@
 #region
 
 using System.Collections.Generic;
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 #endregion
 
@@ -33,7 +33,7 @@ namespace Core.Entities.Process
         public bool? IsPre { get; set; }
         public override int StateId { get; set; }
         public override bool Enable { get; set; }
-        public override int StepType { get; set; }
+        public override StepType StepType { get; set; }
         public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
         public virtual ICollection<ExecutionStep> ExecutionStep { get; set; } = new HashSet<ExecutionStep>();
         public virtual Process Process { get; set; }

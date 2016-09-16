@@ -1,15 +1,9 @@
-﻿#region Signature
-
-//   -----------------------------------------------------------------------
+﻿//   -----------------------------------------------------------------------
 //   <copyright file=BaseController.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-13 - 3:48 p. m.</Update>
 //   -----------------------------------------------------------------------
-
-#endregion
 
 #region
 
@@ -21,10 +15,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Implementation.ProcessFlow.Arguments;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.JSON;
@@ -39,8 +31,8 @@ namespace Presentation.Web.Colpatria.Controllers
 {
     public class BaseController : Controller
     {
-        public readonly IProcessFlowManager ProcessFlowManager;
         public IProcessFlowArgument ProcessFlowArgument;
+        public IProcessFlowManager ProcessFlowManager;
 
         public BaseController(IProcessFlowArgument processFlowArgument,
             IProcessFlowManager processFlowManager)
@@ -111,7 +103,7 @@ namespace Presentation.Web.Colpatria.Controllers
         public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
-            var result = await ProcessFlowManager.StartFlow(ProcessFlowArgument, null);
+            IProcessFlowResponse result =await ProcessFlowManager.StartFlow(ProcessFlowArgument);
             if (identity != null)
             {
                 identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
@@ -127,7 +119,6 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
-            
             var userId = long.Parse(User.Identity.GetUserId());
             ProcessFlowArgument.User = new User
             {
@@ -140,6 +131,7 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.IsSubmitting = true;
         }
+
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {
             if (!(stepresult is IShowScreenResponse))
@@ -147,9 +139,9 @@ namespace Presentation.Web.Colpatria.Controllers
                 return Json(new JsonResponse {Status = true, Message = "Paso no Devuelve una interfaz"});
             }
             var result = stepresult as IShowScreenResponse;
-            switch (result.InterfaceTypeResponse)
+            switch (result.ShowScreenType)
             {
-                case InterfaceTypeResponse.ShowForm:
+                case ShowScreenType.ShowForm:
                     if (result.Action == null && result.PartialView == null)
                     {
                         var error = new ErrorViewModel
@@ -166,12 +158,12 @@ namespace Presentation.Web.Colpatria.Controllers
                         return View(result.Action, stepresult);
                     }
                     return PartialView(result.PartialView, stepresult);
-                case InterfaceTypeResponse.ShowModal:
+                case ShowScreenType.ShowModal:
                     var json = new JsonResponse {Status = true};
                     json.SetModalWithPartial(ModalType.Kendo, Url.Action(result.Action, "Modals"));
                     TempData["Jsonresponse"] = json;
                     return RedirectToAction("Index", "Home");
-                case InterfaceTypeResponse.Redirect:
+                case ShowScreenType.Redirect:
                     var url =
                         Pages.Select(s => s.Section.FirstOrDefault(sc => sc.Id == stepresult.Execution.CurrentSectionId))
                             .FirstOrDefault()?.Name.Replace(" ", "-");

@@ -19,7 +19,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
-using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -59,7 +58,7 @@ namespace DataAccess.ProcessModule.Repository
             return request;
         }
 
-        public StepDetail GetNextStepWithType(int step, int section, int processId, StepType type)
+        public StepDetail GetNextStepWithType(int step, int section, int processId, int type)
         {
             var context = UnitOfWork as DbContext;
             return

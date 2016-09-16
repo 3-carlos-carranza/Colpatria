@@ -13,9 +13,9 @@
 
 #region
 
+using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
-using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -25,6 +25,6 @@ namespace Core.GlobalRepository.SQL.Process
     {
         Execution CreateRequest(Execution execution);
         Execution GetRequestById(long id);
-        StepDetail GetNextStepWithType(int step, int section, int processId, StepType type);
+        StepDetail GetNextStepWithType(int step, int section, int processId, int type);
     }
 }

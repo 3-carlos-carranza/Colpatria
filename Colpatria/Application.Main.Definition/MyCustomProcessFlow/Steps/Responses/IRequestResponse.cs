@@ -1,4 +1,11 @@
-﻿using System;
+﻿//   -----------------------------------------------------------------------
+//   <copyright file=IRequestResponse.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   -----------------------------------------------------------------------
+
+using System;
 using Application.Main.Definition.Enumerations;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses

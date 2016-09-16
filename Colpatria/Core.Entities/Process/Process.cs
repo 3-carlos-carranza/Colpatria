@@ -15,7 +15,7 @@
 
 using System;
 using System.Collections.Generic;
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 #endregion
 

@@ -2,12 +2,14 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
+
 using Application.Main.Implementation.ProcessFlow.Responses;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine.Api.Steps;
+using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
-using Core.Entities.ProcessModel;
+
 using MessageClassification = Application.Main.Definition.Enumerations.MessageClassification;
 
 namespace Application.Main.Implementation.ProcessFlow.Step

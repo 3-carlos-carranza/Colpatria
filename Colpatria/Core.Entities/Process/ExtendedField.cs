@@ -1,5 +1,5 @@
 
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 namespace Core.Entities.Process
 {

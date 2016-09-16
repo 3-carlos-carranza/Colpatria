@@ -1,15 +1,9 @@
-﻿#region Signature
-
-//   -----------------------------------------------------------------------
+﻿//   -----------------------------------------------------------------------
 //   <copyright file=CustomProcessFlowStore.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-12 - 11:47 a. m.</Update>
 //   -----------------------------------------------------------------------
-
-#endregion
 
 #region
 
@@ -19,9 +13,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Model;
 using Core.Entities.Process;
-using Core.Entities.ProcessModel;
 
 #endregion
 
@@ -69,32 +63,34 @@ namespace Application.Main.Implementation.ProcessFlow
             if (currentstep != null)
             {
                 var stepsintorder = Steps
-                    .Select((r, i) => new {Row = r, Index = i+1})
+                    .Select((r, i) => new {Row = r, Index = i + 1})
                     .OrderBy(x => x.Row.Order);
 
-                var firstOrDefault = stepsintorder.FirstOrDefault(s=>
+                var firstOrDefault = stepsintorder.FirstOrDefault(s =>
                 {
                     var orDefault = stepsintorder.FirstOrDefault(d => d.Row.Id == currentstep.Id);
-                    return orDefault != null && s.Index ==orDefault.Row.Order + 1;
+                    return orDefault != null && s.Index == orDefault.Row.Order + 1;
                 });
-                return firstOrDefault != null ? firstOrDefault.Row : Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.Order == (currentstep.Order + 1) );
+                return firstOrDefault != null
+                    ? firstOrDefault.Row
+                    : Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.Order == (currentstep.Order + 1));
             }
             //first Step
-            return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == (int) stepType);
+            return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType ==  stepType);
         }
 
-        public void SetNextStep(IProcessFlowArgument argument,StepType stepType)
+        public void SetNextStep(IProcessFlowArgument argument, StepType stepType)
         {
-            var nextStepWithType = _processAppService.GetNextStepWithType(argument.Execution.CurrentStepId, argument.Execution.CurrentSectionId,
-                argument.Execution.ProcessId, stepType);
+            var nextStepWithType = _processAppService.GetNextStepWithType(argument.Execution.CurrentStepId,
+                argument.Execution.CurrentSectionId,
+                argument.Execution.ProcessId,(int) stepType);
 
             argument.Execution.CurrentSectionId = nextStepWithType.SectionId;
             argument.Execution.CurrentStepId = nextStepWithType.Id;
 
-            _processAppService.UpdateExecution((Execution)argument.Execution);
+            _processAppService.UpdateExecution((Execution) argument.Execution);
         }
 
-       
 
         public StepFlow GetCurrentStep(IProcessFlowArgument argument)
         {
@@ -106,7 +102,7 @@ namespace Application.Main.Implementation.ProcessFlow
             StepType stepType,
             CancellationToken cancellationToken = new CancellationToken())
         {
-            return Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType == (int) stepType);
+            return Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType ==  stepType);
         }
     }
 }

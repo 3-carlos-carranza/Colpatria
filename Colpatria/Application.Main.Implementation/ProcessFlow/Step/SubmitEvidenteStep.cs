@@ -1,11 +1,18 @@
+//   -----------------------------------------------------------------------
+//   <copyright file=SubmitEvidenteStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   -----------------------------------------------------------------------
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.Entities.Evidente;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -22,6 +29,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
             _questionsSettingsBuilder = new QuestionsSettingsBuilder();
         }
+
         public int SectionId { get; set; }
         public int StepId { get; set; }
         public string Name => GetType().Name;
@@ -49,7 +57,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //{
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar.", true));
             //}
-            
+
             var questionsResponse =
                 _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
                     .WithTypeOfDocument("1")
@@ -71,8 +79,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //    //return this.OnError.Advance(BuildError(stepArgument, "/Account/LogOff", "Su solicitud no ha sido aprobada", "Salir", "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos", true));
             //}
 
-
-            return await OnSucess(argument).Result.Advance(argument);
+            return await OnSuccess(argument).Result.Advance(argument);
 
             //throw new NotImplementedException("falta la Implementación para el paso del servicio EVIDENTE");
         }

@@ -1,11 +1,18 @@
-﻿using System.Linq;
+﻿//   -----------------------------------------------------------------------
+//   <copyright file=RequestController.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   -----------------------------------------------------------------------
+
+using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.Tools.Web;
@@ -66,10 +73,10 @@ namespace Presentation.Web.Colpatria.Controllers
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
-            
-            
+
+
             var stepresult = await ExecuteFlow(identity, pages);
-            
+
             return ValidateStepResult(stepresult);
         }
 
@@ -85,27 +92,32 @@ namespace Presentation.Web.Colpatria.Controllers
             var userId = long.Parse(User.Identity.GetUserId());
             ProcessFlowArgument.User = new User {Id = userId};
             ProcessFlowArgument.IsSubmitting = false;
-            ProcessFlowArgument.Execution = new Execution {Id   =  ExecutionId,ProductId = ProductId };
-            
-            dynamic stepresult = await ExecuteFlow();
+            ProcessFlowArgument.Execution = new Execution {Id = ExecutionId, ProductId = ProductId};
+
+            dynamic stepresult = ExecuteFlow();
             return stepresult;
         }
+
         public ActionResult TermsAndConditions()
         {
             return View();
         }
+
         public ActionResult RequestAproved()
         {
             return View();
         }
+
         public ActionResult FinalSummary()
         {
             return View();
         }
+
         public ActionResult EmailRequest()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<ActionResult> ValidateAnswer(FormCollection collection)
         {

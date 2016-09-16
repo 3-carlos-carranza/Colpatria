@@ -21,7 +21,7 @@ namespace Core.Entities.User
             this.UserRole = new HashSet<UserRole>();
         }
     
-        public long Id { get; set; }
+        public override long Id { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }

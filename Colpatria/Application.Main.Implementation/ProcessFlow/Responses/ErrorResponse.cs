@@ -14,7 +14,7 @@
 #region
 
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
-using Core.Entities.ProcessModel;
+using Banlinea.ProcessFlow.Model;
 
 #endregion
 

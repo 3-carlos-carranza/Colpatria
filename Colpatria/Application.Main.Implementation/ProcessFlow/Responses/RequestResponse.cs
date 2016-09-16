@@ -6,6 +6,7 @@
 //   -----------------------------------------------------------------------
 
 using System;
+using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;

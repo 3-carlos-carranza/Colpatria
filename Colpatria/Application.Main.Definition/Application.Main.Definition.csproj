@@ -76,7 +76,7 @@
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IRequestResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IWsMotorResponse.cs" />
-    <Compile Include="ProcessFlow\Api\ProcessFlows\ISubmitFormArgument.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\ISubmitFormArgument.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IEvidenteAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IDynamicAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\ILoggingAppService.cs" />

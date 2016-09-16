@@ -72,7 +72,7 @@
                     </label>
 
                     <div class='input-group date' id='datepicker1'>
-                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]]" value="14/09/2016" />
+                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]] validateMaxToday" value="14/09/2016" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -82,12 +82,14 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-12 col-md-6">
-                    <input name="31" data-x="x-kdropdownauto" class="input__field input__field--hoshi validate[maxSize[30]]" data-url="/Data/GetDataListValues/" type="text" id="31">
-                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
-                        <span class="input__label-content input__label-content--hoshi input-block-level ">Lugar de expedición<span class="symbol required"></span></span>
-                    </label>
-                </div>
+                    <span class="input input--hoshi">
+                        <input name="31"  class="input__field input__field--hoshi validate[maxSize[50]] lugg" data-url="/Data/GetDataListValues/" type="text" id="31" data-x="x-kdropdownauto">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="31">
+                            <span class="input__label-content input__label-content--hoshi input-block-level ">Lugar de expedición<span class="symbol required"></span></span>
+                        </label>
+                        </span>
 
+                    </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
                         <input name="20" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
@@ -124,7 +126,7 @@
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-3 space">
-                    <input name="13" type="checkbox" class="grey validate[required]" checked="checked">
+                    <input name="13" type="checkbox" value="18402" class="grey validate[required]" checked="checked">
                     <label class="check">
                         Acepto términos y condiciones <a class="vermas" href="#" id="terms-cuenta">VER+</a>
                     </label>

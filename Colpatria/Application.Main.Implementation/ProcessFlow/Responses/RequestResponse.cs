@@ -18,7 +18,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string Name { get; set; }
         public string ClientName { get; set; }
         public DateTime DateOfExpedition { get; set; }
-        public Definition.Enumerations.MessageClassification MessageClassification { get; set; }
+        public MessageClassification MessageClassification { get; set; }
         public bool IsResponsePersonalized { get; set; }
         public ExecutionFlow Execution { get; set; }
         public ResponseDetailFlow ResponseDetail { get; set; }

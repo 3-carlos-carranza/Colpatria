@@ -18,14 +18,12 @@ using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow.Arguments
 {
-    public class ProcessFlowArgument : IProcessFlowArgument
+    public class ProcessFlowArgument : ISubmitFormArgument
     {
-        public IList<FieldValueOrder> Form { get; set; }
-        public int OwnerId { get; set; }
-
         public ExecutionFlow Execution { get; set; }
         public IProcessFlowUser User { get; set; }
         public bool IsSubmitting { get; set; }
         public IEnumerable<IStep> Steps { get; set; }
+        public IList<FieldValueOrder> Form { get; set; }
     }
 }

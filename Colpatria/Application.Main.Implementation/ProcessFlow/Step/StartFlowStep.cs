@@ -21,8 +21,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class StartFlowStep : BaseStep, IStartFlowStep
     {
-        public StartFlowStep(IProcessFlowStore store) : base(store)
+        private readonly ISaveFieldsAppService _saveFieldsAppService;
+        public StartFlowStep(IProcessFlowStore store, ISaveFieldsAppService saveFieldsAppService) : base(store)
         {
+            _saveFieldsAppService = saveFieldsAppService;
         }
 
         public string Name => GetType().Name;
@@ -42,6 +44,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public void MakeCustomProcess(IProcessFlowArgument stepArgument)
         {
+            _saveFieldsAppService.SaveForm(stepArgument);
         }
     }
 }

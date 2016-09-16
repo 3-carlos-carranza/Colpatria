@@ -6,11 +6,8 @@ namespace Application.Main.Definition.ProcessFlow.Api.ProcessFlows
     public interface IProcessFlowArgument
     {
         ExecutionFlow Execution { get; set; }
-
         IProcessFlowUser User { get; set; }
-
         bool IsSubmitting { get; set; }
-
         IEnumerable<IStep> Steps { get; set; }
     }
 }

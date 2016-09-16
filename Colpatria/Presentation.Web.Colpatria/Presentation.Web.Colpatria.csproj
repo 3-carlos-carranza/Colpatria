@@ -492,6 +492,7 @@
     <Content Include="Content\portal\sass\ellipsis.css" />
     <Content Include="Content\portal\simulator.css" />
     <Content Include="Content\portal\styles.css" />
+    <Content Include="Content\print.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Site2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

@@ -227,7 +227,7 @@
                         cascadeFrom: this.$element.data("cascadefrom"),
                         suggest: true,
 
-                        filter: "startswith",
+                        filter: "contains",
 
                         dataSource: {
                             type: "json",

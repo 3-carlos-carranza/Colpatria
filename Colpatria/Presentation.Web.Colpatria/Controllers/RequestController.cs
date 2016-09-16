@@ -118,5 +118,14 @@ namespace Presentation.Web.Colpatria.Controllers
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }
+        [HttpPost]
+        public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
+        {
+            var fields = collection.ToFieldValueOrder();
+            InitSetFormArguments(fields);
+
+            var stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
+        }
     }
 }

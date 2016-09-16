@@ -6,8 +6,8 @@
 //   -----------------------------------------------------------------------
 
 using System;
-using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
 
 
@@ -16,6 +16,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
     public class RequestResponse : IRequestResponse
     {
         public string Name { get; set; }
+        public string ClientName { get; set; }
         public DateTime DateOfExpedition { get; set; }
         public Definition.Enumerations.MessageClassification MessageClassification { get; set; }
         public bool IsResponsePersonalized { get; set; }
@@ -26,6 +27,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string PartialView { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
-        public InterfaceTypeResponse InterfaceTypeResponse => InterfaceTypeResponse.ShowForm;
+        public ShowScreenType ShowScreenType => ShowScreenType.ShowForm;
     }
 }

@@ -16,7 +16,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
     public class ShowScreenResponse : IShowScreenResponse
     {
         public IEnumerable<Page> Pages { get; set; }
-        public InterfaceTypeResponse InterfaceTypeResponse { get; }
         public ExecutionFlow Execution { get; set; }
 
         public ResponseDetailFlow ResponseDetail { get; set; }
@@ -25,7 +24,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string PartialView { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
-        public ShowScreenType ShowScreenType { get; }
+        public ShowScreenType ShowScreenType { get; set; }
         public string Name { get; set; }
     }
 }

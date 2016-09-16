@@ -8,8 +8,7 @@
 #region
 
 using System.Collections.Generic;
-using Application.Main.Definition.Enumerations;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
 using Core.Entities.Process;
 
@@ -21,10 +20,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
     {
         public IEnumerable<Page> Pages { get; set; }
 
-        public InterfaceTypeResponse InterfaceTypeResponse
-        {
-            get { return InterfaceTypeResponse.ShowModal; }
-        }
+        public ShowScreenType ShowScreenType => ShowScreenType.ShowModal;
 
         public ExecutionFlow Execution { get; set; }
         public ResponseDetailFlow ResponseDetail { get; set; }

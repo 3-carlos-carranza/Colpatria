@@ -1,24 +1,29 @@
-﻿using System.Threading;
+﻿//   -----------------------------------------------------------------------
+//   <copyright file=SubmitWsMotorStep.cs company="Banlinea S.A.S">
+//       Copyright (c) Banlinea Todos los derechos reservados.
+//   </copyright>
+//   <author>Jeysson Stevens  Ramirez </author>
+//   -----------------------------------------------------------------------
+
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows;
-using Application.Main.Definition.ProcessFlow.Api.ProcessFlows.Response;
-using Application.Main.Definition.ProcessFlow.Api.Steps;
-using Application.Main.Implementation.ProcessFlow.Arguments;
-using Application.Main.Implementation.ProcessFlow.Services;
+
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.Entities.WsMotor;
-using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitWsMotorStep : BaseStep, ISubmitWsMotorStep
     {
-        private readonly IWsMotorAppService _wsMotorAppService;
         private readonly PetitionSettingsBuilder _petitionSettingsBuilder;
         private readonly ISaveFieldsAppService _saveFieldsAppService;
+        private readonly IWsMotorAppService _wsMotorAppService;
 
-        public SubmitWsMotorStep(IProcessFlowStore store, 
+        public SubmitWsMotorStep(IProcessFlowStore store,
             IWsMotorAppService wsMotorAppService,
             PetitionSettingsBuilder petitionSettingsBuilder,
             ISaveFieldsAppService saveFieldsAppService)
@@ -89,7 +94,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
             //_saveFieldsAppService.SaveForm(saveFieldsAppService);
 
-            return await OnSucess(argument).Result.Advance(argument);
+            return await OnSuccess(argument).Result.Advance(argument);
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,
@@ -99,9 +104,3 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         }
     }
 }
-
-
-
-
-
-

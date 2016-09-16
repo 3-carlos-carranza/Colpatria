@@ -37,6 +37,7 @@ namespace Application.Main.Implementation.ProcessFlow
 
         public override async Task<IProcessFlowResponse> StartFlow(IProcessFlowArgument arg)
         {
+            arg.Steps = Steps;
             InitializeArgument(arg);
             return await base.StartFlow(arg);
         }

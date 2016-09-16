@@ -5,6 +5,8 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface IAdditionalInformationResponse : IShowScreenResponse

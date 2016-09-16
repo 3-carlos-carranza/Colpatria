@@ -6,6 +6,7 @@
 //   -----------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Core.Entities.Evidente;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses

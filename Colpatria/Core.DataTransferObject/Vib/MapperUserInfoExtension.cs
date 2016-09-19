@@ -16,7 +16,8 @@
                 SecondLastName = row.SecondLastName,
                 Names = row.Names,
                 Telephone = row.Telephone,
-                DateOfExpedition = row.DateOfExpedition
+                DateOfExpedition = row.DateOfExpedition,
+                SimpleId = row.SimpleId
             };
             return userInfo;
         }

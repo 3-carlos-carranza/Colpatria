@@ -20,7 +20,7 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">@*56524*@@Model.Execution.Id</span></p>
+            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
@@ -32,7 +32,7 @@
             <span class="proccess">En Proceso...</span>
         </div>
         <div class="col-xs-12 col-md-8 answer">
-            <p class=""><strong>Camilo,</strong> en este paso vamos a validar tu identidad</p>
+            <p class=""><strong>@Model.UserInfoDto.Names,</strong> en este paso vamos a validar tu identidad</p>
 
             <div class="test">
 

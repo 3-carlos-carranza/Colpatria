@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\MessageClassification.cs" />
+    <Compile Include="MyCustomProcessFlow\ISendRequestResponseStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IShowFinishRequestStep.cs" />

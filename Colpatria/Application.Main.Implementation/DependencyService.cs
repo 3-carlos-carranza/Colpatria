@@ -59,8 +59,9 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, ShowAdditionalInformationStep>("ShowAdditionalInformationStep");
             container.RegisterType<IStep, ShowFinishRequestStep>("ShowFinishRequestStep");
             container.RegisterType<IStep, SubmitAdditionalInformationStep>("SubmitAdditionalInformationStep");
-            
-            
+            container.RegisterType<IStep, SendRequestResponseStep>("SendRequestResponseStep");
+
+
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

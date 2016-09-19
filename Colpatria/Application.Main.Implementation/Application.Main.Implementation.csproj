@@ -105,6 +105,7 @@
     <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Services\WsMotorAppService.cs" />
+    <Compile Include="ProcessFlow\Step\SendRequestResponseStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitWsMotorStep.cs" />

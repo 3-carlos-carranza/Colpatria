@@ -8,6 +8,7 @@
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
+using Core.DataTransferObject.Vib;
 
 
 namespace Application.Main.Implementation.ProcessFlow.Responses
@@ -24,5 +25,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public ShowScreenType ShowScreenType => ShowScreenType.ShowForm;
 
         public string Name { get; set; }
+        public UserInfoDto UserInfoDto { get; set; }
     }
 }

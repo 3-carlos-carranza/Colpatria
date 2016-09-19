@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.DataTransferObject.Vib;
 using Core.Entities.User;
 
 
@@ -115,6 +119,20 @@ namespace DataAccess.UserModule.Repository
         public Task<bool> IsInRoleAsync(User user, string roleName)
         {
             throw new NotImplementedException();
+        }
+        public UserInfoDto GetUserInfoByExecutionId(long executionId)
+        {
+            var context = UnitOfWork as DbContext;
+            try
+            {
+                var result = context?.Database.SqlQuery<MapperUserInfo>("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                return result.Mapping();
+            }
+            catch (Exception exception)
+            {
+                var e = exception;
+                throw;
+            }
         }
     }
 }

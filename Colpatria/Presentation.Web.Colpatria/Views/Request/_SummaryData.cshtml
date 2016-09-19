@@ -1,17 +1,18 @@
-﻿<div class="table-responsive">
+﻿@model dynamic
+<div class="table-responsive">
     <table class="table table-hover">
         <tbody>
             <tr>
                 <td>Nombre:</td>
-                <th>Camilo Florez Rojas</th>
+                <th>@Model.UserInfoDto.FullName</th>
             </tr>
             <tr>
                 <td>Documento:</td>
-                <th>C.C: 1053341168</th>
+                <th>C.C: @Model.UserInfoDto.Identification</th>
             </tr>
             <tr>
                 <td>Expedición:</td>
-                <th>26 Febrero 2006</th>
+                <th>@Model.UserInfoDto.DateOfExpedition</th>
             </tr>
             <tr>
                 <td>Lugar:</td>
@@ -23,7 +24,7 @@
             </tr>
             <tr>
                 <td>Correo</td>
-                <th>camilo@example.com</th>
+                <th>@Model.UserInfoDto.Email</th>
             </tr>
             <tr>
                 <td>Teléfono</td>

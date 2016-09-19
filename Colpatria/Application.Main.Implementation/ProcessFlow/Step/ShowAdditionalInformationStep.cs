@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -12,18 +13,22 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowAdditionalInformationStep : BaseStep
     {
-        public ShowAdditionalInformationStep(IProcessFlowStore store) : base(store)
+        private readonly IUserAppService _userAppService;
+        public ShowAdditionalInformationStep(IProcessFlowStore store, IUserAppService userAppService) : base(store)
         {
+            _userAppService = userAppService;
         }
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             TraceFlow(argument);
             if (!argument.IsSubmitting)
             {
                 var step = (StepDetail)GetCurrentStep(argument);
                 return new AdditionalInformationResponse
                 {
+                    UserInfoDto = userInfo,
                     Execution = argument.Execution,
                     Action = step.Action,
                     ActionMethod = step.ActionMethod,

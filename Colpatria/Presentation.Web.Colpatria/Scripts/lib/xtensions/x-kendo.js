@@ -127,8 +127,6 @@
                         optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
                         dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
-                        filter: "contains",
-                        delay: 500,
                         value: this.$element.data("value"),
                         autoBind: this.$element.data("autobind"),
                         cascadeFrom: this.$element.data("cascadefrom"),
@@ -140,22 +138,14 @@
                                     url: XGeneral.path + this.$element.data("url"),
                                     type: "POST",
                                     data: function (e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#input" + $element.attr("name") + "-list > span > input").val()) };
+                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")) };
                                         if ($element.data("cascadefrom") != undefined) {
                                             vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
-                                            if ($element.data("cascadefrom") === "this") {
-                                                vars.filterself = ($("#input" + $element.attr("name") + "-list > span > input").val());
-                                                //console.log(vars.filterself);
-                                                //console.log($('.k-list-filter').val());
-                                            }
                                         } else {
                                             if ($element.data("vars")) {
                                                 vars = jQuery.extend(vars, XGeneral.Object2Array($element.data("vars")));
                                             }
                                         }
-                                        
-                                        //console.log($("#input31-list > span > input").val());
-                                        //console.log(vars);
                                         return vars;
                                     }
                                 }
@@ -224,33 +214,33 @@
 
     kDropdownauto.prototype = {
         initDropDownAuto: function () {
-            if ($.isFunction($.fn.kendoAutoComplete)) {
+            if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
                 if (this.$element.data("url")) {
-                    this.$element.kendoAutoComplete({
 
+                    this.$element.kendoDropDownList({
+                        optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
-
-                        dataValueField: this.$element.data("valuefield"),
+                        dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
+                        filter: "contains",
+                        delay: 500,
                         value: this.$element.data("value"),
                         autoBind: this.$element.data("autobind"),
                         cascadeFrom: this.$element.data("cascadefrom"),
-                        suggest: true,
-
-                        filter: "contains",
-
                         dataSource: {
                             type: "json",
                             serverFiltering: this.$element.data("cascadefrom") == undefined ? false : true,
                             transport: {
                                 read: {
                                     url: XGeneral.path + this.$element.data("url"),
-                                    serverPaging: true,
                                     type: "POST",
-                                    data: function(e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")) };
+                                    data: function (e) {
+                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#" + $element.attr("name") + "-list > span > input").val()) };
                                         if ($element.data("cascadefrom") != undefined) {
                                             vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
+                                            if ($element.data("cascadefrom") === "this") {
+                                                vars.filterself = ($("#" + $element.attr("name") + "-list > span > input").val());
+                                            }
                                         } else {
                                             if ($element.data("vars")) {
                                                 vars = jQuery.extend(vars, XGeneral.Object2Array($element.data("vars")));

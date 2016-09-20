@@ -122,13 +122,13 @@
             if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
                 if (this.$element.data("url")) {
-                    //console.log(this.$element.data("textfield"));
-
+                    
                     this.$element.kendoDropDownList({
                         optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
                         dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
-                        //filter: "contains",
+                        filter: "contains",
+                        delay: 500,
                         value: this.$element.data("value"),
                         autoBind: this.$element.data("autobind"),
                         cascadeFrom: this.$element.data("cascadefrom"),
@@ -140,17 +140,26 @@
                                     url: XGeneral.path + this.$element.data("url"),
                                     type: "POST",
                                     data: function (e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")) };
+                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filter: $("#input31-list > span > input").val() };
                                         if ($element.data("cascadefrom") != undefined) {
                                             vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
+                                            if ($element.data("cascadefrom") === "this") {
+                                                vars.filter = $("#input31-list > span > input").val();
+                                                console.log(vars.filter);
+                                            }
                                         } else {
                                             if ($element.data("vars")) {
                                                 vars = jQuery.extend(vars, XGeneral.Object2Array($element.data("vars")));
                                             }
                                         }
+                                        
+                                        //console.log($("#input31-list > span > input").val());
+                                        //console.log(vars);
                                         return vars;
                                     }
                                 }
+
+
                             }, requestEnd: function (e) {
                                 if (typeof triggerClient !== "undefined") {
                                     triggerClient.InitEvents();
@@ -169,7 +178,7 @@
                             template: this.$element.data("template") == undefined ? "" : $("#" + this.$element.data("template")).html(),
                             valueTemplate: this.$element.data("valuetemplate") == undefined ? "" : $("#" + this.$element.data("valuetemplate")).html(),
                             cascadeFrom: this.$element.data("cascadefrom"),
-                            //filter: "contains",
+                            filter: "contains",
                             value: this.$element.data("value"),
                             dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
                             dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
@@ -190,7 +199,7 @@
                             template: this.$element.data("template") == undefined ? "" : $("#" + this.$element.data("template")).html(),
                             dataTextField: (this.$element.data("textfield") == undefined) ? "text" : this.$element.data("textfield"),
                             dataValueField: (this.$element.data("valuefield") == undefined) ? "value" : this.$element.data("valuefield"),
-                            //filter: "contains",
+                            filter: "contains",
                             value: this.$element.data("value"),
                             autoBind: this.$element.data("autobind"),
                             cascadeFrom: this.$element.data("cascadefrom"),

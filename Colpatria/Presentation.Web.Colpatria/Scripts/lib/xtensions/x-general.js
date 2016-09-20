@@ -496,7 +496,7 @@ if (!window.location.origin) {
                 if (c)
                 {
                     var j = JSON.parse(c);
-                    XGeneral.executeCallbacks(j)
+                    XGeneral.executeCallbacks(j);
                 }
             });
 
@@ -518,6 +518,11 @@ if (!window.location.origin) {
             $('[data-x="x-kcombobox"]').livequery(function () {
                 var $this = $(this), data = $(this).data();
                 $this.kcombobox(data);
+            });
+
+            $('[data-x="x-chosen"]').livequery(function () {
+                var $this = $(this), data = $(this).data();
+                $this.kchosen(data);
             });
         });
 

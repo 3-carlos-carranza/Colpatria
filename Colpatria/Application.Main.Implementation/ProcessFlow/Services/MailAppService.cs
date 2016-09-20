@@ -23,27 +23,23 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public bool SendMail()
         {
-
             var razorTemplate = _mailService.TemplateResponseRequest();
             var template = File.ReadAllText(razorTemplate);
             var html = new RazorMachine().ExecuteContent(template).Result;
-
-            //Get Data
-            var optionList = new List<EmailAddress>
-            {
-                new EmailAddress("Carlos Carranza", "carlosscarranza@yahoo.com")
-                {
-                    Name = "Carlos Carranza",
-                    Address = "carlosscarranza@yahoo.com"
-                }
-            };
 
             //Send Data Mail
             return _emailNotificatorService.SendEmail(new EmailMessage()
             {
                 
                 Subject = "carlosscarranza@yahoo.com",
-                To = optionList,
+                To = new List<EmailAddress>
+                    {
+                        new EmailAddress("Carlos Carranza", "carlosscarranza@yahoo.com")
+                        {
+                            Name = "Carlos Carranza",
+                            Address = "carlosscarranza@yahoo.com"
+                        }
+                    },
                 Body = html,
                 
                 Sender = new EmailAddress()

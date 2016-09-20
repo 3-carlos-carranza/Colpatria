@@ -1135,12 +1135,16 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Request\Index.cshtml" />
-    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Scripts\lib\jqueryUI\jquery-ui.min.js.map" />
     <Content Include="Scripts\kendo\2014.3.1119\jquery.min.map" />

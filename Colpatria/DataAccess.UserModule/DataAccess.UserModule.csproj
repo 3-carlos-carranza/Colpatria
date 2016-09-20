@@ -160,6 +160,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984fc515-8235-4b7b-9821-84a7af8f4ee0}</Project>
       <Name>Core.Entities</Name>
@@ -167,6 +171,10 @@
     <ProjectReference Include="..\Core.GlobalRepository.Definition\Core.GlobalRepository.csproj">
       <Project>{3F22AAFC-92BE-46B2-86B0-0BC8835C279E}</Project>
       <Name>Core.GlobalRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crusscutting.Mappers\Crosscutting.Mappers.csproj">
+      <Project>{09B7B936-6FED-4935-A682-24FD1D0F132B}</Project>
+      <Name>Crosscutting.Mappers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>

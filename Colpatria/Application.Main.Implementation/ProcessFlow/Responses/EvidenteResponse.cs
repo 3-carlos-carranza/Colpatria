@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Evidente;
 
 
@@ -17,6 +18,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
     public class EvidenteResponse : IEvidenteResponse
     {
         public IEnumerable<Question> Questions { get; set; }
+        public UserInfoDto UserInfoDto { get; set; }
         public ExecutionFlow Execution { get; set; }
         public ResponseDetailFlow ResponseDetail { get; set; }
         public string FriendlyUrl { get; set; }

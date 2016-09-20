@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using Crosscutting.Common
+@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 @{
     ViewBag.Title = "Información complementaria";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,11 +21,11 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">56524</span></p>
+            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
-                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml");
+                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml", Model);
                 }
             </div>
             <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>

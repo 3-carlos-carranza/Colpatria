@@ -15,19 +15,22 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowEvidenteStep : BaseStep
     {
+        private readonly IUserAppService _userAppService;
         private readonly IEvidenteAppService _evidenteAppService;
         private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
         private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
 
-        public ShowEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService) : base(store)
+        public ShowEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
+            _userAppService = userAppService;
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
             _questionsSettingsBuilder = new QuestionsSettingsBuilder();
         }
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             //var validationSettings =
             //    _validateUserSettingsBuilder.WithIdentification("1023924856")
             //        .WithTypeOfDocument("1")
@@ -78,6 +81,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 var step = (StepDetail)GetCurrentStep(argument);
                 return new EvidenteResponse
                 {
+                    UserInfoDto = userInfo,
                     Execution = argument.Execution,
                     Questions = questionsResponse.Questions,
                     Action = step.Action,

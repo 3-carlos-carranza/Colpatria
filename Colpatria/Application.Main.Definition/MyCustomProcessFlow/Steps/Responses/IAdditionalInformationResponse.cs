@@ -6,10 +6,12 @@
 //   -----------------------------------------------------------------------
 
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Core.DataTransferObject.Vib;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface IAdditionalInformationResponse : IShowScreenResponse
     {
+        UserInfoDto UserInfoDto { get; set; }
     }
 }

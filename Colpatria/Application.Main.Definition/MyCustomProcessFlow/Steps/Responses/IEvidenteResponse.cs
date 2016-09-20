@@ -7,6 +7,7 @@
 
 using System.Collections.Generic;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Evidente;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
@@ -14,5 +15,6 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
     public interface IEvidenteResponse : IShowScreenResponse
     {
         IEnumerable<Question> Questions { get; set; }
+        UserInfoDto UserInfoDto { get; set; }
     }
 }

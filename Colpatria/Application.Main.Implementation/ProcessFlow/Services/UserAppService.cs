@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Core.GlobalRepository.SQL.Process;
@@ -86,6 +87,11 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             ObjectExtension<User>.MapDictinaryToObject(user, fieldValueTypes);
 
             return Task.FromResult(user);
+        }
+
+        public UserInfoDto GetUserInfoByExecutionId(long executionId)
+        {
+            return _userRepository.GetUserInfoByExecutionId(executionId);
         }
     }
 }

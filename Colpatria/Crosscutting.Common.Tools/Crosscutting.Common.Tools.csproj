@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataType\FieldValueOrder.cs" />
+    <Compile Include="DataType\IdentificationType.cs" />
     <Compile Include="DataType\StringValue.cs" />
     <Compile Include="DataType\ToolExtension.cs" />
     <Compile Include="FieldValueType.cs" />

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Core.DataTransferObject.Vib;
+using Microsoft.AspNet.Identity;
 
 namespace Core.GlobalRepository.SQL.User
 {
@@ -7,5 +8,6 @@ namespace Core.GlobalRepository.SQL.User
         IUserEmailStore<Entities.User.User, long>,  
         IUserRoleStore<Entities.User.User, long>
     {
+        UserInfoDto GetUserInfoByExecutionId(long executionId);
     }
 }

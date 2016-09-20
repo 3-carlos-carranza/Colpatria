@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.Tools.DataType;
@@ -47,5 +48,6 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
 
         Task<User> GetUserByMappingField(IEnumerable<FieldToCreateUser> mappingfields,
             IEnumerable<FieldValueOrder> fields);
+        UserInfoDto GetUserInfoByExecutionId(long executionId);
     }
 }

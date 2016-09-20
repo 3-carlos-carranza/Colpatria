@@ -50,8 +50,6 @@
     <Compile Include="Vib\ExecutionArgument.cs" />
     <Compile Include="Vib\MapperPagesWithSections.cs" />
     <Compile Include="Vib\MapperPagesWithSectionsExtension.cs" />
-    <Compile Include="Vib\MapperUserInfo.cs" />
-    <Compile Include="Vib\MapperUserInfoExtension.cs" />
     <Compile Include="Vib\UserInfoDto.cs" />
     <Compile Include="WebServiceConsultation\ServiceNameType.cs" />
     <Compile Include="WebServiceConsultation\TypeOfConsultation.cs" />

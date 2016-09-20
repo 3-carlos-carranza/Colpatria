@@ -140,12 +140,13 @@
                                     url: XGeneral.path + this.$element.data("url"),
                                     type: "POST",
                                     data: function (e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filter: $("#input31-list > span > input").val() };
+                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#input" + $element.attr("name") + "-list > span > input").val()) };
                                         if ($element.data("cascadefrom") != undefined) {
                                             vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
                                             if ($element.data("cascadefrom") === "this") {
-                                                vars.filter = $("#input31-list > span > input").val();
-                                                console.log(vars.filter);
+                                                vars.filterself = ($("#input" + $element.attr("name") + "-list > span > input").val());
+                                                //console.log(vars.filterself);
+                                                //console.log($('.k-list-filter').val());
                                             }
                                         } else {
                                             if ($element.data("vars")) {

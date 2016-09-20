@@ -63,13 +63,13 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [AllowAnonymous]
      
-        public ActionResult GetDataListFilterValue(int self, string filter, bool isLabel = false)
+        public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
             if (reqfield?.ListId != null)
             {
                 var results =
-                    _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filter)
+                    _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
                         .OrderBy(dlv => dlv.Order)
                         .Select(v => new
                         {

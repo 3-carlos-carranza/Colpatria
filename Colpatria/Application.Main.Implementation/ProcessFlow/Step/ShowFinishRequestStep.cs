@@ -30,24 +30,30 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //Obtener respuesta de WsMotor
             var responseWsMotor = _responseRequestAppService.GetResponse();
             var step = (StepDetail) GetCurrentStep(argument);
-            
-            var response = new RequestResponse
+            if (!argument.IsSubmitting)
             {
-                Name = responseWsMotor.Name,
-                DateOfExpedition = responseWsMotor.DateOfExpedition,
-                MessageClassification = responseWsMotor.MessageClassification,
-                IsResponsePersonalized = responseWsMotor.IsResponsePersonalized,
-                Execution = argument.Execution,
-                Action = step.Action,
-                ActionMethod = step.ActionMethod,
-                Controller = step.Controller,
-                FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
-                ResponseDetail = new ResponseDetailFlow
+                return new RequestResponse
                 {
-                    Status = ReponseStatus.Success
-                }
-            };
-            return response;
+                    Name = responseWsMotor.Name,
+                    DateOfExpedition = responseWsMotor.DateOfExpedition,
+                    MessageClassification = responseWsMotor.MessageClassification,
+                    IsResponsePersonalized = responseWsMotor.IsResponsePersonalized,
+                    Execution = argument.Execution,
+                    Action = step.Action,
+                    ActionMethod = step.ActionMethod,
+                    Controller = step.Controller,
+                    FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
+                    ResponseDetail = new ResponseDetailFlow
+                    {
+                        Status = ReponseStatus.Success
+                    }
+                };
+            }
+
+            Console.WriteLine("Submitting form...Guardando campos");
+            argument.IsSubmitting = false;
+            return await OnSuccess(argument).Result.Advance(argument);
+            
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,

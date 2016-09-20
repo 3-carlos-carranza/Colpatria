@@ -125,8 +125,8 @@ namespace DataAccess.UserModule.Repository
             var context = UnitOfWork as DbContext;
             try
             {
-                var result = context?.Database.SqlQuery<MapperUserInfo>("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
-                return result.Mapping();
+                var result = context?.Database.SqlQuery<UserInfoDto>("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                return result;
             }
             catch (Exception exception)
             {

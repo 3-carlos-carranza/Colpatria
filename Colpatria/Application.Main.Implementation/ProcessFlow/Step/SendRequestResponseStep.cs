@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow;
+using Application.Main.Definition.MyCustomProcessFlow.Steps;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
@@ -9,14 +11,19 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SendRequestResponseStep : BaseStep, ISendRequestResponseStep
     {
-        public SendRequestResponseStep(IProcessFlowStore store) : base(store)
+
+        public readonly IMailAppService MailAppService;
+
+        public SendRequestResponseStep(IProcessFlowStore store, IMailAppService mailAppService) : base(store)
         {
-            
+            MailAppService = mailAppService;
         }
 
-        public override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
+        public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-            throw new System.NotImplementedException();
+            SendRequestMail();
+
+            return await OnSuccess(argument).Result.Advance(argument);
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
@@ -26,7 +33,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public bool SendRequestMail()
         {
-            return true;
+            return MailAppService.SendMail();
         }
     }
 }

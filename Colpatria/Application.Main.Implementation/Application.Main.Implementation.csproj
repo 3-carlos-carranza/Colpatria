@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
       <Private>True</Private>
@@ -78,12 +82,20 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorMachine.2.6.1\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xipton.Razor, Version=2.6.1.0, Culture=neutral, PublicKeyToken=563e02c711ac8b7e, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorMachine.2.6.1\lib\net40\Xipton.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyService.cs" />
@@ -101,6 +113,7 @@
     <Compile Include="ProcessFlow\Responses\RedirectResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowModalResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
+    <Compile Include="ProcessFlow\Services\MailAppService.cs" />
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
@@ -156,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProcessFlow\Settings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="razormachine.readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

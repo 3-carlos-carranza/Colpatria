@@ -37,10 +37,10 @@ namespace Application.Main.Implementation.ProcessFlow
         {
             get
             {
-                if (_steps != null)
-                {
-                    return _steps;
-                }
+                //if (_steps != null)
+                //{
+                //    return _steps;
+                //}
                 _steps = _processAppService.GetAllStepsEnablesByProduct(productId);
                 return _steps;
             }

@@ -21,18 +21,12 @@ namespace Core.Entities.Process
 {
     public class Product
     {
-        public Product()
-        {
-            Execution = new HashSet<Execution>();
-            ProductProcess = new HashSet<ProductProcess>();
-        }
-
         public long Id { get; set; }
         public string Name { get; set; }
 
 
-        public virtual ICollection<Execution> Execution { get; set; }
+        public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
 
-        public virtual ICollection<ProductProcess> ProductProcess { get; set; }
+        public virtual ICollection<ProductProcess> ProductProcess { get; set; } = new HashSet<ProductProcess>();
     }
 }

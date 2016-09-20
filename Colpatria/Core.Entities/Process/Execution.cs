@@ -26,6 +26,9 @@ namespace Core.Entities.Process
 
     public class Execution : ExecutionFlow
     {
+
+
+        public string balbla{ get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override long Id { get; set; }
         public override int ProcessId { get; set; }

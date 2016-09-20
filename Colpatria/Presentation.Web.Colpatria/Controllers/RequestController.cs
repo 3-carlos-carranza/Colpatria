@@ -110,9 +110,12 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        public ActionResult FinalSummary()
+        public async Task<ActionResult> FinalSummary()
         {
-            return View();
+            MockSubmitInitSetFormArguments();
+
+            dynamic stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
         }
 
         public ActionResult EmailRequest()

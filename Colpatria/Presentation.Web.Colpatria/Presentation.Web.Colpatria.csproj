@@ -1259,7 +1259,9 @@
     <Content Include="Scripts\kendo\2014.3.1119\kendo.window.min.js.map" />
     <Content Include="Views\Request\TermsAndConditions.cshtml" />
     <Content Include="Views\Request\AdditionalIformation.cshtml" />
-    <Content Include="Views\Request\RequestAproved.cshtml" />
+    <Content Include="Views\Request\RequestAproved.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Request\FinalSummary.cshtml" />
     <Content Include="Views\Request\_SummaryData.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />

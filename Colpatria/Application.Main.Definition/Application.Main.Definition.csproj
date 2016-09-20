@@ -66,7 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\MessageClassification.cs" />
-    <Compile Include="MyCustomProcessFlow\ISendRequestResponseStep.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\ISendRequestResponseStep.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IMailAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IShowFinishRequestStep.cs" />
@@ -91,7 +92,6 @@
     <Compile Include="MyCustomProcessFlow\Steps\ISubmitEvidenteStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IResponseRequestStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IScoreStep.cs" />
-    <Compile Include="MyCustomProcessFlow\Steps\ISendSmsStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IStartFlowStep.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,9 +20,11 @@ using Application.Main.Implementation.ProcessFlow;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Application.Main.Implementation.ProcessFlow.Services;
 using Application.Main.Implementation.ProcessFlow.Step;
+using Banlinea.Framework.Notification.EmailProviders.Contracts;
 using Banlinea.ProcessFlow.Engine.Api;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
+using Crosscutting.Common;
 using Microsoft.Practices.Unity;
 using SubmitFormStep = Application.Main.Implementation.ProcessFlow.Step.SubmitFormStep;
 
@@ -38,6 +40,9 @@ namespace Application.Main.Implementation
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
             container.RegisterType<IWsMotorAppService, WsMotorAppService>();
+            container.RegisterType<IMailAppService, MailAppService>();
+            container.RegisterType<IEmailNotificatorService, MailService>();
+            container.RegisterType<IMailService, MailService>();
             
             container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
@@ -60,8 +65,6 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, ShowFinishRequestStep>("ShowFinishRequestStep");
             container.RegisterType<IStep, SubmitAdditionalInformationStep>("SubmitAdditionalInformationStep");
             container.RegisterType<IStep, SendRequestResponseStep>("SendRequestResponseStep");
-
-
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

@@ -24,7 +24,7 @@
             <p>Bogotá, @Model.DateOfExpedition</p>
             <p>Señor(a) @Model.Name</p>
             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
-            <p>Solicitud <strong>APROBADA</strong></p>
+            <p>Solicitud <strong>@Model.MessageClassification.GetStringValue().ToUpper()</strong></p>
             <p>Si tu solicitud ha sido <strong>APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%. </p>
             <p>Si tu solicitud ha sido <strong>PROCESADA/PENDIENTE DE DOCUMENTACIÓN</strong> te invitamos a acercarte a la oficina de Colpatria más cercana y llevar los siguientes documentos de acuerdo a tu actividad económica:</p>
             <div class="table-responsive">

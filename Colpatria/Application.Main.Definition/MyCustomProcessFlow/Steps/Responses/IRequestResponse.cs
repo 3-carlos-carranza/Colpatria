@@ -14,7 +14,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
     public interface IRequestResponse : IShowScreenResponse
     {
         string ClientName { get; set; }
-        DateTime DateOfExpedition { get; set; }
+        string DateOfExpedition { get; set; }
         MessageClassification MessageClassification { get; }
         bool IsResponsePersonalized { get; set; }
     }

@@ -11,6 +11,7 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.GlobalRepository.SQL.User;
 
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -18,26 +19,30 @@ namespace Application.Main.Implementation.ProcessFlow.Step
     public class ShowFinishRequestStep : BaseStep, IShowFinishRequestStep
     {
         private readonly IResponseRequestAppService _responseRequestAppService;
+        private readonly IUserRepository _userRepository;
 
-        public ShowFinishRequestStep(IProcessFlowStore store, IResponseRequestAppService responseRequestAppService)
+        public ShowFinishRequestStep(IProcessFlowStore store, IResponseRequestAppService responseRequestAppService, 
+            IUserRepository userRepository)
             : base(store)
         {
             _responseRequestAppService = responseRequestAppService;
+            _userRepository = userRepository;
         }
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             //Obtener respuesta de WsMotor
             var responseWsMotor = _responseRequestAppService.GetResponse();
+            var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
+
             var step = (StepDetail) GetCurrentStep(argument);
             if (!argument.IsSubmitting)
             {
                 return new RequestResponse
                 {
-                    Name = responseWsMotor.Name,
-                    DateOfExpedition = responseWsMotor.DateOfExpedition,
+                    Name = userInfo.Names,
+                    DateOfExpedition = DateTime.UtcNow.ToShortDateString(),
                     MessageClassification = responseWsMotor.MessageClassification,
-                    IsResponsePersonalized = responseWsMotor.IsResponsePersonalized,
                     Execution = argument.Execution,
                     Action = step.Action,
                     ActionMethod = step.ActionMethod,

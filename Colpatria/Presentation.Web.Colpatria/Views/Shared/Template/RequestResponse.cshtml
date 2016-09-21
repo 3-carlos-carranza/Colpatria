@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Respuesta de solicitud";
+    Layout = null;
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Respuesta de Solicitud</p>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts" id="respuesta-solicitud">
+        <p class="desc-step"><span class="red">Felicitaciones,</span> Model.Name</p>
+        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>Model.MessageClassification.GetStringValue()</strong>  </p>
+        <div class="contents aproved">
+            <p>Bogotá, Model.DateOfExpedition</p>
+            <p>Señor(a) Model.Name</p>
+            <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+            <p>Solicitud <strong>Model.MessageClassification.GetStringValue().ToUpper()</strong></p>
+            <p>Si tu solicitud ha sido <strong>APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%. </p>
+            <p>Si tu solicitud ha sido <strong>PROCESADA/PENDIENTE DE DOCUMENTACIÓN</strong> te invitamos a acercarte a la oficina de Colpatria más cercana y llevar los siguientes documentos de acuerdo a tu actividad económica:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Empleado</th>
+                            <th>Pensionado</th>
+                            <th>Independiente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Original del documento de identidad.</td>
+                            <td>Original del documento de identidad.</td>
+                            <td>Original del documento de identidad.</td>
+                        </tr>
+                        <tr>
+                            <td>Comprobante de nómina o certificación laboral.</td>
+                            <td>Fotocopia de comprobante de pensión o resolución de pensión.</td>
+                            <td>Declaración de renta o Certificado de Cámara de Comercio o Balance General o Estado de Pérdidas y Ganancias o Carta de Actividad Comercial o RUT o VUR.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Si su solicitud ha sido <strong>NO PROCESADA</strong> te recomendamos hacercarte a la oficina de <span class="red">Colpatria</span> MAS CERCANA.</p>
+
+            <div class="info">
+                <div class="col-xs-12 col-sm-8 desc-info">
+                    <p class="">
+                        Cualquier duda o inquietud puedes contactarte:<br />
+                        Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 -Pereira 3401616 -
+                        Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480 Popayán
+                        8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 222
+                        Mail: servicliente@colpatria.com
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-log">
+                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" /></div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>

@@ -43,7 +43,7 @@ namespace Data.DataCredito
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
-            var mock = settings.Channel = ConfigurationManager.AppSettings["Mock"];
+            var mock = ConfigurationManager.AppSettings["Mock"];
             if (mock == "true")
             {
                 var questionsRequest = new QuestionsRequest

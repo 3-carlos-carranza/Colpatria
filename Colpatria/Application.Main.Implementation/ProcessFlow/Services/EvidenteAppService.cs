@@ -84,7 +84,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         }
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
-            var mock = settings.Channel = ConfigurationManager.AppSettings["Mock"];
+            var mock = ConfigurationManager.AppSettings["Mock"];
             if (mock == "true")
             {
                 return _evidenteRepository.GetQuestions(settings);

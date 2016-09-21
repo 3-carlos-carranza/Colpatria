@@ -6,6 +6,7 @@
 //   -----------------------------------------------------------------------
 
 using System;
+using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
@@ -36,6 +37,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            var mock = ConfigurationManager.AppSettings["Mock"];
+            if (mock == "true")
+            {
+            }
+
             return await OnSuccess(argument).Result.Advance(argument);
         }
 

@@ -19,5 +19,15 @@ namespace Core.DataTransferObject.Vib
         public DateTime DateOfExpedition { get; set; }
         public string ExpeditionPlace { get; set; }
         public string SimpleId { get; set; }
+        public string Birthdate { get; set; }
+        public string CivilStatus { get; set; }
+        public string EconomicActivity { get; set; }
+        public string Income { get; set; }
+        public string PublicServer { get; set; }
+        public string PickTheCard { get; set; }
+        public string Office { get; set; }
+        public string AccountType { get; set; }
+        public string ExtractMail { get; set; }
+        public string MoreInformation { get; set; }
     }
 }

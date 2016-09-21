@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.Framework.Notification.EmailProviders.Contracts;
 using Crosscutting.Common;
@@ -30,8 +28,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             //Send Data Mail
             return _emailNotificatorService.SendEmail(new EmailMessage()
             {
-                
-                Subject = "carlosscarranza@yahoo.com",
+                Subject = "Respuesta de la solicitud",
                 To = new List<EmailAddress>
                     {
                         new EmailAddress("Carlos Carranza", "carlosscarranza@yahoo.com")
@@ -40,13 +37,12 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                             Address = "carlosscarranza@yahoo.com"
                         }
                     },
-                Body = html,
-                
                 Sender = new EmailAddress()
                 {
                     Name = "Carlos Carranza",
                     Address = "carlos.carranza@banlinea.com"
-                }, 
+                },
+                Body = html,
             });
         }
     }

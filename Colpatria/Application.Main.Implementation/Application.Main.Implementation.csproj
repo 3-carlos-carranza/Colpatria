@@ -120,6 +120,7 @@
     <Compile Include="ProcessFlow\Services\WsMotorAppService.cs" />
     <Compile Include="ProcessFlow\Step\SendRequestResponseStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
+    <Compile Include="ProcessFlow\Step\ShowFinishFlowStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitWsMotorStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowFinishRequestStep.cs" />

@@ -41,7 +41,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 return new RequestResponse
                 {
                     Name = userInfo.Names,
-                    DateOfExpedition = DateTime.UtcNow.ToShortDateString(),
+                    UserInfoDto = userInfo,
                     MessageClassification = responseWsMotor.MessageClassification,
                     Execution = argument.Execution,
                     Action = step.Action,

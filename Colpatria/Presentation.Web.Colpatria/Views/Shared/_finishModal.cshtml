@@ -1,0 +1,26 @@
+﻿@model Core.DataTransferObject.Vib.UserInfoDto
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>SOLICITUD FINALIZADA</h4>
+                    <h6>Número de Solicitud: <span>@Model.SimpleId</span></h6>
+                </div>
+                <div class="modal-body aprovedd">
+                    <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“@Model.Email”</span>.</p>
+                    <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="@Url.Action("FinalSummary", "Request")"><button class="btn btn-danger btn-default terminar"><span class="glyphicon glyphicon-remove"></span> Terminar</button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

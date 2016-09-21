@@ -1,35 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net;
+using System.Text;
 using Core.Entities.Evidente;
 using Core.GlobalRepository.Evidente;
+using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.XmlUtilities;
+using Data.DataCredito.EvidenteService;
+
 
 namespace Data.DataCredito
 {
-    public class EvidenteRepository : IEvidenteRepository
+    public class EvidenteRepository : ServicioIdentificacion, IEvidenteRepository
     {
-        private readonly string _password;
-        private readonly string _username;
-        private readonly ValidationResponseBuilder _validationResponseBuilder;
         private readonly XmlProcessor _xmlProcessor;
 
         public EvidenteRepository()
         {
             _xmlProcessor = new XmlProcessor();
-            _username = ConfigurationManager.AppSettings["EvidenteUsername"];
-            _password = ConfigurationManager.AppSettings["EvidentePassword"];
-            //ClientExtensions.SetNetworkCredentials(_username, _password);
-            //RequestEncoding = Encoding.UTF8;
-            _validationResponseBuilder = new ValidationResponseBuilder();
+            var username = ConfigurationManager.AppSettings["EvidenteUsername"];
+            var password = ConfigurationManager.AppSettings["EvidentePassword"];
+            this.SetNetworkCredentials(username,password);
+            RequestEncoding = Encoding.UTF8;
         }
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
-            throw new NotImplementedException();
+            settings.AnswerRequest.Identification = new Identification
+            {
+                Number = settings.Identification,
+                Type = settings.IdentificationType
+            };
+
+            var serialized = _xmlProcessor.Serialize(settings.AnswerRequest);
+
+            var response = verificar(settings.Product, settings.ParamProduct, serialized);
+
+            var deserialized = _xmlProcessor.Deserialize<AnswerResponse>(response);
+
+            return deserialized;
         }
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
+            var mock = settings.Channel = ConfigurationManager.AppSettings["Mock"];
+            if (mock == "true")
+            {
+                var questionsRequest = new QuestionsRequest
+                {
+                    Identification = settings.Identification,
+                    IdentificationType = settings.IdentificationType,
+                    ValidationNumber = settings.ValidationNumber
+                };
+
+                var serialized = _xmlProcessor.Serialize(questionsRequest);
+
+                var response = preguntas(settings.ParamProduct, settings.Product, settings.Channel, serialized);
+
+                var deserialized = _xmlProcessor.Deserialize<QuestionsResponse>(response);
+
+                return deserialized;
+            }
             return new QuestionsResponse
             {
                 Questions = new List<Question>
@@ -158,14 +189,39 @@ namespace Data.DataCredito
 
         public ValidationResponse Validate(ValidateUserSettings settings)
         {
-            throw new NotImplementedException();
+            var identificacion = new Identification
+            {
+                Number = settings.Identification,
+                Type = settings.IdentificationType
+            };
+
+            var datosValidacion = new ValidationRequest
+            {
+                Identification = identificacion,
+                PrimerApellido = settings.Lastname,
+                Nombres = settings.Fullname,
+                SegundoApellido = settings.SecondLastname,
+                ExpeditionDate = new ExpeditionDate
+                                          {
+                                              Timestamp = DateTimeExtension.ToTimestamp(settings
+                                                  .ExpeditionDate)
+                                          }
+            };
+
+            var serialized = _xmlProcessor.Serialize(datosValidacion);
+
+            var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
+
+            var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
+
+            return deserialized;
         }
 
-        //protected override WebRequest GetWebRequest(Uri uri = null)
-        //{
-        //    var actualUri = uri ?? new Uri(Url);
-        //    var request = (HttpWebRequest)base.GetWebRequest(actualUri);
-        //    return (PreAuthenticate) ? request.GetRequestWithBasicAuthorization(actualUri) : request;
-        //}
+        protected override WebRequest GetWebRequest(Uri uri = null)
+        {
+            var actualUri = uri ?? new Uri(Url);
+            var request = (HttpWebRequest)base.GetWebRequest(actualUri);
+            return (PreAuthenticate) ? request.GetRequestWithBasicAuthorization(actualUri) : request;
+        }
     }
 }

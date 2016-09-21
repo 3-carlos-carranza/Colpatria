@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Crosscutting.Common
+namespace Crosscutting.Common.Extensions
 {
     public class DateTimeExtension
     {

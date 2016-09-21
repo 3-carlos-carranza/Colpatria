@@ -33,7 +33,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         private readonly IEvidenteRepository _evidenteRepository;
         private readonly IWebServiceConsultationRepository _webServiceConsultationRepository;
         private readonly WebSettingsConsultationSettingsBuilder _webSettingsConsultationSettingsBuilder;
-
         public EvidenteAppService(IEvidenteRepository evidenteRepository,
             IWebServiceConsultationRepository webServiceConsultationRepository)
         {
@@ -41,7 +40,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             _webServiceConsultationRepository = webServiceConsultationRepository;
             _webSettingsConsultationSettingsBuilder = new WebSettingsConsultationSettingsBuilder();
         }
-
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
             AnswerResponse response;
@@ -84,11 +82,9 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
             return response;
         }
-
-
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
-            var mock = settings.Channel = ConfigurationManager.AppSettings["Mock"];
+            var mock = ConfigurationManager.AppSettings["Mock"];
             if (mock == "true")
             {
                 return _evidenteRepository.GetQuestions(settings);
@@ -137,7 +133,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 return response;
             }
         }
-
         public ValidationResponse Validate(ValidateUserSettings settings)
         {
             ValidationResponse response;
@@ -180,7 +175,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
             return response;
         }
-
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)
         {
             var item = new WebServiceConsultation

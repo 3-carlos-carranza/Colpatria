@@ -30,5 +30,6 @@ namespace Core.DataTransferObject.Vib
         public string AccountType { get; set; }
         public string ExtractMail { get; set; }
         public string MoreInformation { get; set; }
+        public string ResponseWsMotor { get; set; }
     }
 }

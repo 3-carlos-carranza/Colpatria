@@ -21,6 +21,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            TraceFlow(argument);
             for (var i = 0; i < 2; i++)
             {
                 if (SendRequestMail())

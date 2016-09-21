@@ -15,7 +15,7 @@
 
 using System.Collections.Generic;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Application.Main.Implementation.ProcessFlow;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Application.Main.Implementation.ProcessFlow.Services;
@@ -27,6 +27,7 @@ using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Crosscutting.Common;
 using Microsoft.Practices.Unity;
 using SubmitFormStep = Application.Main.Implementation.ProcessFlow.Step.SubmitFormStep;
+
 
 #endregion
 
@@ -46,7 +47,8 @@ namespace Application.Main.Implementation
             
             container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
-            
+            container.RegisterType<ISubmitFormArgument, ProcessFlowArgument>();
+
             //Process
             container.RegisterType<IProcessFlowManager, ColpatriaProcessFlowManager>();
             container.RegisterType<IProcessFlowArgument, ProcessFlowArgument>();
@@ -65,7 +67,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, ShowFinishRequestStep>("ShowFinishRequestStep");
             container.RegisterType<IStep, SubmitAdditionalInformationStep>("SubmitAdditionalInformationStep");
             container.RegisterType<IStep, SendRequestResponseStep>("SendRequestResponseStep");
-            container.RegisterType<IStep, ShowFinishFlowStep>("ShowFinishFlowStep");
+            container.RegisterType<IStep, ShowDataSummaryStep>("ShowDataSummaryStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

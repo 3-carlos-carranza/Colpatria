@@ -17,6 +17,7 @@ namespace Core.DataTransferObject.Vib
         public string Telephone { get; set; }
         public string Cellphone { get; set; }
         public DateTime DateOfExpedition { get; set; }
+        public DateTime CreatedDateExecution { get; set; }
         public string ExpeditionPlace { get; set; }
         public string SimpleId { get; set; }
         public string Birthdate { get; set; }

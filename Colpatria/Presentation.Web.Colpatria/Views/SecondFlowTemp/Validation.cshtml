@@ -24,7 +24,7 @@
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
-                    Html.RenderPartial("~/Views/Requests/_SummaryData.cshtml");
+                    Html.RenderPartial("~/Views/SecondFlowTemp/_SummaryData.cshtml");
                 }
             </div>
             <p class="desc-step">Validación de identidad:</p>
@@ -84,7 +84,6 @@
                         <div style="display:none;">
                             <button type="submit" class="btn btn-danger pull-right enviar valid">Siguiente</button>
                                 Siguiente 
-                            </button>
                         </div>
                         <div>
                             <a class="btn btn-danger pull-right enviar" href="@Url.Action("FormAsks", "Requests")">Siguiente</a>

@@ -1124,6 +1124,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\SecondFlowTempController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1277,6 +1278,7 @@
     <Content Include="Views\Request\Validation.cshtml" />
     <Content Include="Views\Request\Register.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\_finishModal.cshtml" />
     <Content Include="Views\Shared\Template\RequestResponse.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

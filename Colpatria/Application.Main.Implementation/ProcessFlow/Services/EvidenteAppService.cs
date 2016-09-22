@@ -33,6 +33,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         private readonly IEvidenteRepository _evidenteRepository;
         private readonly IWebServiceConsultationRepository _webServiceConsultationRepository;
         private readonly WebSettingsConsultationSettingsBuilder _webSettingsConsultationSettingsBuilder;
+
         public EvidenteAppService(IEvidenteRepository evidenteRepository,
             IWebServiceConsultationRepository webServiceConsultationRepository)
         {
@@ -40,6 +41,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             _webServiceConsultationRepository = webServiceConsultationRepository;
             _webSettingsConsultationSettingsBuilder = new WebSettingsConsultationSettingsBuilder();
         }
+
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
             AnswerResponse response;
@@ -63,7 +65,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             {
                 var consultationException =
                     _webSettingsConsultationSettingsBuilder.WithPayload(
-                            JsonConvert.SerializeObject(new {Exception = exception}))
+                        JsonConvert.SerializeObject(new {Exception = exception}))
                         .WithExecutionId(settings.ExecutionId)
                         .WithTypeOfConsultation((int) TypeOfConsultation.CommunicationError)
                         .WithWebServiceName("Error consultando " + ServiceNameType.Answer.GetStringValue())
@@ -82,14 +84,10 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
             return response;
         }
+
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
-            var mock = ConfigurationManager.AppSettings["Mock"];
-            if (mock == "true")
-            {
-                return _evidenteRepository.GetQuestions(settings);
-            }
-            else
+            try
             {
                 QuestionsResponse response;
                 settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
@@ -99,82 +97,81 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 var consultation =
                     _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(settings))
                         .WithExecutionId(settings.ExecutionId)
-                        .WithTypeOfConsultation((int)TypeOfConsultation.Request)
+                        .WithTypeOfConsultation((int) TypeOfConsultation.Request)
                         .WithWebServiceName(ServiceNameType.Questions.GetStringValue())
                         .Build();
 
                 AddWebServiceConsultation(consultation);
-
-                try
-                {
-                    response = _evidenteRepository.GetQuestions(settings);
-                }
-                catch (Exception exception)
-                {
-                    var consultationException =
-                        _webSettingsConsultationSettingsBuilder.WithPayload(
-                                JsonConvert.SerializeObject(new { Exception = exception }))
-                            .WithExecutionId(settings.ExecutionId)
-                            .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
-                            .WithWebServiceName("Error consultando " + ServiceNameType.Questions.GetStringValue())
-                            .Build();
-                    AddWebServiceConsultation(consultationException);
-                    return new QuestionsResponse { Result = "00" };
-                }
+                response = _evidenteRepository.GetQuestions(settings);
 
                 var consultationResponse =
                     _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
                         .WithExecutionId(settings.ExecutionId)
-                        .WithTypeOfConsultation((int)TypeOfConsultation.Response)
+                        .WithTypeOfConsultation((int) TypeOfConsultation.Response)
                         .WithWebServiceName(ServiceNameType.Questions.GetStringValue())
                         .Build();
                 AddWebServiceConsultation(consultationResponse);
-
                 return response;
-            }
-        }
-        public ValidationResponse Validate(ValidateUserSettings settings)
-        {
-            ValidationResponse response;
-            settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
-            settings.ParamProduct = ConfigurationManager.AppSettings["EvidenteParamProduct"];
-            settings.Product = ConfigurationManager.AppSettings["EvidenteProduct"];
-
-            var consultation =
-                _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(settings))
-                    .WithExecutionId(settings.ExecutionId)
-                    .WithTypeOfConsultation((int) TypeOfConsultation.Request)
-                    .WithWebServiceName(ServiceNameType.Validate.GetStringValue())
-                    .Build();
-
-            AddWebServiceConsultation(consultation);
-
-            try
-            {
-                response = _evidenteRepository.Validate(settings);
             }
             catch (Exception exception)
             {
                 var consultationException =
                     _webSettingsConsultationSettingsBuilder.WithPayload(
-                            JsonConvert.SerializeObject(new {Exception = exception}))
+                        JsonConvert.SerializeObject(new {Exception = exception}))
                         .WithExecutionId(settings.ExecutionId)
                         .WithTypeOfConsultation((int) TypeOfConsultation.CommunicationError)
+                        .WithWebServiceName("Error consultando " + ServiceNameType.Questions.GetStringValue())
+                        .Build();
+                AddWebServiceConsultation(consultationException);
+                return new QuestionsResponse {Result = "00"};
+            }
+        }
+
+        public ValidationResponse Validate(ValidateUserSettings settings)
+        {
+            try
+            {
+                ValidationResponse response;
+                settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
+                settings.ParamProduct = ConfigurationManager.AppSettings["EvidenteParamProduct"];
+                settings.Product = ConfigurationManager.AppSettings["EvidenteProduct"];
+
+                var consultation =
+                    _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(settings))
+                        .WithExecutionId(settings.ExecutionId)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.Request)
+                        .WithWebServiceName(ServiceNameType.Validate.GetStringValue())
+                        .Build();
+
+                AddWebServiceConsultation(consultation);
+
+
+                response = _evidenteRepository.Validate(settings);
+                var consultationResponse =
+               _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
+                   .WithExecutionId(settings.ExecutionId)
+                   .WithTypeOfConsultation((int)TypeOfConsultation.Response)
+                   .WithWebServiceName(ServiceNameType.Validate.GetStringValue())
+                   .Build();
+                AddWebServiceConsultation(consultationResponse);
+
+                return response;
+            }
+            catch (Exception exception)
+            {
+                var consultationException =
+                    _webSettingsConsultationSettingsBuilder.WithPayload(
+                        JsonConvert.SerializeObject(new { Exception = exception }))
+                        .WithExecutionId(settings.ExecutionId)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
                         .WithWebServiceName("Error consultando " + ServiceNameType.Validate.GetStringValue())
                         .Build();
                 AddWebServiceConsultation(consultationException);
-                return new ValidationResponse {ProcessResult = false};
+                return new ValidationResponse { ProcessResult = false };
             }
-            var consultationResponse =
-                _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
-                    .WithExecutionId(settings.ExecutionId)
-                    .WithTypeOfConsultation((int) TypeOfConsultation.Response)
-                    .WithWebServiceName(ServiceNameType.Validate.GetStringValue())
-                    .Build();
-            AddWebServiceConsultation(consultationResponse);
 
-            return response;
         }
+
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)
         {
             var item = new WebServiceConsultation

@@ -9,7 +9,6 @@ using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.EvidenteService;
 
-
 namespace Data.DataCredito
 {
     public class EvidenteRepository : ServicioIdentificacion, IEvidenteRepository
@@ -21,9 +20,10 @@ namespace Data.DataCredito
             _xmlProcessor = new XmlProcessor();
             var username = ConfigurationManager.AppSettings["EvidenteUsername"];
             var password = ConfigurationManager.AppSettings["EvidentePassword"];
-            this.SetNetworkCredentials(username,password);
+            this.SetNetworkCredentials(username, password);
             RequestEncoding = Encoding.UTF8;
         }
+
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
             settings.AnswerRequest.Identification = new Identification
@@ -43,8 +43,8 @@ namespace Data.DataCredito
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
-            var mock = ConfigurationManager.AppSettings["Mock"];
-            if (mock == "true")
+            var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
+            if (!mock)
             {
                 var questionsRequest = new QuestionsRequest
                 {
@@ -61,6 +61,52 @@ namespace Data.DataCredito
 
                 return deserialized;
             }
+            return QuestionsResponseMock();
+        }
+
+        public ValidationResponse Validate(ValidateUserSettings settings)
+        {
+
+            var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
+            if (!mock)
+            {
+                var identificacion = new Identification
+                {
+                    Number = settings.Identification,
+                    Type = settings.IdentificationType
+                };
+
+                var datosValidacion = new ValidationRequest
+                {
+                    Identification = identificacion,
+                    PrimerApellido = settings.Lastname,
+                    Nombres = settings.Fullname,
+                    SegundoApellido = settings.SecondLastname,
+                    ExpeditionDate = new ExpeditionDate
+                    {
+                        Timestamp = DateTimeExtension.ToTimestamp(settings
+                            .ExpeditionDate)
+                    }
+                };
+
+                var serialized = _xmlProcessor.Serialize(datosValidacion);
+
+                var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
+
+                var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
+
+                return deserialized;
+            }
+            return new ValidationResponse
+            {
+                Result =5 ,
+                ProcessResult = true,
+                
+            };
+        }
+
+        private static QuestionsResponse QuestionsResponseMock()
+        {
             return new QuestionsResponse
             {
                 Questions = new List<Question>
@@ -184,37 +230,8 @@ namespace Data.DataCredito
                     }
                 },
                 Id = "1"
+                ,Result = "1"
             };
-        }
-
-        public ValidationResponse Validate(ValidateUserSettings settings)
-        {
-            var identificacion = new Identification
-            {
-                Number = settings.Identification,
-                Type = settings.IdentificationType
-            };
-
-            var datosValidacion = new ValidationRequest
-            {
-                Identification = identificacion,
-                PrimerApellido = settings.Lastname,
-                Nombres = settings.Fullname,
-                SegundoApellido = settings.SecondLastname,
-                ExpeditionDate = new ExpeditionDate
-                                          {
-                                              Timestamp = DateTimeExtension.ToTimestamp(settings
-                                                  .ExpeditionDate)
-                                          }
-            };
-
-            var serialized = _xmlProcessor.Serialize(datosValidacion);
-
-            var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
-
-            var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
-
-            return deserialized;
         }
 
         protected override WebRequest GetWebRequest(Uri uri = null)

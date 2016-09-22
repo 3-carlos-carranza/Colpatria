@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -24,19 +23,18 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly PetitionSettingsBuilder _petitionSettingsBuilder;
         private readonly ISaveFieldsAppService _saveFieldsAppService;
         private readonly IWsMotorAppService _wsMotorAppService;
-        private readonly ISubmitFormArgument _submitFormArgument;
+        
+
         
 
         public SubmitWsMotorStep(IProcessFlowStore store,
             IWsMotorAppService wsMotorAppService,
             PetitionSettingsBuilder petitionSettingsBuilder,
-            ISaveFieldsAppService saveFieldsAppService, ISubmitFormArgument submitFormArgument)
+            ISaveFieldsAppService saveFieldsAppService)
             : base(store)
         {
             _wsMotorAppService = wsMotorAppService;
             _saveFieldsAppService = saveFieldsAppService;
-            _submitFormArgument = submitFormArgument;
-
             _petitionSettingsBuilder = new PetitionSettingsBuilder();
         }
 
@@ -96,7 +94,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _wsMotorAppService.ValidateScore(response);
 
             //Guardar en base de datos la respuesta del score
-
             var saveFieldsAppService = argument as ProcessFlowArgument;
             saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
             _saveFieldsAppService.SaveForm(saveFieldsAppService);

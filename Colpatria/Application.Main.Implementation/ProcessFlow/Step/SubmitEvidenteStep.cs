@@ -20,15 +20,15 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitEvidenteStep : BaseStep, ISubmitEvidenteStep
     {
+        private readonly IUserAppService _userAppService;
         private readonly IEvidenteAppService _evidenteAppService;
-        private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
-        private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
+        private readonly AnswerSettingsBuilder _answerSettingsBuilder;
 
-        public SubmitEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService) : base(store)
+        public SubmitEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
-            _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
-            _questionsSettingsBuilder = new QuestionsSettingsBuilder();
+            _userAppService = userAppService;
+            _answerSettingsBuilder = new AnswerSettingsBuilder();
         }
 
         public int SectionId { get; set; }
@@ -37,9 +37,28 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var mock = ConfigurationManager.AppSettings["Mock"];
             if (mock == "true")
             {
+                var settings = _answerSettingsBuilder.WithIdentification(userInfo.Identification)
+                        .WithAnswerRequest(null)
+                        .WithIdentificationType("1")
+                        .WithExecutionId(argument.Execution.Id)
+                        .Build();
+
+                var response = _evidenteAppService.AnswerQuestions(settings);
+
+                if (!response.Result)
+                {
+                    return await OnError(argument).Result.Advance(argument);
+                }
+                if (response.Approval)
+                {
+                    return await OnSuccess(argument).Result.Advance(argument);
+                }
+
+                return await OnError(argument).Result.Advance(argument);
             }
 
             return await OnSuccess(argument).Result.Advance(argument);

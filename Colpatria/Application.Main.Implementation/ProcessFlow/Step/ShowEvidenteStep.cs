@@ -89,9 +89,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 }
 
                 var questionsResponse =
-                    _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
+                    _evidenteAppService.GetQuestions(_questionsSettingsBuilder
+                        .WithDocumentNumber(userInfo.Identification)
                         .WithTypeOfDocument("1")
-                        .WithValidationNumber(1)
+                        .WithValidationNumber(validationResponse.ValidationNumber)
                         .WithExecutionId(argument.Execution.Id)
                         .Build());
 

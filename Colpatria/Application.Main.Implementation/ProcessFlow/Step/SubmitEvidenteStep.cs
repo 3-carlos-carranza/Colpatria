@@ -6,11 +6,13 @@
 //   -----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
@@ -41,8 +43,21 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var mock = ConfigurationManager.AppSettings["Mock"];
             if (mock == "true")
             {
+                var arg = argument as ISubmitFormArgument;
+                var answer = new AnswerRequest
+                {
+                    Answers = new List<OptionsAnswer>()
+                };
+                foreach (var a in arg.Form)
+                {
+                    var answers = new OptionsAnswer
+                    {
+                        
+                    };
+                    answer.Answers.Add(answers);
+                }
                 var settings = _answerSettingsBuilder.WithIdentification(userInfo.Identification)
-                        .WithAnswerRequest(null)
+                        .WithAnswerRequest(answer)
                         .WithIdentificationType("1")
                         .WithExecutionId(argument.Execution.Id)
                         .Build();

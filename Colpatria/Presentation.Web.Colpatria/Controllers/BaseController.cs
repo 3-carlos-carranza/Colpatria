@@ -152,7 +152,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;
-            var arg =( ProcessFlowArgument as ISubmitFormArgument);
+            var arg = ProcessFlowArgument as ISubmitFormArgument;
             arg.Form = form;
             ProcessFlowArgument = arg;
         }

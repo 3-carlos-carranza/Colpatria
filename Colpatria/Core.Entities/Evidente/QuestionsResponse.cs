@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace Core.Entities.Evidente
 {
+    [XmlType("Cuestionario")]
     public class QuestionsResponse
     {
         [XmlAttribute(AttributeName = "codigoAlerta")]

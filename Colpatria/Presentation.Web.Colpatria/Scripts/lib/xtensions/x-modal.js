@@ -148,15 +148,19 @@
 //    XModal.init(e, extend);
 //};
 
-
-
-
 //Modales Terminos y condiciones
 $(document).ready(function () {
     $("#terms-cuenta").click(function () {
         $("#terms").modal();
     });
 });
+
+$(document).ready(function () {
+    $("#response-summary").click(function () {
+        $("#response_request").modal();
+    });
+});
+
 $(document).ready(function () {
     $("#terms-tarjeta").click(function () {
         $("#terms2").modal();

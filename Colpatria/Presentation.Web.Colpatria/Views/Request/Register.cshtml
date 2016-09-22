@@ -72,7 +72,7 @@
                     </label>
 
                     <div class='input-group date' id='datepicker1'>
-                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]] validateMaxToday" value="14/09/2016" />
+                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]] validateMaxToday" value="14/09/2016"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -89,7 +89,7 @@
                         </label>
                         </span>
 
-                    </div>
+                </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
                         <input name="20" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 57 # 5A - 10">
@@ -142,3 +142,7 @@
     </div>
     <div style="clear: both"></div>
 </div>
+
+@{ Html.RenderPartial("~/Views/Shared/_printTermsAndConditions.cshtml"); }
+@{Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml");}
+

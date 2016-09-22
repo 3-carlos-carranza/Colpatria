@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 @{
     ViewBag.Title = "Resumen de datos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -105,9 +105,9 @@
     <div style="clear: both"></div>
 </div>
 
+@{ Html.RenderPartial("~/Views/Shared/_summaryModal.cshtml", Model.UserInfoDto); }
 
-
-
+@*Impresion de la respuesta*@
 <div class="conts" id="respuesta-solicitud-summary" hidden="hidden">
     <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
     <p class="bolds paddno paddnov">

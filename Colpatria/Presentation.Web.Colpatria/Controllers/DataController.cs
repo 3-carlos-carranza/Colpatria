@@ -58,5 +58,36 @@ namespace Presentation.Web.Colpatria.Controllers
 
             return Json(new {});
         }
+
+
+
+        [AllowAnonymous]
+     
+        public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false)
+        {
+            var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
+            if (reqfield?.ListId != null)
+            {
+                var results =
+                    _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
+                        .OrderBy(dlv => dlv.Order)
+                        .Select(v => new
+                        {
+                            value = v.OriginalValue.ToString(),
+                            text = v.Value
+                        }).ToList();
+                if (isLabel)
+                {
+                    results.Insert(0, new
+                    {
+                        value = "0",
+                        text = "Seleccione..."
+                    });
+                }
+                return Json(results, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { });
+        }
     }
 }

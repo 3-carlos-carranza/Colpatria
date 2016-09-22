@@ -24,5 +24,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
     {
         ExtendedField GetRequestFieldByUserAndProccess(int field, int idprocess);
         IEnumerable<ExtendedDataList> GetDataListValues(long iddatalist, long? parent = null);
+
+        IEnumerable<ExtendedDataList> GetDataListFilterValues(long iddatalist, string filter, long? parent = null);
     }
 }

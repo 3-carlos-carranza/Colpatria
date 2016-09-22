@@ -122,13 +122,11 @@
             if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
                 if (this.$element.data("url")) {
-                    //console.log(this.$element.data("textfield"));
-
+                    
                     this.$element.kendoDropDownList({
                         optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
                         dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
-                        //filter: "contains",
                         value: this.$element.data("value"),
                         autoBind: this.$element.data("autobind"),
                         cascadeFrom: this.$element.data("cascadefrom"),
@@ -151,6 +149,8 @@
                                         return vars;
                                     }
                                 }
+
+
                             }, requestEnd: function (e) {
                                 if (typeof triggerClient !== "undefined") {
                                     triggerClient.InitEvents();
@@ -169,7 +169,7 @@
                             template: this.$element.data("template") == undefined ? "" : $("#" + this.$element.data("template")).html(),
                             valueTemplate: this.$element.data("valuetemplate") == undefined ? "" : $("#" + this.$element.data("valuetemplate")).html(),
                             cascadeFrom: this.$element.data("cascadefrom"),
-                            //filter: "contains",
+                            filter: "contains",
                             value: this.$element.data("value"),
                             dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
                             dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
@@ -190,7 +190,7 @@
                             template: this.$element.data("template") == undefined ? "" : $("#" + this.$element.data("template")).html(),
                             dataTextField: (this.$element.data("textfield") == undefined) ? "text" : this.$element.data("textfield"),
                             dataValueField: (this.$element.data("valuefield") == undefined) ? "value" : this.$element.data("valuefield"),
-                            //filter: "contains",
+                            filter: "contains",
                             value: this.$element.data("value"),
                             autoBind: this.$element.data("autobind"),
                             cascadeFrom: this.$element.data("cascadefrom"),
@@ -214,33 +214,33 @@
 
     kDropdownauto.prototype = {
         initDropDownAuto: function () {
-            if ($.isFunction($.fn.kendoAutoComplete)) {
+            if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
                 if (this.$element.data("url")) {
-                    this.$element.kendoAutoComplete({
 
+                    this.$element.kendoDropDownList({
+                        optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
                         dataTextField: this.$element.data("textfield") == undefined ? "text" : this.$element.data("textfield"),
-
-                        dataValueField: this.$element.data("valuefield"),
+                        dataValueField: this.$element.data("valuefield") == undefined ? "value" : this.$element.data("valuefield"),
+                        filter: "contains",
+                        delay: 500,
                         value: this.$element.data("value"),
                         autoBind: this.$element.data("autobind"),
                         cascadeFrom: this.$element.data("cascadefrom"),
-                        suggest: true,
-
-                        filter: "contains",
-
                         dataSource: {
                             type: "json",
                             serverFiltering: this.$element.data("cascadefrom") == undefined ? false : true,
                             transport: {
                                 read: {
                                     url: XGeneral.path + this.$element.data("url"),
-                                    serverPaging: true,
                                     type: "POST",
-                                    data: function(e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")) };
+                                    data: function (e) {
+                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#" + $element.attr("name") + "-list > span > input").val()) };
                                         if ($element.data("cascadefrom") != undefined) {
                                             vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
+                                            if ($element.data("cascadefrom") === "this") {
+                                                vars.filterself = ($("#" + $element.attr("name") + "-list > span > input").val());
+                                            }
                                         } else {
                                             if ($element.data("vars")) {
                                                 vars = jQuery.extend(vars, XGeneral.Object2Array($element.data("vars")));

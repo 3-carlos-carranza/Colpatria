@@ -56,5 +56,32 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 .GetFiltered(x => x.ListId == iddatalist && x.IdParent == item)
                 .OrderBy(o => o.Value).ToList();
         }
+
+        public IEnumerable<ExtendedDataList> GetDataListFilterValues(long iddatalist, string filter, long? parent = null)
+        {
+            if (parent == null)
+            {
+
+                if (string.IsNullOrEmpty(filter))
+                {
+                  return  _extendedDataListRepository.GetFiltered(x => x.ListId == iddatalist)
+                     .OrderBy(o => o.Value)
+                     .Take(100)
+                     .ToList();
+                }
+                return
+                    _extendedDataListRepository.GetFiltered(x => x.ListId == iddatalist)
+                        .OrderBy(o => o.Value)
+                        .Where(f => f.Value.Contains(filter))
+                        .Take(100)
+                        .ToList();
+            }
+
+            var item = parent.GetValueOrDefault();
+
+            return _extendedDataListRepository
+                .GetFiltered(x => x.ListId == iddatalist && x.IdParent == item)
+                .OrderBy(o => o.Value).ToList();
+        }
     }
 }

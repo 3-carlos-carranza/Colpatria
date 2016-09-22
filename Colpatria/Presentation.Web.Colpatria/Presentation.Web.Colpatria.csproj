@@ -1124,6 +1124,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\SecondFlowTempController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1135,12 +1136,16 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Request\Index.cshtml" />
-    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Scripts\lib\jqueryUI\jquery-ui.min.js.map" />
     <Content Include="Scripts\kendo\2014.3.1119\jquery.min.map" />
@@ -1277,6 +1282,7 @@
     <Content Include="Views\Request\Validation.cshtml" />
     <Content Include="Views\Request\Register.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\_finishModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

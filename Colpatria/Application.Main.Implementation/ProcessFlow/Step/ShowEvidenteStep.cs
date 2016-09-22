@@ -32,106 +32,68 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
-            var mock = ConfigurationManager.AppSettings["Mock"];
-            if (mock == "true")
-            {
-                var questionsResponse =
-                    _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
-                        .WithTypeOfDocument("1")
-                        .WithValidationNumber(1)
-                        .WithExecutionId(argument.Execution.Id)
-                        .Build());
-                TraceFlow(argument);
-                if (!argument.IsSubmitting)
-                {
-                    var step = (StepDetail)GetCurrentStep(argument);
-                    return new EvidenteResponse
-                    {
-                        UserInfoDto = userInfo,
-                        Execution = argument.Execution,
-                        Questions = questionsResponse.Questions,
-                        Action = step.Action,
-                        ActionMethod = step.ActionMethod,
-                        Controller = step.Controller,
-                        FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
-                        ResponseDetail = new ResponseDetailFlow
-                        {
-                            Status = ReponseStatus.Success
-                        }
 
-                    };
-                }
-                Console.WriteLine("Submitting form...Guardando campos");
-                argument.IsSubmitting = false;
-                return await OnSuccess(argument).Result.Advance(argument);
-            }
-            else
+            var validationSettings =
+            _validateUserSettingsBuilder.WithIdentification(userInfo.Identification)
+                .WithTypeOfDocument("1")
+                .WithLastName(userInfo.LastName)
+                .WithSecondLastName(userInfo.SecondLastName)
+                .WithExpeditionDate(userInfo.DateOfExpedition)
+                .WithFullName(userInfo.FullName)
+                .WithExecutionId(argument.Execution.Id)
+                .Build();
+            //validate User
+            var validationResponse = _evidenteAppService.Validate(validationSettings);
+
+
+            if (!validationResponse.Success)
             {
-                var validationSettings =
-                _validateUserSettingsBuilder.WithIdentification(userInfo.Identification)
+                return await OnError(argument).Result.Advance(argument);
+            }
+            //calll WS 
+            var questionsResponse =
+                _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber("")
                     .WithTypeOfDocument("1")
-                    .WithLastName(userInfo.LastName)
-                    .WithSecondLastName(userInfo.SecondLastName)
-                    .WithExpeditionDate(userInfo.DateOfExpedition)
-                    .WithFullName(userInfo.FullName)
+                    .WithValidationNumber(1)
                     .WithExecutionId(argument.Execution.Id)
-                    .Build();
-
-                var validationResponse = _evidenteAppService.Validate(validationSettings);
-
-                if (!validationResponse.ProcessResult)
-                {
-                    return await OnError(argument).Result.Advance(argument);
-                }
-                if (!validationResponse.Success)
-                {
-                    return await OnError(argument).Result.Advance(argument);
-                }
-
-                var questionsResponse =
-                    _evidenteAppService.GetQuestions(_questionsSettingsBuilder
-                        .WithDocumentNumber(userInfo.Identification)
-                        .WithTypeOfDocument("1")
-                        .WithValidationNumber(validationResponse.ValidationNumber)
-                        .WithExecutionId(argument.Execution.Id)
-                        .Build());
-
-                if (questionsResponse.MaximumAttemptsPerDay)
-                {
-                    return await OnError(argument).Result.Advance(argument);
-                }
-                if (questionsResponse.MaximumAttemptsPerMonth)
-                {
-                    return await OnError(argument).Result.Advance(argument);
-                }
-                if (questionsResponse.MaximumAttemptsPerYear)
-                {
-                    return await OnError(argument).Result.Advance(argument);
-                }
-                TraceFlow(argument);
-                if (!argument.IsSubmitting)
-                {
-                    var step = (StepDetail)GetCurrentStep(argument);
-                    return new EvidenteResponse
-                    {
-                        UserInfoDto = userInfo,
-                        Execution = argument.Execution,
-                        Questions = questionsResponse.Questions,
-                        Action = step.Action,
-                        ActionMethod = step.ActionMethod,
-                        Controller = step.Controller,
-                        FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
-                        ResponseDetail = new ResponseDetailFlow
-                        {
-                            Status = ReponseStatus.Success
-                        }
-
-                    };
-                }
-                Console.WriteLine("Submitting form...Guardando campos");
-                argument.IsSubmitting = false;
-                return await OnSuccess(argument).Result.Advance(argument);
+                    .Build());
+            //validate response
+            if (questionsResponse.MaximumAttemptsPerDay)
+            {
+                return await OnError(argument).Result.Advance(argument);
             }
+            if (questionsResponse.MaximumAttemptsPerMonth)
+            {
+                return await OnError(argument).Result.Advance(argument);
+            }
+            if (questionsResponse.MaximumAttemptsPerYear)
+            {
+                return await OnError(argument).Result.Advance(argument);
+            }
+            TraceFlow(argument);
+            if (!argument.IsSubmitting)
+            {
+                var step = (StepDetail)GetCurrentStep(argument);
+                return new EvidenteResponse
+                {
+                    UserInfoDto = userInfo,
+                    Execution = argument.Execution,
+                    Questions = questionsResponse.Questions,
+                    Action = step.Action,
+                    ActionMethod = step.ActionMethod,
+                    Controller = step.Controller,
+                    FriendlyUrl = (step.PageName + "/" + step.SectionName).Replace(" ", "-"),
+                    ResponseDetail = new ResponseDetailFlow
+                    {
+                        Status = ReponseStatus.Success
+                    }
+
+                };
+            }
+            Console.WriteLine("Submitting form...Guardando campos");
+            argument.IsSubmitting = false;
+            return await OnSuccess(argument).Result.Advance(argument);
+
         }
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {

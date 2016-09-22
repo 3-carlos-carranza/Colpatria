@@ -10,11 +10,11 @@ using Core.DataTransferObject.Vib;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class ShowFinishFlowStep : BaseStep
+    public class ShowDataSummaryStep : BaseStep
     {
 
         private readonly IUserAppService _userAppService;
-        public ShowFinishFlowStep(IProcessFlowStore store, IUserAppService userAppService) : base(store)
+        public ShowDataSummaryStep(IProcessFlowStore store, IUserAppService userAppService) : base(store)
         {
             _userAppService = userAppService;
         }

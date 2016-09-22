@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Core.Entities.Process
 {
     using System;
@@ -14,6 +16,7 @@ namespace Core.Entities.Process
     
     public partial class WebServiceConsultation
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public long ExecutionId { get; set; }
         public string Payload { get; set; }

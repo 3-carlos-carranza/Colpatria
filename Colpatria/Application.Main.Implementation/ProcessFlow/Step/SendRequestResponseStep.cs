@@ -1,17 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.Framework.Notification.EmailProviders.Contracts;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
+using Xipton.Razor;
 
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
-    public class SendRequestResponseStep : BaseStep
+    public class SendRequestResponseStep : BaseStep, ISendRequestResponseStep
     {
 
         public readonly IMailAppService MailAppService;
@@ -26,6 +31,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+
             var email = new EmailMessage()
             {
                 Subject = "Respuesta de la solicitud",
@@ -34,7 +40,8 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 {
                     Name = "Colpatria",
                     Address = "carlos.carranza@banlinea.com"
-                }
+                },
+                Body = TemplateResponseRequest(userInfo)
             };
 
             TraceFlow(argument);
@@ -62,6 +69,16 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {
             throw new System.NotImplementedException();
+        }
+
+        public string TemplateResponseRequest(UserInfoDto userInfoDto)
+        {
+            var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
+            var dir = Path.GetDirectoryName(path);
+            var razorTemplate = Path.Combine(dir, @"Views\Shared\Template\RequestResponse.cshtml");
+
+            var template = File.ReadAllText(razorTemplate);
+            return new RazorMachine().ExecuteContent(template, userInfoDto, skipLayout: true).Result;
         }
     }
 }

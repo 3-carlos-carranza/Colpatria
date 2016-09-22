@@ -19,12 +19,12 @@
         <div style="clear: both"></div>
     </div>
     <div class="conts" id="respuesta-solicitud">
-        <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
+        <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName</p>
         <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>@Model.MessageClassification.GetStringValue()</strong>
         </p>
         <div class="contents aproved">
             <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
-            <p>Señor(a) @Model.UserInfoDto.Names</p>
+            <p>Señor(a) @Model.UserInfoDto.FullName</p>
             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
             <p>Solicitud <strong>@Model.MessageClassification.GetStringValue().ToUpper()</strong>
             </p>
@@ -90,4 +90,5 @@
     </div>
 </div>
 
+@{ Html.RenderPartial("~/Views/Shared/_printTermsAndConditions.cshtml"); }
 @{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }

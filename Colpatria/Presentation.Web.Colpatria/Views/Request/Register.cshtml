@@ -89,7 +89,7 @@
                         </label>
                         </span>
 
-                    </div>
+                </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
                         <input name="20" class="input__field input__field--hoshi validate[required]" type="text" id="address" placeholder="" value="Calle 45 sur # 88 c - 96">
@@ -142,3 +142,7 @@
     </div>
     <div style="clear: both"></div>
 </div>
+
+@{ Html.RenderPartial("~/Views/Shared/_printTermsAndConditions.cshtml"); }
+@{Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml");}
+

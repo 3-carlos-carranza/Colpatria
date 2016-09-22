@@ -1282,6 +1282,9 @@
     <Content Include="Views\Shared\Template\RequestResponse.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Shared\_summaryModal.cshtml" />
+    <Content Include="Views\Shared\_termsAndConditions.cshtml" />
+    <Content Include="Views\Shared\_printTermsAndConditions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

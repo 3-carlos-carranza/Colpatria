@@ -40,8 +40,8 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
-            var mock = ConfigurationManager.AppSettings["Mock"];
-            if (mock == "true")
+            var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
+            if (!mock)
             {
                 var arg = argument as ISubmitFormArgument;
                 var answer = new AnswerRequest

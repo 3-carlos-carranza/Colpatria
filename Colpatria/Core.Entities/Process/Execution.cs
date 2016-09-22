@@ -28,7 +28,7 @@ namespace Core.Entities.Process
     {
 
 
-        public string balbla{ get; set; }
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override long Id { get; set; }
         public override int ProcessId { get; set; }

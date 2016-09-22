@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml.Serialization;
-using Crosscutting.Common;
+using Crosscutting.Common.Extensions;
 
 namespace Core.Entities.Evidente
 {

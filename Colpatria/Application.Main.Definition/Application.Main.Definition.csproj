@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
       <Private>True</Private>
@@ -66,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\MessageClassification.cs" />
-    <Compile Include="MyCustomProcessFlow\Steps\ISendRequestResponseStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IMailAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />

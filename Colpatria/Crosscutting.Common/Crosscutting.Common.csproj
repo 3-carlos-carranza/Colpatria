@@ -60,9 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientExtensions.cs" />
-    <Compile Include="DateTimeExtension.cs" />
-    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="IMailService.cs" />
     <Compile Include="JSON\JsonResponse.cs" />
     <Compile Include="JSON\ModalType.cs" />

@@ -98,7 +98,10 @@ namespace Crosscutting.Common
         {
             var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
             var dir = Path.GetDirectoryName(path);
-            return Path.Combine(dir, @"Views\Request\RequestAproved.cshtml");
+            var razorTemplate = Path.Combine(dir, @"Views\Shared\Template\RequestResponse.cshtml");
+
+            var template = File.ReadAllText(razorTemplate);
+            return new RazorMachine().ExecuteContent(template, null, skipLayout: true).Result;
         }
     }
 }

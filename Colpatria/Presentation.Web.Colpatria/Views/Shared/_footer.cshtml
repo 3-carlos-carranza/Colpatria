@@ -126,16 +126,16 @@
                         </div>
                         <div class="conts">
                             <p class="desc-step">
-                                <span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
+                                <span class="red">Felicitaciones,</span> @Model?.UserInfoDto.Names</p>
                             <p class="bolds paddno paddnov">
-                                Tu Solicitud fue: <strong>@*@Model.MessageClassification.GetStringValue()*@</strong>
+                                Tu Solicitud fue: <strong>@Model?.MessageClassification.GetStringValue()</strong>
                             </p>
                             <div class="contents aproved">
-                                <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
-                                <p>Señor(a) @Model.UserInfoDto.Names</p>
+                                <p>Bogotá, @Model?.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
+                                <p>Señor(a) @Model?.UserInfoDto.Names</p>
                                 <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
                                 <p>
-                                    Solicitud <strong>@*@Model.MessageClassification.GetStringValue().ToUpper()*@</strong>
+                                    Solicitud <strong>@Model?.MessageClassification.GetStringValue().ToUpper()</strong>
                                 </p>
                                 <p>
                                     Si tu solicitud ha sido <strong>APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%.

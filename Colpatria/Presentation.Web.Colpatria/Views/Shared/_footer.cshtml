@@ -1,314 +1,374 @@
 ﻿<div class="container body-content">
     <footer style="text-align: center">
         <div class="col-xs-12 col-sm-6 text-foot">Todos los derechos reservados. COLPATRIA MULTIBANCA 2016.</div>
-        <div class="col-xs-12 col-sm-6 img-foot"> <img src="~/Images/Content/foot.png" alt="Alternate Text" /> </div>
+        <div class="col-xs-12 col-sm-6 img-foot">
+            <img src="~/Images/Content/foot.png" alt="Alternate Text"/>
+        </div>
 
     </footer>
+</div>
 
+<!-- Modal términos y condiciones 1 -->
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="terms" role="dialog">
+        <div class="modal-dialog modal-terms">
+
+            <!-- Modal content-->
+            <div class="modal-content fond-terms">
+                <div class="modal-header mhead">
+                    <button type="button" class="close closes" data-dismiss="modal">&times;</button>
+                    <h4></h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="legal">
+                        <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
+                    </div>
+                    <div class="step-content">
+                        <div class="linea-step">
+                            <div class="col-xs-6 col-sm-6 desc-step">
+                                <p>Términos Legales</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 li-step">
+                                <a href="#">
+                                    <img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud'))"/>
+                                </a>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="conts">
+                            <div class="title-term">
+                                Autorización Manejo de Datos
+                            </div>
+                            <div class="subtitle-term">
+                                Solicitud de productos a través de la web www.colpatria.com
+                            </div>
+                            <div class="contents">
+                                <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
+                                <p class="bolds">
+                                    <span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.
+                                </p>
+                                <p class="bolds">
+                                    <span>2.</span>  Autoriza a Banco Colpatria para:
+                                </p>
+                                <p>
+                                    <strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.
+                                </p>
+                                <p>
+                                    <strong>B.</strong> Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.
+                                </p>
+                                <p>
+                                    <strong>C.</strong> Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.
+                                </p>
+                                <p>
+                                    <strong>D.</strong> Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.
+                                </p>
+                                <p>
+                                    <strong>E.</strong> Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.
+                                </p>
+                                <p class="bolds">
+                                    <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
+                                </p>
+                            </div>
+                            <div class="botons">
+                                <div class="col-xs-12 col-md-6 print">
+                                    <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud'))">
+                                        <img src="~/Images/Content/imprim.png" alt="Imprimir"/>
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-md-6 print">
+                                    <form action="@Url.Action("Register")" method="POST" hidden="hidden">
+                                        <input name="check" hidden="hidden" class="" value="true"/>
+                                        <button type="submit" class="btn btn-danger pull-right enviar acepto">
+                                            Acepto los términos y Condiciones
+                                        </button>
+                                    </form>
+
+                                    <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Register")">Acepto los términos y Condiciones</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal respuesta de la solicitud -->
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="response_request" role="dialog">
+        <div class="modal-dialog modal-terms">
+
+            <!-- Modal content-->
+            <div class="modal-content fond-terms">
+                <div class="modal-header mhead">
+                    <button type="button" class="close closes" data-dismiss="modal">&times;</button>
+                    <h4></h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="legal">
+                        <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
+                    </div>
+                    <div class="step-content">
+                        <div class="linea-step">
+                            <div class="col-xs-12 col-sm-6 desc-step">
+                                <p>Respuesta de Solicitud</p>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="conts">
+                            <p class="desc-step">
+                                <span class="red">Felicitaciones,</span> @Model?.UserInfoDto.Names</p>
+                            <p class="bolds paddno paddnov">
+                                Tu Solicitud fue: <strong>@Model?.MessageClassification.GetStringValue()</strong>
+                            </p>
+                            <div class="contents aproved">
+                                <p>Bogotá, @Model?.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
+                                <p>Señor(a) @Model?.UserInfoDto.Names</p>
+                                <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+                                <p>
+                                    Solicitud <strong>@Model?.MessageClassification.GetStringValue().ToUpper()</strong>
+                                </p>
+                                <p>
+                                    Si tu solicitud ha sido <strong>APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%.
+                                </p>
+                                <p>
+                                    Si tu solicitud ha sido <strong>PROCESADA/PENDIENTE DE DOCUMENTACIÓN</strong> te invitamos a acercarte a la oficina de Colpatria más cercana y llevar los siguientes documentos de acuerdo a tu actividad económica:
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Empleado</th>
+                                            <th>Pensionado</th>
+                                            <th>Independiente</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Original del documento de identidad.</td>
+                                            <td>Original del documento de identidad.</td>
+                                            <td>Original del documento de identidad.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comprobante de nómina o certificación laboral.</td>
+                                            <td>Fotocopia de comprobante de pensión o resolución de pensión.</td>
+                                            <td>Declaración de renta o Certificado de Cámara de Comercio o Balance General o Estado de Pérdidas y Ganancias o Carta de Actividad Comercial o RUT o VUR.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>
+                                    Si su solicitud ha sido <strong>NO PROCESADA</strong> te recomendamos hacercarte a la oficina de <span class="red">Colpatria</span> MAS CERCANA.
+                                </p>
+
+                                <div class="info">
+                                    <div class="col-xs-12 col-sm-8 desc-info">
+                                        <p class="">
+                                            Cualquier duda o inquietud puedes contactarte:<br/>
+                                            Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 -Pereira 3401616 -
+                                            Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480 Popayán
+                                            8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 222
+                                            Mail: servicliente@colpatria.com
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 info-log">
+                                        <div class="logo-info">
+                                            <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Terminos y Condiciones para imprimir -->
+<div id="respuesta-solicitud" hidden="hidden">
+    <div class="step-content">
+        <div class="linea-step">
+            <div class="col-xs-6 col-sm-6 desc-step">
+                <p>Términos Legales</p>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="conts">
+            <div class="title-term">
+                Autorización Manejo de Datos
+            </div>
+            <div class="subtitle-term">
+                Solicitud de productos a través de la web www.colpatria.com
+            </div>
+            <div class="contents">
+                <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
+                <p class="bolds">
+                    <span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.
+                </p>
+                <p class="bolds">
+                    <span>2.</span>  Autoriza a Banco Colpatria para:
+                </p>
+                <p>
+                    <strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.
+                </p>
+                <p>
+                    <strong>B.</strong> Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.
+                </p>
+                <p>
+                    <strong>C.</strong> Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.
+                </p>
+                <p>
+                    <strong>D.</strong> Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.
+                </p>
+                <p>
+                    <strong>E.</strong> Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.
+                </p>
+                <p class="bolds">
+                    <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Respuesta de la solicitud para imprimir -->
+<!-- Fin Modal términos y condiciones 1 -->
+<!-- Modal términos y condiciones 2 -->
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="terms2" role="dialog">
+        <div class="modal-dialog modal-terms">
+
+            <!-- Modal content-->
+            <div class="modal-content fond-terms">
+                <div class="modal-header mhead">
+                    <button type="button" class="close closes" data-dismiss="modal">&times;</button>
+                    <h4></h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="legal">
+                        <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
+                    </div>
+                    <div class="step-content">
+                        <div class="linea-step">
+                            <div class="col-xs-6 col-sm-6 desc-step">
+                                <p>Términos Legales</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 li-step">
+                                <a href="#">
+                                    <img src="~/Images/Content/imprimir.png" alt="Imprimir"/>
+                                </a>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="conts">
+                            <div class="title-term">
+                                Autorización Manejo de Datos
+                            </div>
+                            <div class="subtitle-term">
+                                Solicitud de productos a través de la web www.colpatria.com
+                            </div>
+                            <div class="contents">
+                                <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
+                                <p class="bolds">
+                                    <span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.
+                                </p>
+                                <p class="bolds">
+                                    <span>2.</span>  Autoriza a Banco Colpatria para:
+                                </p>
+                                <p>
+                                    <strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.
+                                </p>
+                                <p>
+                                    <strong>B.</strong> Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.
+                                </p>
+                                <p>
+                                    <strong>C.</strong> Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.
+                                </p>
+                                <p>
+                                    <strong>D.</strong> Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.
+                                </p>
+                                <p>
+                                    <strong>E.</strong> Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.
+                                </p>
+                                <p class="bolds">
+                                    <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
+                                </p>
+                            </div>
+                            <div class="botons">
+                                <div class="col-xs-12 col-md-6 print">
+                                    <a href="#" class="btn btn-default pull-right prtn">
+                                        <img src="~/Images/Content/imprim.png" alt="Alternate Text"/>
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-md-6 print">
+                                    <form action="@Url.Action("Index")" method="POST" hidden="hidden">
+                                        <input name="check" hidden="hidden" class="" value="true"/>
+                                        <button type="submit" class="btn btn-danger pull-right enviar acepto">
+                                            Acepto los términos y Condiciones
+                                        </button>
+                                    </form>
+
+                                    <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Index")">Acepto los términos y Condiciones</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
+<!-- Fin Modal de aprovacion cuenta 0 -->
+<!-- Modal de aprovacion tarjeta de credito -->
+<div class="container">
 
+    <!-- Modal -->
+    <div class="modal fade" id="tarjeta" role="dialog">
+        <div class="modal-dialog">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Modal términos y condiciones 1 -->
-    <div class="container">
-
-        <!-- Modal -->
-        <div class="modal fade" id="terms" role="dialog">
-            <div class="modal-dialog modal-terms">
-
-                <!-- Modal content-->
-                <div class="modal-content fond-terms">
-                    <div class="modal-header mhead">
-                        <button type="button" class="close closes" data-dismiss="modal">&times;</button>
-                        <h4></h4>
-                    </div>
-                    <div class="modal-body text-left">
-                        <div class="legal">
-                            <img src="~/Images/Content/legal.png" alt="Alternate Text" />
-                        </div>
-                        <div class="step-content">
-                            <div class="linea-step">
-                                <div class="col-xs-6 col-sm-6 desc-step">
-                                    <p>Términos Legales</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 li-step">
-                                    <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud'))" /></a>
-                                </div>
-                                <div style="clear: both"></div>
-                            </div>
-                            <div class="conts">
-                                <div class="title-term">
-                                    Autorización Manejo de Datos
-                                </div>
-                                <div class="subtitle-term">
-                                    Solicitud de productos a través de la web www.colpatria.com
-                                </div>
-                                <div class="contents">
-                                    <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
-                                    <p class="bolds">
-                                        <span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.
-                                    </p>
-                                    <p class="bolds">
-                                        <span>2.</span>  Autoriza a Banco Colpatria para:
-                                    </p>
-                                    <p>
-                                        <strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.
-                                    </p>
-                                    <p>
-                                        <strong>B.</strong> Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.
-                                    </p>
-                                    <p>
-                                        <strong>C.</strong> Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.
-                                    </p>
-                                    <p>
-                                        <strong>D.</strong> Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.
-                                    </p>
-                                    <p>
-                                        <strong>E.</strong> Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.
-                                    </p>
-                                    <p class="bolds">
-                                        <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
-                                    </p>
-                                </div>
-                                <div class="botons">
-                                    <div class="col-xs-12 col-md-6 print">
-                                        <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud'))"><img src="~/Images/Content/imprim.png" alt="Imprimir" /></a>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 print">
-                                        <form action="@Url.Action("Register")" method="POST" hidden="hidden">
-                                            <input name="check" hidden="hidden" class="" value="true" />
-                                            <button type="submit" class="btn btn-danger pull-right enviar acepto">
-                                                Acepto los términos y Condiciones
-                                            </button>
-                                        </form>
-
-                                        <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Register")">Acepto los términos y Condiciones</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="clear: both"></div>
-                        </div>
-                    </div>
-
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>SOLICITUD FINALIZADA</h4>
+                    <h6>Número de Solicitud: <span>3602</span></h6>
                 </div>
-
+                <div class="modal-body aprovedd">
+                    <p>
+                        <span class="red">Colpatria</span> te infoma que has finalizado el proceso de solicitud de “Tu Cuenta Cero”, <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.
+                    </p>
+                    <p>
+                        <strong>A continuación puedes dar clic al botón rojo para volver.</strong>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="@Url.Action("FinalSummary", "Requests")">
+                        <button class="btn btn-danger btn-default terminar"><span class="glyphicon glyphicon-remove"></span> Terminar</button>
+                    </a>
+                </div>
             </div>
+
         </div>
     </div>
+</div>
 
-
-    <!-- Respuesta de la solicitud para imprimir -->
-    <div id="respuesta-solicitud" hidden="hidden">
-        <div class="step-content">
-            <div class="linea-step">
-                <div class="col-xs-6 col-sm-6 desc-step">
-                    <p>Términos Legales</p>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-            <div class="conts">
-                <div class="title-term">
-                    Autorización Manejo de Datos
-                </div>
-                <div class="subtitle-term">
-                    Solicitud de productos a través de la web www.colpatria.com
-                </div>
-                <div class="contents">
-                    <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
-                    <p class="bolds">
-                        <span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.
-                    </p>
-                    <p class="bolds">
-                        <span>2.</span>  Autoriza a Banco Colpatria para:
-                    </p>
-                    <p>
-                        <strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.
-                    </p>
-                    <p>
-                        <strong>B.</strong> Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.
-                    </p>
-                    <p>
-                        <strong>C.</strong> Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.
-                    </p>
-                    <p>
-                        <strong>D.</strong> Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.
-                    </p>
-                    <p>
-                        <strong>E.</strong> Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.
-                    </p>
-                    <p class="bolds">
-                        <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Respuesta de la solicitud para imprimir -->
-    <!-- Fin Modal términos y condiciones 1 -->
-    <!-- Modal términos y condiciones 2 -->
-    <div class="container">
-
-        <!-- Modal -->
-        <div class="modal fade" id="terms2" role="dialog">
-            <div class="modal-dialog modal-terms">
-
-                <!-- Modal content-->
-                <div class="modal-content fond-terms">
-                    <div class="modal-header mhead">
-                        <button type="button" class="close closes" data-dismiss="modal">&times;</button>
-                        <h4></h4>
-                    </div>
-                    <div class="modal-body text-left">
-                        <div class="legal">
-                            <img src="~/Images/Content/legal.png" alt="Alternate Text" />
-                        </div>
-                        <div class="step-content">
-                            <div class="linea-step">
-                                <div class="col-xs-6 col-sm-6 desc-step">
-                                    <p>Términos Legales</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 li-step">
-                                    <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>
-                                </div>
-                                <div style="clear: both"></div>
-                            </div>
-                            <div class="conts">
-                                <div class="title-term">
-                                    Autorización Manejo de Datos
-                                </div>
-                                <div class="subtitle-term">
-                                    Solicitud de productos a través de la web www.colpatria.com
-                                </div>
-                                <div class="contents">
-                                    <p class="italic">Este canal tiene por fin facilitar el contacto entre Banco Colpatria y Usted como potencial cliente para efectos de tramitar la solicitud de un producto financiero; para tal fin, ponemos en su conocimiento que, para tramitar su solicitud sus datos serán utilizados para las siguientes finalidades:</p>
-                                    <p class="bolds"><span>1.</span>  La información que usted suministra a través de este canal será utilizada por el Banco Colpatria para contactarlo con el fin de obtener información adicional, respecto a su nivel y el origen de sus ingresos, la existencia de referencias personales y/o comerciales, su actividad económica, entre otros.</p>
-                                    <p class="bolds"><span>2.</span>  Autoriza a Banco Colpatria para:</p>
-                                    <p><strong>A.</strong> Conocer, almacenar y procesar toda la información suministrada por mí en una o varias bases de datos, en el formato que estime más conveniente.</p>
-                                    <p><strong>B.</strong>  Ordenar, catalogar, clasificar, dividir o separar la información suministrada por mí.</p>
-                                    <p><strong>C.</strong>  Verificar, corroborar, comprobar, validar, investigar o comparar la información suministrada por mí, con cualquier información de que disponga legítimamente, incluyendo aquella conocida por nuestra matriz (Bank of Nova Scotia Scotiabank), las filiales o subordinadas de esta, las filiales, subordinadas y/o afiliadas de EL BANCO o cualquier compañía del Grupo COLPATRIA.</p>
-                                    <p><strong>D.</strong>  Acceda, consulte, compare y evalúe toda la información que sobre mí se encuentre almacenada en las bases de datos de cualquier central de riesgo crediticio, financiero, de antecedentes judiciales o de seguridad legítimamente constituida, de naturaleza estatal o privada, nacional o extranjera, o cualquier base de datos comercial o de servicios que permita establecer de manera integral e históricamente completa el comportamiento que como deudor, usuario, cliente, garante, endosante, afiliado, beneficiario, suscriptor, contribuyente y/o como titular de servicios financieros, comerciales o de cualquier otra índole.</p>
-                                    <p><strong>E.</strong>  Para que los datos suministrados en razón y en ocasión de la presente solicitud puedan ser almacenados en ordenadores ubicados fuera del territorio nacional, siendo su tratamiento restringido para Banco Colpatria conforme los fines descritos en esta autorización.</p>
-                                    <p class="bolds"><span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.</p>
-                                </div>
-                                <div class="botons">
-                                    <div class="col-xs-12 col-md-6 print">
-                                        <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text" /></a>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 print">
-                                        <form action="@Url.Action("Index")" method="POST" hidden="hidden">
-                                            <input name="check" hidden="hidden" class="" value="true" />
-                                            <button type="submit" class="btn btn-danger pull-right enviar acepto">
-                                                Acepto los términos y Condiciones
-                                            </button>
-                                        </form>
-
-                                        <a class="btn btn-danger pull-right enviar acepto" href="@Url.Action("Index")">Acepto los términos y Condiciones</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="clear: both"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Fin Modal términos y condiciones 2 -->
-    <!-- Modal de aprovacion cuenta 0 -->
-    @*<div class="container">
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4>SOLICITUD FINALIZADA</h4>
-                            <h6>Número de Solicitud: <span>56524</span></h6>
-                        </div>
-                        <div class="modal-body aprovedd">
-                            <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
-                            <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="@Url.Action("FinalSummary", "Request")"><button class="btn btn-danger btn-default terminar"><span class="glyphicon glyphicon-remove"></span> Terminar</button></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>*@
-
-    <!-- Fin Modal de aprovacion cuenta 0  -->
-    <!-- Modal de aprovacion tarjeta de credito -->
-    <div class="container">
-
-        <!-- Modal -->
-        <div class="modal fade" id="tarjeta" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4>SOLICITUD FINALIZADA</h4>
-                        <h6>Número de Solicitud: <span>3602</span></h6>
-                    </div>
-                    <div class="modal-body aprovedd">
-                        <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“camiloflorez@correo.com”</span>.</p>
-                        <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="@Url.Action("FinalSummary", "Requests")"><button class="btn btn-danger btn-default terminar"><span class="glyphicon glyphicon-remove"></span> Terminar</button></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Fin Modal de aprovacion tarjeta  -->
+<!-- Fin Modal de aprovacion tarjeta -->

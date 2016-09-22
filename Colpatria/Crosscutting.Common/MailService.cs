@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Banlinea.Framework.Notification.EmailProviders.Contracts;
 using RestSharp;
 using RestSharp.Authenticators;
-using Xipton.Razor;
 
 namespace Crosscutting.Common
 {
-    public class MailService : IMailService
+    public class MailService : IEmailNotificatorService
     {
         public bool SendEmail(EmailMessage message)
         {
@@ -92,16 +89,6 @@ namespace Crosscutting.Common
             CancellationToken cancellationToken = new CancellationToken())
         {
             throw new NotImplementedException();
-        }
-
-        public string TemplateResponseRequest()
-        {
-            var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
-            var dir = Path.GetDirectoryName(path);
-            var razorTemplate = Path.Combine(dir, @"Views\Shared\Template\RequestResponse.cshtml");
-
-            var template = File.ReadAllText(razorTemplate);
-            return new RazorMachine().ExecuteContent(template, null, skipLayout: true).Result;
         }
     }
 }

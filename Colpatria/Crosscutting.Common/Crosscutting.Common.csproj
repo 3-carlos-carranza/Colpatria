@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Extensions\DateTimeExtension.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="IMailService.cs" />
     <Compile Include="JSON\JsonResponse.cs" />
     <Compile Include="JSON\ModalType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

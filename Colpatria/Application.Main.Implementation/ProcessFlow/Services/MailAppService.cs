@@ -1,30 +1,27 @@
-﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.Framework.Notification.EmailProviders.Contracts;
+using Core.DataTransferObject.Vib;
 using Crosscutting.Common;
+using Xipton.Razor;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
     public class MailAppService : IMailAppService
     {
         private readonly IEmailNotificatorService _emailNotificatorService;
-        private readonly IMailService _mailService;
 
-        public MailAppService(IEmailNotificatorService emailNotificatorService, IMailService mailService)
+        public MailAppService(IEmailNotificatorService emailNotificatorService)
         {
             _emailNotificatorService = emailNotificatorService;
-            _mailService = mailService;
         }
 
         public bool SendMail(EmailMessage emailMessage)
         {
             //Send Data Mail
-            return _emailNotificatorService.SendEmail(new EmailMessage
-            {
-                Subject = emailMessage.Subject,
-                To = emailMessage.To,
-                Sender = emailMessage.Sender,
-                Body = _mailService.TemplateResponseRequest()
-            });
+            return _emailNotificatorService.SendEmail(emailMessage);
         }
     }
 }

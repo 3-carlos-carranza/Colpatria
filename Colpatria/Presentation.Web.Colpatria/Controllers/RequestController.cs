@@ -5,6 +5,7 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -12,7 +13,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.Tools.Web;
@@ -124,11 +127,9 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> ValidateAnswer(FormCollection collection)
+        public async Task<ActionResult> ValidateAnswer(AnswerRequest answer)
         {
-            var fields = collection.ToFieldValueOrder();
-            InitSetFormArguments(fields);
-
+            InitSetAnswersArguments(answer);
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }

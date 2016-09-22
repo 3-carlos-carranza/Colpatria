@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
@@ -51,7 +50,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 return await OnError(argument).Result.Advance(argument);
             }
             //calll WS 
-            var questionsResponse =
+            QuestionsResponse questionsResponse =
                 _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber(userInfo.Identification)
                     .WithTypeOfDocument("1")
                     .WithValidationNumber(validationResponse.ValidationNumber)
@@ -78,7 +77,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 {
                     UserInfoDto = userInfo,
                     Execution = argument.Execution,
-                    Questions = questionsResponse.Questions,
+                    QuestionsResponse = questionsResponse,
                     Action = step.Action,
                     ActionMethod = step.ActionMethod,
                     Controller = step.Controller,

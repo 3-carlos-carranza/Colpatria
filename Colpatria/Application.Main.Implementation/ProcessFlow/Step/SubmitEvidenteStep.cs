@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
@@ -43,21 +44,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
-                var arg = argument as ISubmitFormArgument;
-                var answer = new AnswerRequest
-                {
-                    Answers = new List<OptionsAnswer>()
-                };
-                foreach (var a in arg.Form)
-                {
-                    var answers = new OptionsAnswer
-                    {
-                        
-                    };
-                    answer.Answers.Add(answers);
-                }
+                var arg = argument as IAnswerQuestionArgument;
+                
                 var settings = _answerSettingsBuilder.WithIdentification(userInfo.Identification)
-                        .WithAnswerRequest(answer)
+                        .WithAnswerRequest(arg.AnswerRequest)
                         .WithIdentificationType("1")
                         .WithExecutionId(argument.Execution.Id)
                         .Build();

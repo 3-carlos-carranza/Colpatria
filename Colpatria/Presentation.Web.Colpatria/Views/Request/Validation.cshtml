@@ -39,14 +39,15 @@
 
 
                 <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill">
-
+                    <input type="hidden" value="@Model.QuestionsResponse.Id" name="Id" />
+                    <input type="hidden" value="@Model.QuestionsResponse.Record" name="Record" />
                     @{
                         var i = 0;
                         var p = 1;
                         var q = 1;
-                        var countList = Model.Questions.Count();
+                        var countList = Model.QuestionsResponse.Questions.Count();
                     }
-                        @foreach (var question in Model.Questions)
+                        @foreach (var question in Model.QuestionsResponse.Questions)
                         {
                             var questionValue = question.Order.ToString().Length == 1 ? "0" + question.Order : question.Order.ToString();
                             <fieldset>

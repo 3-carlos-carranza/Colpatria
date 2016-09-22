@@ -14,7 +14,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface IEvidenteResponse : IShowScreenResponse
     {
-        IEnumerable<Question> Questions { get; set; }
+        QuestionsResponse QuestionsResponse { get; set; }
         UserInfoDto UserInfoDto { get; set; }
     }
 }

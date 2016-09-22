@@ -21,6 +21,7 @@ using Application.Main.Definition.Enumerations;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common.JSON;
@@ -138,6 +139,24 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
 
+        public void InitSetAnswersArguments(AnswerRequest answer)
+        {
+            var userId = long.Parse(User.Identity.GetUserId());
+
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = 1,
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
+            var arg = ProcessFlowArgument as IAnswerQuestionArgument;
+            arg.AnswerRequest = answer;
+            ProcessFlowArgument = arg;
+        }
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
             var userId = long.Parse(User.Identity.GetUserId());

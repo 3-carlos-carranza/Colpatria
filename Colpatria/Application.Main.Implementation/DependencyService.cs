@@ -47,6 +47,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
             container.RegisterType<IDynamicAppService, DynamicAppService>();
             container.RegisterType<ISubmitFormArgument, ProcessFlowArgument>();
+            container.RegisterType<IAnswerQuestionArgument, ProcessFlowArgument>();
 
             //Process
             container.RegisterType<IProcessFlowManager, ColpatriaProcessFlowManager>();

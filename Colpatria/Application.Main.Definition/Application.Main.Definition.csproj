@@ -79,6 +79,7 @@
     <Compile Include="MyCustomProcessFlow\Steps\ISubmitWsMotorStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IAdditionalInformationResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IResponseAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Responses\IAnswerQuestionArgument.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IEvidenteResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IRequestResponse.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IWsMotorResponse.cs" />

@@ -114,27 +114,27 @@ namespace Data.DataCredito
                     new Question
                     {
                         Text = "¿Hace cuánto tiene tarjeta de crédito en Bancolombia?",
-                        Id = "1",
+                        Id = "01",
                         Answers = new List<OptionsAnswer>
                         {
                             new OptionsAnswer
                             {
-                                Id = "1",
+                                Id = "01",
                                 Text = "Menos de 6 meses"
                             },
                             new OptionsAnswer
                             {
-                                Id = "2",
+                                Id = "02",
                                 Text = "Entre seis meses y tres años"
                             },
                             new OptionsAnswer
                             {
-                                Id = "3",
+                                Id = "03",
                                 Text = "Más de tres años"
                             },
                             new OptionsAnswer
                             {
-                                Id = "4",
+                                Id = "04",
                                 Text = "No tengo tarjeta de crédito en Bancolombia"
                             }
                         },
@@ -143,27 +143,27 @@ namespace Data.DataCredito
                     new Question
                     {
                         Text = "¿Con cuál de los sigueintes números ha tenido o tiene relación?",
-                        Id = "1",
+                        Id = "01",
                         Answers = new List<OptionsAnswer>
                         {
                             new OptionsAnswer
                             {
-                                Id = "1",
+                                Id = "01",
                                 Text = "3143151620"
                             },
                             new OptionsAnswer
                             {
-                                Id = "2",
+                                Id = "02",
                                 Text = "7454592"
                             },
                             new OptionsAnswer
                             {
-                                Id = "3",
+                                Id = "03",
                                 Text = "3176482606"
                             },
                             new OptionsAnswer
                             {
-                                Id = "4",
+                                Id = "04",
                                 Text = "1225688956"
                             }
                         },
@@ -172,27 +172,27 @@ namespace Data.DataCredito
                     new Question
                     {
                         Text = "¿Con cuál de los siguientes bancos ha tenido relación en los últimos seis meses?",
-                        Id = "1",
+                        Id = "01",
                         Answers = new List<OptionsAnswer>
                         {
                             new OptionsAnswer
                             {
-                                Id = "1",
+                                Id = "01",
                                 Text = "Bancolombia"
                             },
                             new OptionsAnswer
                             {
-                                Id = "2",
+                                Id = "02",
                                 Text = "Davivienda"
                             },
                             new OptionsAnswer
                             {
-                                Id = "3",
+                                Id = "03",
                                 Text = "Colpatria"
                             },
                             new OptionsAnswer
                             {
-                                Id = "4",
+                                Id = "04",
                                 Text = "No relación con ningún banco mencionado anteriormente"
                             }
                         }
@@ -202,35 +202,36 @@ namespace Data.DataCredito
                     new Question
                     {
                         Text = "¿Hace cuánto adquirió su servicio con Telmex Hogar?",
-                        Id = "1",
+                        Id = "01",
                         Answers = new List<OptionsAnswer>
                         {
                             new OptionsAnswer
                             {
-                                Id = "1",
+                                Id = "01",
                                 Text = "Menos de 6 meses"
                             },
                             new OptionsAnswer
                             {
-                                Id = "2",
+                                Id = "02",
                                 Text = "Entre seis meses y tres años"
                             },
                             new OptionsAnswer
                             {
-                                Id = "3",
+                                Id = "03",
                                 Text = "Más de tres años"
                             },
                             new OptionsAnswer
                             {
-                                Id = "4",
+                                Id = "04",
                                 Text = "No tengo servicio con Telmex Hogar"
                             }
                         },
                         Order = 4
                     }
                 },
-                Id = "1"
-                ,Result = "1"
+                Id = "01"
+                ,
+                Result = "01"
             };
         }
 

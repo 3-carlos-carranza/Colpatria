@@ -11,6 +11,7 @@
 
 #region
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -38,6 +39,7 @@ namespace Presentation.Web.Colpatria.Controllers
     {
         public IProcessFlowArgument ProcessFlowArgument;
         public IProcessFlowManager ProcessFlowManager;
+        public int BaseProductType { get; set; }
 
         public BaseController(IProcessFlowArgument processFlowArgument,
             IProcessFlowManager processFlowManager)
@@ -167,7 +169,8 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.Execution = new Execution
             {
-                ProductId = 1,
+                ProductId = Convert.ToInt64((TempData["ProductType"]).ToString()),
+                ProcessId = Convert.ToInt32((TempData["ProductType"]).ToString()),
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;

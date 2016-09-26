@@ -5,6 +5,7 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -18,9 +19,13 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
+using Crosscutting.Common;
+using Crosscutting.Common.Tools.DataType;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Presentation.Web.Colpatria.Enumerations;
+using Presentation.Web.Colpatria.Models;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -32,6 +37,25 @@ namespace Presentation.Web.Colpatria.Controllers
             IUserAppService userAppService) : base(processFlowArgument, processFlowManager)
         {
             _userAppService = userAppService;
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string productType)
+        {
+            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() || 
+                productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
+            {
+                return View("NotFound", new ErrorViewModel());
+            }
+            
+            TempData["ProductType"] = Convert.ToInt32(productType);
+            return View("Register");
         }
 
         public ActionResult Register()
@@ -72,6 +96,7 @@ namespace Presentation.Web.Colpatria.Controllers
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
             InitSetFormArguments(fields);
+            
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;

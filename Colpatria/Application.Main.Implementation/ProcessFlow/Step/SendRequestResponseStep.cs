@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -45,6 +46,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             };
 
             TraceFlow(argument);
+            //Intentos
             for (var i = 0; i < 2; i++)
             {
                 if (MailAppService.SendMail(email))
@@ -75,7 +77,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
             var dir = Path.GetDirectoryName(path);
-            var razorTemplate = Path.Combine(dir, @"Views\Shared\Template\RequestResponse.cshtml");
+            var razorTemplate = Path.Combine(dir, ConfigurationManager.AppSettings["RequestResponse"]);
 
             var template = File.ReadAllText(razorTemplate);
             return new RazorMachine().ExecuteContent(template, userInfoDto, skipLayout: true).Result;

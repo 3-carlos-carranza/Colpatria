@@ -1125,6 +1125,7 @@
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SecondFlowTempController.cs" />
+    <Compile Include="Enumerations\ProductType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1285,6 +1286,7 @@
     <Content Include="Views\Shared\_summaryModal.cshtml" />
     <Content Include="Views\Shared\_termsAndConditions.cshtml" />
     <Content Include="Views\Shared\_printTermsAndConditions.cshtml" />
+    <Content Include="Views\Request\NotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

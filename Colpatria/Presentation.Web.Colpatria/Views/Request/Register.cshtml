@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Datos personales";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 <div class="legal">
     <img src="~/Images/Content/legal.png" alt="Alternate Text" />
@@ -143,6 +144,7 @@
     <div style="clear: both"></div>
 </div>
 
+@{ Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml");      }
 @{ Html.RenderPartial("~/Views/Shared/_printTermsAndConditions.cshtml"); }
-@{Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml");}
+
 

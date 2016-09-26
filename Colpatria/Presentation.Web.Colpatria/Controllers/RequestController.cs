@@ -54,7 +54,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 return View("NotFound", new ErrorViewModel());
             }
             
-            TempData["ProductType"] = Convert.ToInt32(productType);
+            Session["ProductType"] = Convert.ToInt32(productType);
             return View("Register");
         }
 

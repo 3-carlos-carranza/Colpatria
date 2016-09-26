@@ -39,7 +39,8 @@
 
 
                 <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill">
-                    <input type="hidden" value="@Model.QuestionsResponse.Id" name="Id" />
+                    <input type="hidden" value="@Model.QuestionsResponse.Id" name="QuestionsId"/>
+                    <input type="hidden" value="@Model.UserInfoDto.Identification" name="Identification" />
                     <input type="hidden" value="@Model.QuestionsResponse.Record" name="Record" />
                     @{
                         var i = 0;
@@ -59,9 +60,9 @@
                                     @foreach (var answer in question.Answers)
                                     {
                                         var answerId = answer.Id;
-                                        var answerValue = answerId;
+                                        var answerValue = answerId.Substring(answerId.Length - 2, answerId.Length - 1);
 
-                                        <li><input class="validate[required] radio" id="@("r" + p)" name="@("r" + q)" value="@answerValue"  type="radio"><label for="@("r" + p)">@answer.Text</label></li>
+                                        <li><input class="validate[required] radio" id="@("r" + p)" data-name="@("r" + q)" name="Answers[@i].AnswerId" value="@answerValue"  type="radio"><label for="@("r" + p)">@answer.Text</label></li>
                                         p++;
                                     }
                                 </ul>

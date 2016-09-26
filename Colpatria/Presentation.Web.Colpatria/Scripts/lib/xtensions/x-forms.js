@@ -270,7 +270,7 @@ jQuery.extend({
 
                 $(".nextStep", $(el)).on("click", function () {
 
-                    if ($('input[name="r' + (x + 1) + '"]').is(':checked')) {
+                    if ($('input[data-name="r' + (x + 1) + '"]').is(':checked')) {
                         $("#x_" + (x + 1)).slideDown();
                         $(el).slideUp();
                     }else{

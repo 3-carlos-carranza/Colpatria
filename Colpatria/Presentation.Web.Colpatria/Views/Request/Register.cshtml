@@ -10,7 +10,7 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            @if (Model.Product == ProductType.Ca)
+            @if ((ProductType)Session["Product"] == ProductType.Ca)
             {
                 <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
             }
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3" hidden="hidden">
                     <span class="input input--hoshi">
-                        <input name="12" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="productid" placeholder="" value="@Model.ProductId">
+                        <input name="12" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="product" placeholder="" value="@Model.ProductId">
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-3 space">

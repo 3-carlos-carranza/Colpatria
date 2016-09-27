@@ -30,7 +30,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-            var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+            TraceFlow(argument);
+            if (!argument.IsSubmitting)
+            {
+                var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
 
             var validationSettings =
             _validateUserSettingsBuilder.WithIdentification(userInfo.Identification)
@@ -69,9 +72,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             {
                 return await OnError(argument).Result.Advance(argument);
             }
-            TraceFlow(argument);
-            if (!argument.IsSubmitting)
-            {
+            
                 var step = (StepDetail)GetCurrentStep(argument);
                 return new EvidenteResponse
                 {

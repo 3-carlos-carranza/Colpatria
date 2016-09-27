@@ -142,5 +142,10 @@ namespace Presentation.Web.Colpatria.Controllers
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }
+
+        public ActionResult ErrorEvidente()
+        {
+            return View();
+        }
     }
 }

@@ -5,7 +5,7 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -13,14 +13,16 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
+using Crosscutting.Common;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Presentation.Web.Colpatria.Enumerations;
+using Presentation.Web.Colpatria.Models;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -34,17 +36,26 @@ namespace Presentation.Web.Colpatria.Controllers
             _userAppService = userAppService;
         }
 
-        public ActionResult Register()
+        [HttpGet]
+        public ActionResult Index(string productType = "")
         {
-            return View();
+            if (productType == "") return View();
+            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
+                  productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
+            {
+                return View("NotFound", new ErrorViewModel());
+            }
+            return View("Register", new UserViewModel
+            {
+                ProductId = Convert.ToInt32(productType)
+            });
         }
 
-        [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Register(FormCollection collection)
         {
             var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
-
+            
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
             var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
 
@@ -71,6 +82,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
+            BaseProductType = Convert.ToInt32(fields[11].Value);
             InitSetFormArguments(fields);
 
             var pages = _userAppService.GetAllPagesWithSections();
@@ -105,6 +117,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+
         public async Task<ActionResult> RequestAproved()
         {
             MockSubmitInitSetFormArguments();
@@ -133,6 +146,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }
+
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {

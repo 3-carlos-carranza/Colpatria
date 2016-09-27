@@ -11,6 +11,7 @@
 
 #region
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -38,6 +39,7 @@ namespace Presentation.Web.Colpatria.Controllers
     {
         public IProcessFlowArgument ProcessFlowArgument;
         public IProcessFlowManager ProcessFlowManager;
+        public int BaseProductType { get; set; }
 
         public BaseController(IProcessFlowArgument processFlowArgument,
             IProcessFlowManager processFlowManager)
@@ -159,6 +161,11 @@ namespace Presentation.Web.Colpatria.Controllers
         }
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
+            if (BaseProductType == 0)
+            {
+                BaseProductType = (int)ProductId;
+            }
+
             var userId = long.Parse(User.Identity.GetUserId());
 
             ProcessFlowArgument.User = new User
@@ -167,7 +174,7 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.Execution = new Execution
             {
-                ProductId = 1,
+                ProductId = BaseProductType,
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;

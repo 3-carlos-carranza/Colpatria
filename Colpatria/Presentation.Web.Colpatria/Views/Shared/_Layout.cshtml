@@ -2,105 +2,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@ViewBag.Title</title>
 
 
-
     @Styles.Render("~/Content/kendo")
     @Styles.Render("~/Content/xtensions")
-    @RenderSection("stylesheet", required: false)
+    @RenderSection("stylesheet", false)
 
-    <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/lib/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/lib/jquery-validation-engine/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/lib/jquery-validation-engine/validationengine.jquery.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/lib/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/lib/jquery-validation-engine/normalize.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/lib/jquery-validation-engine/validationengine.jquery.css" rel="stylesheet" type="text/css"/>
 
 
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-left navbar-brand">
-             
-            </div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-left navbar-brand">
 
-    <header class="container header">
-        <div class="col-xs-12 col-sm-6 logo">
-            <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
         </div>
-        <div class="col-xs-12 col-sm-6 logo-step">
-            <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-    </header>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="container header">
+    <div class="col-xs-12 col-sm-6 logo">
+        <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
+    </div>
+    <div class="col-xs-12 col-sm-6 logo-step">
+        <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria"/>
+    </div>
+</header>
 
 <div class="container body-content">
     @RenderBody()
 </div>
 
 
-    @{
-        Html.RenderPartial("~/Views/Shared/_footer.cshtml");
-    }
+@{
+    Html.RenderPartial("~/Views/Shared/_footer.cshtml");
+}
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/lib")
-    @Scripts.Render("~/bundles/jqueryUI")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/kendo")
-    @Scripts.Render("~/bundles/layout")
-    @Scripts.Render("~/bundles/xtensions")
-    @RenderSection("scripts", required: false)
-    
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/lib")
+@Scripts.Render("~/bundles/jqueryUI")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/kendo")
+@Scripts.Render("~/bundles/layout")
+@Scripts.Render("~/bundles/xtensions")
+@RenderSection("scripts", false)
+
 
 
 @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>*@
 
-    <script>
-        "use strict";
-        $(document)
-            .ready(function () {
-                BLExt.Init();
+
+<script>
+
+
+    //document.onkeypress = function (event) {
+    //    event = (event || window.event);
+    //    if (event.keyCode === 123) {
+    //        alert('No F-12');
+    //        return false;
+    //    }
+    //    return false;
+    //}
+
+    //document.onmousedown = function (event) {
+    //    event = (event || window.event);
+    //    if (event.keyCode === 123) {
+    //        alert('No F-keys');
+    //        return false;
+    //    }
+    //}
+    //document.onkeydown = function (event) {
+    //    event = (event || window.event);
+    //    if (event.keyCode === 123) {
+    //        alert('No F-keys');
+    //        return false;
+    //    }
+    //}
+
+    //document.onmousedown = disableclick;
+    //status = "Right Click Disabled";
+    //function disableclick(event) {
+    //    if (event.button === 2) {
+    //        alert(status);
+    //        return false;
+    //    }
+    //}
+
+
+</script>
+
+<script>
+    "use strict";
+
+    $(document)
+        .ready(function() {
+            BLExt.Init();
+        });
+
+    function PrintElement(e) {
+        popup(e.html());
+    }
+
+    function popup(html) {
+        var mywindow = window.open("", "_blank");
+        mywindow.document.write("<html><head><title>Imprimir</title>");
+        mywindow.document.write("<link href=\"/Content/lib/bootstrap/bootstrap.css\" rel=\"stylesheet\" />");
+        mywindow.document.write("<link href=\"/Content/Site.css\" rel=\"stylesheet\" />");
+        mywindow.document.write("<link href=\"/Content/print.css\" rel=\"stylesheet\" media=\"print\" />");
+        mywindow.document.write("</head><body><div class=\"container\">");
+        mywindow.document.write(html);
+        mywindow.document.write("</div></body></html>");
+        console.log(mywindow.document);
+        setTimeout(function() {
+            $(mywindow.document).ready(function() {
+                mywindow.print();
             });
+        }, 400);
+    }
 
-        function PrintElement(e) {
-            popup(e.html());
-        }
-
-        function popup(html) {
-            var mywindow = window.open("", "_blank");
-            mywindow.document.write("<html><head><title>Imprimir</title>");
-            mywindow.document.write("<link href=\"/Content/lib/bootstrap/bootstrap.css\" rel=\"stylesheet\" />");
-            mywindow.document.write("<link href=\"/Content/Site.css\" rel=\"stylesheet\" />");
-            mywindow.document.write("<link href=\"/Content/print.css\" rel=\"stylesheet\" media=\"print\" />");
-            mywindow.document.write("</head><body><div class=\"container\">");
-            mywindow.document.write(html);
-            mywindow.document.write("</div></body></html>");
-            console.log(mywindow.document);
-            setTimeout(function () {
-                $(mywindow.document).ready(function () {
-                    mywindow.print();
-                });
-            }, 400);
-        }
-
-    </script>
+</script>
 </body>
 </html>

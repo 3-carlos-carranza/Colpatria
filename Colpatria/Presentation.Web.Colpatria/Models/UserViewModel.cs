@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Presentation.Web.Colpatria.Enumerations;
 
 namespace Presentation.Web.Colpatria.Models
 {
@@ -42,5 +43,8 @@ namespace Presentation.Web.Colpatria.Models
         public string TermsAndConditions { get; set; }
         [Required]
         public int ProductId { get; set; }
+
+        [Required]
+        public ProductType Product { get; set; }
     }
 }

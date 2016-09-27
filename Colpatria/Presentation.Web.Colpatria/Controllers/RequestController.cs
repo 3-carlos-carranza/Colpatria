@@ -38,6 +38,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         [HttpGet]
         public ActionResult Index(string productType = "")
+
         {
             if (productType == "") return View();
             if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
@@ -45,9 +46,11 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return View("NotFound", new ErrorViewModel());
             }
+            Session["Product"] = (ProductType)(Convert.ToInt32(productType));
             return View("Register", new UserViewModel
             {
-                ProductId = Convert.ToInt32(productType)
+                ProductId = Convert.ToInt32(productType),
+                Product = (ProductType)(Convert.ToInt32(productType))
             });
         }
 
@@ -82,13 +85,14 @@ namespace Presentation.Web.Colpatria.Controllers
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
+            #region
             BaseProductType = Convert.ToInt32(fields[11].Value);
+            #endregion
             InitSetFormArguments(fields);
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
-
 
             var stepresult = await ExecuteFlow(identity, pages);
 

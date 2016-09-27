@@ -1,4 +1,6 @@
 ﻿@using System.Web.Optimization
+@using Presentation.Web.Colpatria.Enumerations
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +47,15 @@
         <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
     </div>
     <div class="col-xs-12 col-sm-6 logo-step">
-        <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria"/>
+
+        @if (Model != null) {
+            if ((ProductType) Session["Product"] == ProductType.Ca){
+                <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
+            }
+            else{
+                <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
+            }
+        }
     </div>
 </header>
 
@@ -108,6 +118,7 @@
     //        return false;
     //    }
     //}
+
 
 
 </script>

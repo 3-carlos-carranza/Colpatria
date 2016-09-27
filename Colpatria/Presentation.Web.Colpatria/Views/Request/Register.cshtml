@@ -1,16 +1,24 @@
-﻿@model Presentation.Web.Colpatria.Models.UserViewModel
+﻿@using Presentation.Web.Colpatria.Enumerations
+@model Presentation.Web.Colpatria.Models.UserViewModel
 @{
     ViewBag.Title = "Datos personales";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
 }
 <div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+    <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
 </div>
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            @if (Model.Product == ProductType.Ca)
+            {
+                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            }
+            else
+            {
+                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+            }
+
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 bull active">
@@ -72,8 +80,8 @@
                         Fecha de Expedición<span class="symbol required"></span>
                     </label>
 
-                    <div class='input-group date' id='datepicker1'>
-                        <input type='text' name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]] validateMaxToday" value="15/09/2016" >
+                    <div class="input-group date" id="datepicker1">
+                        <input type="text" name="7" id="ExpeditionDate" class="form-control class-date validate[required,custom[date]] validateMaxToday" value="15/09/2016">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -149,7 +157,5 @@
     <div style="clear: both"></div>
 </div>
 
-@{ Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml");      }
+@{ Html.RenderPartial("~/Views/Shared/_termsAndConditions.cshtml"); }
 @{ Html.RenderPartial("~/Views/Shared/_printTermsAndConditions.cshtml"); }
-
-

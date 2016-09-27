@@ -85,29 +85,29 @@
     //    return false;
     //}
 
-    document.onmousedown = function (event) {
-        event = (event || window.event);
-        if (event.keyCode === 123) {
-            alert('No F-keys');
-            return false;
-        }
-    }
-    document.onkeydown = function (event) {
-        event = (event || window.event);
-        if (event.keyCode === 123) {
-            alert('No F-keys');
-            return false;
-        }
-    }
+    //document.onmousedown = function (event) {
+    //    event = (event || window.event);
+    //    if (event.keyCode === 123) {
+    //        alert('No F-keys');
+    //        return false;
+    //    }
+    //}
+    //document.onkeydown = function (event) {
+    //    event = (event || window.event);
+    //    if (event.keyCode === 123) {
+    //        alert('No F-keys');
+    //        return false;
+    //    }
+    //}
 
-    document.onmousedown = disableclick;
-    status = "Right Click Disabled";
-    function disableclick(event) {
-        if (event.button === 2) {
-            alert(status);
-            return false;
-        }
-    }
+    //document.onmousedown = disableclick;
+    //status = "Right Click Disabled";
+    //function disableclick(event) {
+    //    if (event.button === 2) {
+    //        alert(status);
+    //        return false;
+    //    }
+    //}
 
 
 </script>

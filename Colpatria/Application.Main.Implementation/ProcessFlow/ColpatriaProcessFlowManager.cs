@@ -54,7 +54,7 @@ namespace Application.Main.Implementation.ProcessFlow
                 {
                     CreateDate = DateTime.UtcNow,
                     IsActive = true,
-                    ProcessId = arg.Execution.ProcessId,
+                    ProcessId = stepFlow.ProcessId,
                     ProductId = arg.Execution.ProductId,
                     SimpleId = ToolExtension.GenSemiUniqueId(),
                     UserId = arg.User.Id,

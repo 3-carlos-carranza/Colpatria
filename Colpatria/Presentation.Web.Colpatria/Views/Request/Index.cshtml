@@ -1,25 +1,10 @@
-﻿@using Presentation.Web.Colpatria.Enumerations
-
-
-<form data-x="x-validate" action="@Url.Action("Index")" method="POST" class="form-step">
-    <input type="text" hidden="hidden" value="1" name="productType">
+﻿<a href="@Url.Action("Index", new {productType = 1})">
     <img caption="false" alt="Solicitar producto" src="//scotiabankfiles.azureedge.net/scotiabank-colombia/Colpatria/imagenes/personas/cuenta-cero.png"
          height="164" width="220" onclick="submit()">
-</form>
+</a>
 
-<form data-x="x-validate" action="@Url.Action("Index")" method="POST" class="form-step">
-    <input type="text" hidden="hidden" value="1" name="productType">
+
+<a href="@Url.Action("Index", new {productType = 2})">
     <img alt="solicitar tarjeta credito" src="//scotiabankfiles.azureedge.net/scotiabank-colombia/Colpatria/imagenes/personas/solicitud-tarjetas-de-credito.png"
-         height="164" width="220" caption="false" onclick="submit()">
-</form>
-
-@section scripts
-{
-    <script>
-        $(element.target).click(function (e) {
-            $(e.target).submit();
-        });
-    </script>    
-}
-
-
+         height="164" width="220" caption="false">
+</a>

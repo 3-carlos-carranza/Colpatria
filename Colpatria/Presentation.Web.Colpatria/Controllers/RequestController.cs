@@ -6,7 +6,6 @@
 //   -----------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -14,13 +13,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common;
-using Crosscutting.Common.Tools.DataType;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -40,35 +37,25 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string productType = "")
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(string productType)
-        {
-            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() || 
-                productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
+            if (productType == "") return View();
+            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
+                  productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
             {
                 return View("NotFound", new ErrorViewModel());
             }
-            
-            Session["ProductType"] = Convert.ToInt32(productType);
-            return View("Register");
+            return View("Register", new UserViewModel
+            {
+                ProductId = Convert.ToInt32(productType)
+            });
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Register(FormCollection collection)
         {
             var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
-
+            
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
             var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
 
@@ -95,8 +82,8 @@ namespace Presentation.Web.Colpatria.Controllers
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
+            BaseProductType = Convert.ToInt32(fields[11].Value);
             InitSetFormArguments(fields);
-            
 
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
@@ -130,6 +117,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+
         public async Task<ActionResult> RequestAproved()
         {
             MockSubmitInitSetFormArguments();
@@ -158,6 +146,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var stepresult = await ExecuteFlow();
             return ValidateStepResult(stepresult);
         }
+
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {

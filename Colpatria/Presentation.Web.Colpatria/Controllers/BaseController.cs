@@ -161,6 +161,11 @@ namespace Presentation.Web.Colpatria.Controllers
         }
         public void InitSetFormArguments(List<FieldValueOrder> form)
         {
+            if (BaseProductType == 0)
+            {
+                BaseProductType = (int)ProductId;
+            }
+
             var userId = long.Parse(User.Identity.GetUserId());
 
             ProcessFlowArgument.User = new User
@@ -169,8 +174,7 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.Execution = new Execution
             {
-                ProductId = Convert.ToInt64((Session["ProductType"]).ToString()),
-                ProcessId = Convert.ToInt32((Session["ProductType"]).ToString()),
+                ProductId = BaseProductType,
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;

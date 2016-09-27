@@ -60,6 +60,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
             container.RegisterType<IStep, ShowEvidenteStep>("ShowEvidenteStep");
+            container.RegisterType<IStep, ErrorEvidenteStep>("ErrorEvidenteStep");
             container.RegisterType<IStep, ShowFormStep>("ShowFormStep");
             container.RegisterType<IStep, SubmitEvidenteStep>("SubmitEvidenteStep");
             container.RegisterType<IStep, SubmitWsMotorStep>("SubmitWsMotorStep");

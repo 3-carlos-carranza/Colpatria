@@ -1110,7 +1110,9 @@
     <Content Include="Scripts\Tools\Trigger.Actions.js" />
     <Content Include="Scripts\Tools\Trigger.js" />
     <Content Include="Scripts\Tools\TriggerClientValidator.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AllowedUrlConstraint.cs" />
@@ -1286,6 +1288,7 @@
     <Content Include="Views\Shared\_summaryModal.cshtml" />
     <Content Include="Views\Shared\_termsAndConditions.cshtml" />
     <Content Include="Views\Shared\_printTermsAndConditions.cshtml" />
+    <Content Include="Views\Request\ErrorEvidente.cshtml" />
     <Content Include="Views\Request\NotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

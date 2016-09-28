@@ -22,7 +22,6 @@ namespace Crosscutting.Common
 
             var request = new RestRequest {Resource = "{domain}/messages"};
 
-            //request.AddParameter("domain", mailinfo.Domain, ParameterType.UrlSegment);
             request.AddParameter("domain", ConfigurationManager.AppSettings["domain-colpatria"],
                 ParameterType.UrlSegment);
 

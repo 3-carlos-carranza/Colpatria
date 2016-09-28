@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Core.DataTransferObject.Vib.UserInfoDto
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +11,13 @@
             <td>
                 <div class="step-content" style="font-family: sans-serif;font-size: 14px;width: 100%;position: relative;color:#6e6e6e;">
                     <div class="conts">
-                        <p class="desc-step" style="font-weight:bold;"><span class="red" style="color: #e20613;font-weight: bold;">Felicitaciones,</span> Camilo Flórez</p>
-                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">Aprobada</strong>  </p>
+                        <p class="desc-step" style="font-weight:bold;"><span class="red" style="color: #e20613;font-weight: bold;">Felicitaciones,</span> @Model.FullName</p>
+                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">@*@Model.ResponseWsMotor.ToUpper()*@</strong>  </p>
                         <div class="contents aproved">
-                            <p>Bogotá, agosto 30 de 2016</p>
-                            <p>Señor(a) Camilo Florez</p>
+                            <p>Bogotá, @Model.CreatedDateExecution.ToShortDateString()</p>
+                            <p>Señor(a) @Model.FullName</p>
                             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
-                            <p>Solicitud <strong style="color:#000;">Aprobada</strong></p>
+                            <p>Solicitud <strong style="color:#000;">@*@Model.ResponseWsMotor.ToUpper()*@</strong></p>
                             <p>Si tu solicitud ha sido <strong style="color:#000;">APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%. </p>
                             <p>Si tu solicitud ha sido <strong style="color:#000;">PROCESADA/PENDIENTE DE DOCUMENTACIÓN</strong> te invitamos a acercarte a la oficina de Colpatria más cercana y llevar los siguientes documentos de acuerdo a tu actividad económica:</p>
                             <div class="table-responsive">

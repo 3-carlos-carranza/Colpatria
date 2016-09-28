@@ -12,6 +12,7 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
+using Presentation.Web.Colpatria.Enumerations;
 using Xipton.Razor;
 
 
@@ -22,6 +23,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public readonly IMailAppService MailAppService;
         private readonly IUserAppService _userAppService;
+        private string _razorTemplate;
 
         public SendRequestResponseStep(IProcessFlowStore store, IMailAppService mailAppService, IUserAppService userAppService) : base(store)
         {
@@ -35,7 +37,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var email = new EmailMessage()
             {
-                Subject = "Respuesta de la solicitud",
+                Subject = "Colpatria - Respuesta de la solicitud",
                 To = EmailAddress(userInfo),
                 Sender = new EmailAddress("Colpatria", "carlos.carranza@banlinea.com")
                 {
@@ -76,10 +78,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public string TemplateResponseRequest(UserInfoDto userInfoDto)
         {
             var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
-            var dir = Path.GetDirectoryName(path);
-            var razorTemplate = Path.Combine(dir, ConfigurationManager.AppSettings["RequestResponse"]);
+            var dir = (Path.GetDirectoryName(path))?.Replace("bin", string.Empty);
 
-            var template = File.ReadAllText(razorTemplate);
+            _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml") 
+                : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
+
+            var template = File.ReadAllText(_razorTemplate);
             return new RazorMachine().ExecuteContent(template, userInfoDto, skipLayout: true).Result;
         }
     }

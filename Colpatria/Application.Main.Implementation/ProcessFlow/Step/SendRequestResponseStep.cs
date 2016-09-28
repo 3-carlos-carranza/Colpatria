@@ -12,7 +12,6 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
-using Presentation.Web.Colpatria.Enumerations;
 using Xipton.Razor;
 
 

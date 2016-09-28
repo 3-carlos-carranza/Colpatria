@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Presentation.Web.Colpatria.Enumerations;
 
 namespace Presentation.Web.Colpatria.Models
 {

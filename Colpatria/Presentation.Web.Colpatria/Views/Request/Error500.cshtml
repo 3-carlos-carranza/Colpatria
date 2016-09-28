@@ -1,16 +1,16 @@
 ﻿@model Presentation.Web.Colpatria.Models.ErrorViewModel
 @{
-    ViewBag.Title = "Error 404";
+    ViewBag.Title = "Error 500";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="step-content text-center error">
     <p class="err">Error</p>
-    <h1 class="cod-err">404</h1>
-    <p class="none-err">Pagina no Encontrada</p>
+    <h1 class="cod-err">500</h1>
+    <p class="none-err">Error del Servidor</p>
 
-    <h3 class="title-err">Lo sentimos</h3>
-    <p class="desc-err">La dirección que estás buscando no está <br /> disponible en este momento o no existe. </p>
+    <h3 class="title-err">Estamos mejorando para ofrecerte un mejor servicio</h3>
+    <p class="desc-err">En este momento estamos realizando un <br /> mantenimineto, por favor intenta más tarde. </p>
     <p class="">
         <a href="@Url.Action("Index", "Request")" class="btn btn-danger enviar nomargin">Volver a la página inicial</a>
     </p>

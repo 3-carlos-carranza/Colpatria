@@ -1,5 +1,7 @@
 ﻿@using Crosscutting.Common
+@using Presentation.Web.Colpatria.Enumerations
 @model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
+
 @{
     ViewBag.Title = "Información complementaria";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +12,14 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            @if ((ProductType)Session["Product"] == ProductType.Ca)
+            {
+                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            }
+            else
+            {
+                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+            }
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -85,17 +94,16 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-4">
-                            
-                            <input name="19" data-x="x-kdropdownauto" class="input__field input__field--hoshi validate[maxSize[30]]" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this">
-                            <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-                                <span class="input__label-content input__label-content--hoshi input-block-level ">Recojo la Tarjeta en<span class="symbol required"></span></span>
+                            <label class="">
+                                Recojo la Tarjeta en<span class="symbol required"></span>
                             </label>
+                            <select name="19" data-x="x-kdropdownauto" class="validate[maxSize[30]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this"></select>
                         </div>
                             <div class="col-xs-12 col-sm-4">
-                               <input name="38" data-x="x-kdropdownauto" class="input__field input__field--hoshi validate[maxSize[50]]" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this">
-                                <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-                                    <span class="input__label-content input__label-content--hoshi input-block-level ">Oficina<span class="symbol required"></span></span>
+                                <label class="">
+                                    Oficina<span class="symbol required"></span>
                                 </label>
+                                <select name="38" data-x="x-kdropdownauto" class="validate[maxSize[50]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this"></select>
                             </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label>
@@ -116,16 +124,9 @@
                                 Recibir más información de productos
                             </label>
                         </div>
-                        <div class="col-xs-12 col-sm-6 space" style="display:none;">
-                            <button type="submit" class="btn btn-danger pull-right enviar">
-                                Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                            </button>
-                        </div>
 
                         <div class="col-xs-12 col-sm-6 space">
-                            <input
-                                  class="btn btn-danger pull-right enviar" value="Siguiente" type="submit" >
-                                <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                            <input class="btn btn-danger pull-right enviar" value="Siguiente" type="submit" >
                         </div>
                         <div style="clear: both"></div>
                     </div>

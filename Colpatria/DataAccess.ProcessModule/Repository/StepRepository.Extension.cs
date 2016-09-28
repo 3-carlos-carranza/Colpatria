@@ -33,7 +33,7 @@ namespace DataAccess.ProcessModule.Repository
             return (from pp in _context.ProductProcess
                 join p in _context.Process on pp.ProcessId equals p.Id
                 join s in  _context.Step on p.Id equals s.ProcessId
-                where s.Enable
+                where s.Enable && pp.ProductId == productId
                 select s).ToList();
         }
     }

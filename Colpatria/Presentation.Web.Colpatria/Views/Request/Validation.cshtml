@@ -1,4 +1,6 @@
 ﻿@model  Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IEvidenteResponse 
+@using Presentation.Web.Colpatria.Enumerations
+
 @{
     ViewBag.Title = "Validación de datos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +11,14 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            @if ((ProductType)Session["Product"] == ProductType.Ca)
+            {
+                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            }
+            else
+            {
+                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+            }
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>

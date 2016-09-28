@@ -1124,6 +1124,7 @@
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\GlobalVariables.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SecondFlowTempController.cs" />
@@ -1289,8 +1290,8 @@
     <Content Include="Views\Shared\_termsAndConditions.cshtml" />
     <Content Include="Views\Shared\_printTermsAndConditions.cshtml" />
     <Content Include="Views\Request\ErrorEvidente.cshtml" />
-    <Content Include="Views\Request\NotFound.cshtml" />
-    <Content Include="Views\Request\Error500.cshtml" />
+    <Content Include="Views\Messages\NotFound.cshtml" />
+    <Content Include="Views\Messages\Error500.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

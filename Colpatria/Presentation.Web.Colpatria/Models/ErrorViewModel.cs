@@ -16,9 +16,7 @@ namespace Presentation.Web.Colpatria.Models
     public class ErrorViewModel
     {
         public string Icon { get; set; }
-
         public string Message { get; set; }
-
         public string Title { get; set; }
     }
 }

@@ -1,10 +1,10 @@
-﻿@model dynamic
+﻿@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 @{
-    ViewBag.Title = "Solicitud";
-    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Información complementaria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+    <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
 </div>
 <div class="step-content">
     <div class="linea-step">
@@ -13,42 +13,44 @@
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
-            <div class="col-xs-4 col-sm-4 validado"><span>2.</span> Valida</div>
-            <div class="col-xs-4 col-sm-4 bull active"><span>3.</span> Solicita</div>
+            <div class="col-xs-4 col-sm-4 validado">
+                <span>2.</span> Valida
+            </div>
+            <div class="col-xs-4 col-sm-4 bull active">
+                <span>3.</span> Solicita
+            </div>
         </div>
         <div style="clear: both"></div>
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">3602</span></p>
+            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
-                    Html.RenderPartial("~/Views/SecondFlowTemp/_SummaryData.cshtml");
+                    Html.RenderPartial("~/Views/Request/_SummaryData.cshtml");
                 }
             </div>
             <p class="desc-step">Validación de identidad: <span class="ok-rgtr"></span></p>
             <span class="proccess">Validado</span>
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
-            <p class=""><strong>Camilo,</strong> este es el último paso para tener “Tu <span class="red">Tarjeta de Crédito</span>”</p>
+            <p class="">
+                <strong>@Model.UserInfoDto.Names,</strong> este es el último paso para tener “Tu <span class="red">Tarjeta de Crédito</span>”
+            </p>
             <div class="test">
-                <form action="@Url.Action("No definido", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
+                <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus Datos</p>
                     <div class="form-group">
                         <div class="col-xs-12 col-md-4">
+
+
                             <label>
                                 Actividad Económica <span class="symbol required"></span>
                             </label>
-                            <select name="EconomicActivity" id="EconomicActivity" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                    data-value="">
-                                <option value="">Seleccione...</option>
-                                <option value="Asalariado">Asalariado</option>
-                                <option value="Independiente">Independiente</option>
-                                <option value="Pensionado">Pensionado</option>
-                                <option value="Estudiante">Estudiante</option>
-                                <option value="Ama de casa">Ama de casa</option>
-                            </select>
+                            <select name="26" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value="18397"></select>
+
+
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
@@ -60,7 +62,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="Income" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="">
+                                <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="Income" placeholder="" value="1500000">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                 </label>
@@ -77,22 +79,12 @@
                                 </label>
                             </span>
                         </div>
-                            <div class="col-xs-12 col-md-3">
-                                <label>
-                                    Estrato<span class="symbol required"></span>
-                                </label>
-                                <select name="Stratum" id="Stratum" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="">Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                </select>
-                            </div>
+                        <div class="col-xs-12 col-md-3">
+                            <label>
+                                Estrato <span class="symbol required"></span>
+                            </label>
+                            <select name="24" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"></select>
+                        </div>
                         <div class="col-xs-12 col-md-3">
                             <label>
                                 Personas a Cargo<span class="symbol required"></span>
@@ -124,18 +116,18 @@
                         <div style="clear: both"></div>
                     </div>
                     <div class="form-group">
-                            <div class="col-xs-12 col-md-4">
-                                <label>
-                                    Ciudad de Residencia<span class="symbol required"></span>
-                                </label>
-                                <select name="City" id="City" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
-                                        data-value="">
-                                    <option value="">Seleccione...</option>
-                                    <option value="Opción-1">Opción 1</option>
-                                    <option value="Opción-2">Opción 2</option>
-                                    <option value="Opción-3">Opción 3</option>
-                                </select>
-                            </div>
+                        <div class="col-xs-12 col-md-4">
+                            <label>
+                                Ciudad de Residencia<span class="symbol required"></span>
+                            </label>
+                            <select name="City" id="City" class="validate[required] form-control" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"
+                                    data-value="">
+                                <option value="">Seleccione...</option>
+                                <option value="Opción-1">Opción 1</option>
+                                <option value="Opción-2">Opción 2</option>
+                                <option value="Opción-3">Opción 3</option>
+                            </select>
+                        </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
                                 <input name="ResidenceAddress" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="ResidenceAddress" placeholder="" value="">
@@ -156,9 +148,9 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-md-6 space">
-                            
+
                         </div>
-                        <div class="col-xs-12 col-md-6 space" style="display:none;">
+                        <div class="col-xs-12 col-md-6 space" style="display: none;">
                             <button type="submit" class="btn btn-danger pull-right enviar">
                                 Siguiente <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
                             </button>

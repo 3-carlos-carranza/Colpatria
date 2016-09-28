@@ -1290,6 +1290,7 @@
     <Content Include="Views\Shared\_printTermsAndConditions.cshtml" />
     <Content Include="Views\Request\ErrorEvidente.cshtml" />
     <Content Include="Views\Request\NotFound.cshtml" />
+    <Content Include="Views\Request\Error500.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

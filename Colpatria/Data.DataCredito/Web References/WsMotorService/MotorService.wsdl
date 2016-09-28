@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://www.datacredito.com.co/services/MotorService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="http://exceptions.decisor.dc.com" xmlns:impl="http://www.datacredito.com.co/services/MotorService" targetNamespace="http://www.datacredito.com.co/services/MotorService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://exceptions.decisor.dc.com">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="DecisorException">
+        <xsd:sequence />
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="consultarBureauResponse">
+    <wsdl:part name="consultarBureauReturn" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="executeStrategyResponse">
+    <wsdl:part name="executeStrategyReturn" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="DecisorException">
+    <wsdl:part name="fault" type="tns1:DecisorException" />
+  </wsdl:message>
+  <wsdl:message name="executeStrategyRequest">
+    <wsdl:part name="solicitud" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="consultarBureauRequest">
+    <wsdl:part name="solicitudBureau" type="soapenc:string" />
+    <wsdl:part name="params" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:portType name="MotorServiceImpl">
+    <wsdl:operation name="consultarBureau" parameterOrder="solicitudBureau params">
+      <wsdl:input name="consultarBureauRequest" message="impl:consultarBureauRequest" />
+      <wsdl:output name="consultarBureauResponse" message="impl:consultarBureauResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="executeStrategy" parameterOrder="solicitud">
+      <wsdl:input name="executeStrategyRequest" message="impl:executeStrategyRequest" />
+      <wsdl:output name="executeStrategyResponse" message="impl:executeStrategyResponse" />
+      <wsdl:fault name="DecisorException" message="impl:DecisorException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioMotorPortSoapBinding" type="impl:MotorServiceImpl">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="consultarBureau">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="consultarBureauRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.decisor.dc.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="consultarBureauResponse">
+        <wsdlsoap:body use="encoded" namespace="http://www.datacredito.com.co/services/MotorService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="executeStrategy">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="executeStrategyRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.decisor.dc.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="executeStrategyResponse">
+        <wsdlsoap:body use="encoded" namespace="http://www.datacredito.com.co/services/MotorService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="DecisorException">
+        <wsdlsoap:fault use="encoded" name="DecisorException" namespace="http://www.datacredito.com.co/services/MotorService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioMotorService">
+    <wsdl:port name="ServicioMotorPort" binding="impl:ServicioMotorPortSoapBinding">
+      <wsdlsoap:address location="http://172.24.14.29/DecisorWS/services/MotorService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

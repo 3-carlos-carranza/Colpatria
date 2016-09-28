@@ -32,5 +32,15 @@ namespace Data.DataCredito.Properties {
                 return ((string)(this["Data_DataCredito_EvidenteService_ServicioIdentificacion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://172.24.14.29/DecisorWS/services/MotorService")]
+        public string Data_DataCredito_WSMotorService_ServicioMotorService {
+            get {
+                return ((string)(this["Data_DataCredito_WSMotorService_ServicioMotorService"]));
+            }
+        }
     }
 }

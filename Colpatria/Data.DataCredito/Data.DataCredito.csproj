@@ -76,6 +76,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\WsMotorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WsMotorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
@@ -107,6 +113,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\EvidenteService\ServicioIdentificacion.wsdl" />
+    <None Include="Web References\WsMotorService\MotorService.wsdl" />
+    <None Include="Web References\WsMotorService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -115,6 +126,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://172.24.14.29/DecisorWS/services/MotorService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsMotorService\</RelPath>
+      <UpdateFromURL>http://172.24.14.29/DecisorWS/services/MotorService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Data_DataCredito_WSMotorService_ServicioMotorService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://172.24.14.29:8080/idws2/services/ServicioIdentificacion%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EvidenteService\</RelPath>

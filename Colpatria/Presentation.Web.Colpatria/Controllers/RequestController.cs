@@ -43,7 +43,7 @@ namespace Presentation.Web.Colpatria.Controllers
             if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
                   productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
             {
-                return View("NotFound", new ErrorViewModel());
+                return RedirectToAction("NotFound","Messages");
             }
             Session["Product"] = (ProductType)(Convert.ToInt32(productType));
             return View("Register", new UserViewModel

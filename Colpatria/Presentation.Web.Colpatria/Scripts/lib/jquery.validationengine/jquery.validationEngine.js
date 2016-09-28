@@ -1,5 +1,5 @@
 ﻿/*
- * Inline Form Validation Engine 2.6, jQuery plugin
+ * Inline Form Validation Engine 2.6.1, jQuery plugin
  *
  * Copyright(c) 2010, Cedric Dugas
  * http://www.position-absolute.com
@@ -25,7 +25,7 @@
             if (!form.data('jqv') || form.data('jqv') == null) {
                 options = methods._saveOptions(form, options);
                 // bind all formError elements to close on click
-                $(".formError").live("click", function () {
+                $(".formError").on("click", function () {
                     $(this).fadeOut(150, function () {
                         // remove prompt once invisible
                         $(this).parent('.formErrorOuter').remove();
@@ -379,13 +379,14 @@
                         scrollContainer.animate({ scrollTop: destination }, 1100, function () {
                             if (options.focusFirstField) first_err.focus();
                         });
+
                     } else {
-                        $("body,html").stop().animate({
-                            scrollTop: destination,
-                            scrollLeft: fixleft
+                        $("html, body").animate({
+                            scrollTop: destination
                         }, 1100, function () {
                             if (options.focusFirstField) first_err.focus();
                         });
+                        $("html, body").animate({ scrollLeft: fixleft }, 1100)
                     }
 
                 } else if (options.focusFirstField)
@@ -404,7 +405,7 @@
         _validateFormWithAjax: function (form, options) {
 
             var data = form.serialize();
-            var type = (options.ajaxmethod) ? options.ajaxmethod : "GET";
+            var type = (options.ajaxFormMethod) ? options.ajaxFormMethod : "GET";
             var url = (options.ajaxFormValidationURL) ? options.ajaxFormValidationURL : form.attr("action");
             var dataType = (options.dataType) ? options.dataType : "json";
             $.ajax({
@@ -519,7 +520,7 @@
 
             var form = $(field.closest("form"));
             // Fix for adding spaces in the rules
-            for (var i in rules) {
+            for (var i = 0; i < rules.length; i++) {
                 rules[i] = rules[i].replace(" ", "");
                 // Remove any parsing errors
                 if (rules[i] === '') {
@@ -848,9 +849,10 @@
 		* @param {int} i rules index
 		* @param {Map}
 		*            user options
+		* @param {bool} condRequired flag when method is used for internal purpose in condRequired check
 		* @return an error string if validation failed
 		*/
-        _required: function (field, rules, i, options) {
+        _required: function (field, rules, i, options, condRequired) {
             switch (field.prop("type")) {
                 case "text":
                 case "password":
@@ -865,6 +867,14 @@
                     break;
                 case "radio":
                 case "checkbox":
+                    // new validation style to only check dependent field
+                    if (condRequired) {
+                        if (!field.attr('checked')) {
+                            return options.allrules[rules[i]].alertTextCheckboxMultiple;
+                        }
+                        break;
+                    }
+                    // old validation style
                     var form = field.closest("form");
                     var name = field.attr("name");
                     if (form.find("input[name='" + name + "']:checked").size() == 0) {
@@ -1348,7 +1358,7 @@
                         // asynchronously called on success, data is the json answer from the server
                         var errorFieldId = json[0];
                         //var errorField = $($("#" + errorFieldId)[0]);
-                        var errorField = $("#" + errorFieldId + "']").eq(0);
+                        var errorField = $("#" + errorFieldId).eq(0);
 
                         // make sure we found the element
                         if (errorField.length == 1) {
@@ -1818,8 +1828,9 @@
 
                 /* Use _required for determining wether dependingField has a value.
 				 * There is logic there for handling all field types, and default value; so we won't replicate that here
+				 * Indicate this special use by setting the last parameter to true so we only validate the dependingField on chackboxes and radio buttons (#462)
 				 */
-                if (dependingField.length && methods._required(dependingField, ["required"], 0, options) == undefined) {
+                if (dependingField.length && methods._required(dependingField, ["required"], 0, options, true) == undefined) {
                     /* We now know any of the depending fields has a value,
 					 * so we can validate this field as per normal required code
 					 */
@@ -1937,4 +1948,5 @@
     };
     $(function () { $.validationEngine.defaults.promptPosition = methods.isRTL() ? 'topLeft' : "topRight" });
 })(jQuery);
+
 

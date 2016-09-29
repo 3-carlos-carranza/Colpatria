@@ -1,15 +1,24 @@
-﻿@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
+﻿@using Presentation.Web.Colpatria.Enumerations
+@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 @{
     ViewBag.Title = "Resumen de datos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+    <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
 </div>
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            @if ((ProductType) Session["Product"] == ProductType.Ca)
+            {
+                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            }
+            else
+            {
+                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+            }
+
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -31,53 +40,54 @@
             <span class="proccess">Validado</span>
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
-            <p class="bolds"><strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ResponseWsMotor</span></p>
-             
+            <p class="bolds">
+                <strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ResponseWsMotor</span></p>
+
             <div class="col-xs-12 col-sm-7 paddnov">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <tbody>
-                            <tr>
-                                <td>Nacimiento:</td>
-                                <th>@Model.UserInfoDto.Birthdate</th>
-                            </tr>
-                            <tr>
-                                <td>Estado Civil:</td>
-                                <th>@Model.UserInfoDto.CivilStatus</th>
-                            </tr>
-                            <tr>
-                                <td>Actividad Económica:</td>
-                                <th>@Model.UserInfoDto.EconomicActivity</th>
-                            </tr>
-                            <tr>
-                                <td>Ingresos:</td>
-                                <th>$ @Model.UserInfoDto.Income</th>
-                            </tr>
-                            <tr>
-                                <td>Servidor Público:</td>
-                                <th>@Model.UserInfoDto.PublicServer</th>
-                            </tr>
-                            
-                            <tr>
-                                <td>Recojo la Tarjeta en:</td>
-                                <th>@Model.UserInfoDto.PickTheCard</th>
-                            </tr>
-                            <tr>
-                                <td>Oficina:</td>
-                                <th>@Model.UserInfoDto.Office</th>
-                            </tr>
-                            <tr>
-                                <td>Tipo de Cuenta:</td>
-                                <th>@Model.UserInfoDto.AccountType</th>
-                            </tr>
-                            <tr>
-                                <td>Extracto mail:</td>
-                                <th>@Model.UserInfoDto.ExtractMail</th>
-                            </tr>
-                            <tr>
-                                <td>Más Información:</td>
-                                <th>@Model.UserInfoDto.MoreInformation</th>
-                            </tr>
+                        <tr>
+                            <td>Nacimiento:</td>
+                            <th>@Model.UserInfoDto.Birthdate</th>
+                        </tr>
+                        <tr>
+                            <td>Estado Civil:</td>
+                            <th>@Model.UserInfoDto.CivilStatus</th>
+                        </tr>
+                        <tr>
+                            <td>Actividad Económica:</td>
+                            <th>@Model.UserInfoDto.EconomicActivity</th>
+                        </tr>
+                        <tr>
+                            <td>Ingresos:</td>
+                            <th>$ @Model.UserInfoDto.Income</th>
+                        </tr>
+                        <tr>
+                            <td>Servidor Público:</td>
+                            <th>@Model.UserInfoDto.PublicServer</th>
+                        </tr>
+
+                        <tr>
+                            <td>Recojo la Tarjeta en:</td>
+                            <th>@Model.UserInfoDto.PickTheCard</th>
+                        </tr>
+                        <tr>
+                            <td>Oficina:</td>
+                            <th>@Model.UserInfoDto.Office</th>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Cuenta:</td>
+                            <th>@Model.UserInfoDto.AccountType</th>
+                        </tr>
+                        <tr>
+                            <td>Extracto mail:</td>
+                            <th>@Model.UserInfoDto.ExtractMail</th>
+                        </tr>
+                        <tr>
+                            <td>Más Información:</td>
+                            <th>@Model.UserInfoDto.MoreInformation</th>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -86,14 +96,16 @@
                 <div class="li-step">
                     @*<a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir"/></a>*@
 
-                    <a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud-summary'))"/></a>
+                    <a href="#">
+                        <img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud-summary'))"/>
+                    </a>
 
                 </div>
 
                 <div class="img-summary" id="response-summary">
-                    <img src="~/Images/Content/resumen.png" alt="Imagen" />
+                    <img src="~/Images/Content/resumen.png" alt="Imagen"/>
                 </div>
-                
+
             </div>
             <div class="col-xs-12 space">
                 <a class="btn btn-danger pull-right enviar marginnone" href="@Url.Action("Index", "Request")">
@@ -109,14 +121,23 @@
 
 @*Impresion de la respuesta*@
 <div class="conts" id="respuesta-solicitud-summary" hidden="hidden">
-    <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
+    <p class="desc-step">
+        <span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
     <p class="bolds paddno paddnov">
         Tu Solicitud fue: <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
     </p>
     <div class="contents aproved">
         <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
         <p>Señor(a) @Model.UserInfoDto.Names</p>
-        <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+
+        @if ((ProductType) Session["Product"] == ProductType.Ca)
+        {
+            <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+        }
+        else
+        {
+            <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
+        }
         <p>
             Solicitud <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
         </p>
@@ -129,23 +150,23 @@
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>Empleado</th>
-                        <th>Pensionado</th>
-                        <th>Independiente</th>
-                    </tr>
+                <tr>
+                    <th>Empleado</th>
+                    <th>Pensionado</th>
+                    <th>Independiente</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Original del documento de identidad.</td>
-                        <td>Original del documento de identidad.</td>
-                        <td>Original del documento de identidad.</td>
-                    </tr>
-                    <tr>
-                        <td>Comprobante de nómina o certificación laboral.</td>
-                        <td>Fotocopia de comprobante de pensión o resolución de pensión.</td>
-                        <td>Declaración de renta o Certificado de Cámara de Comercio o Balance General o Estado de Pérdidas y Ganancias o Carta de Actividad Comercial o RUT o VUR.</td>
-                    </tr>
+                <tr>
+                    <td>Original del documento de identidad.</td>
+                    <td>Original del documento de identidad.</td>
+                    <td>Original del documento de identidad.</td>
+                </tr>
+                <tr>
+                    <td>Comprobante de nómina o certificación laboral.</td>
+                    <td>Fotocopia de comprobante de pensión o resolución de pensión.</td>
+                    <td>Declaración de renta o Certificado de Cámara de Comercio o Balance General o Estado de Pérdidas y Ganancias o Carta de Actividad Comercial o RUT o VUR.</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -156,7 +177,7 @@
         <div class="info">
             <div class="col-xs-12 col-sm-8 desc-info">
                 <p class="">
-                    Cualquier duda o inquietud puedes contactarte:<br />
+                    Cualquier duda o inquietud puedes contactarte:<br/>
                     Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 -Pereira 3401616 -
                     Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480 Popayán
                     8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 222
@@ -165,7 +186,7 @@
             </div>
             <div class="col-xs-12 col-sm-4 info-log">
                 <div class="logo-info">
-                    <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                    <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
                 </div>
             </div>
             <div style="clear: both"></div>

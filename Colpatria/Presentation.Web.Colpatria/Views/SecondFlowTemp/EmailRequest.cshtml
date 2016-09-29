@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Core.DataTransferObject.Vib.UserInfoDto
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +11,13 @@
             <td>
                 <div class="step-content" style="font-family: sans-serif;font-size: 14px;width: 100%;position: relative;color:#6e6e6e;">
                     <div class="conts">
-                        <p class="desc-step" style="font-weight:bold;"><span class="red" style="color: #e20613;font-weight: bold;">Felicitaciones,</span> <strong>Camilo Flórez</strong></p>
-                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">Aprobada</strong>  </p>
+                        <p class="desc-step" style="font-weight:bold;"><span class="red" style="color: #e20613;font-weight: bold;">Felicitaciones,</span> <strong>@Model.FullName</strong></p>
+                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">@*@Model.ResponseWsMotor.ToUpper()*@</strong>  </p>
                         <div class="contents aproved">
-                            <p>Bogotá, agosto 30 de 2016</p>
-                            <p>Señor(a) Camilo Florez</p>
+                            <p>Bogotá, @Model.CreatedDateExecution.ToShortDateString()</p>
+                            <p>Señor(a) @Model.FullName</p>
                             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
-                            <p>Con respecto a tu solicitud Nº <span>3602</span></p>
+                            <p>Con respecto a tu solicitud Nº <span>@Model.SimpleId</span></p>
                             <p><strong style="color:#000;">Si tu solicitud HA SIDO APROBADA</strong></p>
                             <p>En un plazo no mayor a cinco (5) días hábiles, uno de nuestros ejecutivos se pondrá en contacto telefónico contigo para acordar la cita y la recolección de documentos necesarios para la entrega de tu Tarjeta de Crédito Colpatria.</p>
                             <p>* Recuerda que esta es una Pre-Aprobación del producto, la aprobación definitiva está sujera a validaciones internas de nuestra entidad.</p>

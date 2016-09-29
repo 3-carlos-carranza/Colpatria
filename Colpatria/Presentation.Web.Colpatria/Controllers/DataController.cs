@@ -31,7 +31,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [AllowAnonymous]
-        [OutputCache(Duration = int.MaxValue, VaryByParam = "self")]
+        //[OutputCache(Duration = int.MaxValue, VaryByParam = "self")]
         public ActionResult GetDataListValues(int self, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);

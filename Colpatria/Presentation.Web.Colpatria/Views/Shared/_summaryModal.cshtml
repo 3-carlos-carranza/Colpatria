@@ -1,4 +1,5 @@
-﻿@model Core.DataTransferObject.Vib.UserInfoDto
+﻿@using Presentation.Web.Colpatria.Enumerations
+@model Core.DataTransferObject.Vib.UserInfoDto
 <!-- Modal respuesta de la solicitud -->
 <div class="container">
 
@@ -33,7 +34,15 @@
                             <div class="contents aproved">
                                 <p>Bogotá, @Model.CreatedDateExecution.ToShortDateString()</p>
                                 <p>Señor(a) @Model.FullName</p>
-                                <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+
+                                @if ((ProductType)Session["Product"] == ProductType.Ca)
+                                {
+                                    <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
+                                }
+                                else
+                                {
+                                    <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
+                                }
                                 <p>
                                     Solicitud <strong>@Model.ResponseWsMotor</strong>
                                 </p>

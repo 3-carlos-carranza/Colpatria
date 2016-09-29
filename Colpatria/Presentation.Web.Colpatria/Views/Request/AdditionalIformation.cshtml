@@ -12,14 +12,9 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            @if ((ProductType)Session["Product"] == ProductType.Ca)
-            {
-                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
-            }
-            else
-            {
-                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
-            }
+
+         <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -97,13 +92,13 @@
                             <label class="">
                                 Recojo la Tarjeta en<span class="symbol required"></span>
                             </label>
-                            <select name="19" data-x="x-kdropdownauto" class="validate[maxSize[30]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this"></select>
+                            <select name="19" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this" data-value="9218"></select>
                         </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label class="">
                                     Oficina<span class="symbol required"></span>
                                 </label>
-                                <select name="38" data-x="x-kdropdownauto" class="validate[maxSize[50]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this"></select>
+                                <select name="38" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this" data-value="18427"></select>
                             </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label>

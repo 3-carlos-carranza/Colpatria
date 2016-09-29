@@ -1,7 +1,9 @@
-﻿namespace Core.GlobalRepository.WsMotor
+﻿using Core.Entities.WsMotor;
+
+namespace Core.GlobalRepository.WsMotor
 {
     public interface IWsMotorRepository
     {
-        void UserValidate();
+        WsMotorServiceResponse Validate(WsMotorRequest wsMotorRequest);
     }
 }

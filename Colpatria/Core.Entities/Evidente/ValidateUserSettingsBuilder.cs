@@ -7,7 +7,7 @@ namespace Core.Entities.Evidente
         private string _channel;
         private DateTime _expeditionDate;
         private string _identification;
-        private string _fullName;
+        private string _names;
         private string _lastName;
         private string _paramProduct;
         private string _product;
@@ -19,7 +19,7 @@ namespace Core.Entities.Evidente
             _channel = string.Empty;
             _expeditionDate = DateTime.UtcNow;
             _identification = string.Empty;
-            _fullName = string.Empty;
+            _names = string.Empty;
             _lastName = string.Empty;
             _secondLastName = string.Empty;
             _paramProduct = string.Empty;
@@ -33,9 +33,9 @@ namespace Core.Entities.Evidente
                 Channel = _channel,
                 ExpeditionDate = _expeditionDate,
                 Identification = _identification,
-                Fullname = _fullName,
-                Lastname = _lastName,
-                SecondLastname = _secondLastName,
+                Names = _names,
+                LastName = _lastName,
+                SecondLastName = _secondLastName,
                 ParamProduct = _paramProduct,
                 Product = _product,
                 IdentificationType = _identificationType,
@@ -57,9 +57,9 @@ namespace Core.Entities.Evidente
             _identification = item;
             return this;
         }
-        public ValidateUserSettingsBuilder WithFullName(string item)
+        public ValidateUserSettingsBuilder WithNames(string item)
         {
-            _fullName = item;
+            _names = item;
             return this;
         }
         public ValidateUserSettingsBuilder WithLastName(string item)

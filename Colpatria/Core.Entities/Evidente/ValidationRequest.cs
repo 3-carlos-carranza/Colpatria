@@ -9,8 +9,11 @@ namespace Core.Entities.Evidente
         public ExpeditionDate ExpeditionDate { get; set; }
         [XmlElement("Identificacion")]
         public Identification Identification { get; set; }
-        public string Nombres { get; set; }
-        public string PrimerApellido { get; set; }
-        public string SegundoApellido { get; set; } = string.Empty;
+        [XmlElement("Nombres")]
+        public string Names { get; set; }
+        [XmlElement("PrimerApellido")]
+        public string LastName { get; set; }
+        [XmlElement("SegundoApellido")]
+        public string SecondLastName { get; set; } = string.Empty;
     }
 }

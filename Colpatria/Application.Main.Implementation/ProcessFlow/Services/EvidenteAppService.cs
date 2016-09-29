@@ -1,18 +1,3 @@
-#region Signature
-
-//   -----------------------------------------------------------------------
-//   <copyright file=EvidenteAppService.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-07  - 2:28 p. m.</Date>
-//   <Update> 2016-09-08 - 11:19 a. m.</Update>
-//   -----------------------------------------------------------------------
-
-#endregion
-
-#region
-
 using System;
 using System.Configuration;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
@@ -23,8 +8,6 @@ using Core.GlobalRepository.Evidente;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common;
 using Newtonsoft.Json;
-
-#endregion
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
@@ -44,8 +27,9 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
-            AnswerResponse response;
-            settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
+            try
+            {
+                settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
             settings.ParamProduct = ConfigurationManager.AppSettings["EvidenteParamProduct"];
             settings.Product = ConfigurationManager.AppSettings["EvidenteProduct"];
 
@@ -57,9 +41,16 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                     .Build();
 
             AddWebServiceConsultation(consultation);
-            try
-            {
-                response = _evidenteRepository.AnswerQuestions(settings);
+            
+                var response = _evidenteRepository.AnswerQuestions(settings);
+                var consultationResponse =
+                _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
+                    .WithExecutionId(settings.ExecutionId)
+                    .WithTypeOfConsultation((int)TypeOfConsultation.Response)
+                    .WithWebServiceName(ServiceNameType.Answer.GetStringValue())
+                    .Build();
+                AddWebServiceConsultation(consultationResponse);
+                return response;
             }
             catch (Exception exception)
             {
@@ -73,23 +64,12 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 AddWebServiceConsultation(consultationException);
                 return new AnswerResponse {Result = false};
             }
-
-            var consultationResponse =
-                _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
-                    .WithExecutionId(settings.ExecutionId)
-                    .WithTypeOfConsultation((int) TypeOfConsultation.Response)
-                    .WithWebServiceName(ServiceNameType.Answer.GetStringValue())
-                    .Build();
-            AddWebServiceConsultation(consultationResponse);
-
-            return response;
         }
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
             try
             {
-                QuestionsResponse response;
                 settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
                 settings.ParamProduct = ConfigurationManager.AppSettings["EvidenteParamProduct"];
                 settings.Product = ConfigurationManager.AppSettings["EvidenteProduct"];
@@ -102,7 +82,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                         .Build();
 
                 AddWebServiceConsultation(consultation);
-                response = _evidenteRepository.GetQuestions(settings);
+                var response = _evidenteRepository.GetQuestions(settings);
 
                 var consultationResponse =
                     _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
@@ -131,7 +111,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         {
             try
             {
-                ValidationResponse response;
                 settings.Channel = ConfigurationManager.AppSettings["EvidenteChannel"];
                 settings.ParamProduct = ConfigurationManager.AppSettings["EvidenteParamProduct"];
                 settings.Product = ConfigurationManager.AppSettings["EvidenteProduct"];
@@ -146,7 +125,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 AddWebServiceConsultation(consultation);
 
 
-                response = _evidenteRepository.Validate(settings);
+                var response = _evidenteRepository.Validate(settings);
                 var consultationResponse =
                _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
                    .WithExecutionId(settings.ExecutionId)

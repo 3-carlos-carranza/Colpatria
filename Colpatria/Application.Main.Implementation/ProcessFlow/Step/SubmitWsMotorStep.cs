@@ -1,10 +1,4 @@
-﻿//   -----------------------------------------------------------------------
-//   <copyright file=SubmitWsMotorStep.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
-
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
@@ -20,85 +14,54 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitWsMotorStep : BaseStep, ISubmitWsMotorStep
     {
-        private readonly PetitionSettingsBuilder _petitionSettingsBuilder;
+        private readonly WsMotorRequestSettingsBuilder _wsMotorRequestSettingsBuilder;
         private readonly ISaveFieldsAppService _saveFieldsAppService;
         private readonly IWsMotorAppService _wsMotorAppService;
-        
+        private readonly IUserAppService _userAppService;
 
         
 
         public SubmitWsMotorStep(IProcessFlowStore store,
             IWsMotorAppService wsMotorAppService,
-            PetitionSettingsBuilder petitionSettingsBuilder,
-            ISaveFieldsAppService saveFieldsAppService)
+            WsMotorRequestSettingsBuilder petitionSettingsBuilder,
+            ISaveFieldsAppService saveFieldsAppService, IUserAppService userAppService)
             : base(store)
         {
             _wsMotorAppService = wsMotorAppService;
             _saveFieldsAppService = saveFieldsAppService;
-            _petitionSettingsBuilder = new PetitionSettingsBuilder();
+            _userAppService = userAppService;
+            _wsMotorRequestSettingsBuilder = new WsMotorRequestSettingsBuilder();
         }
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
-            #region var response = _wsMotorAppService.GetScoreResponse(_petitionSettingsBuilder
+            var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
 
-            var response = _wsMotorAppService.GetScoreResponse(_petitionSettingsBuilder
-                .WithKey("10cuu")
-                .WithIdentificaction("59854768")
-                .WithLastName("monroy")
+            var wsMotorRequest = _wsMotorRequestSettingsBuilder.WithIdentificaction(userInfo.Identification)
+                .WithExecutionId(argument.Execution.Id)
+                .WithLastName(userInfo.LastName)
                 .WithTypeIdentification("1")
-                .WithUser("78989767")
-                .WithParamsRequest(new[]
+                .WithParamsRequest(new List<Parameter>
                 {
-                    new Parameters
+                    new Parameter
                     {
-                        Type = 'T',
-                        Name = "STRAID",
-                        Value = "1550"
-                    },
-                    new Parameters
-                    {
-                        Type = 'T',
-                        Name = "STRNAM",
-                        Value = "Billing_Strategy"
-                    },
-                    new Parameters
-                    {
-                        Type = 'A',
-                        Name = "facturarAciertaCod",
-                        Value = "true"
-                    },
-                    new Parameters
-                    {
-                        Type = 'B',
-                        Name = "facturarQuantoMinimoCod",
-                        Value = "true"
-                    },
-                    new Parameters
-                    {
-                        Type = 'C',
-                        Name = "facturarQuantoMaximoCod",
-                        Value = "true"
-                    },
-                    new Parameters
-                    {
-                        Type = 'R',
-                        Name = "_edad",
-                        Value = "30"
+                        Type = "T",
+                        Name = "Ingresos",
+                        Value = userInfo.Income
                     }
-                }).Build());
+                }).Build();
 
-            #endregion
+            var response = _wsMotorAppService.Validate(wsMotorRequest);
 
-            //Metodo para validar la respuesta devuelta - Score Validado
-            _wsMotorAppService.ValidateScore(response);
+            if (response.ScoresMotor.ScoreMotor.Classification == "A")
+            {
+                var saveFieldsAppService = argument as ProcessFlowArgument;
+                saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
+                _saveFieldsAppService.SaveForm(saveFieldsAppService);
+                return await OnSuccess(argument).Result.Advance(argument);
+            }
 
-            //Guardar en base de datos la respuesta del score
-            var saveFieldsAppService = argument as ProcessFlowArgument;
-            saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "30", Value = "Aprobada" });
-            _saveFieldsAppService.SaveForm(saveFieldsAppService);
-
-            return await OnSuccess(argument).Result.Advance(argument);
+            return await OnError(argument).Result.Advance(argument);
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,

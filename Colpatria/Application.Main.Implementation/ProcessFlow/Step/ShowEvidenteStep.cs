@@ -41,7 +41,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 .WithLastName(userInfo.LastName)
                 .WithSecondLastName(userInfo.SecondLastName)
                 .WithExpeditionDate(userInfo.DateOfExpedition)
-                .WithFullName(userInfo.FullName)
+                .WithNames(userInfo.Names)
                 .WithExecutionId(argument.Execution.Id)
                 .Build();
             //validate User

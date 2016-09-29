@@ -1,11 +1,4 @@
-﻿//   -----------------------------------------------------------------------
-//   <copyright file=RequestController.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;

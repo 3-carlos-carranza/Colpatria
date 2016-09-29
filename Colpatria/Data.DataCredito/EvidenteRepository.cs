@@ -70,18 +70,18 @@ namespace Data.DataCredito
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
-                var identificacion = new Identification
+                var identification = new Identification
                 {
                     Number = settings.Identification,
                     Type = settings.IdentificationType
                 };
 
-                var datosValidacion = new ValidationRequest
+                var dataValidation = new ValidationRequest
                 {
-                    Identification = identificacion,
-                    PrimerApellido = settings.Lastname,
-                    Nombres = settings.Fullname,
-                    SegundoApellido = settings.SecondLastname,
+                    Identification = identification,
+                    LastName = settings.LastName,
+                    Names = settings.Names,
+                    SecondLastName = settings.SecondLastName,
                     ExpeditionDate = new ExpeditionDate
                     {
                         Timestamp = DateTimeExtension.ToTimestamp(settings
@@ -89,7 +89,7 @@ namespace Data.DataCredito
                     }
                 };
 
-                var serialized = _xmlProcessor.Serialize(datosValidacion);
+                var serialized = _xmlProcessor.Serialize(dataValidation);
 
                 var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
 

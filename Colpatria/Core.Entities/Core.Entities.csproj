@@ -107,14 +107,18 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="User\UserRole.cs" />
-    <Compile Include="WsMotor\Line.cs" />
+    <Compile Include="WsMotor\Age.cs" />
+    <Compile Include="WsMotor\Identification.cs" />
+    <Compile Include="WsMotor\NaturalPerson.cs" />
+    <Compile Include="WsMotor\Parameter.cs" />
     <Compile Include="WsMotor\Parameters.cs" />
-    <Compile Include="WsMotor\Petition.cs" />
-    <Compile Include="WsMotor\PetitionSettingsBuilder.cs" />
-    <Compile Include="WsMotor\Reason.cs" />
-    <Compile Include="WsMotor\Report.cs" />
-    <Compile Include="WsMotor\ResponseCustom.cs" />
-    <Compile Include="WsMotor\ScoreResponse.cs" />
+    <Compile Include="WsMotor\ScoreMotor.cs" />
+    <Compile Include="WsMotor\ScoresMotor.cs" />
+    <Compile Include="WsMotor\WsMotorRequest.cs" />
+    <Compile Include="WsMotor\WsMotorRequestSettingsBuilder.cs" />
+    <Compile Include="WsMotor\Response.cs" />
+    <Compile Include="WsMotor\CustomResponse.cs" />
+    <Compile Include="WsMotor\WsMotorServiceResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

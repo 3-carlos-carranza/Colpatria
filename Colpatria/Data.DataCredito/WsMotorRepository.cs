@@ -1,33 +1,54 @@
-﻿using System;
+﻿using System.Configuration;
+using Core.Entities.WsMotor;
 using Core.GlobalRepository.WsMotor;
+using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.WsMotorService;
 
 namespace Data.DataCredito
 {
     public class WsMotorRepository : ServicioMotorService, IWsMotorRepository
     {
-        public void UserValidate()
-        {
-            try
-            {
-                const string st = "<Solicitud xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
-                                  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" tipoIdentificacion=\"1\" " +
-                                  "identificacion=\"1023924856\" primerApellido=\"Aguirre\" nitUsuario=\"860034594\" " +
-                                  "tipoIdUsuario=\"1\" usuario=\"8888888850\"><Parametros>" +
-                                  "<Parametro tipo =\"T\" nombre=\"STRAID\" valor =\"2600\" />" +
-                                  "<Parametro tipo =\"T\" nombre=\"STRNAM\" valor =\"SuperSymmetry\" />" +
-                                  "<Parametro tipo =\"T\" nombre=\"Ingresos\" valor =\"2000000\" />" +
-                                  //"<Parametro tipo =\"T\" nombre=\"Edad\" valor =\"23\" />" +
-                                  //"<Parametro tipo =\"T\" nombre=\"Genero\" valor =\"M\" />" +
-                                  "</Parametros></Solicitud> ";
-                var res = executeStrategy(st);
-            }
-            catch (Exception exception)
-            {
+        private readonly XmlProcessor _xmlProcessor;
 
-                var a = exception;
+        public WsMotorRepository()
+        {
+            _xmlProcessor = new XmlProcessor();
+        }
+
+        public WsMotorServiceResponse Validate(WsMotorRequest wsMotorRequest)
+        {
+            var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
+            if (!mock)
+            {
+                wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                {
+                    Name = "STRAID",
+                    Type = "T",
+                    Value = "2600"
+                });
+                wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                {
+                    Name = "STRNAM",
+                    Type = "T",
+                    Value = "SuperSymmetry"
+                });
+                var serialized = _xmlProcessor.Serialize(wsMotorRequest);
+                var response = executeStrategy(serialized);
+                var deserialized = _xmlProcessor.Deserialize<WsMotorServiceResponse>(response);
+                return deserialized;
             }
-            
+            return new WsMotorServiceResponse
+            {
+                ScoresMotor = new ScoresMotor
+                {
+                    ScoreMotor = new ScoreMotor
+                    {
+                        Type = "10",
+                        Score = "0.0",
+                        Classification = "A"
+                    }
+                }
+            };
         }
     }
 }

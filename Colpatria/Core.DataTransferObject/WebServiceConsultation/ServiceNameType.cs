@@ -9,6 +9,8 @@ namespace Core.DataTransferObject.WebServiceConsultation
         [StringValue("Evidente Get Questions")]
         Questions = 2,
         [StringValue("Evidente Validate User")]
-        Validate = 3
+        Validate = 3,
+        [StringValue("Ws Motor Validate User")]
+        WsMotorValidate = 4
     }
 }

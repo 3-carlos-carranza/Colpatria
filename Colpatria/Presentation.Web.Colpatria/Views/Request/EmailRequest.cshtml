@@ -17,14 +17,15 @@
                         <div class="contents aproved">
                             <p>Bogotá, @Model.CreatedDateExecution.ToShortDateString()</p>
                             <p>Señor(a) @Model.FullName</p>
-                            @if ((ProductType)Session["Product"] == ProductType.Ca)
+                            @*@if ((ProductType)Session["Product"] == ProductType.Ca)
                             {
                                 <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
                             }
                             else
                             {
                                 <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
-                            }
+                            }*@
+                            <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
                             <p>Solicitud <strong style="color:#000;">@*@Model.ResponseWsMotor.ToUpper()*@</strong></p>
                             <p>Si tu solicitud ha sido <strong style="color:#000;">APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%. </p>
                             <p>Si tu solicitud ha sido <strong style="color:#000;">PROCESADA/PENDIENTE DE DOCUMENTACIÓN</strong> te invitamos a acercarte a la oficina de Colpatria más cercana y llevar los siguientes documentos de acuerdo a tu actividad económica:</p>

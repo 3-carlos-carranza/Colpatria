@@ -46,6 +46,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
         {
             var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();

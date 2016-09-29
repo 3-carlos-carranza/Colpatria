@@ -31,5 +31,7 @@ namespace Presentation.Web.Colpatria.Models
         public string TermsAndConditions { get; set; }
         [Required]
         public int ProductId { get; set; }
+        [Required]
+        public string SimpleId { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace Presentation.Web.Colpatria.Controllers
         [HttpGet]
         public ActionResult Index(string productType = "")
         {
+            
             if (productType == "") return View();
             if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
                   productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
@@ -42,6 +43,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return View("Register", new UserViewModel
             {
                 ProductId = Convert.ToInt32(productType),
+                SimpleId = Code
             });
         }
 

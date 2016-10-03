@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Evidente\IEvidenteRepository.cs" />
+    <Compile Include="Inalambria\IInalambriaAuthRepository.cs" />
+    <Compile Include="Inalambria\IInalambriaRepository.cs" />
     <Compile Include="Mongo\IColpatriaLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\Process\IExecutionApplicantRepository.cs">

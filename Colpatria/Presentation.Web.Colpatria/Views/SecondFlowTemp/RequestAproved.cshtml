@@ -21,13 +21,13 @@
     <div class="conts">
         <p class="desc-step"><span class="red">Felicitaciones,</span> Camilo Flórez
         </p>
-        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>Aprobada</strong>
+        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
         </p>
         <div class="contents aproved">
-            <p>Bogotá, agosto 30 de 2016</p>
-            <p>Señor(a) Camilo Florez</p>
-            <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
-            <p>Con respecto a tu solicitud Nº <span>3602</span></p>
+            <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
+            <p>Señor(a) @Model.UserInfoDto.FullName</p>
+            <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
+            <p>Con respecto a tu solicitud Nº <span>@Model.UserInfoDto.SimpleId</span></p>
 
             <p><strong>Si tu solicitud HA SIDO APROBADA</strong>
             </p>

@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\MessageClassification.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IInalambriaAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IMailAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />

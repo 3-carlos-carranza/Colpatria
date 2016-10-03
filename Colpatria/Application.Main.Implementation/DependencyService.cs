@@ -40,6 +40,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
+            container.RegisterType<IInalambriaAppService, InalambriaAppService>();
             container.RegisterType<IWsMotorAppService, WsMotorAppService>();
             container.RegisterType<IMailAppService, MailAppService>();
             container.RegisterType<IEmailNotificatorService, MailService>();
@@ -56,6 +57,9 @@ namespace Application.Main.Implementation
             container.RegisterType<IProcessAppService, ProcessAppService>();
             container.RegisterType<ISaveFieldsAppService, SaveFieldsAppService>();
 
+            //Inalambria
+            
+
             //Config Steps
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");
             container.RegisterType<IStep, SubmitFormStep>("SubmitFormStep");
@@ -69,6 +73,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IStep, SubmitAdditionalInformationStep>("SubmitAdditionalInformationStep");
             container.RegisterType<IStep, SendRequestResponseStep>("SendRequestResponseStep");
             container.RegisterType<IStep, ShowDataSummaryStep>("ShowDataSummaryStep");
+            container.RegisterType<IStep, SubmitSendSmsStep>("SubmitSendSmsStep");
 
             container.RegisterType<IEnumerable<IStep>, IStep[]>();
         }

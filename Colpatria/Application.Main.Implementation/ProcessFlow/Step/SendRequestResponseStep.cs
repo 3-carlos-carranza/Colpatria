@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -47,7 +46,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             };
 
             TraceFlow(argument);
-            //Intentos
             for (var i = 0; i < 2; i++)
             {
                 if (MailAppService.SendMail(email))

@@ -109,6 +109,7 @@
     <Compile Include="ProcessFlow\Responses\WsMotorResponse.cs" />
     <Compile Include="ProcessFlow\Services\EvidenteAppService.cs" />
     <Compile Include="ProcessFlow\Services\DynamicAppService.cs" />
+    <Compile Include="ProcessFlow\Services\InalambriaAppService.cs" />
     <Compile Include="ProcessFlow\Services\LoggingAppService.cs" />
     <Compile Include="ProcessFlow\ColpatriaProcessFlowManager.cs" />
     <Compile Include="ProcessFlow\Arguments\ProcessFlowArgument.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowDataSummaryStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitAdditionalInformationStep.cs" />
+    <Compile Include="ProcessFlow\Step\SubmitSendSmsStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitWsMotorStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowFinishRequestStep.cs" />
     <Compile Include="ProcessFlow\Step\SubmitEvidenteStep.cs" />

@@ -27,20 +27,9 @@
             Tu solicitud fue: <strong>@Model.MessageClassification.GetStringValue()</strong>
         </p>
         <div class="contents aproved">
-            <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
+            <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
             <p>Señor(a) @Model.UserInfoDto.FullName</p>
-
-
-            @if ((ProductType) Session["Product"] == ProductType.Ca)
-            {
-                <p>Asunto: Solicitud Cuenta de Ahorros Colpatria </p>
-            }
-            else
-            {
-                <p>Asunto: Solicitud Tarjeta de crédito Colpatria </p>
-            }
-
-
+            <p>Asunto: Solicitud Cuenta de Ahorros Colpatria </p>
             <p>
                 Solicitud <strong>@Model.MessageClassification.GetStringValue().ToUpper()</strong>
             </p>

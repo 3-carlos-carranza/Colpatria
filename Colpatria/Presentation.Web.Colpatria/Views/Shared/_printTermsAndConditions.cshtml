@@ -2,7 +2,7 @@
 <div id="terms-and-conditions" hidden="hidden">
     <div class="step-content">
         <div class="linea-step">
-            <p>@DateTime.Today.ToShortDateString() </p>
+            <p>@DateTime.UtcNow.ToLocalTime().ToLongDateString() </p>
             @*<p>Consecutivo No: @Model.SimpleId</p>*@
             <div class="col-xs-6 col-sm-6 desc-step">
                 <p>Términos Legales</p>

@@ -13,7 +13,6 @@
 
 #region
 
-using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 

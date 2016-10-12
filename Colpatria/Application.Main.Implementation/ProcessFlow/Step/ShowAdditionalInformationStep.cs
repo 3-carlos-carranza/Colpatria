@@ -8,8 +8,6 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
-using Core.Entities.WsMotor;
-using Newtonsoft.Json;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {

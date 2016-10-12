@@ -10,8 +10,7 @@
 namespace Core.Entities.User
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class BaseDataListValue
     {
         public int ListId { get; set; }

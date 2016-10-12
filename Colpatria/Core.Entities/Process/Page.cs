@@ -8,7 +8,6 @@
 #region
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Banlinea.ProcessFlow.Model;
 
 #endregion

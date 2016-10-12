@@ -11,9 +11,8 @@ using Banlinea.ProcessFlow.Model;
 
 namespace Core.Entities.Process
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Section :SectionFlow
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

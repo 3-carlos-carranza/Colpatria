@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Process.Flow.Model.2.2.7\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

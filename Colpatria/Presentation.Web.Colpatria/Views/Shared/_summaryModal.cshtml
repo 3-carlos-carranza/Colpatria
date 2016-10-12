@@ -32,7 +32,7 @@
                                 Tu Solicitud fue: <strong>@Model.ClassificationWsMotor.ToUpper()</strong>
                             </p>
                             <div class="contents aproved">
-                                <p>Bogotá, @Model.CreatedDateExecution.ToShortDateString()</p>
+                                <p>Bogotá, @Model.CreatedDateExecution.ToLongDateString()</p>
                                 <p>Señor(a) @Model.FullName</p>
 
                                 @if ((ProductType)Session["Product"] == ProductType.Ca)

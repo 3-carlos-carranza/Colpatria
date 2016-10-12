@@ -564,6 +564,7 @@
     <Content Include="fonts\lato-font\lato-thin-webfont.woff2" />
     <Content Include="fonts\lato-font\lato-thinitalic-webfont.woff" />
     <Content Include="fonts\lato-font\lato-thinitalic-webfont.woff2" />
+    <None Include="Properties\PublishProfiles\ColpatriaRelease - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datetimepicker.min.js" />

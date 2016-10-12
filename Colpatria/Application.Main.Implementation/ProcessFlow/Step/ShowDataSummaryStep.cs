@@ -7,6 +7,8 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.Entities.WsMotor;
+using Newtonsoft.Json;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -22,6 +24,16 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+            var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
+            switch (data.ScoresMotor.ScoreMotor.Classification)
+            {
+                case "A":
+                    userInfo.ClassificationWsMotor = "Aprobada";
+                    break;
+                case "R":
+                    userInfo.ClassificationWsMotor = "Rechazado";
+                    break;
+            }
             TraceFlow(argument);
             var step = (StepDetail)GetCurrentStep(argument);
 

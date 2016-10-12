@@ -36,14 +36,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //Obtener respuesta de WsMotor
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-
             switch (data.ScoresMotor.ScoreMotor.Classification)
             {
-                case "A":
-                    userInfo.ClassificationWsMotor = "Aprobado";
+                case "A":userInfo.ClassificationWsMotor = "Aprobada";
                     break;
-                case "R":
-                    userInfo.ClassificationWsMotor = "Rechazado";
+                case "R":userInfo.ClassificationWsMotor = "Rechazado";
                     break;
             }
 

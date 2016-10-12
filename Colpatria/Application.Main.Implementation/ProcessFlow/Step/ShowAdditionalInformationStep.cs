@@ -8,6 +8,8 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.Entities.WsMotor;
+using Newtonsoft.Json;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -22,6 +24,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+
             TraceFlow(argument);
             if (!argument.IsSubmitting)
             {

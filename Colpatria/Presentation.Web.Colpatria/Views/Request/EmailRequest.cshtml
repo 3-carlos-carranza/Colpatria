@@ -13,7 +13,7 @@
                 <div class="step-content" style="font-family: sans-serif;font-size: 14px;width: 100%;position: relative;color:#6e6e6e;">
                     <div class="conts">
                         <p class="desc-step" style="font-weight:bold;"><span class="red" style="color: #e20613;font-weight: bold;">Felicitaciones,</span> @Model.FullName</p>
-                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">@Model.ClassificationWsMotor</strong>  </p>
+                        <p class="bolds paddno">Tu Solicitud fue: <strong style="color:#000;">@Model.ClassificationWsMotor.ToUpper()</strong>  </p>
                         <div class="contents aproved">
                             <p>Bogotá, @Model.CreatedDateExecution.ToLongDateString()</p>
                             <p>Señor(a) @Model.FullName</p>

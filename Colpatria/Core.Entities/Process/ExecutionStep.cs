@@ -11,9 +11,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities.Process
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class ExecutionStep
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

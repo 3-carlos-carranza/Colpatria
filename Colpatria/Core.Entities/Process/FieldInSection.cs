@@ -11,9 +11,7 @@ using Banlinea.ProcessFlow.Model;
 
 namespace Core.Entities.Process
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class FieldInSection:FieldInSectionFlow
     {
         public override int Id { get; set; }

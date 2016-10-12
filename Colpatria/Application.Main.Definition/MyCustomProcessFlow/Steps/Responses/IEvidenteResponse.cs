@@ -5,7 +5,6 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Evidente;

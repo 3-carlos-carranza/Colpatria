@@ -1,5 +1,4 @@
 ﻿using System;
-using Core.Entities.Enumerations;
 using Crosscutting.Common.Tools.DataType;
 
 namespace Core.DataTransferObject.Vib

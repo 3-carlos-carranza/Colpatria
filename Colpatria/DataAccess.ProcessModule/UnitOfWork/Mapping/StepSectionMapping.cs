@@ -7,14 +7,11 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class StepSectionMapping:EntityTypeConfiguration<Core.Entities.Process.StepSection>
     {
         

@@ -9,9 +9,7 @@
 
 namespace Core.Entities.Process
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class ExtendedFile
     {
         public System.Guid Id { get; set; }

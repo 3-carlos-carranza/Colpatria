@@ -9,9 +9,7 @@
 
 namespace Core.Entities.User
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class FieldToCreateUser
     {
         public int Id { get; set; }

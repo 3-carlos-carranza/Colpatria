@@ -3,7 +3,6 @@ using Banlinea.ProcessFlow.Model;
 
 namespace Core.Entities.Process
 {
-    using System;
     using System.Collections.Generic;
     
     public partial class ExtendedField: FieldFlow

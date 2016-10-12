@@ -109,6 +109,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.IoC", "7.IoC", "{DB4DEA37
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Inalambria", "Data.Inalambria\Data.Inalambria.csproj", "{7620AD17-BF0C-4FB7-B844-B2BD39BFB59C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".codeAnalysis", ".codeAnalysis", "{804F0CC4-31B2-477F-A78C-40ACF3A7E2E9}"
+	ProjectSection(SolutionItems) = preProject
+		.codeAnalysis\Banlinea.Veb.Colpatria.All.ruleset = .codeAnalysis\Banlinea.Veb.Colpatria.All.ruleset
+		.codeAnalysis\Banlinea.Veb.Colpatria.None.ruleset = .codeAnalysis\Banlinea.Veb.Colpatria.None.ruleset
+		.codeAnalysis\CustomDictionary.xml = .codeAnalysis\CustomDictionary.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

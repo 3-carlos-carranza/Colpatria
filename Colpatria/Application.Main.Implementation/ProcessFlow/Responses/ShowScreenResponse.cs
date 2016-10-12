@@ -6,7 +6,7 @@
 //   -----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Application.Main.Definition.Enumerations;
+
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
 using Core.Entities.Process;

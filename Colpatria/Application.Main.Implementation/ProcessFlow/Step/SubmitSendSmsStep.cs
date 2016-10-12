@@ -24,8 +24,9 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var user = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
 
+            //Quitar el comentario para ejecutar el servicio de SMS
             //var userInfo = _inalambriaAppService.SendSms
-            //    (user.Cellphone,"Colpatria informa que usted realizo la solicitud #"+user.SimpleId+" a traves de Oficina Virtual","1");
+            //    (user.Cellphone, "Colpatria informa que usted realizo la solicitud #" + user.SimpleId + " a traves de Oficina Virtual", "1");
 
             return await OnSuccess(argument).Result.Advance(argument);
         }

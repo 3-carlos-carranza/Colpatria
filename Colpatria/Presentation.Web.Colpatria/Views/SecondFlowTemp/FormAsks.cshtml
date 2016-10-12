@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="27" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="text" id="27" placeholder="" value="24">
+                                <input name="27" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber], maxSize[2]]" type="text" id="27" placeholder="" value="24">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="27">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Antigüedad (Meses)<span class="symbol required"></span></span>
                                 </label>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="text" id="23" placeholder="" value="1500000">
+                                <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber], maxSize[15]]" type="text" id="23" placeholder="" value="1500000">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="23">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                 </label>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="20" class="input__field input__field--hoshi validate[required] onlyletter" type="text" id="20" placeholder="" value="@Model.UserInfoDto.Address">
+                                <input name="20" class="input__field input__field--hoshi validate[required, maxSize[50]] onlyletter" type="text" id="20" placeholder="" value="@Model.UserInfoDto.Address">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="20">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Dirección de Residencia<span class="symbol required"></span></span>
                                 </label>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="9" id="9" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp],maxSize[10]]" type="text" placeholder="" value="@Model.UserInfoDto.Telephone">
+                                <input name="9" id="9" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp],maxSize[15]]" type="text" placeholder="" value="@Model.UserInfoDto.Telephone">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="9">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Teléfono (Residencia)<span class="symbol required"></span></span>
                                 </label>

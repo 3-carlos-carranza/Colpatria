@@ -11,6 +11,7 @@ namespace Presentation.Web.Colpatria
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            //GlobalFilters.Filters.Add(new SessionExpireAttribute());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutomapperMaps.Initialize();

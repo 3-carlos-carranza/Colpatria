@@ -11,6 +11,7 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Xipton.Razor;
 
 
@@ -35,12 +36,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var email = new EmailMessage()
             {
-                Subject = "Colpatria - Respuesta de la solicitud",
+                Subject = userInfo.Product == "1" ? "Solicitud Tarjeta de Crédito Colpatria" : "Solicitud cuenta de ahorros Colpatria",
                 To = EmailAddress(userInfo),
-                Sender = new EmailAddress("Colpatria", "carlos.carranza@banlinea.com")
+                Sender = new EmailAddress("Colpatria", "oficinavirtual@colpatria.com")
                 {
                     Name = "Colpatria",
-                    Address = "carlos.carranza@banlinea.com"
+                    Address = "oficinavirtual@colpatria.com"
                 },
                 Body = TemplateResponseRequest(userInfo)
             };

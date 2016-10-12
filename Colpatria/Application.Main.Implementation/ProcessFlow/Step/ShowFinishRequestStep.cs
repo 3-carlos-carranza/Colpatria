@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Main.Definition.Enumerations;
+
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 
@@ -11,29 +11,41 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.Entities.WsMotor;
 using Core.GlobalRepository.SQL.User;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowFinishRequestStep : BaseStep, IShowFinishRequestStep
     {
-        private readonly IResponseRequestAppService _responseRequestAppService;
+        
         private readonly IUserRepository _userRepository;
 
-        public ShowFinishRequestStep(IProcessFlowStore store, IResponseRequestAppService responseRequestAppService, 
+        public ShowFinishRequestStep(IProcessFlowStore store, 
             IUserRepository userRepository)
             : base(store)
         {
-            _responseRequestAppService = responseRequestAppService;
             _userRepository = userRepository;
         }
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             //Obtener respuesta de WsMotor
-            var responseWsMotor = _responseRequestAppService.GetResponse();
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
+            var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
+
+            switch (data.ScoresMotor.ScoreMotor.Classification)
+            {
+                case "A":
+                    userInfo.ClassificationWsMotor = "Aprobado";
+                    break;
+                case "R":
+                    userInfo.ClassificationWsMotor = "Rechazado";
+                    break;
+            }
 
             var step = (StepDetail) GetCurrentStep(argument);
             if (!argument.IsSubmitting)
@@ -42,7 +54,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 {
                     Name = userInfo.Names,
                     UserInfoDto = userInfo,
-                    MessageClassification = responseWsMotor.MessageClassification,
                     Execution = argument.Execution,
                     Action = step.Action,
                     ActionMethod = step.ActionMethod,

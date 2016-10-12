@@ -1,4 +1,4 @@
-﻿@using Presentation.Web.Colpatria.Enumerations
+﻿@using Core.Entities.Enumerations
 @model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 @{
     ViewBag.Title = "Resumen de datos";
@@ -41,7 +41,7 @@
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
             <p class="bolds">
-                <strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ResponseWsMotor</span></p>
+                <strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</span></p>
 
             <div class="col-xs-12 col-sm-7 paddnov">
                 <div class="table-responsive">

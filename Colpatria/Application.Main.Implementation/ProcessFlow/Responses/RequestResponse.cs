@@ -1,4 +1,4 @@
-﻿using Application.Main.Definition.Enumerations;
+﻿
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;
@@ -18,7 +18,6 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
         public string Action { get; set; }
         public string Controller { get; set; }
         public ShowScreenType ShowScreenType => ShowScreenType.ShowForm;
-        public MessageClassification MessageClassification { get; set; }
         public UserInfoDto UserInfoDto { get; set; }
         
     }

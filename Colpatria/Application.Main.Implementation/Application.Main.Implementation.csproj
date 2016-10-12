@@ -120,7 +120,6 @@
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
     <Compile Include="ProcessFlow\Services\MailAppService.cs" />
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
-    <Compile Include="ProcessFlow\Services\ResponseRequestAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Services\WsMotorAppService.cs" />
     <Compile Include="ProcessFlow\Step\ErrorEvidenteStep.cs" />

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Core.Entities.Enumerations;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
@@ -14,7 +15,6 @@ using Crosscutting.Common;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Presentation.Web.Colpatria.Enumerations;
 using Presentation.Web.Colpatria.Models;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -47,6 +47,7 @@ namespace Presentation.Web.Colpatria.Controllers
             });
         }
 
+        [SessionExpire]
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
@@ -111,11 +112,13 @@ namespace Presentation.Web.Colpatria.Controllers
             return stepresult;
         }
 
+        [SessionExpire]
         public ActionResult TermsAndConditions()
         {
             return View();
         }
 
+        [SessionExpire]
         public async Task<ActionResult> RequestAproved()
         {
             MockSubmitInitSetFormArguments();
@@ -124,6 +127,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        [SessionExpire]
         public async Task<ActionResult> FinalSummary()
         {
             MockSubmitInitSetFormArguments();
@@ -132,6 +136,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        [SessionExpire]
         public ActionResult EmailRequest()
         {
             return View();
@@ -145,6 +150,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        [SessionExpire]
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {

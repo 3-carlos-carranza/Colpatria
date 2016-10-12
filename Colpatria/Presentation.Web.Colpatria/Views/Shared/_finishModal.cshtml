@@ -1,4 +1,5 @@
-﻿@model Core.DataTransferObject.Vib.UserInfoDto
+﻿@using Core.Entities.Enumerations
+@model Core.DataTransferObject.Vib.UserInfoDto
 <div class="container">
 
     <!-- Modal -->
@@ -13,7 +14,16 @@
                     <h6>Número de Solicitud: <span>@Model.SimpleId</span></h6>
                 </div>
                 <div class="modal-body aprovedd">
-                    <p><span class="red">Colpatria</span> te infoma que  has finalizado el proceso de solicitud de “Tu Cuenta Cero”,  <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“@Model.Email”</span>.</p>
+                    <p><span class="red">Colpatria</span> te infoma que has finalizado el proceso de solicitud de
+                        @if ((ProductType)Session["Product"] == ProductType.Ca)
+                        {
+                            <span>“Tu Cuenta Cero”,</span>
+                        }
+                        else
+                        {
+                            <span>“Tu Tarjeta de Crédito”,</span>
+                        }
+                        <strong>hemos enviado copia de la información al correo electrónico registrado</strong> <span>“@Model.Email”</span>.</p>
                     <p><strong>A continuación puedes  dar clic al botón rojo para volver.</strong></p>
                 </div>
                 <div class="modal-footer">

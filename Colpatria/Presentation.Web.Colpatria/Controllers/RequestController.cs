@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Core.Entities.Enumerations;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
@@ -14,7 +15,6 @@ using Crosscutting.Common;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Presentation.Web.Colpatria.Enumerations;
 using Presentation.Web.Colpatria.Models;
 
 namespace Presentation.Web.Colpatria.Controllers

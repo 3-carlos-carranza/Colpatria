@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\ProductType.cs" />
     <Compile Include="Evidente\AnswerRequest.cs" />
     <Compile Include="Evidente\AnswerResponse.cs" />
     <Compile Include="Evidente\AnswerSettings.cs" />
@@ -128,6 +129,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Crosscutting.Common.Tools\Crosscutting.Common.Tools.csproj">
+      <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
+      <Name>Crosscutting.Common.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Crosscutting.Common\Crosscutting.Common.csproj">
       <Project>{31541f2d-b903-4c21-ae5f-116633fd9e65}</Project>
       <Name>Crosscutting.Common</Name>

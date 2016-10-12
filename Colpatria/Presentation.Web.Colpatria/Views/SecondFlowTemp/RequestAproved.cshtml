@@ -20,14 +20,16 @@
     <div class="conts">
         <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName
         </p>
-        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
+        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>
+                @Model.UserInfoDto.ClassificationWsMotor.ToUpper()
+            </strong>
         </p>
         <div class="contents aproved">
             <p>Bogotá,  @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
             <p>Señor(a) @Model.UserInfoDto.FullName</p>
             <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
             <p>Con respecto a tu solicitud Nº <span>@Model.UserInfoDto.SimpleId</span> realizada el día <span>@Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</span> y después de la revisión y evaluación de nuestras
-            politicas internas de riesgo crediticio para el producto, nos permitimos que tu solicitud ha sido...<span>@Model.UserInfoDto.ResponseWsMotor</span></p>
+            politicas internas de riesgo crediticio para el producto, nos permitimos que tu solicitud ha sido <span>@Model.UserInfoDto.ClassificationWsMotor</span></p>
 
             <p><strong>Si tu solicitud HA SIDO APROBADA</strong>
             </p>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Entities.Enumerations;
 using Crosscutting.Common.Tools.DataType;
 
 namespace Core.DataTransferObject.Vib
@@ -31,6 +32,7 @@ namespace Core.DataTransferObject.Vib
         public string ExtractMail { get; set; }
         public string MoreInformation { get; set; }
         public string ResponseWsMotor { get; set; }
+        public string ClassificationWsMotor { get; set; }
         public string Product { get; set; }
     }
 }

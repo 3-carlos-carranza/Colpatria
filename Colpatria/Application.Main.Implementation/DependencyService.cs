@@ -45,7 +45,7 @@ namespace Application.Main.Implementation
             container.RegisterType<IMailAppService, MailAppService>();
             container.RegisterType<IEmailNotificatorService, MailService>();
             
-            container.RegisterType<IResponseRequestAppService, ResponseRequestAppService>();
+            
             container.RegisterType<IDynamicAppService, DynamicAppService>();
             container.RegisterType<ISubmitFormArgument, ProcessFlowArgument>();
             container.RegisterType<IAnswerQuestionArgument, ProcessFlowArgument>();

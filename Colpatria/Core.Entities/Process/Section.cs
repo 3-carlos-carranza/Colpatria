@@ -22,21 +22,6 @@ namespace Core.Entities.Process
             this.FieldInSection = new HashSet<FieldInSection>();
             this.StepSection = new HashSet<StepSection>();
         }
-    
-        public int Id { get; set; }
-        public int PageId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Order { get; set; }
-        public string NameAlias { get; set; }
-        public bool? ReadOnly { get; set; }
-        public int Type { get; set; }
-        public bool IsVisible { get; set; }
-        public bool Enable { get; set; }
-        public string ActionMethod { get; set; }
-        public string Action { get; set; }
-        public string Controller { get; set; }
-    
         public virtual ICollection<Execution> Execution { get; set; }
         public virtual ICollection<FieldInSection> FieldInSection { get; set; }
         public virtual Page Page { get; set; }

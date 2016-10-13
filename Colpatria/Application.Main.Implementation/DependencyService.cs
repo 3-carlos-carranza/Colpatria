@@ -38,7 +38,6 @@ namespace Application.Main.Implementation
         public static void InitializeAppService(this IUnityContainer container)
         {
             container.RegisterType<IUserAppService, UserAppService>();
-            container.RegisterType<ILoggingAppService, LoggingAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
             container.RegisterType<IInalambriaAppService, InalambriaAppService>();
             container.RegisterType<IWsMotorAppService, WsMotorAppService>();

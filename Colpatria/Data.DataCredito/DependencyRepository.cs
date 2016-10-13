@@ -4,7 +4,7 @@ using Microsoft.Practices.Unity;
 
 namespace Data.DataCredito
 {
-    public static class MongoDependencyRepository
+    public static class DependencyRepository
     {
         public static void InitializeDataCreditoRepository(this IUnityContainer container)
         {

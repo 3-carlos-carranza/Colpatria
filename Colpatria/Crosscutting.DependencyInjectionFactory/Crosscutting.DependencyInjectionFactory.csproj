@@ -84,10 +84,6 @@
       <Project>{7620ad17-bf0c-4fb7-b844-b2bd39bfb59c}</Project>
       <Name>Data.Inalambria</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data.MongoModule\Data.MongoModule.csproj">
-      <Project>{B971EC7F-4A5D-49C1-9150-2322B59E0E2E}</Project>
-      <Name>Data.MongoModule</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataAccess.ProcessModule\DataAccess.ProcessModule.csproj">
       <Project>{D9B47516-620A-433E-8F0E-E294B3B17386}</Project>
       <Name>DataAccess.ProcessModule</Name>

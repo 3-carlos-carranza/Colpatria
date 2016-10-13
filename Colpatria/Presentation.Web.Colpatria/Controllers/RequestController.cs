@@ -52,7 +52,7 @@ namespace Presentation.Web.Colpatria.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
         {
-            var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
+            var fields =collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
             
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
             var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);

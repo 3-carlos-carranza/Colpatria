@@ -6,7 +6,7 @@ namespace Core.DataTransferObject.Vib
     public class ExecutionArgument
     {
         public bool AutoAdvance { get; set; }
-        public List<FieldValueOrder> Collection { get; set; }
+        public IEnumerable<FieldValueOrder> Collection { get; set; }
         public string UserName { get; set; }
         public int? SectionId { get; set; }
         public int? PageId { get; set; }

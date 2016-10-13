@@ -158,7 +158,7 @@ namespace Presentation.Web.Colpatria.Controllers
             arg.AnswerRequest = answer;
             ProcessFlowArgument = arg;
         }
-        public void InitSetFormArguments(List<FieldValueOrder> form)
+        public void InitSetFormArguments(IList<FieldValueOrder> form)
         {
             if (BaseProductType == 0)
             {

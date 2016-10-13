@@ -6,7 +6,7 @@ namespace Core.Entities.WsMotor
     {
         private string _identification;
         private string _lastName;
-        private List<Parameter> _paramsRequest;
+        private IList<Parameter> _paramsRequest;
         private string _typeIdentification;
         private string _user;
         private long _executionId;
@@ -54,7 +54,7 @@ namespace Core.Entities.WsMotor
             _typeIdentification = item;
             return this;
         }
-        public WsMotorRequestSettingsBuilder WithParamsRequest(List<Parameter> item)
+        public WsMotorRequestSettingsBuilder WithParamsRequest(IList<Parameter> item)
         {
             _paramsRequest = item;
             return this;

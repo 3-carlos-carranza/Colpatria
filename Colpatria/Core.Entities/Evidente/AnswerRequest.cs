@@ -7,7 +7,7 @@ namespace Core.Entities.Evidente
     public class AnswerRequest
     {
         [XmlElement("Respuesta")]
-        public List<SelectAnswer> Answers { get; set; }
+        public IEnumerable<SelectAnswer> Answers { get; set; }
         [XmlElement("Identificacion")]
         public Identification Identification { get; set; }
         [XmlAttribute("idCuestionario")]

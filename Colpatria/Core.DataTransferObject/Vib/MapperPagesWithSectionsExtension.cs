@@ -6,7 +6,7 @@ namespace Core.DataTransferObject.Vib
 {
     public static class MapperPagesWithSectionsExtension
     {
-        public static IEnumerable<Page> Map(this List<MapperPagesWithSections> rows)
+        public static IEnumerable<Page> Map(this IEnumerable<MapperPagesWithSections> rows)
         {
             var list = new List<Page>();
 

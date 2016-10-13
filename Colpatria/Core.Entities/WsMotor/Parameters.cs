@@ -7,6 +7,6 @@ namespace Core.Entities.WsMotor
     public class Parameters
     {
         [XmlElement(ElementName = "Parametro")]
-        public List<Parameter> Parameter { get; set; }
+        public IList<Parameter> Parameter { get; set; }
     }
 }

@@ -22,6 +22,6 @@ namespace Core.Entities.Evidente
         public int Weight { get; set; }
 
         [XmlElement(ElementName = "Respuesta")]
-        public List<OptionsAnswer> Answers { get; set; }
+        public IEnumerable<OptionsAnswer> Answers { get; set; }
     }
 }

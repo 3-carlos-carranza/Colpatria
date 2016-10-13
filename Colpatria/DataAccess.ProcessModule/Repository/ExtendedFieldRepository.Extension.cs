@@ -11,7 +11,7 @@ namespace DataAccess.ProcessModule.Repository
 {
     partial class ExtendedFieldRepository
     {
-        public void SetFields(List<FieldValueOrder> collection, long requestid)
+        public void SetFields(IEnumerable<FieldValueOrder> collection, long requestid)
         {
             var context = UnitOfWork as DbContext;
 

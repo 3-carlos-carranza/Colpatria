@@ -26,7 +26,7 @@ namespace Crosscutting.Common.Tools.Web
             }
         }
 
-        public static List<FieldValueOrder> ToFieldValueOrder(this FormCollection collection)
+        public static IList<FieldValueOrder> ToFieldValueOrder(this FormCollection collection)
         {
             var list = new List<FieldValueOrder>();
             var counter = 0;
@@ -90,7 +90,7 @@ namespace Crosscutting.Common.Tools.Web
             return list;
         }
 
-        public static List<FieldValueOrder> ToFieldValueOrder(this HttpFileCollectionBase files)
+        public static IReadOnlyCollection<FieldValueOrder> ToFieldValueOrder(this HttpFileCollectionBase files)
         {
             var list = new List<FieldValueOrder>();
             var counter = 0;
@@ -155,7 +155,7 @@ namespace Crosscutting.Common.Tools.Web
             return collection.AllKeys.ToDictionary(k => k, k => collection[k].Split(',')[0]);
         }
 
-        public static List<FieldValueOrder> RemoveEmptyFields(this List<FieldValueOrder> collection)
+        public static IList<FieldValueOrder> RemoveEmptyFields(this IEnumerable<FieldValueOrder> collection)
         {
             return collection.Where(s => s.Key != "" && !string.IsNullOrEmpty(s.Key)).ToList();
         }

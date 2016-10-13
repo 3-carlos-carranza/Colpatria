@@ -7,6 +7,6 @@ namespace Core.Entities.WsMotor
     public class CustomResponse
     {
         [XmlElement(ElementName = "Respuesta")]
-        public List<Response> Response { get; set; }
+        public IEnumerable<Response> Response { get; set; }
     }
 }

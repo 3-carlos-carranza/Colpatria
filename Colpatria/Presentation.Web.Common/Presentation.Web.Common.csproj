@@ -71,7 +71,7 @@
       <Name>Application.Main.Definition</Name>
     </ProjectReference>
     <ProjectReference Include="..\Application.Main.Implementation\Application.Main.Implementation.csproj">
-      <Project>{5BE9AA00-1437-4C9B-B79D-F817D765E5AD}</Project>
+      <Project>{5be9aa00-1437-4c9b-b79d-f817d765e5ad}</Project>
       <Name>Application.Main.Implementation</Name>
     </ProjectReference>
   </ItemGroup>

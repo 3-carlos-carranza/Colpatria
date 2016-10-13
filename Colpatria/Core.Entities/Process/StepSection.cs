@@ -25,8 +25,8 @@ namespace Core.Entities.Process
         public new int StepId { get; set; }
         public new int SectionId { get; set; }
 
-        public new Section Section { get; set; }
+        public Section Section { get; set; }
 
-        public new Step Step { get; set; }
+        public Step Step { get; set; }
     }
 }

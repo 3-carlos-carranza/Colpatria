@@ -16,7 +16,6 @@
 using Application.Main.Implementation;
 using Data.DataCredito;
 using Data.Inalambria;
-using Data.MongoModule;
 using DataAccess.ProcessModule;
 using DataAccess.UserModule;
 using Microsoft.Practices.Unity;
@@ -31,7 +30,6 @@ namespace Crosscutting.DependencyInjectionFactory
         {
             container.InitializeProcessRepository();
             container.InitializeUserRepository();
-            container.InitializeMongoRepository();
             container.InitializeAppService();
             container.InitializeDataCreditoRepository();
             container.InitializeDataInalambriaRepository();

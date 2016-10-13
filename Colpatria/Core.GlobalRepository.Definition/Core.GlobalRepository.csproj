@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\.codeAnalysis\Banlinea.Veb.Colpatria.All.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,15 +33,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Process.Flow.Model.2.2.7\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="MongoRepository.Net45">
-      <HintPath>..\packages\MongoRepository.1.6.11\lib\net45\MongoRepository.Net45.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,7 +53,6 @@
     <Compile Include="Evidente\IEvidenteRepository.cs" />
     <Compile Include="Inalambria\IInalambriaAuthRepository.cs" />
     <Compile Include="Inalambria\IInalambriaRepository.cs" />
-    <Compile Include="Mongo\IColpatriaLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\Process\IExecutionApplicantRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>

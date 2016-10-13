@@ -11,7 +11,8 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
-using Core.Entities.Enumerations;
+using Core.Entities.WsMotor;
+using Newtonsoft.Json;
 using Xipton.Razor;
 
 
@@ -33,6 +34,14 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+            var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
+            switch (data.ScoresMotor.ScoreMotor.Classification)
+            {
+                case "A": userInfo.ClassificationWsMotor = "Aprobado";
+                    break;
+                case "R": userInfo.ClassificationWsMotor = "Rechazado";
+                    break;
+            }
 
             var email = new EmailMessage()
             {

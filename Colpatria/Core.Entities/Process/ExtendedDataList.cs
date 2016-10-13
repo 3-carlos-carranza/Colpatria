@@ -10,8 +10,7 @@
 namespace Core.Entities.Process
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class ExtendedDataList
     {
         public int Id { get; set; }

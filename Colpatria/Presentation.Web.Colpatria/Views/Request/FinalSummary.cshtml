@@ -124,10 +124,10 @@
     <p class="desc-step">
         <span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
     <p class="bolds paddno paddnov">
-        Tu Solicitud fue: <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
+        Tu Solicitud fue: <strong>@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</strong>
     </p>
     <div class="contents aproved">
-        <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToShortDateString()</p>
+        <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
         <p>Señor(a) @Model.UserInfoDto.Names</p>
 
         @if ((ProductType) Session["Product"] == ProductType.Ca)
@@ -139,7 +139,7 @@
             <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
         }
         <p>
-            Solicitud <strong>@Model.UserInfoDto.ResponseWsMotor</strong>
+            Solicitud <strong>@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</strong>
         </p>
         <p>
             Si tu solicitud ha sido <strong>APROBADA,</strong> dentro de las próximas 36 horas te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta Debito en tu domicilio y así finalizar el trámite de la legalización de tu cuenta. Recuerda tener a la mano el original de tu documento de identidad y una copia del mismo ampliado al 150%.

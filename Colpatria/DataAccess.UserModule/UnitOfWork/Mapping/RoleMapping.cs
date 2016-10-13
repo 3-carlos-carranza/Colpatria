@@ -7,14 +7,10 @@
 
 
 using System.Data.Entity.ModelConfiguration;
-using System.Runtime.Serialization;
-using Core.Entities;
 
 namespace DataAccess.UserModule.UnitOfWork.Mapping
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class RoleMapping:EntityTypeConfiguration<Core.Entities.User.Role>
     {
         

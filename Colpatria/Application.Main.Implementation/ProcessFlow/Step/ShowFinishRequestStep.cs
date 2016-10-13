@@ -3,8 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -14,7 +12,6 @@ using Core.DataTransferObject.Vib;
 using Core.Entities.WsMotor;
 using Core.GlobalRepository.SQL.User;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -36,14 +33,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //Obtener respuesta de WsMotor
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-
             switch (data.ScoresMotor.ScoreMotor.Classification)
             {
-                case "A":
-                    userInfo.ClassificationWsMotor = "Aprobado";
+                case "A":userInfo.ClassificationWsMotor = "Aprobada";
                     break;
-                case "R":
-                    userInfo.ClassificationWsMotor = "Rechazado";
+                case "R":userInfo.ClassificationWsMotor = "Rechazado";
                     break;
             }
 

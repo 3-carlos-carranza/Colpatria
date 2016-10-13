@@ -13,7 +13,9 @@
             <p>Respuesta de Solicitud</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
-            <a href="#"><img src="~/Images/Content/imprimir.png" alt="Alternate Text"/></a>
+            <a href="#">
+                <img src="~/Images/Content/imprimir.png" alt="Alternate Text" onclick="PrintElement($('#respuesta-solicitud-summary'))" />
+            </a>
         </div>
         <div style="clear: both"></div>
     </div>
@@ -63,13 +65,11 @@
         </div>
         <div class="botons">
             <div class="col-xs-12 col-sm-6 print">
-                <a href="#" class="btn btn-default pull-right prtn"><img src="~/Images/Content/imprim.png" alt="Alternate Text"/></a>
+                <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud-summary'))">
+                    <img src="~/Images/Content/imprim.png" alt="Alternate Text" />
+                </a>
             </div>
             <div class="col-xs-12 col-sm-6 print">
-                <!-- Trigger the modal with a button -->
-                @*<button class="btn btn-danger enviar acepto" id="BtnTarjeta">
-                    Enviar <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                </button>*@
                 <button class="btn btn-danger enviar acepto" id="myBtn">
                     Enviar <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                 </button>
@@ -79,5 +79,56 @@
     </div>
 </div>
 
+
+
+@*Impresion de la respuesta*@
+<div class="conts" id="respuesta-solicitud-summary" hidden="hidden">
+    <p class="desc-step">
+        <span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName
+    </p>
+    <p class="bolds paddno paddnov">
+        Tu Solicitud fue: <strong>
+            @Model.UserInfoDto.ClassificationWsMotor.ToUpper()
+        </strong>
+    </p>
+    <div class="contents aproved">
+        <p>Bogotá,  @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
+        <p>Señor(a) @Model.UserInfoDto.FullName</p>
+        <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
+        <p>
+            Con respecto a tu solicitud Nº <span>@Model.UserInfoDto.SimpleId</span> realizada el día <span>@Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</span> y después de la revisión y evaluación de nuestras
+            politicas internas de riesgo crediticio para el producto, nos permitimos que tu solicitud ha sido <span>@Model.UserInfoDto.ClassificationWsMotor</span>
+        </p>
+
+        <p>
+            <strong>Si tu solicitud HA SIDO APROBADA</strong>
+        </p>
+        <p>En un plazo no mayor a cinco (5) días hábiles, uno de nuestros ejecutivos se pondrá en contacto telefónico contigo para acordar la cita y la recolección de documentos necesarios para la entrega de tu Tarjeta de Crédito Colpatria.</p>
+        <p>* Recuerda que esta es una Pre-Aprobación del producto, la aprobación definitiva está sujera a validaciones internas de nuestra entidad.</p>
+
+
+        <p>
+            <strong>Si tu solicitud HA SIDO NEGADA</strong>
+        </p>
+        <p>Agradecemos la preferencia y tu interés por los productos del Banco y esperamos poder servirte en una próxima oportunidad.</p>
+        <p>
+            Si lo deseas podrás realizar una nueva solicitud, cumplidos 6 meses de esta comunicación, tiempo en el cual el <span>Banco Colpatria</span> estará dispuesto a revisar y evaluar nuevamente tu petición
+        </p>
+
+
+        <div class="info">
+            <div class="col-xs-12 col-sm-8 desc-info">
+
+            </div>
+            <div class="col-xs-12 col-sm-4 info-log">
+                <div class="logo-info">
+                    <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
 
 @{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }

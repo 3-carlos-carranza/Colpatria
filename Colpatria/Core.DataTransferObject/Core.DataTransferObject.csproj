@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\.codeAnalysis\Banlinea.Veb.Colpatria.All.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Process.Flow.Model.2.2.7\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

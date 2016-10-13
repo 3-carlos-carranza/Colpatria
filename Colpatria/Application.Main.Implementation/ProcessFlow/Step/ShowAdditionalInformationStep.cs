@@ -22,6 +22,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+
             TraceFlow(argument);
             if (!argument.IsSubmitting)
             {

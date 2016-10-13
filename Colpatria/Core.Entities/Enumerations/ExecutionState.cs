@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.Entities.Enumerations
+﻿namespace Core.Entities.Enumerations
 {
     public enum ExecutionState
     {

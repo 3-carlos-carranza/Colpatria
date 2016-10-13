@@ -5,7 +5,6 @@
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Model;

@@ -1321,12 +1321,12 @@
       <Project>{31541F2D-B903-4C21-AE5F-116633FD9E65}</Project>
       <Name>Crosscutting.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Crusscutting.DependencyInjectionFactory\Crosscutting.DependencyInjectionFactory.csproj">
-      <Project>{DC094F7C-1264-420E-9B4E-A2B83A63AD48}</Project>
+    <ProjectReference Include="..\Crosscutting.DependencyInjectionFactory\Crosscutting.DependencyInjectionFactory.csproj">
+      <Project>{dc094f7c-1264-420e-9b4e-a2b83a63ad48}</Project>
       <Name>Crosscutting.DependencyInjectionFactory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Crusscutting.Mappers\Crosscutting.Mappers.csproj">
-      <Project>{09B7B936-6FED-4935-A682-24FD1D0F132B}</Project>
+    <ProjectReference Include="..\Crosscutting.Mappers\Crosscutting.Mappers.csproj">
+      <Project>{09b7b936-6fed-4935-a682-24fd1d0f132b}</Project>
       <Name>Crosscutting.Mappers</Name>
     </ProjectReference>
   </ItemGroup>

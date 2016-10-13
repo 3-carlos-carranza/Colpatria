@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -35,25 +36,14 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            switch (data.ScoresMotor.ScoreMotor.Classification)
-            {
-                case "A": userInfo.ClassificationWsMotor = "Aprobado";
-                    break;
-                case "R": userInfo.ClassificationWsMotor = "Rechazado";
-                    break;
-            }
+            IDictionary<string, string> classification = new Dictionary<string, string>() { };
+            classification.Add("A", "Aprobada");
+            classification.Add("R", "Rechazada");
 
-            var email = new EmailMessage()
-            {
-                Subject = userInfo.Product == "1" ? "Solicitud Tarjeta de Crédito Colpatria" : "Solicitud cuenta de ahorros Colpatria",
-                To = EmailAddress(userInfo),
-                Sender = new EmailAddress("Colpatria", "oficinavirtual@colpatria.com")
-                {
-                    Name = "Colpatria",
-                    Address = "oficinavirtual@colpatria.com"
-                },
-                Body = TemplateResponseRequest(userInfo)
-            };
+            userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
+            TraceFlow(argument);
+
+            var email = EmailMessage(userInfo);
 
             TraceFlow(argument);
             for (var i = 0; i < 2; i++)
@@ -63,6 +53,23 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             }
 
             return await OnSuccess(argument).Result.Advance(argument);
+        }
+
+        private EmailMessage EmailMessage(UserInfoDto userInfo)
+        {
+            var email = new EmailMessage()
+            {
+                Subject =
+                    userInfo.Product == "1" ? "Solicitud Tarjeta de Crédito Colpatria" : "Solicitud cuenta de ahorros Colpatria",
+                To = EmailAddress(userInfo),
+                Sender = new EmailAddress("Colpatria", ConfigurationManager.AppSettings["From"])
+                {
+                    Name = "Colpatria",
+                    Address = ConfigurationManager.AppSettings["From"]
+                },
+                Body = TemplateResponseRequest(userInfo)
+            };
+            return email;
         }
 
         private static List<EmailAddress> EmailAddress(UserInfoDto userInfo)

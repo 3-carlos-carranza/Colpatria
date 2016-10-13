@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,14 +34,13 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             //Obtener respuesta de WsMotor
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            switch (data.ScoresMotor.ScoreMotor.Classification)
-            {
-                case "A":userInfo.ClassificationWsMotor = "Aprobada";
-                    break;
-                case "R":userInfo.ClassificationWsMotor = "Rechazado";
-                    break;
-            }
 
+            IDictionary<string, string> classification = new Dictionary<string, string>() {};
+            classification.Add("A","Aprobada");
+            classification.Add("R", "Rechazada");
+
+            userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
+            TraceFlow(argument);
             var step = (StepDetail) GetCurrentStep(argument);
             if (!argument.IsSubmitting)
             {

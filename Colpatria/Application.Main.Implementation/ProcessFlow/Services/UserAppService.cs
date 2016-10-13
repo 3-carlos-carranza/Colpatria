@@ -84,7 +84,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                   .ToList();
 
             var user = new User();
-            ObjectExtension<User>.MapDictinaryToObject(user, fieldValueTypes);
+            ObjectExtension.MapDictinaryToObject(user, fieldValueTypes);
 
             return Task.FromResult(user);
         }

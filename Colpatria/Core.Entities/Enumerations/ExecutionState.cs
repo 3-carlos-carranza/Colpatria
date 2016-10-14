@@ -2,6 +2,7 @@
 {
     public enum ExecutionState
     {
+        None = 0,
         Processing = 1,
         Returned = 2,
         PendingProcessing = 3,

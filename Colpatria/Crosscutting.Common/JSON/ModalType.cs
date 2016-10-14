@@ -2,7 +2,8 @@
 {
     public enum ModalType
     {
-        Boostrap=1,
-        Kendo=2
+        None = 0,
+        Boostrap = 1,
+        Kendo = 2
     }
 }

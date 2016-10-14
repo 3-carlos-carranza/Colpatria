@@ -62,7 +62,6 @@ namespace Presentation.Web.Colpatria.Controllers
 
 
         [AllowAnonymous]
-     
         public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);

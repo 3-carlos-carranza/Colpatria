@@ -16,6 +16,7 @@ using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Presentation.Web.Colpatria.Models;
+using static System.String;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -28,17 +29,22 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             _userAppService = userAppService;
         }
-
-        [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(string productType = "")
+        public ActionResult Index()
         {
-            
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ValidateProduct(string productType = "")
+        {
+            if (IsNullOrEmpty(productType)) return View("Index");
+            if (productType == null) throw new ArgumentNullException(nameof(productType));
             if (productType == "") return View();
             if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
                   productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
             {
-                return RedirectToAction("NotFound","Messages");
+                return RedirectToAction("NotFound", "Messages");
             }
             Session["Product"] = (ProductType)(Convert.ToInt32(productType));
             return View("Register", new UserViewModel

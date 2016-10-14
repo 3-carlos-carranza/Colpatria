@@ -11,6 +11,8 @@ namespace Core.DataTransferObject.WebServiceConsultation
         [StringValue("Evidente Validate User")]
         Validate = 3,
         [StringValue("Ws Motor Validate User")]
-        WsMotorValidate = 4
+        WsMotorValidate = 4,
+        [StringValue("Inalambria SMS")]
+        SendSms = 5
     }
 }

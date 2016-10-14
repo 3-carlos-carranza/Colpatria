@@ -48,7 +48,7 @@
                             transport: {
                                 read: {
                                     url: this.$element.data("source"),
-                                    type: "POST",
+                                    type: "GET",
                                     data: function (e) {
                                         if ($element.data("cascadefrom") != undefined) {
                                             return { value: $("#" + $element.data("cascadefrom")).val() };
@@ -136,7 +136,7 @@
                             transport: {
                                 read: {
                                     url: XGeneral.path + this.$element.data("url"),
-                                    type: "POST",
+                                    type: "GET",
                                     data: function (e) {
                                         var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")) };
                                         if ($element.data("cascadefrom") != undefined) {
@@ -233,7 +233,7 @@
                             transport: {
                                 read: {
                                     url: XGeneral.path + this.$element.data("url"),
-                                    type: "POST",
+                                    type: "GET",
                                     data: function (e) {
                                         var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#" + $element.attr("name") + "-list > span > input").val()) };
                                         if ($element.data("cascadefrom") != undefined) {

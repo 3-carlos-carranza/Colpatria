@@ -36,9 +36,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            IDictionary<string, string> classification = new Dictionary<string, string>() { };
-            classification.Add("A", "Aprobada");
-            classification.Add("R", "Rechazada");
+            IDictionary<string, string> classification = new Dictionary<string, string>
+            {
+                {"A", "Aprobada"},
+                {"R", "Rechazada"}
+            };
 
             userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
             TraceFlow(argument);

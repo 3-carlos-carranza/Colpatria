@@ -1,4 +1,4 @@
-﻿namespace Crosscutting.Common.Tools
+﻿namespace Crosscutting.Common.Tools.Contracts
 {
     public class FieldValueType
     {

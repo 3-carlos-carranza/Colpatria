@@ -102,11 +102,10 @@
     <Compile Include="DataType\MappingToItemListValue.cs" />
     <Compile Include="DataType\StringValue.cs" />
     <Compile Include="DataType\ToolExtension.cs" />
-    <Compile Include="FieldValueType.cs" />
-    <Compile Include="JsonNetResult.cs" />
-    <Compile Include="DataType\ObjectExtension.cs" />
+    <Compile Include="Contracts\FieldValueType.cs" />
+    <Compile Include="Web\JsonNetResult.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtension.cs" />
     <Compile Include="Web\WebExtension.cs" />
     <Compile Include="XmlUtilities\XmlProcessor.cs" />
   </ItemGroup>

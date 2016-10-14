@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Text;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 
-namespace Crosscutting.Common.Tools
+namespace Crosscutting.Common.Tools.Web
 {
     public class JsonNetResult : JsonResult
     {
@@ -21,9 +21,8 @@ namespace Crosscutting.Common.Tools
         public new string ContentType { get; set; }
         public new object Data { get; set; }
 
-        public JsonSerializerSettings SerializerSettings { get; set; }
         public Formatting Formatting { get; set; }
-
+        public JsonSerializerSettings SerializerSettings { get; set; }
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)
@@ -38,15 +37,13 @@ namespace Crosscutting.Common.Tools
             if (ContentEncoding != null)
                 response.ContentEncoding = ContentEncoding;
 
-            if (Data != null)
-            {
-                var writer = new JsonTextWriter(response.Output) { Formatting = Formatting };
-                var serializer = JsonSerializer.Create(SerializerSettings);
-                serializer.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
-                serializer.Serialize(writer, Data);
+            if (Data == null) return;
+            var writer = new JsonTextWriter(response.Output) { Formatting = Formatting };
+            var serializer = JsonSerializer.Create(SerializerSettings);
+            serializer.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+            serializer.Serialize(writer, Data);
 
-                writer.Flush();
-            }
+            writer.Flush();
         }
     }
 }

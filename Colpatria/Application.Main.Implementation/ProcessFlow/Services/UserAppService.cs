@@ -1,16 +1,17 @@
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Core.GlobalRepository.SQL.Process;
 using Core.GlobalRepository.SQL.User;
-using Crosscutting.Common.Tools;
+using Crosscutting.Common.Tools.Contracts;
 using Crosscutting.Common.Tools.DataType;
+using Crosscutting.Common.Tools.Extensions;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
@@ -19,7 +20,8 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         private readonly IExtendedFieldRepository _extendedFieldRepository;
         private readonly IUserRepository _userRepository;
         private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
-        public UserAppService(IUserRepository userRepository, 
+
+        public UserAppService(IUserRepository userRepository,
             IFieldToCreateUserRepository fieldToCreateUserRepository,
             IExtendedFieldRepository extendedFieldRepository) : base(userRepository)
         {
@@ -84,7 +86,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                   .ToList();
 
             var user = new User();
-            ObjectExtension.MapDictinaryToObject(user, fieldValueTypes);
+            ObjectExtensions.MapDictionaryToObject(user, fieldValueTypes);
 
             return Task.FromResult(user);
         }

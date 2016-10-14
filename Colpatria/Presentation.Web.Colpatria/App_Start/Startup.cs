@@ -18,6 +18,7 @@ namespace Presentation.Web.Colpatria
                 });
 
             AutomapperMaps.Initialize();
+
         }
 
     }

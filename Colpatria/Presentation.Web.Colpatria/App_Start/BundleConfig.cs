@@ -1,4 +1,5 @@
-﻿using System.Web.Optimization;
+﻿
+using System.Web.Optimization;
 
 namespace Presentation.Web.Colpatria
 {

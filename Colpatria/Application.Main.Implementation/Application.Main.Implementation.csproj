@@ -50,17 +50,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts">
+      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Banlinea.ProcessFlow.Engine">
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
     </Reference>
-    <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Banlinea.ProcessFlow.Model">
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -71,8 +68,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
@@ -90,7 +87,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorMachine.2.6.1\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\packages\RazorMachine.2.6.1\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -100,7 +97,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Xipton.Razor, Version=2.6.1.0, Culture=neutral, PublicKeyToken=563e02c711ac8b7e, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorMachine.2.6.1\lib\net40\Xipton.Razor.dll</HintPath>
+      <HintPath>..\..\packages\RazorMachine.2.6.1\lib\net40\Xipton.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

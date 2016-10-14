@@ -50,13 +50,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts">
+      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

@@ -1,8 +1,8 @@
 using System;
-using Crosscutting.DependencyInjectionFactory;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
-namespace Presentation.Web.Colpatria
+namespace Presentation.Web.Colpatria.App_Start
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -10,7 +10,7 @@ namespace Presentation.Web.Colpatria
     public class UnityConfig
     {
         #region Unity Container
-        private static readonly Lazy<IUnityContainer> Container = new Lazy<IUnityContainer>(() =>
+        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -22,7 +22,7 @@ namespace Presentation.Web.Colpatria
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return Container.Value;
+            return container.Value;
         }
         #endregion
 
@@ -36,7 +36,7 @@ namespace Presentation.Web.Colpatria
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.InitializeContainer();
+            // container.RegisterType<IProductRepository, ProductRepository>();
         }
     }
 }

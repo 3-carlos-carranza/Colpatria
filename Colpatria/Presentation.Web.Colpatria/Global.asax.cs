@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Crosscutting.Common.Tools.Web;
 using Crosscutting.Mappers;
 
 namespace Presentation.Web.Colpatria
@@ -12,7 +11,6 @@ namespace Presentation.Web.Colpatria
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            //GlobalFilters.Filters.Add(new SessionExpireAttribute());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

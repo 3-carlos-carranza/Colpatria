@@ -30,6 +30,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index(string productType = "")
         {
             
@@ -111,13 +112,11 @@ namespace Presentation.Web.Colpatria.Controllers
             return stepresult;
         }
 
-        [SessionExpire]
         public ActionResult TermsAndConditions()
         {
             return View();
         }
 
-        [SessionExpire]
         public async Task<ActionResult> RequestAproved()
         {
             MockSubmitInitSetFormArguments();
@@ -126,7 +125,6 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        [SessionExpire]
         public async Task<ActionResult> FinalSummary()
         {
             MockSubmitInitSetFormArguments();
@@ -135,7 +133,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        [SessionExpire]
+        
         public ActionResult EmailRequest()
         {
             return View();
@@ -149,7 +147,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        [SessionExpire]
+        
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {

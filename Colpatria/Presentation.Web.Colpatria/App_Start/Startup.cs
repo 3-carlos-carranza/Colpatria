@@ -13,7 +13,7 @@ namespace Presentation.Web.Colpatria
                 new CookieAuthenticationOptions
                 {
                     AuthenticationType = "ApplicationCookie",
-                    LoginPath = new PathString("/Request/Register"),
+                    LoginPath = new PathString("/Request/Index"),
                     CookieName = "colpatriaCkt"
                 });
 

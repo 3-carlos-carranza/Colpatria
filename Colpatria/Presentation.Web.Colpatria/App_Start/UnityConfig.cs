@@ -1,4 +1,5 @@
 using System;
+using Crosscutting.DependencyInjectionFactory;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 
@@ -36,7 +37,7 @@ namespace Presentation.Web.Colpatria.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            container.InitializeContainer();
         }
     }
 }

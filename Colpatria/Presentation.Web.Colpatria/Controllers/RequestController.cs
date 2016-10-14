@@ -47,7 +47,6 @@ namespace Presentation.Web.Colpatria.Controllers
             });
         }
 
-        [SessionExpire]
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)

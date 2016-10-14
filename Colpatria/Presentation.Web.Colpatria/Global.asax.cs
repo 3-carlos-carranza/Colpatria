@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Crosscutting.Common.Tools.Web;
 using Crosscutting.Mappers;
 
 namespace Presentation.Web.Colpatria

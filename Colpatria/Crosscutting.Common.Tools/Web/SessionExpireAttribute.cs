@@ -11,7 +11,7 @@ namespace Crosscutting.Common.Tools.Web
             // check  sessions here
             if (HttpContext.Current.Session["Product"] == null)
             {
-                filterContext.Result = new RedirectResult("~/Request/Index");
+                filterContext.Result = new RedirectResult("~/Request/Register");
                 return;
             }
             base.OnActionExecuting(filterContext);

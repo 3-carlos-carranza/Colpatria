@@ -16,7 +16,6 @@ using Core.Entities.WsMotor;
 using Newtonsoft.Json;
 using Xipton.Razor;
 
-
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SendRequestResponseStep : BaseStep, ISendRequestResponseStep
@@ -88,7 +87,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public string TemplateResponseRequest(UserInfoDto userInfoDto)

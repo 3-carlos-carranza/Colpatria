@@ -84,8 +84,7 @@ namespace Data.DataCredito
                     SecondLastName = settings.SecondLastName,
                     ExpeditionDate = new ExpeditionDate
                     {
-                        Timestamp = DateTimeExtension.ToTimestamp(settings
-                            .ExpeditionDate)
+                        Timestamp = settings.ExpeditionDate.ToTimestamp()
                     }
                 };
 

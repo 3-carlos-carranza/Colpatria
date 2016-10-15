@@ -8,6 +8,6 @@ namespace Core.Entities.Evidente
     public class ExpeditionDate
     {
         [XmlAttribute(AttributeName = "timestamp")]
-        public long Timestamp { get; set; } = DateTimeExtension.ToTimestamp(DateTime.UtcNow);
+        public long Timestamp { get; set; } = DateTime.UtcNow.ToTimestamp();
     }
 }

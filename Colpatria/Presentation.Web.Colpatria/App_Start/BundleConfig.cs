@@ -3,7 +3,7 @@ using System.Web.Optimization;
 
 namespace Presentation.Web.Colpatria
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {

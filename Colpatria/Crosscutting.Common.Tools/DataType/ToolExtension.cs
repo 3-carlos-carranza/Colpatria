@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Crosscutting.Common.Tools.DataType
 {
-    public class ToolExtension
+    public static class ToolExtension
     {
         private static readonly char[] BaseDictionary = "0123456789".ToCharArray();
         public static string GenSemiUniqueId(int lenght = 6)

@@ -21,13 +21,13 @@ namespace Application.Main.Implementation.ProcessFlow.Step
     public class SendRequestResponseStep : BaseStep, ISendRequestResponseStep
     {
 
-        public readonly IMailAppService MailAppService;
+        private readonly IMailAppService _mailAppService;
         private readonly IUserAppService _userAppService;
         private string _razorTemplate;
 
         public SendRequestResponseStep(IProcessFlowStore store, IMailAppService mailAppService, IUserAppService userAppService) : base(store)
         {
-            MailAppService = mailAppService;
+            _mailAppService = mailAppService;
             _userAppService = userAppService;
         }
 
@@ -49,7 +49,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             TraceFlow(argument);
             for (var i = 0; i < 2; i++)
             {
-                if (MailAppService.SendMail(email))
+                if (_mailAppService.SendMail(email))
                     break;
             }
 

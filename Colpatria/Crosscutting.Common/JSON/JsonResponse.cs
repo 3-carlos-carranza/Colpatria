@@ -5,12 +5,13 @@ namespace Crosscutting.Common.JSON
     public class JsonResponse
     {
         
-        public Dictionary<string, object> Callbacks;
-        public bool Status;
+        public IDictionary<string, object> Callbacks { get;  } = new Dictionary<string, object>();
+
+        public bool Status { get; set; }
 
         public JsonResponse()
         {
-            Callbacks = new Dictionary<string, object>();
+            //Default CTOR
         }
 
         public string Message { get; set; }

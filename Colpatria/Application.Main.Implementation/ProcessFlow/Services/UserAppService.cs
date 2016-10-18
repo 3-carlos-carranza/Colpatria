@@ -20,14 +20,16 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         private readonly IExtendedFieldRepository _extendedFieldRepository;
         private readonly IUserRepository _userRepository;
         private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
+        private readonly IExecutionRepository _executionRepository;
 
         public UserAppService(IUserRepository userRepository,
             IFieldToCreateUserRepository fieldToCreateUserRepository,
-            IExtendedFieldRepository extendedFieldRepository) : base(userRepository)
+            IExtendedFieldRepository extendedFieldRepository, IExecutionRepository executionRepository) : base(userRepository)
         {
             _userRepository = userRepository;
             _fieldToCreateUserRepository = fieldToCreateUserRepository;
             _extendedFieldRepository = extendedFieldRepository;
+            _executionRepository = executionRepository;
         }
 
         public override Task<User> FindByIdAsync(long userId)
@@ -94,6 +96,11 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         public UserInfoDto GetUserInfoByExecutionId(long executionId)
         {
             return _userRepository.GetUserInfoByExecutionId(executionId);
+        }
+
+        public int? GetValidateExecutionByUserAndProduct(long userId, int productId)
+        {
+            return _executionRepository.GetValidateExecutionByUserAndProduct(userId, productId);
         }
     }
 }

@@ -13,8 +13,11 @@
 
 #region
 
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Process;
 
 #endregion
 

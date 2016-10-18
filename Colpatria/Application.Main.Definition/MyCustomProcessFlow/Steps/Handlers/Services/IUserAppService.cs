@@ -49,5 +49,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
         Task<User> GetUserByMappingField(IEnumerable<FieldToCreateUser> mappingfields,
             IEnumerable<FieldValueOrder> fields);
         UserInfoDto GetUserInfoByExecutionId(long executionId);
+
+        int? GetValidateExecutionByUserAndProduct(long userId, int productId);
     }
 }

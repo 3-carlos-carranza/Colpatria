@@ -25,5 +25,6 @@ namespace Core.GlobalRepository.SQL.Process
         Execution CreateRequest(Execution execution);
         Execution GetRequestById(long id);
         StepDetail GetNextStepWithType(int step, int section, int processId, int type);
+        int? GetValidateExecutionByUserAndProduct(long userId, int productId);
     }
 }

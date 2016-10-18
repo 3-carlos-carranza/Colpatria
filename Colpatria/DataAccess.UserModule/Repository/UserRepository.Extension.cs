@@ -126,7 +126,8 @@ namespace DataAccess.UserModule.Repository
             try
             {
                 var result = context?.Database.SqlQuery<UserInfoDto>
-                    ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                    ("GetUserInfoByExecutionId @ExecutionId", 
+                    new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
                 return result;
             }
             catch (Exception exception)

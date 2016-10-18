@@ -47,7 +47,7 @@ namespace Application.Main.Implementation.ProcessFlow
         public void TrackingStep(IProcessFlowArgument argument)
         {
             if (argument == null) throw new ArgumentNullException(nameof(argument));
-            Console.WriteLine("Entra al Paso " + argument.Execution.CurrentStepId);
+            Console.WriteLine($"Entra al Paso " + argument.Execution.CurrentStepId);
         }
 
         public StepFlow StepDetail(IProcessFlowArgument argument)

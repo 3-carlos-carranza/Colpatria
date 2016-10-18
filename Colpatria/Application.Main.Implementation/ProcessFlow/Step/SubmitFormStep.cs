@@ -29,7 +29,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _saveFieldsService = saveFieldsService;
         }
 
-        public string Name => GetType().Name;
+        public new string Name => GetType().Name;
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument arg)
         {

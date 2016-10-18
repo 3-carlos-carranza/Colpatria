@@ -4,6 +4,7 @@ using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.WsMotorService;
 using System;
 using System.Configuration;
+using Microsoft.ApplicationInsights;
 
 namespace Data.DataCredito
 {
@@ -22,22 +23,43 @@ namespace Data.DataCredito
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
-                wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                try
                 {
-                    Name = "STRAID",
-                    Type = "T",
-                    Value = "2600"
-                });
-                wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                    wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                    {
+                        Name = "STRAID",
+                        Type = "T",
+                        Value = "2600"
+                    });
+                    wsMotorRequest.Parameters.Parameter.Add(new Parameter
+                    {
+                        Name = "STRNAM",
+                        Type = "T",
+                        Value = "SuperSymmetry"
+                    });
+                    var serialized = _xmlProcessor.Serialize(wsMotorRequest);
+                    var response = executeStrategy(serialized);
+                    var deserialized = _xmlProcessor.Deserialize<WsMotorServiceResponse>(response);
+                    return deserialized;
+                }
+                catch (Exception exception)
                 {
-                    Name = "STRNAM",
-                    Type = "T",
-                    Value = "SuperSymmetry"
-                });
-                var serialized = _xmlProcessor.Serialize(wsMotorRequest);
-                var response = executeStrategy(serialized);
-                var deserialized = _xmlProcessor.Deserialize<WsMotorServiceResponse>(response);
-                return deserialized;
+                    var clientLog = new TelemetryClient();
+                    clientLog.TrackException(exception);
+                    return new WsMotorServiceResponse
+                    {
+                        ScoresMotor = new ScoresMotor
+                        {
+                            ScoreMotor = new ScoreMotor
+                            {
+                                Type = "10",
+                                Score = "0.0",
+                                Classification = "N"
+                            }
+                        }
+                    };
+                }
+                
             }
             return new WsMotorServiceResponse
             {

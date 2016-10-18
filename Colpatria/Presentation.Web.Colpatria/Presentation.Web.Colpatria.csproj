@@ -57,11 +57,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.4.0\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.4.0\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

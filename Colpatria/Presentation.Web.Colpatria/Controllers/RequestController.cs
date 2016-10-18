@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Core.Entities.Enumerations;
+using Core.Entities.Evidente;
+using Core.Entities.Process;
+using Core.Entities.User;
+using Crosscutting.Common.Extensions;
+using Crosscutting.Common.Tools.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Presentation.Web.Colpatria.Models;
+using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
-using Core.Entities.Enumerations;
-using Core.Entities.Evidente;
-using Core.Entities.Process;
-using Core.Entities.User;
-using Crosscutting.Common;
-using Crosscutting.Common.Extensions;
-using Crosscutting.Common.Tools.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using Presentation.Web.Colpatria.Models;
 using static System.String;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -30,6 +30,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             _userAppService = userAppService;
         }
+
         [AllowAnonymous]
         public ActionResult Index()
         {
@@ -42,15 +43,15 @@ namespace Presentation.Web.Colpatria.Controllers
             if (IsNullOrEmpty(productType)) return View("Index");
             if (productType == null) throw new ArgumentNullException(nameof(productType));
             if (productType == "") return View();
-            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString() ||
-                  productType == ProductType.Tc.GetMappingToItemListValue().ToString()))
+            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture) ||
+                  productType == ProductType.Tc.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture)))
             {
                 return RedirectToAction("NotFound", "Messages");
             }
-            Session["Product"] = (ProductType)(Convert.ToInt32(productType));
+            Session["Product"] = (ProductType)(Convert.ToInt32(productType, CultureInfo.CurrentCulture));
             return View("Register", new UserViewModel
             {
-                ProductId = Convert.ToInt32(productType),
+                ProductId = Convert.ToInt32(productType, CultureInfo.CurrentCulture),
                 SimpleId = Code
             });
         }
@@ -59,8 +60,8 @@ namespace Presentation.Web.Colpatria.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
         {
-            var fields =collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
-            
+            var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();
+
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
             var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
 
@@ -111,11 +112,10 @@ namespace Presentation.Web.Colpatria.Controllers
         public async Task<ActionResult> HandleRequest()
         {
             var userId = long.Parse(User.Identity.GetUserId());
-            ProcessFlowArgument.User = new User {Id = userId};
+            ProcessFlowArgument.User = new User { Id = userId };
             ProcessFlowArgument.IsSubmitting = false;
-            ProcessFlowArgument.Execution = new Execution {Id = ExecutionId, ProductId = ProductId};
-
-            dynamic stepresult = ExecuteFlow();
+            ProcessFlowArgument.Execution = new Execution { Id = ExecutionId, ProductId = ProductId };
+            dynamic stepresult = await Task.Factory.StartNew(() => ExecuteFlow()).ConfigureAwait(false);
             return stepresult;
         }
 
@@ -140,7 +140,6 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        
         public ActionResult EmailRequest()
         {
             return View();
@@ -154,7 +153,6 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {

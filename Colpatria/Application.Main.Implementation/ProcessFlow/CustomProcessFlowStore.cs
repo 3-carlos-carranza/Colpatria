@@ -47,7 +47,7 @@ namespace Application.Main.Implementation.ProcessFlow
         public void TrackingStep(IProcessFlowArgument argument)
         {
             if (argument == null) throw new ArgumentNullException(nameof(argument));
-            Console.WriteLine("Entra al Paso " + argument.Execution.CurrentStepId);
+            Console.WriteLine($"Entra al Paso " + argument.Execution.CurrentStepId);
         }
 
         public StepFlow StepDetail(IProcessFlowArgument argument)
@@ -104,11 +104,11 @@ namespace Application.Main.Implementation.ProcessFlow
             return Steps.FirstOrDefault(s => s.Id == argument.Execution.CurrentStepId);
         }
 
-        public async Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument,
-            StepType stepType,
-            CancellationToken cancellationToken = new CancellationToken())
+        public async Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument,StepType stepType,CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType == stepType);
+            if (argument == null) throw new ArgumentNullException(nameof(argument));
+            if (!Enum.IsDefined(typeof(StepType), stepType)) throw new InvalidEnumArgumentException(nameof(stepType), (int) stepType, typeof(StepType));
+            return await  Task.FromResult(Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType == stepType)).ConfigureAwait(false);
         }
     }
 }

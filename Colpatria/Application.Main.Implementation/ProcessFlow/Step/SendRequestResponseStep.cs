@@ -92,7 +92,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public string TemplateResponseRequest(UserInfoDto userInfoDto)
         {
             if (userInfoDto == null) throw new ArgumentNullException(nameof(userInfoDto));
-            var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
+            var path = Uri.UnescapeDataString(new UriBuilder(new Uri(Assembly.GetExecutingAssembly().CodeBase)).Path);
             var dir = (Path.GetDirectoryName(path))?.Replace("bin", string.Empty);
 
             _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")

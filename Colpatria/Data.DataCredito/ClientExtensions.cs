@@ -19,7 +19,7 @@ namespace Data.DataCredito
 
         public static void SetNetworkCredentials(
             this WebClientProtocol client,
-            string username,
+            string userName,
             string password,
             Uri customUrl = null)
         {
@@ -27,7 +27,7 @@ namespace Data.DataCredito
             client.PreAuthenticate = true;
 
             var uri = customUrl == null ? new Uri(client.Url) : customUrl;
-            var netCredential = new NetworkCredential(username, password);
+            var netCredential = new NetworkCredential(userName, password);
             ICredentials credentials = netCredential.GetCredential(uri, "Basic");
             client.Credentials = credentials;
         }

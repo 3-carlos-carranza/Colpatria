@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Banlinea.Framework.Notification.EmailProviders.Contracts;
+using RestSharp;
+using RestSharp.Authenticators;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
-using Banlinea.Framework.Notification.EmailProviders.Contracts;
-using RestSharp;
-using RestSharp.Authenticators;
 
 namespace Crosscutting.Common
 {
@@ -21,7 +21,7 @@ namespace Crosscutting.Common
                     new HttpBasicAuthenticator("api", ConfigurationManager.AppSettings.Get("key-api-mailgun"))
             };
 
-            var request = new RestRequest {Resource = "{domain}/messages"};
+            var request = new RestRequest { Resource = "{domain}/messages" };
 
             request.AddParameter("domain", ConfigurationManager.AppSettings["domain-colpatria"],
                 ParameterType.UrlSegment);
@@ -54,7 +54,7 @@ namespace Crosscutting.Common
             //    }
             //}
 
-            #endregion
+            #endregion Attachments
 
             request.Method = Method.POST;
 

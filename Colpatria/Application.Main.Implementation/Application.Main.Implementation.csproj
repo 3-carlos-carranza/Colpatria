@@ -50,8 +50,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts">
-      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.6\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.4.0\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>

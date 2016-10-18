@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.UserModule.Repository
 {
-    partial class UserRepository
+    sealed partial class UserRepository
     {
         public void Dispose()
         {

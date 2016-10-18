@@ -1,3 +1,4 @@
+using System;
 using Core.GlobalRepository.SQL.User;
 using Core.Entities.User;
 using Data.Common.Implementation;
@@ -13,15 +14,17 @@ namespace DataAccess.UserModule.Repository
         private IUserContext _context;
     	
     
-        public UserRepository(IUserContext uow): base(uow)
+        public UserRepository(IUserContext uow)
+            : base(uow)
         {
-    	
-    	    this.SetContext();
+            if (uow == null) throw new ArgumentNullException(nameof(uow));
+
+            SetContext();
         }
     
             private void SetContext()
             {
-                this._context = UnitOfWork as IUserContext;
+                _context = UnitOfWork as IUserContext;
             }
     
     

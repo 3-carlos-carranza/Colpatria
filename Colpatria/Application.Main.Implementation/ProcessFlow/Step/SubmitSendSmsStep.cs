@@ -6,7 +6,7 @@ using Banlinea.ProcessFlow.Engine.Api;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
-using Core.GlobalRepository.SQL.Process;
+
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {

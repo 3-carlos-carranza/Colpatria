@@ -99,7 +99,7 @@
       <Name>Application.Main.Implementation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Inalambria\Data.Inalambria.csproj">
-      <Project>{7620ad17-bf0c-4fb7-b844-b2bd39bfb59c}</Project>
+      <Project>{7620AD17-BF0C-4FB7-B844-B2BD39BFB59C}</Project>
       <Name>Data.Inalambria</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccess.ProcessModule\DataAccess.ProcessModule.csproj">

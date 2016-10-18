@@ -118,10 +118,6 @@
       <Project>{8307FB4A-8461-44B2-8EC8-3EFFB0095871}</Project>
       <Name>Crosscutting.Common.Tools</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data.Inalambria\Data.Inalambria.csproj">
-      <Project>{7620AD17-BF0C-4FB7-B844-B2BD39BFB59C}</Project>
-      <Name>Data.Inalambria</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -165,10 +165,6 @@
       <Project>{470AB1B1-B29E-4360-AA44-0D83825ECFCD}</Project>
       <Name>Data.Common.Definition</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data.Inalambria\Data.Inalambria.csproj">
-      <Project>{7620AD17-BF0C-4FB7-B844-B2BD39BFB59C}</Project>
-      <Name>Data.Inalambria</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

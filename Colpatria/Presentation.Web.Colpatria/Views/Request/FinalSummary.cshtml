@@ -122,13 +122,13 @@
 @*Impresion de la respuesta*@
 <div class="conts" id="respuesta-solicitud-summary" hidden="hidden">
     <p class="desc-step">
-        <span class="red">Felicitaciones,</span> @Model.UserInfoDto.Names</p>
+        <span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName</p>
     <p class="bolds paddno paddnov">
         Tu Solicitud fue: <strong>@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</strong>
     </p>
     <div class="contents aproved">
         <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
-        <p>Señor(a) @Model.UserInfoDto.Names</p>
+        <p>Señor(a) @Model.UserInfoDto.FullName</p>
 
         @if ((ProductType) Session["Product"] == ProductType.Ca)
         {

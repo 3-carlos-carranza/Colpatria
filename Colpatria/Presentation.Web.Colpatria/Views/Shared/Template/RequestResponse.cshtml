@@ -17,7 +17,7 @@
         <p class="desc-step"><span class="red">Felicitaciones,</span>@Model.FullName</p>
         <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>Model.MessageClassification.GetStringValue()</strong>  </p>
         <div class="contents aproved">
-            <p>Bogotá, @Model.DateOfExpedition.ToShortDateString()</p>
+            <p>Bogotá, @Model.DateOfExpedition.ToLongDateString()</p>
             <p>Señor(a) @Model.FullName</p>
             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria</p>
             <p>Solicitud <strong>Model.MessageClassification.GetStringValue().ToUpper()</strong></p>

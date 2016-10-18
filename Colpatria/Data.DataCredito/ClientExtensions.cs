@@ -20,10 +20,11 @@ namespace Data.DataCredito
                 this WebClientProtocol client,
                 string username,
                 string password,
-                string customUrl = null)
+                Uri customUrl = null)
             {
                 client.PreAuthenticate = true;
-                var uri = string.IsNullOrWhiteSpace(customUrl) ? new Uri(client.Url) : new Uri(customUrl);
+            
+                var uri = customUrl == null ? new Uri(client.Url) : customUrl;
                 var netCredential = new NetworkCredential(username, password);
                 ICredentials credentials = netCredential.GetCredential(uri, "Basic");
                 client.Credentials = credentials;

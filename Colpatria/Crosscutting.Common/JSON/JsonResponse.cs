@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Crosscutting.Common.JSON
 {
@@ -16,7 +17,7 @@ namespace Crosscutting.Common.JSON
 
         public string Message { get; set; }
 
-        public void SetPartial(string url, string target, object vars, string loadtext = "Actualizando...")
+        public void SetPartial(Uri url, string target, object vars, string loadtext = "Actualizando...")
         {
             Callbacks.Add("XGeneral.renderpartial", new
             {
@@ -80,7 +81,7 @@ namespace Crosscutting.Common.JSON
             Callbacks.Add(functionname, parameters);
         }
 
-        public void SetRedirect(string url, object vars = null)
+        public void SetRedirect(Uri url, object vars = null)
         {
             Callbacks.Add("XGeneral.redirect", new
             {

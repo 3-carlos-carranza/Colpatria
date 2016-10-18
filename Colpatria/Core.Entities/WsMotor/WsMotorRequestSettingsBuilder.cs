@@ -19,6 +19,7 @@ namespace Core.Entities.WsMotor
             _user = string.Empty;
             _paramsRequest = null;
         }
+
         public WsMotorRequest Build()
         {
             return new WsMotorRequest
@@ -27,38 +28,41 @@ namespace Core.Entities.WsMotor
                 LastName = _lastName,
                 TypeIdentification = _typeIdentification,
                 User = _user,
-                Parameters = new Parameters
-                {
-                    Parameter = _paramsRequest
-                },
+                Parameters = new Parameters(_paramsRequest),
                 ExecutionId = _executionId
             };
         }
+
         public WsMotorRequestSettingsBuilder WithUser(string item)
         {
             _user = item;
             return this;
         }
+
         public WsMotorRequestSettingsBuilder WithIdentificaction(string item)
         {
             _identification = item;
             return this;
         }
+
         public WsMotorRequestSettingsBuilder WithLastName(string item)
         {
             _lastName = item;
             return this;
         }
+
         public WsMotorRequestSettingsBuilder WithTypeIdentification(string item)
         {
             _typeIdentification = item;
             return this;
         }
+
         public WsMotorRequestSettingsBuilder WithParamsRequest(IList<Parameter> item)
         {
             _paramsRequest = item;
             return this;
         }
+
         public WsMotorRequestSettingsBuilder WithExecutionId(long id)
         {
             _executionId = id;

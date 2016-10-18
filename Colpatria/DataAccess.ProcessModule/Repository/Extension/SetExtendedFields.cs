@@ -24,7 +24,7 @@ namespace DataAccess.ProcessModule.Repository.Extension
         }
 
         [StoredProcedureParameter(SqlDbType.Udt)]
-        public List<KeyValue> KeyValues { get; set; }
+        public IList<KeyValue> KeyValues { get; }
 
         [StoredProcedureParameter(SqlDbType.BigInt)]
         public long ExecutionId { get; set; }

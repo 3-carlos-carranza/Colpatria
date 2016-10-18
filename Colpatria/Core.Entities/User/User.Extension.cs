@@ -1,11 +1,4 @@
-﻿//   -----------------------------------------------------------------------
-//   <copyright file=User.Extension.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
-
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Banlinea.ProcessFlow.Model;
 using Microsoft.AspNet.Identity;
 
@@ -28,11 +21,7 @@ namespace Core.Entities.User
         {
             get
             {
-                if (_isnewuser != null)
-                {
-                    return _isnewuser.Value;
-                }
-                return false;
+                return _isnewuser != null && _isnewuser.Value;
             }
             set { _isnewuser = value; }
         }

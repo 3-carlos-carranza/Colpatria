@@ -49,17 +49,23 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Application.Main.Definition.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.5\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
+    <Reference Include="Banlinea.Framework.Notification.EmailProviders.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d8ef9e6f988142d1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Banlinea.Framework.Notification.EmailProviders.Contracts.1.0.7\lib\net462\Banlinea.Framework.Notification.EmailProviders.Contracts.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.2.8\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
+    <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=67a22b587b1847ba, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Engine.2.4.1\lib\net462\Banlinea.ProcessFlow.Engine.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.2.8\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
+    <Reference Include="Banlinea.ProcessFlow.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e3bb8a14af8fb76e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.4.1\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -92,7 +98,6 @@
     <Compile Include="MyCustomProcessFlow\Steps\Responses\ISubmitFormArgument.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IEvidenteAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IDynamicAppService.cs" />
-    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\ILoggingAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IUserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Responses\IStepResponse.cs" />
@@ -121,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Application.Main.Definition.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

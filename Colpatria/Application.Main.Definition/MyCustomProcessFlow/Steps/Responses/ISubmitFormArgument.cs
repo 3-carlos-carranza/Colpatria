@@ -13,6 +13,6 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface ISubmitFormArgument : IProcessFlowArgument
     {
-        IList<FieldValueOrder> Form { get; set; }
+        IList<FieldValueOrder> Form { get; } 
     }
 }

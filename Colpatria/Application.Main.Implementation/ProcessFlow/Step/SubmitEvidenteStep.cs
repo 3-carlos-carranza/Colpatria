@@ -34,7 +34,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public int SectionId { get; set; }
         public int StepId { get; set; }
-        public string Name => GetType().Name;
+        public new string Name => GetType().Name;
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {

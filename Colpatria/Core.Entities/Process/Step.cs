@@ -1,22 +1,5 @@
-#region Signature
-
-//   -----------------------------------------------------------------------
-//   <copyright file=Step.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-12 - 3:35 p. m.</Update>
-//   -----------------------------------------------------------------------
-
-#endregion
-
-#region
-
 using System.Collections.Generic;
 using Banlinea.ProcessFlow.Model;
-
-#endregion
 
 namespace Core.Entities.Process
 {
@@ -34,10 +17,10 @@ namespace Core.Entities.Process
         public override int StateId { get; set; }
         public override bool Enable { get; set; }
         public override StepType StepType { get; set; }
-        public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
-        public virtual ICollection<ExecutionStep> ExecutionStep { get; set; } = new HashSet<ExecutionStep>();
+        public virtual ICollection<Execution> Execution { get;  } = new HashSet<Execution>();
+        public virtual ICollection<ExecutionStep> ExecutionStep { get; } = new HashSet<ExecutionStep>();
         public virtual Process Process { get; set; }
         public virtual State State { get; set; }
-        public virtual ICollection<StepSection> StepSection { get; set; } = new HashSet<StepSection>();
+        public virtual ICollection<StepSection> StepSection { get;  } = new HashSet<StepSection>();
     }
 }

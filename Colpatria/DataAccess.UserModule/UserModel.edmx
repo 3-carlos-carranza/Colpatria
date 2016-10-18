@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BaseDataList">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,6 +54,7 @@
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="Value" Type="varbinary(max)" Nullable="false" />
           <Property Name="CollectionNumber" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="BaseFile">
           <Key>
@@ -75,6 +76,12 @@
           <Property Name="ColumnName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DataType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Colpatria.User.Oficinas' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Oficinas">
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Valores" Type="float" />
+        </EntityType>-->
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -254,24 +261,66 @@
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UserModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BaseDataList" EntityType="UserModel.BaseDataList" />
+          <EntitySet Name="BaseDataListValue" EntityType="UserModel.BaseDataListValue" />
+          <EntitySet Name="BaseField" EntityType="UserModel.BaseField" />
+          <EntitySet Name="BaseFieldValue" EntityType="UserModel.BaseFieldValue" />
+          <EntitySet Name="BaseFile" EntityType="UserModel.BaseFile" />
+          <EntitySet Name="FieldToCreateUser" EntityType="UserModel.FieldToCreateUser" />
+          <EntitySet Name="Role" EntityType="UserModel.Role" />
+          <EntitySet Name="User" EntityType="UserModel.User" />
+          <EntitySet Name="UserRole" EntityType="UserModel.UserRole" />
+          <AssociationSet Name="FK_BaseField_BaseField" Association="UserModel.FK_BaseField_BaseField">
+            <End Role="BaseDataList" EntitySet="BaseDataList" />
+            <End Role="BaseField" EntitySet="BaseField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataListValue_DataList_Id" Association="UserModel.FK_DataListValue_DataList_Id">
+            <End Role="BaseDataList" EntitySet="BaseDataList" />
+            <End Role="BaseDataListValue" EntitySet="BaseDataListValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaseFieldValue_BaseField" Association="UserModel.FK_BaseFieldValue_BaseField">
+            <End Role="BaseField" EntitySet="BaseField" />
+            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldToCreateUser_BaseField" Association="UserModel.FK_FieldToCreateUser_BaseField">
+            <End Role="BaseField" EntitySet="BaseField" />
+            <End Role="FieldToCreateUser" EntitySet="FieldToCreateUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaseFieldValue_User" Association="UserModel.FK_BaseFieldValue_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaseFile_BaseFieldValue" Association="UserModel.FK_BaseFile_BaseFieldValue">
+            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
+            <End Role="BaseFile" EntitySet="BaseFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="UserModel.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="UserModel.FK_UserRole_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="BaseDataList">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IdListParent" Type="Int64" />
           <Property Name="LocationTable" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Field" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Filter" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BaseField" Relationship="Self.FK_BaseField_BaseField" FromRole="BaseDataList" ToRole="BaseField" />
-          <NavigationProperty Name="BaseDataListValue" Relationship="Self.FK_DataListValue_DataList_Id" FromRole="BaseDataList" ToRole="BaseDataListValue" />
+          <NavigationProperty Name="BaseField" Relationship="UserModel.FK_BaseField_BaseField" FromRole="BaseDataList" ToRole="BaseField" />
+          <NavigationProperty Name="BaseDataListValue" Relationship="UserModel.FK_DataListValue_DataList_Id" FromRole="BaseDataList" ToRole="BaseDataListValue" />
         </EntityType>
         <EntityType Name="BaseDataListValue">
           <Key>
@@ -279,17 +328,17 @@
           </Key>
           <Property Name="ListId" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdParent" Type="Int32" />
           <Property Name="Order" Type="Int32" />
-          <NavigationProperty Name="BaseDataList" Relationship="Self.FK_DataListValue_DataList_Id" FromRole="BaseDataListValue" ToRole="BaseDataList" />
+          <NavigationProperty Name="BaseDataList" Relationship="UserModel.FK_DataListValue_DataList_Id" FromRole="BaseDataListValue" ToRole="BaseDataList" />
         </EntityType>
         <EntityType Name="BaseField">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="DataType" Type="Int32" Nullable="false" />
           <Property Name="ClientValidationClass" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
@@ -300,9 +349,9 @@
           <Property Name="HtmlData" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="IsUniqueForUser" Type="Boolean" Nullable="false" />
           <Property Name="ApplicantNumber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BaseDataList" Relationship="Self.FK_BaseField_BaseField" FromRole="BaseField" ToRole="BaseDataList" />
-          <NavigationProperty Name="BaseFieldValue" Relationship="Self.FK_BaseFieldValue_BaseField" FromRole="BaseField" ToRole="BaseFieldValue" />
-          <NavigationProperty Name="FieldToCreateUser" Relationship="Self.FK_FieldToCreateUser_BaseField" FromRole="BaseField" ToRole="FieldToCreateUser" />
+          <NavigationProperty Name="BaseDataList" Relationship="UserModel.FK_BaseField_BaseField" FromRole="BaseField" ToRole="BaseDataList" />
+          <NavigationProperty Name="BaseFieldValue" Relationship="UserModel.FK_BaseFieldValue_BaseField" FromRole="BaseField" ToRole="BaseFieldValue" />
+          <NavigationProperty Name="FieldToCreateUser" Relationship="UserModel.FK_FieldToCreateUser_BaseField" FromRole="BaseField" ToRole="FieldToCreateUser" />
         </EntityType>
         <EntityType Name="BaseFieldValue">
           <Key>
@@ -312,23 +361,24 @@
           <Property Name="BaseFieldId" Type="Int32" Nullable="false" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Value" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Value" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="CollectionNumber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BaseField" Relationship="Self.FK_BaseFieldValue_BaseField" FromRole="BaseFieldValue" ToRole="BaseField" />
-          <NavigationProperty Name="User" Relationship="Self.FK_BaseFieldValue_User" FromRole="BaseFieldValue" ToRole="User" />
-          <NavigationProperty Name="BaseFile" Relationship="Self.FK_BaseFile_BaseFieldValue" FromRole="BaseFieldValue" ToRole="BaseFile" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BaseField" Relationship="UserModel.FK_BaseFieldValue_BaseField" FromRole="BaseFieldValue" ToRole="BaseField" />
+          <NavigationProperty Name="User" Relationship="UserModel.FK_BaseFieldValue_User" FromRole="BaseFieldValue" ToRole="User" />
+          <NavigationProperty Name="BaseFile" Relationship="UserModel.FK_BaseFile_BaseFieldValue" FromRole="BaseFieldValue" ToRole="BaseFile" />
         </EntityType>
         <EntityType Name="BaseFile">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Extension" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="BaseFieldValueId" Type="Int64" Nullable="false" />
-          <Property Name="InternetMimeType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BaseFieldValue" Relationship="Self.FK_BaseFile_BaseFieldValue" FromRole="BaseFile" ToRole="BaseFieldValue" />
+          <Property Name="InternetMimeType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BaseFieldValue" Relationship="UserModel.FK_BaseFile_BaseFieldValue" FromRole="BaseFile" ToRole="BaseFieldValue" />
         </EntityType>
         <EntityType Name="FieldToCreateUser">
           <Key>
@@ -336,9 +386,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BaseFieldId" Type="Int32" Nullable="false" />
-          <Property Name="ColumnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BaseField" Relationship="Self.FK_FieldToCreateUser_BaseField" FromRole="FieldToCreateUser" ToRole="BaseField" />
+          <Property Name="ColumnName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BaseField" Relationship="UserModel.FK_FieldToCreateUser_BaseField" FromRole="FieldToCreateUser" ToRole="BaseField" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -346,7 +396,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+          <NavigationProperty Name="UserRole" Relationship="UserModel.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -363,17 +413,17 @@
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SecondLastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Identification" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identification" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
           <Property Name="IdentificationType" Type="Int32" />
           <Property Name="DateOfExpedition" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="BaseFieldValue" Relationship="Self.FK_BaseFieldValue_User" FromRole="User" ToRole="BaseFieldValue" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="BaseFieldValue" Relationship="UserModel.FK_BaseFieldValue_User" FromRole="User" ToRole="BaseFieldValue" />
+          <NavigationProperty Name="UserRole" Relationship="UserModel.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -382,12 +432,12 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
+          <NavigationProperty Name="Role" Relationship="UserModel.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="UserModel.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
         </EntityType>
         <Association Name="FK_BaseField_BaseField">
-          <End Role="BaseDataList" Type="Self.BaseDataList" Multiplicity="0..1" />
-          <End Role="BaseField" Type="Self.BaseField" Multiplicity="*" />
+          <End Type="UserModel.BaseDataList" Role="BaseDataList" Multiplicity="0..1" />
+          <End Type="UserModel.BaseField" Role="BaseField" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BaseDataList">
               <PropertyRef Name="Id" />
@@ -398,8 +448,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DataListValue_DataList_Id">
-          <End Role="BaseDataList" Type="Self.BaseDataList" Multiplicity="1" />
-          <End Role="BaseDataListValue" Type="Self.BaseDataListValue" Multiplicity="*" />
+          <End Type="UserModel.BaseDataList" Role="BaseDataList" Multiplicity="1" />
+          <End Type="UserModel.BaseDataListValue" Role="BaseDataListValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BaseDataList">
               <PropertyRef Name="Id" />
@@ -410,8 +460,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BaseFieldValue_BaseField">
-          <End Role="BaseField" Type="Self.BaseField" Multiplicity="1" />
-          <End Role="BaseFieldValue" Type="Self.BaseFieldValue" Multiplicity="*" />
+          <End Type="UserModel.BaseField" Role="BaseField" Multiplicity="1" />
+          <End Type="UserModel.BaseFieldValue" Role="BaseFieldValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BaseField">
               <PropertyRef Name="Id" />
@@ -422,8 +472,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FieldToCreateUser_BaseField">
-          <End Role="BaseField" Type="Self.BaseField" Multiplicity="1" />
-          <End Role="FieldToCreateUser" Type="Self.FieldToCreateUser" Multiplicity="*" />
+          <End Type="UserModel.BaseField" Role="BaseField" Multiplicity="1" />
+          <End Type="UserModel.FieldToCreateUser" Role="FieldToCreateUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BaseField">
               <PropertyRef Name="Id" />
@@ -434,8 +484,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BaseFieldValue_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="BaseFieldValue" Type="Self.BaseFieldValue" Multiplicity="*" />
+          <End Type="UserModel.User" Role="User" Multiplicity="1" />
+          <End Type="UserModel.BaseFieldValue" Role="BaseFieldValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -446,8 +496,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BaseFile_BaseFieldValue">
-          <End Role="BaseFieldValue" Type="Self.BaseFieldValue" Multiplicity="1" />
-          <End Role="BaseFile" Type="Self.BaseFile" Multiplicity="*" />
+          <End Type="UserModel.BaseFieldValue" Role="BaseFieldValue" Multiplicity="1" />
+          <End Type="UserModel.BaseFile" Role="BaseFile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BaseFieldValue">
               <PropertyRef Name="Id" />
@@ -458,8 +508,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRole_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <End Type="UserModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="UserModel.UserRole" Role="UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -470,8 +520,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRole_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <End Type="UserModel.User" Role="User" Multiplicity="1" />
+          <End Type="UserModel.UserRole" Role="UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -481,49 +531,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UserModelEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BaseDataList" EntityType="Self.BaseDataList" />
-          <EntitySet Name="BaseDataListValue" EntityType="Self.BaseDataListValue" />
-          <EntitySet Name="BaseField" EntityType="Self.BaseField" />
-          <EntitySet Name="BaseFieldValue" EntityType="Self.BaseFieldValue" />
-          <EntitySet Name="BaseFile" EntityType="Self.BaseFile" />
-          <EntitySet Name="FieldToCreateUser" EntityType="Self.FieldToCreateUser" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserRole" EntityType="Self.UserRole" />
-          <AssociationSet Name="FK_BaseField_BaseField" Association="Self.FK_BaseField_BaseField">
-            <End Role="BaseDataList" EntitySet="BaseDataList" />
-            <End Role="BaseField" EntitySet="BaseField" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DataListValue_DataList_Id" Association="Self.FK_DataListValue_DataList_Id">
-            <End Role="BaseDataList" EntitySet="BaseDataList" />
-            <End Role="BaseDataListValue" EntitySet="BaseDataListValue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseFieldValue_BaseField" Association="Self.FK_BaseFieldValue_BaseField">
-            <End Role="BaseField" EntitySet="BaseField" />
-            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FieldToCreateUser_BaseField" Association="Self.FK_FieldToCreateUser_BaseField">
-            <End Role="BaseField" EntitySet="BaseField" />
-            <End Role="FieldToCreateUser" EntitySet="FieldToCreateUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseFieldValue_User" Association="Self.FK_BaseFieldValue_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseFile_BaseFieldValue" Association="Self.FK_BaseFile_BaseFieldValue">
-            <End Role="BaseFieldValue" EntitySet="BaseFieldValue" />
-            <End Role="BaseFile" EntitySet="BaseFile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="UserRole" EntitySet="UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserRole" EntitySet="UserRole" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -533,119 +540,120 @@
           <EntitySetMapping Name="BaseDataList">
             <EntityTypeMapping TypeName="UserModel.BaseDataList">
               <MappingFragment StoreEntitySet="BaseDataList">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IdListParent" ColumnName="IdListParent" />
-                <ScalarProperty Name="LocationTable" ColumnName="LocationTable" />
-                <ScalarProperty Name="Field" ColumnName="Field" />
                 <ScalarProperty Name="Filter" ColumnName="Filter" />
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="LocationTable" ColumnName="LocationTable" />
+                <ScalarProperty Name="IdListParent" ColumnName="IdListParent" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaseDataListValue">
             <EntityTypeMapping TypeName="UserModel.BaseDataListValue">
               <MappingFragment StoreEntitySet="BaseDataListValue">
-                <ScalarProperty Name="ListId" ColumnName="ListId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaseField">
             <EntityTypeMapping TypeName="UserModel.BaseField">
               <MappingFragment StoreEntitySet="BaseField">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="DataType" ColumnName="DataType" />
-                <ScalarProperty Name="ClientValidationClass" ColumnName="ClientValidationClass" />
-                <ScalarProperty Name="ServerRegex" ColumnName="ServerRegex" />
-                <ScalarProperty Name="ListId" ColumnName="ListId" />
-                <ScalarProperty Name="IsMail" ColumnName="IsMail" />
-                <ScalarProperty Name="IsCallNumber" ColumnName="IsCallNumber" />
-                <ScalarProperty Name="HtmlData" ColumnName="HtmlData" />
-                <ScalarProperty Name="IsUniqueForUser" ColumnName="IsUniqueForUser" />
                 <ScalarProperty Name="ApplicantNumber" ColumnName="ApplicantNumber" />
+                <ScalarProperty Name="IsUniqueForUser" ColumnName="IsUniqueForUser" />
+                <ScalarProperty Name="HtmlData" ColumnName="HtmlData" />
+                <ScalarProperty Name="IsCallNumber" ColumnName="IsCallNumber" />
+                <ScalarProperty Name="IsMail" ColumnName="IsMail" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="ServerRegex" ColumnName="ServerRegex" />
+                <ScalarProperty Name="ClientValidationClass" ColumnName="ClientValidationClass" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaseFieldValue">
             <EntityTypeMapping TypeName="UserModel.BaseFieldValue">
               <MappingFragment StoreEntitySet="BaseFieldValue">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CollectionNumber" ColumnName="CollectionNumber" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaseFile">
             <EntityTypeMapping TypeName="UserModel.BaseFile">
               <MappingFragment StoreEntitySet="BaseFile">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Extension" ColumnName="Extension" />
-                <ScalarProperty Name="BaseFieldValueId" ColumnName="BaseFieldValueId" />
                 <ScalarProperty Name="InternetMimeType" ColumnName="InternetMimeType" />
+                <ScalarProperty Name="BaseFieldValueId" ColumnName="BaseFieldValueId" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FieldToCreateUser">
             <EntityTypeMapping TypeName="UserModel.FieldToCreateUser">
               <MappingFragment StoreEntitySet="FieldToCreateUser">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
-                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
                 <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="BaseFieldId" ColumnName="BaseFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="UserModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="UserModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
-                <ScalarProperty Name="Identification" ColumnName="Identification" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="IdentificationType" ColumnName="IdentificationType" />
                 <ScalarProperty Name="DateOfExpedition" ColumnName="DateOfExpedition" />
+                <ScalarProperty Name="IdentificationType" ColumnName="IdentificationType" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRole">
             <EntityTypeMapping TypeName="UserModel.UserRole">
               <MappingFragment StoreEntitySet="UserRole">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

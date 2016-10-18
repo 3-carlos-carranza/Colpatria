@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace Crosscutting.Common.Tools.Web
     {
         public static byte[] HasBytes(this FormCollection collection, string key, HttpFileCollectionBase files)
         {
+            if (files == null) throw new ArgumentNullException(nameof(files));
             var file = files[key];
             if (file == null) return null;
             using (var inputStream = file.InputStream)
@@ -28,6 +30,7 @@ namespace Crosscutting.Common.Tools.Web
 
         public static IList<FieldValueOrder> ToFieldValueOrder(this FormCollection collection)
         {
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
             var list = new List<FieldValueOrder>();
             var counter = 0;
             foreach (var key in collection.AllKeys.Distinct())
@@ -76,8 +79,8 @@ namespace Crosscutting.Common.Tools.Web
 
         public static FormCollection RemoveUnnecessaryAndEmptyFields(this FormCollection collection)
         {
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
             var list = new FormCollection();
-            var counter = 0;
             foreach (var key in collection.AllKeys.Distinct())
             {
                 var value = collection.Get(key);
@@ -85,15 +88,14 @@ namespace Crosscutting.Common.Tools.Web
                 {
                     list.Add(key, collection.Get(key));
                 }
-                counter++;
             }
             return list;
         }
 
         public static IReadOnlyCollection<FieldValueOrder> ToFieldValueOrder(this HttpFileCollectionBase files)
         {
+            if (files == null) throw new ArgumentNullException(nameof(files));
             var list = new List<FieldValueOrder>();
-            var counter = 0;
             foreach (var key in files.AllKeys.Distinct())
             {
                 var fieldfile = files[key];
@@ -125,7 +127,6 @@ namespace Crosscutting.Common.Tools.Web
                 }
                 if (!int.TryParse(lastkey, out keyint))
                 {
-                    counter++;
                     continue;
                 }
                 if (fieldfile == null) continue;
@@ -145,13 +146,13 @@ namespace Crosscutting.Common.Tools.Web
                     field.Value = fieldfile.FileName;
                     list.Add(field);
                 }
-                counter++;
             }
             return list;
         }
 
         public static Dictionary<string, string> ToDictionary(this FormCollection collection)
         {
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
             return collection.AllKeys.ToDictionary(k => k, k => collection[k].Split(',')[0]);
         }
 

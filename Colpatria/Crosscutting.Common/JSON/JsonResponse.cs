@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Crosscutting.Common.JSON
 {
     public class JsonResponse
     {
-        
-        public IDictionary<string, object> Callbacks { get;  } = new Dictionary<string, object>();
+        public IDictionary<string, object> Callbacks { get; } = new Dictionary<string, object>();
 
         public bool Status { get; set; }
 
@@ -16,7 +16,7 @@ namespace Crosscutting.Common.JSON
 
         public string Message { get; set; }
 
-        public void SetPartial(string url, string target, object vars, string loadtext = "Actualizando...")
+        public void SetPartial(Uri url, string target, object vars, string loadtext = "Actualizando...")
         {
             Callbacks.Add("XGeneral.renderpartial", new
             {
@@ -39,6 +39,7 @@ namespace Crosscutting.Common.JSON
             });
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object)")]
         public void SetToastr(
             string title,
             string text,
@@ -74,13 +75,12 @@ namespace Crosscutting.Common.JSON
                 });
         }
 
-
         public void SetCallBack(string functionname, object parameters)
         {
             Callbacks.Add(functionname, parameters);
         }
 
-        public void SetRedirect(string url, object vars = null)
+        public void SetRedirect(Uri url, object vars = null)
         {
             Callbacks.Add("XGeneral.redirect", new
             {
@@ -103,12 +103,13 @@ namespace Crosscutting.Common.JSON
             });
         }
 
-        public void SetModalWithPartial(ModalType type, string path, string selector=null)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object)")]
+        public void SetModalWithPartial(ModalType type, string path, string selector = null)
         {
             Callbacks.Add("XModal.initModal", new
             {
                 type,
-                selector=selector ?? $"#domModalGeneric{type}",
+                selector = selector ?? $"#domModalGeneric{type}",
                 path
             });
         }

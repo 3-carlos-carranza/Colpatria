@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Data.Common.Definition;
@@ -32,7 +33,7 @@ namespace Data.Common.Implementation
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        var error = string.Format(
+                        var error = string.Format(CultureInfo.CurrentCulture,
                             template,
                             validationErrors.Entry.Entity.GetType().FullName,
                             validationError.PropertyName,
@@ -59,7 +60,7 @@ namespace Data.Common.Implementation
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        string error = string.Format(
+                        var error = string.Format(CultureInfo.CurrentCulture,
                             template,
                             validationErrors.Entry.Entity.GetType().FullName,
                             validationError.PropertyName,
@@ -91,7 +92,7 @@ namespace Data.Common.Implementation
                     {
                         foreach (var validationError in validationErrors.ValidationErrors)
                         {
-                            var error = string.Format(
+                            var error = string.Format(CultureInfo.CurrentCulture,
                                 template,
                                 validationErrors.Entry.Entity.GetType().FullName,
                                 validationError.PropertyName,

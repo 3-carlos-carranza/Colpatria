@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Core.DataTransferObject.Vib;
+using Core.Entities.User;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.DataTransferObject.Vib;
-using Core.Entities.User;
-
 
 namespace DataAccess.UserModule.Repository
 {
-    partial class UserRepository
+    sealed partial class UserRepository
     {
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //TODO: Implement IDisposable correctly
         }
 
         public Task CreateAsync(User user)
@@ -48,6 +47,7 @@ namespace DataAccess.UserModule.Repository
 
         public Task SetPasswordHashAsync(User user, string passwordHash)
         {
+            if (user == null) throw new ArgumentNullException(nameof(user));
             user.PasswordHash = passwordHash;
             if (Any(u => u.Id == user.Id))
             {
@@ -84,6 +84,7 @@ namespace DataAccess.UserModule.Repository
 
         public Task SetEmailConfirmedAsync(User user, bool confirmed)
         {
+            if (user == null) throw new ArgumentNullException(nameof(user));
             user.EmailConfirmed = confirmed;
             UpdateAsync(user);
             UnitOfWork.Commit();
@@ -120,14 +121,14 @@ namespace DataAccess.UserModule.Repository
         {
             throw new NotImplementedException();
         }
+
         public UserInfoDto GetUserInfoByExecutionId(long executionId)
         {
             var context = UnitOfWork as DbContext;
             try
             {
                 var result = context?.Database.SqlQuery<UserInfoDto>
-                    ("GetUserInfoByExecutionId @ExecutionId", 
-                    new SqlParameter { ParameterName =  "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                    ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
                 return result;
             }
             catch (Exception exception)

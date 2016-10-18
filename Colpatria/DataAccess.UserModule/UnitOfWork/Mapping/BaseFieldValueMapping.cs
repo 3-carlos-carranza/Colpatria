@@ -7,10 +7,14 @@
 
 
 using System.Data.Entity.ModelConfiguration;
+using System.Runtime.Serialization;
+using Core.Entities;
 
 namespace DataAccess.UserModule.UnitOfWork.Mapping
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class BaseFieldValueMapping:EntityTypeConfiguration<Core.Entities.User.BaseFieldValue>
     {
         
@@ -33,6 +37,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
         this.Property(t => t.UserId).HasColumnName("UserId");
         this.Property(t => t.Value).HasColumnName("Value");
         this.Property(t => t.CollectionNumber).HasColumnName("CollectionNumber");
+        this.Property(t => t.CreatedDate).HasColumnName("CreatedDate");
     
                 // Relationships
                 this.HasRequired(t => t.BaseField)
@@ -46,6 +51,7 @@ namespace DataAccess.UserModule.UnitOfWork.Mapping
     
         }
     
+        
         
         
         

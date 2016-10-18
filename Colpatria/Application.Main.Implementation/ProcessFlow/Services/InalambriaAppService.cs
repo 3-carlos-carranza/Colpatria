@@ -1,11 +1,11 @@
-﻿using System;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.WebServiceConsultation;
 using Core.Entities.Process;
 using Core.GlobalRepository.Inalambria;
 using Core.GlobalRepository.SQL.Process;
-using Crosscutting.Common;
+using Crosscutting.Common.Extensions;
 using Newtonsoft.Json;
+using System;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
@@ -41,7 +41,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 var consultation =
                     _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
                         .WithExecutionId(executionId)
-                        .WithTypeOfConsultation((int) TypeOfConsultation.Request)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.Request)
                         .WithWebServiceName(ServiceNameType.SendSms.GetStringValue())
                         .Build();
 
@@ -70,6 +70,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)
         {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
             var item = new WebServiceConsultation
             {
                 Payload = settings.Payload,

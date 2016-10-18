@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProcessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Colpatria.Process.Company' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Company">
+          <Property Name="Id" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="logo" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
         <EntityType Name="Execution">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,6 +85,7 @@
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="CollectionNumber" Type="int" Nullable="false" />
           <Property Name="Applicant" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ExtendedFile">
           <Key>
@@ -145,6 +153,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
         </EntityType>
         <EntityType Name="ProductProcess">
           <Key>
@@ -811,6 +820,7 @@
           <Property Name="UserId" Type="Int64" Nullable="false" />
           <Property Name="CollectionNumber" Type="Int32" Nullable="false" />
           <Property Name="Applicant" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_ExtendedFieldValue_Execution" FromRole="ExtendedFieldValue" ToRole="Execution" />
           <NavigationProperty Name="ExtendedField" Relationship="ProcessModel.FK_ExtendedFieldValue_ExtendedField" FromRole="ExtendedFieldValue" ToRole="ExtendedField" />
           <NavigationProperty Name="ExtendedFile" Relationship="ProcessModel.FK_ExtendedFile_ExtendedFieldValue" FromRole="ExtendedFieldValue" ToRole="ExtendedFile" />
@@ -893,6 +903,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
           <NavigationProperty Name="Execution" Relationship="ProcessModel.FK_Execution_Product1" FromRole="Product" ToRole="Execution" />
           <NavigationProperty Name="ProductProcess" Relationship="ProcessModel.FK_ProductProcess_Product" FromRole="Product" ToRole="ProductProcess" />
         </EntityType>
@@ -1335,6 +1346,7 @@
           <EntitySetMapping Name="ExtendedFieldValue">
             <EntityTypeMapping TypeName="ProcessModel.ExtendedFieldValue">
               <MappingFragment StoreEntitySet="ExtendedFieldValue">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Applicant" ColumnName="Applicant" />
                 <ScalarProperty Name="CollectionNumber" ColumnName="CollectionNumber" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1413,6 +1425,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="ProcessModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.Framework.Notification.EmailProviders.Contracts;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
@@ -14,13 +7,19 @@ using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
 using Core.Entities.WsMotor;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using Xipton.Razor;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SendRequestResponseStep : BaseStep, ISendRequestResponseStep
     {
-
         private readonly IMailAppService _mailAppService;
         private readonly IUserAppService _userAppService;
         private string _razorTemplate;
@@ -92,10 +91,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public string TemplateResponseRequest(UserInfoDto userInfoDto)
         {
-            var path = Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path);
+            if (userInfoDto == null) throw new ArgumentNullException(nameof(userInfoDto));
+            var path = Uri.UnescapeDataString(new UriBuilder(new Uri(Assembly.GetExecutingAssembly().CodeBase)).Path);
             var dir = (Path.GetDirectoryName(path))?.Replace("bin", string.Empty);
 
-            _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml") 
+            _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
                 : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
 
             var template = File.ReadAllText(_razorTemplate);

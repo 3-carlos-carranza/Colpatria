@@ -7,11 +7,14 @@
 
 
 using System.Data.Entity.ModelConfiguration;
+using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ExtendedFieldValueMapping:EntityTypeConfiguration<Core.Entities.Process.ExtendedFieldValue>
     {
         
@@ -33,6 +36,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
         this.Property(t => t.UserId).HasColumnName("UserId");
         this.Property(t => t.CollectionNumber).HasColumnName("CollectionNumber");
         this.Property(t => t.Applicant).HasColumnName("Applicant");
+        this.Property(t => t.CreatedDate).HasColumnName("CreatedDate");
     
                 // Relationships
                 this.HasRequired(t => t.Execution)
@@ -46,6 +50,7 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
     
         }
     
+        
         
         
         

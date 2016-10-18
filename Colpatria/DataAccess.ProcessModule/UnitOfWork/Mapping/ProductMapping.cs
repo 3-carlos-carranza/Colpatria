@@ -7,11 +7,14 @@
 
 
 using System.Data.Entity.ModelConfiguration;
+using Core.Entities.Process;
 
 
 namespace DataAccess.ProcessModule.UnitOfWork.Mapping
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ProductMapping:EntityTypeConfiguration<Core.Entities.Process.Product>
     {
         
@@ -33,10 +36,12 @@ namespace DataAccess.ProcessModule.UnitOfWork.Mapping
                 this.ToTable("Product","Process");
         this.Property(t => t.Id).HasColumnName("Id");
         this.Property(t => t.Name).HasColumnName("Name");
+        this.Property(t => t.CompanyId).HasColumnName("CompanyId");
     
     
         }
     
+        
         
         
     

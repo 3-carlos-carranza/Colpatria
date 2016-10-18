@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace DataAccess.UserModule.UnitOfWork
 {
     using Core.Entities.User;
@@ -37,8 +35,7 @@ namespace DataAccess.UserModule.UnitOfWork
     
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
-        if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
-        base.OnModelCreating(modelBuilder);
+         base.OnModelCreating(modelBuilder);
     
         modelBuilder.Configurations.Add(new BaseDataListMapping());
         modelBuilder.Configurations.Add(new BaseDataListValueMapping());

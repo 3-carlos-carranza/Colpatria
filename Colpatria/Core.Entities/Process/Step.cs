@@ -1,22 +1,5 @@
-#region Signature
-
-//   -----------------------------------------------------------------------
-//   <copyright file=Step.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-08  - 5:01 p. m.</Date>
-//   <Update> 2016-09-12 - 3:35 p. m.</Update>
-//   -----------------------------------------------------------------------
-
-#endregion
-
-#region
-
 using System.Collections.Generic;
 using Banlinea.ProcessFlow.Model;
-
-#endregion
 
 namespace Core.Entities.Process
 {

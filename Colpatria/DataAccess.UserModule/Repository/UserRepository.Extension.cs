@@ -14,7 +14,7 @@ namespace DataAccess.UserModule.Repository
     {
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //TODO: Implement IDisposable correctly
         }
 
         public Task CreateAsync(User user)

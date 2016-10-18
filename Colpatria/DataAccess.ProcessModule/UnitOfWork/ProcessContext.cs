@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace DataAccess.ProcessModule.UnitOfWork
 {
     using Core.Entities.Process;
@@ -46,8 +44,7 @@ namespace DataAccess.ProcessModule.UnitOfWork
     
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
-        if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
-        base.OnModelCreating(modelBuilder);
+         base.OnModelCreating(modelBuilder);
     
         modelBuilder.Configurations.Add(new ExecutionMapping());
         modelBuilder.Configurations.Add(new ExecutionApplicantMapping());

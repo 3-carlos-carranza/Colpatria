@@ -5,23 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="041a1a6f652f45d483f41176f6e0477c" Name="Diagram1">
-        <EntityTypeShape EntityType="UserModel.BaseDataList" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.BaseDataListValue" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.BaseField" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.BaseFieldValue" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.BaseFile" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.FieldToCreateUser" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.Role" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.User" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserModel.UserRole" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
-        <AssociationConnector Association="UserModel.FK_BaseField_BaseField" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_DataListValue_DataList_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_BaseFieldValue_BaseField" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_FieldToCreateUser_BaseField" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_BaseFieldValue_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_BaseFile_BaseFieldValue" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_UserRole_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="UserModel.FK_UserRole_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UserModel.BaseDataList" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="UserModel.BaseDataListValue" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="UserModel.BaseField" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="UserModel.BaseFieldValue" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="UserModel.BaseFile" Width="1.5" PointX="7.5" PointY="2.875" />
+        <EntityTypeShape EntityType="UserModel.FieldToCreateUser" Width="1.5" PointX="5.25" PointY="6.75" />
+        <EntityTypeShape EntityType="UserModel.Role" Width="1.5" PointX="3" PointY="17.25" />
+        <EntityTypeShape EntityType="UserModel.User" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="UserModel.UserRole" Width="1.5" PointX="5.25" PointY="12.125" />
+        <AssociationConnector Association="UserModel.FK_BaseField_BaseField" />
+        <AssociationConnector Association="UserModel.FK_DataListValue_DataList_Id" />
+        <AssociationConnector Association="UserModel.FK_BaseFieldValue_BaseField" />
+        <AssociationConnector Association="UserModel.FK_FieldToCreateUser_BaseField" />
+        <AssociationConnector Association="UserModel.FK_BaseFieldValue_User" />
+        <AssociationConnector Association="UserModel.FK_BaseFile_BaseFieldValue" />
+        <AssociationConnector Association="UserModel.FK_UserRole_Role" />
+        <AssociationConnector Association="UserModel.FK_UserRole_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -89,7 +89,6 @@
     <Compile Include="Evidente\ValidationRequest.cs" />
     <Compile Include="Evidente\ValidationResponse.cs" />
     <Compile Include="Evidente\ValidationResponseBuilder.cs" />
-    <Compile Include="Logging\ColpatriaLog.cs" />
     <Compile Include="Process\Execution.cs" />
     <Compile Include="Process\ExecutionApplicant.cs" />
     <Compile Include="Process\ExecutionStep.cs" />
@@ -119,10 +118,6 @@
     <Compile Include="User\Role.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="User\User.Extension.cs" />
-    <Compile Include="User\UserModel.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="User\UserRole.cs" />
     <Compile Include="WsMotor\Age.cs" />
     <Compile Include="WsMotor\Identification.cs" />

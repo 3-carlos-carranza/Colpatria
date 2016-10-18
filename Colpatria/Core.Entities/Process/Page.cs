@@ -1,16 +1,5 @@
-//   -----------------------------------------------------------------------
-//   <copyright file=Page.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
-
-#region
-
 using System.Collections.Generic;
 using Banlinea.ProcessFlow.Model;
-
-#endregion
 
 namespace Core.Entities.Process
 {

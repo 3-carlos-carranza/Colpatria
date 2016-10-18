@@ -115,8 +115,7 @@ namespace Presentation.Web.Colpatria.Controllers
             ProcessFlowArgument.User = new User { Id = userId };
             ProcessFlowArgument.IsSubmitting = false;
             ProcessFlowArgument.Execution = new Execution { Id = ExecutionId, ProductId = ProductId };
-
-            dynamic stepresult = ExecuteFlow();
+            dynamic stepresult = await Task.Factory.StartNew(() => ExecuteFlow()).ConfigureAwait(false);
             return stepresult;
         }
 

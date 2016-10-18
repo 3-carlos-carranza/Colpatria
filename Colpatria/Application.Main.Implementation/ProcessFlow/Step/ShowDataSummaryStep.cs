@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -10,13 +7,17 @@ using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
 using Core.Entities.WsMotor;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowDataSummaryStep : BaseStep
     {
-
         private readonly IUserAppService _userAppService;
+
         public ShowDataSummaryStep(IProcessFlowStore store, IUserAppService userAppService) : base(store)
         {
             _userAppService = userAppService;
@@ -24,8 +25,10 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            if (argument == null) throw new ArgumentNullException(nameof(argument));
+
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
-            var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
+            var data = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor)).ConfigureAwait(false);
             IDictionary<string, string> classification = new Dictionary<string, string>
             {
                 {"A", "Aprobada"},
@@ -53,7 +56,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

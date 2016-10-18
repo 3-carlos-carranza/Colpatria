@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Presentation.Web.Colpatria.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -57,7 +58,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 //Get the current claims principal
                 var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 var data = identity.Claims.FirstOrDefault(c => c.Type == "ExecutionId")?.Value;
-                return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
+                return !string.IsNullOrEmpty(data) ? long.Parse(data, CultureInfo.InvariantCulture) : 0;
             }
         }
 
@@ -96,7 +97,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 //Get the current claims principal
                 var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 var data = identity.Claims.FirstOrDefault(c => c.Type == "ProductId")?.Value;
-                return !string.IsNullOrEmpty(data) ? long.Parse(data) : 0;
+                return !string.IsNullOrEmpty(data) ? long.Parse(data, CultureInfo.InvariantCulture) : 0;
             }
         }
 
@@ -120,7 +121,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public void InitSetAnswersArguments(AnswerRequest answer)
         {
-            var userId = long.Parse(User.Identity.GetUserId());
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
 
             ProcessFlowArgument.User = new User
             {
@@ -144,7 +145,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 BaseProductType = (int)ProductId;
             }
 
-            var userId = long.Parse(User.Identity.GetUserId());
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
 
             ProcessFlowArgument.User = new User
             {
@@ -163,7 +164,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public void MockSubmitInitSetFormArguments()
         {
-            var userId = long.Parse(User.Identity.GetUserId());
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
             ProcessFlowArgument.User = new User
             {
                 Id = userId

@@ -158,7 +158,8 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.IsSubmitting = true;
             var arg = ProcessFlowArgument as ISubmitFormArgument;
-            arg.Form = form;
+            if (arg == null) return;
+            ((List<FieldValueOrder>)arg.Form).AddRange(form);
             ProcessFlowArgument = arg;
         }
 

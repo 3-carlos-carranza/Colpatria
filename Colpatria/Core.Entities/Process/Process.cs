@@ -34,14 +34,14 @@ namespace Core.Entities.Process
         public int FinancialEntityType { get; set; }
 
 
-        public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
+        public virtual ICollection<Execution> Execution { get; } = new HashSet<Execution>();
 
-        public virtual ICollection<ExtendedField> ExtendedField { get; set; } = new HashSet<ExtendedField>();
+        public virtual ICollection<ExtendedField> ExtendedField { get; } = new HashSet<ExtendedField>();
 
-        public virtual ICollection<Page> Page { get; set; } = new HashSet<Page>();
+        public virtual ICollection<Page> Page { get;  } = new HashSet<Page>();
 
-        public virtual ICollection<ProductProcess> ProductProcess { get; set; } = new HashSet<ProductProcess>();
+        public virtual ICollection<ProductProcess> ProductProcess { get; } = new HashSet<ProductProcess>();
 
-        public virtual ICollection<Step> Step { get; set; } = new HashSet<Step>();
+        public virtual ICollection<Step> Step { get; } = new HashSet<Step>();
     }
 }

@@ -18,13 +18,13 @@ namespace Core.Entities.Process
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
         {
-            this.Execution = new HashSet<Execution>();
-            this.FieldInSection = new HashSet<FieldInSection>();
-            this.StepSection = new HashSet<StepSection>();
+            Execution = new HashSet<Execution>();
+            FieldInSection = new HashSet<FieldInSection>();
+            StepSection = new HashSet<StepSection>();
         }
-        public virtual ICollection<Execution> Execution { get; set; }
-        public virtual ICollection<FieldInSection> FieldInSection { get; set; }
+        public virtual ICollection<Execution> Execution { get;  } = new HashSet<Execution>();
+        public virtual ICollection<FieldInSection> FieldInSection { get;  } = new HashSet<FieldInSection>();
         public virtual Page Page { get; set; }
-        public virtual ICollection<StepSection> StepSection { get; set; }
+        public virtual ICollection<StepSection> StepSection { get; } = new HashSet<StepSection>();
     }
 }

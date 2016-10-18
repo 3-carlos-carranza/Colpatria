@@ -35,6 +35,6 @@ namespace Core.Entities.Process
         public override bool IsRequesting { get; set; }
 
 
-        public virtual ICollection<Step> Step { get; set; }
+        public virtual ICollection<Step> Step { get;  } = new HashSet<Step>();
     }
 }

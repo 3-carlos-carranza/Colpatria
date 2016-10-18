@@ -46,13 +46,11 @@ namespace Core.Entities.Process
         public virtual Section Section { get; set; }
         public virtual Step Step { get; set; }
 
-        public virtual ICollection<ExecutionApplicant> ExecutionApplicant { get; set; } =
-            new HashSet<ExecutionApplicant>();
+        public virtual ICollection<ExecutionApplicant> ExecutionApplicant { get; } = new HashSet<ExecutionApplicant>();
 
-        public virtual ICollection<ExecutionStep> ExecutionStep { get; set; } = new HashSet<ExecutionStep>();
+        public virtual ICollection<ExecutionStep> ExecutionStep { get; } = new HashSet<ExecutionStep>();
 
-        public virtual ICollection<ExtendedFieldValue> ExtendedFieldValue { get; set; } =
-            new HashSet<ExtendedFieldValue>();
+        public virtual ICollection<ExtendedFieldValue> ExtendedFieldValue { get; } = new HashSet<ExtendedFieldValue>();
 
 
         [NotMapped]

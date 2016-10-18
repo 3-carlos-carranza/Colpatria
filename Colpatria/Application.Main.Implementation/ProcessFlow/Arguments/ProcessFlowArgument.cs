@@ -24,7 +24,7 @@ namespace Application.Main.Implementation.ProcessFlow.Arguments
         public IProcessFlowUser User { get; set; }
         public bool IsSubmitting { get; set; }
         public IEnumerable<IStep> Steps { get; set; }
-        public IList<FieldValueOrder> Form { get; set; }
+        public IList<FieldValueOrder> Form { get;  } = new List<FieldValueOrder>();
         public AnswerRequest AnswerRequest { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace Core.Entities.Process
     {
         public int ProcessId { get; set; }
         public virtual Process Process { get; set; }
-        public virtual ICollection<Section> Section { get; set; } = new HashSet<Section>();
+        public virtual ICollection<Section> Section { get; } = new HashSet<Section>();
     }
 }

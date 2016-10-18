@@ -17,10 +17,10 @@ namespace Core.Entities.Process
         public override int StateId { get; set; }
         public override bool Enable { get; set; }
         public override StepType StepType { get; set; }
-        public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
-        public virtual ICollection<ExecutionStep> ExecutionStep { get; set; } = new HashSet<ExecutionStep>();
+        public virtual ICollection<Execution> Execution { get;  } = new HashSet<Execution>();
+        public virtual ICollection<ExecutionStep> ExecutionStep { get; } = new HashSet<ExecutionStep>();
         public virtual Process Process { get; set; }
         public virtual State State { get; set; }
-        public virtual ICollection<StepSection> StepSection { get; set; } = new HashSet<StepSection>();
+        public virtual ICollection<StepSection> StepSection { get;  } = new HashSet<StepSection>();
     }
 }

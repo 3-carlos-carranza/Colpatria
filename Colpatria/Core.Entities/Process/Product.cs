@@ -8,8 +8,8 @@ namespace Core.Entities.Process
         public string Name { get; set; }
         public int CompanyId { get; set; }
 
-        public virtual ICollection<Execution> Execution { get; set; } = new HashSet<Execution>();
+        public virtual ICollection<Execution> Execution { get; } = new HashSet<Execution>();
 
-        public virtual ICollection<ProductProcess> ProductProcess { get; set; } = new HashSet<ProductProcess>();
+        public virtual ICollection<ProductProcess> ProductProcess { get; } = new HashSet<ProductProcess>();
     }
 }

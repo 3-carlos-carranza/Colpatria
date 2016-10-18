@@ -19,8 +19,8 @@ namespace Core.Entities.Process
         public string HtmlData { get; set; }
         public string NameService { get; set; }
         public virtual ExtendedList ExtendedList { get; set; }
-        public virtual ICollection<ExtendedFieldValue> ExtendedFieldValue { get; set; } = new HashSet<ExtendedFieldValue>();
+        public virtual ICollection<ExtendedFieldValue> ExtendedFieldValue { get; } = new HashSet<ExtendedFieldValue>();
         public virtual Process Process { get; set; }
-        public virtual ICollection<FieldInSection> FieldInSection { get; set; } = new HashSet<FieldInSection>();
+        public virtual ICollection<FieldInSection> FieldInSection { get; } = new HashSet<FieldInSection>();
     }
 }

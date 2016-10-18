@@ -1,8 +1,9 @@
-﻿using System.Configuration;
-using Core.Entities.WsMotor;
+﻿using Core.Entities.WsMotor;
 using Core.GlobalRepository.WsMotor;
 using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.WsMotorService;
+using System;
+using System.Configuration;
 
 namespace Data.DataCredito
 {
@@ -17,6 +18,7 @@ namespace Data.DataCredito
 
         public WsMotorServiceResponse Validate(WsMotorRequest wsMotorRequest)
         {
+            if (wsMotorRequest == null) throw new ArgumentNullException(nameof(wsMotorRequest));
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {

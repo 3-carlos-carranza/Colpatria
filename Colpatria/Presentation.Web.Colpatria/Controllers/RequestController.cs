@@ -12,6 +12,7 @@ using Core.Entities.Evidente;
 using Core.Entities.Process;
 using Core.Entities.User;
 using Crosscutting.Common;
+using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;

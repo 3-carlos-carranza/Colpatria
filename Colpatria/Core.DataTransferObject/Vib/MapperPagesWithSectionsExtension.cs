@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Entities.Process;
 
@@ -8,6 +9,7 @@ namespace Core.DataTransferObject.Vib
     {
         public static IEnumerable<Page> Map(this IEnumerable<MapperPagesWithSections> rows)
         {
+            if (rows == null) throw new ArgumentNullException(nameof(rows));
             var list = new List<Page>();
 
             foreach (var p in rows)

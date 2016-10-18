@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Banlinea.Framework.Logging.Insights.Mvc;
 
 namespace Presentation.Web.Colpatria
@@ -7,6 +8,7 @@ namespace Presentation.Web.Colpatria
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            if (filters == null) throw new ArgumentNullException(nameof(filters));
             filters.Add(new AiHandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());
         }

@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Web.Optimization;
 
 namespace Presentation.Web.Colpatria
@@ -7,6 +7,7 @@ namespace Presentation.Web.Colpatria
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            if (bundles == null) throw new ArgumentNullException(nameof(bundles));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-2.8.3.js"
                 ));
@@ -31,10 +32,8 @@ namespace Presentation.Web.Colpatria
                 "~/Scripts/lib/jquery.form/jquery.form.js",
                 "~/Scripts/lib/countdown/jquery.countdown.min.js",
                 "~/Scripts/lib/countdown/jquery.countdown-es.js"
-               
 
                 ));
-
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryUI").Include(
                 ));
@@ -44,7 +43,6 @@ namespace Presentation.Web.Colpatria
                 "~/Scripts/bootstrap/bootstrap.min.js",
                 "~/Scripts/bootstrap/bootstrap-datetimepicker.min.js"
 
-
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/layout").Include(
@@ -52,12 +50,10 @@ namespace Presentation.Web.Colpatria
                 "~/Scripts/theme/mobileGeneral.js"
                 ));
 
-
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/2014.3.1119/kendo.all.min.js",
                 "~/Scripts/kendo/2014.3.1119/kendo.aspnetmvc.min.js"
                 ));
-
 
             /*
              */
@@ -79,7 +75,6 @@ namespace Presentation.Web.Colpatria
                 "~/Content/lib/font-awesome/font-awesome.css",
                 "~/Content/portal/loginStyles.css"
                 ));
-
 
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
                 "~/Content/lib/kendo/2014.3.1119/kendo.common.min.css",

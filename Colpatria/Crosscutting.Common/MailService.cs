@@ -13,6 +13,7 @@ namespace Crosscutting.Common
     {
         public bool SendEmail(EmailMessage message)
         {
+            if (message == null) throw new ArgumentNullException(nameof(message));
             var client = new RestClient
             {
                 BaseUrl = new Uri("https://api.mailgun.net/v3"),

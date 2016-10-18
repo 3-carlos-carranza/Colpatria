@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Data.Common.Definition;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using Data.Common.Definition;
 
 namespace Data.Common.Implementation
 {
@@ -28,6 +28,8 @@ namespace Data.Common.Implementation
 
         public object Mapper(object entity, object entity2)
         {
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (entity2 == null) throw new ArgumentNullException(nameof(entity2));
             foreach (var propertyInfo in entity.GetType().GetProperties())
             {
                 var name = propertyInfo.Name;

@@ -1,13 +1,13 @@
-using System;
-using System.Configuration;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.WebServiceConsultation;
 using Core.Entities.Process;
 using Core.Entities.WsMotor;
 using Core.GlobalRepository.SQL.Process;
 using Core.GlobalRepository.WsMotor;
-using Crosscutting.Common;
+using Crosscutting.Common.Extensions;
 using Newtonsoft.Json;
+using System;
+using System.Configuration;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
@@ -26,6 +26,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public WsMotorServiceResponse Validate(WsMotorRequest wsMotorRequest)
         {
+            if (wsMotorRequest == null) throw new ArgumentNullException(nameof(wsMotorRequest));
             try
             {
                 wsMotorRequest.UsertNit = ConfigurationManager.AppSettings["WsMotorUserNit"];
@@ -75,8 +76,10 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 };
             }
         }
+
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)
         {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
             var item = new WebServiceConsultation
             {
                 Payload = settings.Payload,

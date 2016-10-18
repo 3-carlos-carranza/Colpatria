@@ -2,12 +2,13 @@
 using System.Reflection;
 using Crosscutting.Common.Tools.DataType;
 
-namespace Crosscutting.Common
+namespace Crosscutting.Common.Extensions
 {
     public static class EnumExtension
     {
         public static string GetStringValue(this Enum value)
         {
+            if (value == null) throw new ArgumentNullException(nameof(value));
             string output = null;
             var type = value.GetType();
 
@@ -22,6 +23,7 @@ namespace Crosscutting.Common
 
         public static long GetMappingToItemListValue(this Enum value)
         {
+            if (value == null) throw new ArgumentNullException(nameof(value));
             long output = 0;
             var type = value.GetType();
 

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
-using System.Text;
-using Core.Entities.Evidente;
+﻿using Core.Entities.Evidente;
 using Core.GlobalRepository.Evidente;
 using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.EvidenteService;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Net;
+using System.Text;
 
 namespace Data.DataCredito
 {
@@ -26,6 +26,7 @@ namespace Data.DataCredito
 
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
             settings.AnswerRequest.Identification = new Identification
             {
                 Number = settings.Identification,
@@ -43,6 +44,7 @@ namespace Data.DataCredito
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
         {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
@@ -66,7 +68,7 @@ namespace Data.DataCredito
 
         public ValidationResponse Validate(ValidateUserSettings settings)
         {
-
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
@@ -98,9 +100,8 @@ namespace Data.DataCredito
             }
             return new ValidationResponse
             {
-                Result =5 ,
+                Result = 5,
                 ProcessResult = true,
-                
             };
         }
 

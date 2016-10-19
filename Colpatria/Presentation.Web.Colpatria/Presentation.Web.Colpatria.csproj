@@ -1354,6 +1354,7 @@
     <Content Include="Views\Messages\NotFound.cshtml" />
     <Content Include="Views\Messages\Error500.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Request\ContinueRequest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

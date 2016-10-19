@@ -33,5 +33,6 @@ namespace Presentation.Web.Colpatria.Models
         public int ProductId { get; set; }
         [Required]
         public string SimpleId { get; set; }
+        public int? CurrentSectionId { get; set; }
     }
 }

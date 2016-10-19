@@ -85,5 +85,19 @@ namespace DataAccess.ProcessModule.Repository
             };
             _context.ExecutionApplicant.Add(executionApplicant);
         }
+
+        public int? GetValidateExecutionByUserAndProduct(long userId, int productId)
+        {
+            var context = UnitOfWork as DbContext;
+            try{
+                return 
+                context?.Database.SqlQuery<int>("GetValidateExecutionByUserAndProduct @UserId, @ProductId",
+                    new SqlParameter { ParameterName = "UserId", Value = userId },
+                    new SqlParameter { ParameterName = "ProductId", Value = productId }).First();
+            }
+            catch (Exception){
+                return new int();
+            }
+        }
     }
 }

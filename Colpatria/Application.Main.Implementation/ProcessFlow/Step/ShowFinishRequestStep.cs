@@ -29,6 +29,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _userRepository = userRepository;
         }
 
+        public enum Classification
+        {
+            
+        }
+
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             //Obtener respuesta de WsMotor

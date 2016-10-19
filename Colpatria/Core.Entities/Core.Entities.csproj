@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\Classification.cs" />
     <Compile Include="Enumerations\ProductType.cs" />
     <Compile Include="Evidente\AnswerRequest.cs" />
     <Compile Include="Evidente\AnswerResponse.cs" />

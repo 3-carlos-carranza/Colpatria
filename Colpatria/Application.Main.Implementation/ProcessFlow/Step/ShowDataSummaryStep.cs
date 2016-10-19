@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Entities.Enumerations;
+using Crosscutting.Common.Extensions;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -29,13 +31,9 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor)).ConfigureAwait(false);
-            IDictionary<string, string> classification = new Dictionary<string, string>
-            {
-                {"A", "Aprobada"},
-                {"R", "Rechazada"}
-            };
-
-            userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
+            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+                ? Classification.Approved.GetStringValue()
+                : Classification.Declined.GetStringValue();
             TraceFlow(argument);
             var step = (StepDetail)GetCurrentStep(argument);
 

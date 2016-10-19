@@ -14,6 +14,8 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Entities.Enumerations;
+using Crosscutting.Common.Extensions;
 using Xipton.Razor;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -34,13 +36,9 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            IDictionary<string, string> classification = new Dictionary<string, string>
-            {
-                {"A", "Aprobada"},
-                {"R", "Rechazada"}
-            };
-
-            userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
+            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+                ? Classification.Approved.GetStringValue()
+                : Classification.Declined.GetStringValue();
             TraceFlow(argument);
 
             var email = EmailMessage(userInfo);

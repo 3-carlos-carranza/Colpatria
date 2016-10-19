@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
+using Presentation.Web.Colpatria.Models;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -12,6 +13,19 @@ namespace Presentation.Web.Colpatria.Controllers
         public ActionResult NotFound()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ShowInformation(string code ="")
+        {
+            var message = Properties.Resources.ResourceManager.GetString(code);
+            var errorm= new ErrorViewModel
+            {
+                Message = string.IsNullOrEmpty(message)? "No se encuentra el producto." : message
+                ,Icon = ""
+                ,Title = "Importante"
+            };
+            return View(errorm);
         }
         [AllowAnonymous]
         public ActionResult Error500()

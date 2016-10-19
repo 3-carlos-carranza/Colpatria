@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@ViewBag.Title</title>
-    
+
     <link rel="apple-touch-icon" href="//scotiabankfiles.azureedge.net/scotiabank-colombia/icons/favicons/icon-iphone.png">
     <link rel="apple-touch-icon" sizes="72x72" href="//scotiabankfiles.azureedge.net/scotiabank-colombia/icons/favicons/icon-ipad.png">
     <link rel="apple-touch-icon" sizes="114x114" href="//scotiabankfiles.azureedge.net/scotiabank-colombia/icons/favicons/icon-iphone4.png">
@@ -18,108 +18,120 @@
     @Styles.Render("~/Content/xtensions")
     @RenderSection("stylesheet", false)
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="~/Content/lib/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
-    <link href="~/Content/lib/jquery-validation-engine/normalize.css" rel="stylesheet" type="text/css"/>
-    <link href="~/Content/lib/jquery-validation-engine/validationengine.jquery.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/jquery-validation-engine/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/jquery-validation-engine/validationengine.jquery.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="//origin.agilitycms.com/scotiabank-colombia/icons/favicons/favicon.ico">
 
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (config) {
+            function i(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f; y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js"; u.getElementsByTagName(o)[0].parentNode.appendChild(y); try { t.cookie = u.cookie } catch (p) { } for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;) i("track" + r.pop()); return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) { var s = f && f(config, i, u, e, o); return s !== !0 && t["_" + r](config, i, u, e, o), s }), t
+        }({
+            instrumentationKey: "85c38d86-0a40-4524-b1bd-5e5df635af14"
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
 
 </head>
 <body>
-<nav class="navbar navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-left navbar-brand">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-left navbar-brand">
 
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
         </div>
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="container header">
-    <div class="col-xs-12 col-sm-6 logo">
-        <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
-    </div>
-    <div class="col-xs-12 col-sm-6 logo-step">
+    <header class="container header">
+        <div class="col-xs-12 col-sm-6 logo">
+            <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria" />
+        </div>
+        <div class="col-xs-12 col-sm-6 logo-step">
 
-        @if (Model != null) {
-            if ((ProductType) Session["Product"] == ProductType.Ca){
-                <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
+            @if (Model != null)
+            {
+                if ((ProductType)Session["Product"] == ProductType.Ca)
+                {
+                    <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
+                }
+                else
+                {
+                    <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
+                }
             }
-            else{
-                <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
-            }
-        }
+        </div>
+    </header>
+
+    <div class="container body-content">
+        @RenderBody()
     </div>
-</header>
-
-<div class="container body-content">
-    @RenderBody()
-</div>
 
 
-@{
-    Html.RenderPartial("~/Views/Shared/_footer.cshtml");
-}
-
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/lib")
-@Scripts.Render("~/bundles/jqueryUI")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/kendo")
-@Scripts.Render("~/bundles/layout")
-@Scripts.Render("~/bundles/xtensions")
-@RenderSection("scripts", false)
-
-
-@* ReSharper disable once NotAllPathsReturnValue *@
-<script>
-    //document.oncontextmenu = function () { return false }
-    document.onkeydown = function (event) {
-        event = (event || window.event);
-        if (event.keyCode === 123 || event.keyCode === 18) {
-            return false;
-        }
-    }
-</script>
-
-<script>
-    "use strict";
-    $(document)
-        .ready(function() {
-            BLExt.Init();
-        });
-    function PrintElement(e) {
-        popup(e.html());
+    @{
+        Html.RenderPartial("~/Views/Shared/_footer.cshtml");
     }
 
-    function popup(html) {
-        var mywindow = window.open("", "_blank");
-        mywindow.document.write("<html><head><title>Imprimir</title>");
-        mywindow.document.write("<link href=\"/Content/lib/bootstrap/bootstrap.css\" rel=\"stylesheet\" />");
-        mywindow.document.write("<link href=\"/Content/Site.css\" rel=\"stylesheet\" />");
-        mywindow.document.write("<link href=\"/Content/print.css\" rel=\"stylesheet\" media=\"print\" />");
-        mywindow.document.write("</head><body><div class=\"container\">");
-        mywindow.document.write(html);
-        mywindow.document.write("</div></body></html>");
-        
-        setTimeout(function() {
-            $(mywindow.document).ready(function() {
-                mywindow.print();
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/jqueryUI")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/layout")
+    @Scripts.Render("~/bundles/xtensions")
+    @RenderSection("scripts", false)
+
+
+    @* ReSharper disable once NotAllPathsReturnValue *@
+    <script>
+        //document.oncontextmenu = function () { return false }
+        document.onkeydown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode === 123 || event.keyCode === 18) {
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        "use strict";
+        $(document)
+            .ready(function () {
+                BLExt.Init();
             });
-        }, 400);
-    }
-</script>
+        function PrintElement(e) {
+            popup(e.html());
+        }
+
+        function popup(html) {
+            var mywindow = window.open("", "_blank");
+            mywindow.document.write("<html><head><title>Imprimir</title>");
+            mywindow.document.write("<link href=\"/Content/lib/bootstrap/bootstrap.css\" rel=\"stylesheet\" />");
+            mywindow.document.write("<link href=\"/Content/Site.css\" rel=\"stylesheet\" />");
+            mywindow.document.write("<link href=\"/Content/print.css\" rel=\"stylesheet\" media=\"print\" />");
+            mywindow.document.write("</head><body><div class=\"container\">");
+            mywindow.document.write(html);
+            mywindow.document.write("</div></body></html>");
+
+            setTimeout(function () {
+                $(mywindow.document).ready(function () {
+                    mywindow.print();
+                });
+            }, 400);
+        }
+    </script>
 </body>
 </html>

@@ -98,9 +98,9 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             return _userRepository.GetUserInfoByExecutionId(executionId);
         }
 
-        public int? GetValidateExecutionByUserAndProduct(long userId, int productId)
+        public int? GetValidExecutionByUserAndProduct(long userId, int productId)
         {
-            return _executionRepository.GetValidateExecutionByUserAndProduct(userId, productId);
+            return _executionRepository.GetValidExecutionByUserAndProduct(userId, productId);
         }
     }
 }

@@ -74,7 +74,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 nuser = user;
                 nuser.IsNewUser = false;
                 var currentSectionId =
-                    (_userAppService.GetValidateExecutionByUserAndProduct(user.Id, (int) Session["Product"]));
+                    (_userAppService.GetValidExecutionByUserAndProduct(user.Id, (int) Session["Product"]));
 
                 if (currentSectionId != 0){
                     return View("ContinueRequest", new UserViewModel{

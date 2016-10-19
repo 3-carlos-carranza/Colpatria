@@ -47,7 +47,7 @@
 
 
 
-                <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill">
+                <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill" data-x="x-validate" id="valid">
                     <input type="hidden" value="@Model.QuestionsResponse.Id" name="QuestionsId"/>
                     <input type="hidden" value="@Model.UserInfoDto.Identification" name="Identification" />
                     <input type="hidden" value="@Model.QuestionsResponse.Record" name="Record" />

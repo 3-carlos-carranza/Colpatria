@@ -2,6 +2,7 @@
 
 namespace Data.Common.Helpers.EF.Extensions
 {
+    [AttributeUsage(AttributeTargets.Property)]
     public class UserDefinedTableTypeColumnAttribute : Attribute
     {
         public UserDefinedTableTypeColumnAttribute(int order)

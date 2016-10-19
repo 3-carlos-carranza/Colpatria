@@ -10,7 +10,7 @@ namespace Data.Common.Definition
     {
         IUnitOfWork UnitOfWork { get; set; }
 
-        Object Mapper(Object entity, Object entity2);
+        object Mapper(object entity, object entity2);
         void Add(T item);
 
         T AddItem(T item);

@@ -83,6 +83,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
                 if (currentSectionId != 0){
                     return View("ContinueRequest", new UserViewModel{
+                        FirstName = "Wilmar",
                         ProductId = Convert.ToInt32((int)Session["Product"]),
                         CurrentSectionId = currentSectionId
                     });

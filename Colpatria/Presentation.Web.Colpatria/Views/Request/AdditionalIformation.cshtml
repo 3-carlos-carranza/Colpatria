@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-6">
                             <span class="input input--hoshi">
-                                <input type="text" name="11" id="BirthDate" class="input__field input__field--hoshi validate[required, custom[date]] validateBirthDay" value="24/05/2011">
+                                <input type="text" name="11" id="BirthDate" class="input__field input__field--hoshi validate[required, custom[date]] validateBirthDay date" value="">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="BirthDate">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Fecha de Nacimiento<span class="symbol required"></span></span>
                                 </label>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-3">
                                 <span class="input input--hoshi">
-                                    <input name="23" class="input__field input__field--hoshi validate[required] onlynumber" type="text" id="Income" placeholder="" value="">
+                                    <input name="23" class="input__field input__field--hoshi validate[required,maxSize[12]] onlynumber" type="text" id="Income" placeholder="" value="" maxlength="12">
                                     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
                                         <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                     </label>

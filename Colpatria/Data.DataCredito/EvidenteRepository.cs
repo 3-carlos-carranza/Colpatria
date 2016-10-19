@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Text;
+using Microsoft.ApplicationInsights;
 
 namespace Data.DataCredito
 {
@@ -27,19 +28,28 @@ namespace Data.DataCredito
         public AnswerResponse AnswerQuestions(AnswerSettings settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
-            settings.AnswerRequest.Identification = new Identification
+            try
             {
-                Number = settings.Identification,
-                Type = settings.IdentificationType
-            };
+                settings.AnswerRequest.Identification = new Identification
+                {
+                    Number = settings.Identification,
+                    Type = settings.IdentificationType
+                };
 
-            var serialized = _xmlProcessor.Serialize(settings.AnswerRequest);
+                var serialized = _xmlProcessor.Serialize(settings.AnswerRequest);
 
-            var response = verificar(settings.Product, settings.ParamProduct, serialized);
+                var response = verificar(settings.Product, settings.ParamProduct, serialized);
 
-            var deserialized = _xmlProcessor.Deserialize<AnswerResponse>(response);
+                var deserialized = _xmlProcessor.Deserialize<AnswerResponse>(response);
 
-            return deserialized;
+                return deserialized;
+            }
+            catch (Exception exception)
+            {
+                var clientLog = new TelemetryClient();
+                clientLog.TrackException(exception);
+                return new AnswerResponse { Result = false };
+            }
         }
 
         public QuestionsResponse GetQuestions(QuestionsSettings settings)
@@ -48,20 +58,30 @@ namespace Data.DataCredito
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
-                var questionsRequest = new QuestionsRequest
+                try
                 {
-                    Identification = settings.Identification,
-                    IdentificationType = settings.IdentificationType,
-                    ValidationNumber = settings.ValidationNumber
-                };
+                    var questionsRequest = new QuestionsRequest
+                    {
+                        Identification = settings.Identification,
+                        IdentificationType = settings.IdentificationType,
+                        ValidationNumber = settings.ValidationNumber
+                    };
 
-                var serialized = _xmlProcessor.Serialize(questionsRequest);
+                    var serialized = _xmlProcessor.Serialize(questionsRequest);
 
-                var response = preguntas(settings.ParamProduct, settings.Product, settings.Channel, serialized);
+                    var response = preguntas(settings.ParamProduct, settings.Product, settings.Channel, serialized);
 
-                var deserialized = _xmlProcessor.Deserialize<QuestionsResponse>(response);
+                    var deserialized = _xmlProcessor.Deserialize<QuestionsResponse>(response);
 
-                return deserialized;
+                    return deserialized;
+                }
+                catch (Exception exception)
+                {
+                    var clientLog = new TelemetryClient();
+                    clientLog.TrackException(exception);
+                    return new QuestionsResponse { Result = "00" };
+                }
+                
             }
             return QuestionsResponseMock();
         }
@@ -72,31 +92,43 @@ namespace Data.DataCredito
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
-                var identification = new Identification
+                try
                 {
-                    Number = settings.Identification,
-                    Type = settings.IdentificationType
-                };
-
-                var dataValidation = new ValidationRequest
-                {
-                    Identification = identification,
-                    LastName = settings.LastName,
-                    Names = settings.Names,
-                    SecondLastName = settings.SecondLastName,
-                    ExpeditionDate = new ExpeditionDate
+                    var identification = new Identification
                     {
-                        Timestamp = settings.ExpeditionDate.ToTimestamp()
-                    }
-                };
+                        Number = settings.Identification,
+                        Type = settings.IdentificationType
+                    };
 
-                var serialized = _xmlProcessor.Serialize(dataValidation);
+                    var dataValidation = new ValidationRequest
+                    {
+                        Identification = identification,
+                        LastName = settings.LastName,
+                        Names = settings.Names,
+                        SecondLastName = settings.SecondLastName,
+                        ExpeditionDate = new ExpeditionDate
+                        {
+                            Timestamp = settings.ExpeditionDate.ToTimestamp()
+                        }
+                    };
 
-                var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
+                    var serialized = _xmlProcessor.Serialize(dataValidation);
 
-                var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
+                    var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
 
-                return deserialized;
+                    var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
+
+                    return deserialized;
+                }
+                catch (Exception exception)
+                {
+                    var clientLog = new TelemetryClient();
+                    clientLog.TrackException(exception);
+                    return new ValidationResponse
+                    {
+                        ProcessResult = false
+                    };
+                }
             }
             return new ValidationResponse
             {
@@ -104,7 +136,6 @@ namespace Data.DataCredito
                 ProcessResult = true,
             };
         }
-
         private static QuestionsResponse QuestionsResponseMock()
         {
             return new QuestionsResponse

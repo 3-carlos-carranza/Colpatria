@@ -27,8 +27,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         public WsMotorServiceResponse Validate(WsMotorRequest wsMotorRequest)
         {
             if (wsMotorRequest == null) throw new ArgumentNullException(nameof(wsMotorRequest));
-            try
-            {
+            
                 wsMotorRequest.UsertNit = ConfigurationManager.AppSettings["WsMotorUserNit"];
                 wsMotorRequest.UserType = ConfigurationManager.AppSettings["WsMotorUserType"];
                 wsMotorRequest.User = ConfigurationManager.AppSettings["WsMotorUser"];
@@ -51,30 +50,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                     .Build();
                 AddWebServiceConsultation(consultationResponse);
                 return response;
-            }
-            catch (Exception exception)
-            {
-                var consultationException =
-                    _webSettingsConsultationSettingsBuilder.WithPayload(
-                        JsonConvert.SerializeObject(new { Exception = exception }))
-                        .WithExecutionId(wsMotorRequest.ExecutionId)
-                        .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
-                        .WithWebServiceName("Error consultando " + ServiceNameType.WsMotorValidate.GetStringValue())
-                        .Build();
-                AddWebServiceConsultation(consultationException);
-                return new WsMotorServiceResponse
-                {
-                    ScoresMotor = new ScoresMotor
-                    {
-                        ScoreMotor = new ScoreMotor
-                        {
-                            Type = "10",
-                            Score = "0.0",
-                            Classification = "N"
-                        }
-                    }
-                };
-            }
         }
 
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)

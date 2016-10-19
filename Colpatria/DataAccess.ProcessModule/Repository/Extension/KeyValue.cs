@@ -1,4 +1,4 @@
-﻿using EntityFrameworkExtras.EF6;
+﻿using Data.Common.Helpers.EF.Extensions;
 
 namespace DataAccess.ProcessModule.Repository.Extension
 {

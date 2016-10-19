@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Core.DataTransferObject.Vib;
+﻿using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
 using Crosscutting.Common.Tools.DataType;
+using Data.Common.Helpers.EF.Extensions;
 using DataAccess.ProcessModule.Repository.Extension;
-using EntityFrameworkExtras.EF6;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace DataAccess.ProcessModule.Repository
 {

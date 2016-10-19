@@ -68,10 +68,6 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFrameworkExtras.EF6, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFrameworkExtras.EF6.1.0.0\lib\net45\EntityFrameworkExtras.EF6.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -298,6 +294,10 @@
     <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
       <Project>{470ab1b1-b29e-4360-aa44-0d83825ecfcd}</Project>
       <Name>Data.Common.Definition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Common.Helpers.EF.Extensions\Data.Common.Helpers.EF.Extensions.csproj">
+      <Project>{a7a92cc1-e640-45cb-8262-780d67f8c25c}</Project>
+      <Name>Data.Common.Helpers.EF.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data.Common.Implementation\Data.Common.Implementation.csproj">
       <Project>{4f25bbfa-26d1-4b46-ad1d-a9471cf3975f}</Project>

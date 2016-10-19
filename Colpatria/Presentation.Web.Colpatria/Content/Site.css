@@ -1,163 +1,4 @@
-﻿@font-face {
-    font-family: 'latoblack';
-    src: url('../fonts/lato-font/lato-black-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latoblack_italic';
-    src: url('../fonts/lato-font/lato-blackitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-blackitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latobold';
-    src: url('../fonts/lato-font/lato-bold-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latobold_italic';
-    src: url('../fonts/lato-font/lato-bolditalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latohairline';
-    src: url('../fonts/lato-font/lato-hairline-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-hairline-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latohairline_italic';
-    src: url('../fonts/lato-font/lato-hairlineitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-hairlineitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latoheavy';
-    src: url('../fonts/lato-font/lato-heavy-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-heavy-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latoheavy_italic';
-    src: url('../fonts/lato-font/lato-heavyitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-heavyitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latoitalic';
-    src: url('../fonts/lato-font/lato-italic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latolight';
-    src: url('../fonts/lato-font/lato-light-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latolight_italic';
-    src: url('../fonts/lato-font/lato-lightitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latomedium';
-    src: url('../fonts/lato-font/lato-medium-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'latomedium_italic';
-    src: url('../fonts/lato-font/lato-mediumitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-mediumitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'latoregular';
-    src: url('../fonts/lato-font/lato-regular-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latosemibold';
-    src: url('../fonts/lato-font/lato-semibold-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-semibold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latosemibold_italic';
-    src: url('../fonts/lato-font/lato-semibolditalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-semibolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latothin';
-    src: url('../fonts/lato-font/lato-thin-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-thin-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latothin_italic';
-    src: url('../fonts/lato-font/lato-thinitalic-webfont.woff2') format('woff2'),
-         url('../fonts/lato-font/lato-thinitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-body {
+﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color:#f4f4f4;
@@ -166,7 +7,7 @@ body {
     background-attachment:fixed;
     background-repeat:no-repeat;
     background-size:cover;
-    font-family: 'latoregular';
+    font-family: 'Lato', sans-serif;
 
 }
 a:hover {
@@ -181,7 +22,7 @@ text-decoration:none;
 }
 
 .step-content.error {
-    font-family: 'latoregular';
+    font-family: 'Lato';
 }
 
 .step-content .err {
@@ -353,7 +194,7 @@ color:red;
 .step-content .desc-step{
  font-weight:bold;
  font-size: 14px;
- font-family: 'latobold';
+ font-family: 'lato';
  color:#000;
 }
 .step-content .li-step{
@@ -460,7 +301,7 @@ header .logo-step {
 	background: #000;
 	color: #aaa;
 	font-weight: normal;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: 'Lato', sans-serif;
 	-webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
@@ -628,11 +469,13 @@ header .logo-step {
 .step-content .title-term{
    color:#e20613;
    font-size:16px;
-   font-family: 'latobold';
+   font-family: 'lato';
+   font-weight: bold;
 
 }
 .step-content .subtitle-term {
-font-family: 'latobold';
+font-family: 'lato';
+font-weight: bold;
  font-size:16px;
  color:#000;
 }
@@ -649,10 +492,13 @@ color:#e20613;
  padding:0% 0 4% 0;
 }
 .step-content .italic {
-font-family: 'latosemibold_italic';
+font-family: 'lato';
+font-weight: bold;
+font-style:italic;
 }
 .step-content .bolds {
-font-family: 'latobold';
+font-family: 'lato';
+font-weight: bold;
     padding: 2% 0;
 }
 .step-content .bolds span {

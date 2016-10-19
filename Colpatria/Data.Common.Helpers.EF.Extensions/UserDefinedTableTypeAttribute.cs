@@ -2,6 +2,7 @@
 
 namespace Data.Common.Helpers.EF.Extensions
 {
+    [AttributeUsage(AttributeTargets.Class)]
     public class UserDefinedTableTypeAttribute : Attribute
     {
         public UserDefinedTableTypeAttribute(string name)

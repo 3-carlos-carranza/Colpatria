@@ -68,6 +68,10 @@
       <HintPath>..\..\packages\Banlinea.Process.Flow.Model.2.4.1\lib\net462\Banlinea.ProcessFlow.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -126,6 +130,7 @@
     <Compile Include="ProcessFlow\Responses\RedirectResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowModalResponse.cs" />
     <Compile Include="ProcessFlow\Responses\ShowScreenResponse.cs" />
+    <Compile Include="ProcessFlow\Services\InalambriaNotificationSmsAppService.cs" />
     <Compile Include="ProcessFlow\Services\MailAppService.cs" />
     <Compile Include="ProcessFlow\Services\ProcessAppService.cs" />
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />

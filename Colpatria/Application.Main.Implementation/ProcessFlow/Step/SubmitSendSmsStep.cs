@@ -12,15 +12,15 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitSendSmsStep : BaseStep, IStep
     {
-        private readonly IInalambriaAppService _inalambriaAppService;
+        private readonly INotificationSmsAppService _notificationSmsAppService;
         private readonly IUserAppService _userAppService;
 
-        public SubmitSendSmsStep(IProcessFlowStore store, IInalambriaAppService inalambriaAppService,
-            IUserAppService userAppService)
+        public SubmitSendSmsStep(IProcessFlowStore store, IUserAppService userAppService,
+            INotificationSmsAppService notificationSmsAppService)
             : base(store)
         {
-            _inalambriaAppService = inalambriaAppService;
             _userAppService = userAppService;
+            _notificationSmsAppService = notificationSmsAppService;
         }
 
         public new string Name => GetType().Name;
@@ -28,12 +28,14 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var user = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
+            var responseDetailFlow = _notificationSmsAppService.SendSms(user.Cellphone,
+                $"Colpatria informa que usted realizo la solicitud #{user.SimpleId} a traves de oficina virtual",
+                argument.Execution.Id);
 
-            _inalambriaAppService.SendSms
-                (user.Cellphone,                                                                        
+            /*_inalambriaAppService.SendSms(user.Cellphone,                                                                        
                     "Colpatria informa que usted realizo la solicitud #" + user.SimpleId +
-                    " a traves de Oficina Virtual", "1", argument.Execution.Id);
-
+                    " a traves de oficina virtual", "1", argument.Execution.Id);
+                    */
             return await OnSuccess(argument).Result.Advance(argument);
         }
 

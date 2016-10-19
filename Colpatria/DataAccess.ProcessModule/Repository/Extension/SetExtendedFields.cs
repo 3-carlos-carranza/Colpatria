@@ -24,6 +24,7 @@ namespace DataAccess.ProcessModule.Repository.Extension
             ExecutionId = executionid;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         [StoredProcedureParameter(SqlDbType.Udt)]
         public List<KeyValue> KeyValues { get; }
 

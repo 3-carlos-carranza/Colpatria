@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Data.Common.Helpers.EF.Extensions
@@ -30,21 +31,8 @@ namespace Data.Common.Helpers.EF.Extensions
             return attribute.Name;
         }
 
-        public Type GetCollectionType(Type type)
-        {
-            if (type.IsGenericType)
-            {
-                foreach (var interfaceType in type.GetInterfaces())
-                {
-                    if (interfaceType.GetGenericTypeDefinition() == typeof(IList<>))
-                    {
-                        return interfaceType.GetGenericArguments()[0];
-                    }
-                }
-            }
-
-            return null;
-        }
+        public Type GetCollectionType(Type type) =>
+            type.IsGenericType ? (from interfaceType in type.GetInterfaces() where interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(IList<>) select interfaceType.GetGenericArguments()[0]).FirstOrDefault() : null;
 
         public object GetUserDefinedTableValue(PropertyInfo propertyInfo, object storedProcedure)
         {

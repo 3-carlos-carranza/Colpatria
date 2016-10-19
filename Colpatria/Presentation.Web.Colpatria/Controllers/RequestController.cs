@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Presentation.Web.Colpatria.Models;
 using System;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -34,25 +35,29 @@ namespace Presentation.Web.Colpatria.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (bool.Parse(ConfigurationManager.AppSettings.Get("IsDevelop")))
+            {
+                return View();
+            }
+            return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
         }
 
         [AllowAnonymous]
         public ActionResult ValidateProduct(string productType = "")
         {
-            if (IsNullOrEmpty(productType)) return View("Index");
-            if (productType == null) throw new ArgumentNullException(nameof(productType));
-            if (productType == "") return View();
-            if (!(productType == ProductType.Ca.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture) ||
-                  productType == ProductType.Tc.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture)))
+            if (IsNullOrEmpty(productType))
             {
-                return RedirectToAction("NotFound", "Messages");
+                return RedirectToAction("ShowInformation", "Messages", new { code = "0" });
             }
-            Session["Product"] = (ProductType)(Convert.ToInt32(productType, CultureInfo.CurrentCulture));
+            if (!(productType == ProductType.SavingAccount.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture) ||
+                  productType == ProductType.CreditCard.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture)))
+            {
+                return RedirectToAction("ShowInformation", "Messages",new {code="-1"});
+            }
+            Session["Product"] = (ProductType)Convert.ToInt32(productType, CultureInfo.CurrentCulture);
             return View("Register", new UserViewModel
             {
-                ProductId = Convert.ToInt32(productType, CultureInfo.CurrentCulture),
-                SimpleId = Code
+                ProductId = Convert.ToInt32(productType, CultureInfo.CurrentCulture)
             });
         }
 

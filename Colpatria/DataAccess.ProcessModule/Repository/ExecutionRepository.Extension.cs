@@ -86,7 +86,7 @@ namespace DataAccess.ProcessModule.Repository
             _context.ExecutionApplicant.Add(executionApplicant);
         }
 
-        public int? GetValidateExecutionByUserAndProduct(long userId, int productId)
+        public int? GetValidExecutionByUserAndProduct(long userId, int productId)
         {
             var context = UnitOfWork as DbContext;
             try{

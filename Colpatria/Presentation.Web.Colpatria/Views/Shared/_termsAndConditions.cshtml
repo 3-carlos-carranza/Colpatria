@@ -61,10 +61,27 @@
                                     <span>3.</span> El Banco a través de los canales que tiene a disposición, tales como correo electrónico, contacto telefónico o a través de su fuerza de ventas, comunicará la respuesta final de su solicitud, o suministrará información de otros productos de ahorro e inversión ofrecidos por el Banco Colpatria.
                                 </p>
                             </div>
+                            <div class="info">
+                                <div class="col-xs-12 col-sm-8 desc-info">
+                                    <p class="">
+                                        Cualquier duda o inquietud puedes contactarte:<br />
+                                        Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 -Pereira 3401616 -
+                                        Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480 Popayán
+                                        8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 222
+                                        Mail: servicliente@colpatria.com
+                                    </p>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 info-log">
+                                    <div class="logo-infoprint">
+                                        <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                                    </div>
+                                </div>
+                                <div style="clear: both"></div>
+                            </div>
                             <div class="botons">
                                 <div class="col-xs-12 col-md-6 print">
-                                    <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#terms-and-conditions'))">
-                                        <img src="~/Images/Content/imprim.png" alt="Imprimir" />
+                                    <a class="btn btn-default pull-right prtn" id="noacept" data-dismiss="modal">
+                                        No acepto los términos y condiciones
                                     </a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 print">
@@ -75,7 +92,7 @@
                                         </button>
                                     </form>
 
-                                    <a class="btn btn-danger pull-right enviar acepto" data-dismiss="modal">Acepto los términos y Condiciones</a>
+                                    <a class="btn btn-danger pull-right enviar acepto" id="acept" data-dismiss="modal">Acepto los términos y condiciones</a>
 
                                 </div>
                             </div>

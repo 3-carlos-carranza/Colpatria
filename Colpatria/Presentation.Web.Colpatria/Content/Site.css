@@ -20,7 +20,22 @@ text-decoration:none;
     margin-top: 1%;
     position:relative;
 }
-
+.table-responsive {
+    min-height: .01%;
+    overflow-x: hidden;
+}
+ /* Tooltip */
+  .totip + .tooltip > .tooltip-inner {
+      background-color: #73AD21;
+      color: #FFFFFF;
+      border: 1px solid green;
+      padding: 15px;
+      font-size: 20px;
+  }
+  /* Tooltip on top */
+  .totip + .tooltip.top > .tooltip-arrow {
+      border-top: 5px solid green;
+  }
 .step-content.error {
     font-family: 'Lato';
 }
@@ -814,7 +829,10 @@ text-align:left !important;
     .step-content .print {
     padding: 0;
 }
-
+ .table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
 .step-content .bull,
 .step-content .validado {
     font-size: 4vw;
@@ -942,7 +960,7 @@ margin-top: 16%;
 }
 @media(max-width:360px) {
     .input__label {
-    font-size: 12px;
+    font-size: 16px;
 }
 }
 /* Fin Media Querys steps*/

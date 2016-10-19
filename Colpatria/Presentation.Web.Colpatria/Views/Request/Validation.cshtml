@@ -11,7 +11,7 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            @if ((ProductType)Session["Product"] == ProductType.Ca)
+            @if ((ProductType)Session["Product"] == ProductType.SavingAccount)
             {
                 <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
             }
@@ -47,7 +47,7 @@
 
 
 
-                <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill">
+                <form action="@Url.Action("ValidateAnswer", "Request")" method="POST" class="stepMe ac-custom ac-radio ac-fill" data-x="x-validate" id="valid">
                     <input type="hidden" value="@Model.QuestionsResponse.Id" name="QuestionsId"/>
                     <input type="hidden" value="@Model.UserInfoDto.Identification" name="Identification" />
                     <input type="hidden" value="@Model.QuestionsResponse.Record" name="Record" />

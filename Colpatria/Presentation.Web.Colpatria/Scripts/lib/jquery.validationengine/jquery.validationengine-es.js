@@ -9,7 +9,7 @@
           "regex": "none",
           "alertText": "* Este campo es obligatorio",
           "alertTextCheckboxMultiple": "* Por favor seleccione una opción",
-          "alertTextCheckboxe": "* Este checkbox es obligatorio"
+          "alertTextCheckboxe": "* Debe aceptar los términos y condiciones para poder continuar"
         },
         "requiredInFunction": {
           "func": function (field, rules, i, options) {

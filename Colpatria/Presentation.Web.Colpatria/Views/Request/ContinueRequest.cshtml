@@ -13,7 +13,7 @@
     <div class="form-group">
         <div class="col-xs-12 col-md-6">
             <span class="input input--hoshi">
-                <input name="1" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" type="text" id="Identification">
+                <input name="Identification" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" type="text" id="Identification">
                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Identification">
                     <span class="input__label-content input__label-content--hoshi input-block-level ">Número de documento<span class="symbol required"></span></span>
                 </label>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-xs-6 col-md-3">
             <span class="input input--hoshi">
-                <input name="2" class="input__field input__field--hoshi validate[required, maxSize[6]] onlynumber" type="text" id="SimpleId">
+                <input name="SimpleId" class="input__field input__field--hoshi validate[required, maxSize[6]] onlynumber" type="text" id="SimpleId">
                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SimpleId">
                     <span class="input__label-content input__label-content--hoshi input-block-level">Codigo de solicitud<span class="symbol required"></span></span>
                 </label>
@@ -32,8 +32,8 @@
     <div class="form-group">
         <div class="col-xs-12 col-md-3" hidden="hidden">
             <span class="input input--hoshi">
-                <input name="12" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="product" placeholder="" value="@Model.ProductId">
-                <input name="13" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="section" placeholder="" value="@Model.CurrentSectionId">
+                <input name="ProductId" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="ProductId" placeholder="" value="@Model.ProductId">
+                <input name="CurrentSectionId" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="CurrentSectionId" placeholder="" value="@Model.CurrentSectionId">
             </span>
         </div>
         <div class="col-xs-12 col-md-12">

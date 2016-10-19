@@ -10,8 +10,11 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Core.Entities.WsMotor;
 using Core.GlobalRepository.SQL.User;
+using Crosscutting.Common.Extensions;
+using Crosscutting.Common.Tools.DataType;
 using Newtonsoft.Json;
 
 
@@ -29,19 +32,17 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _userRepository = userRepository;
         }
 
+
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             //Obtener respuesta de WsMotor
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
 
-            IDictionary<string, string> classification = new Dictionary<string, string>
-            {
-                {"A", "Aprobada"},
-                {"R", "Rechazada"}
-            };
+            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A" 
+                ? Classification.Approved.GetStringValue() 
+                : Classification.Declined.GetStringValue();
 
-            userInfo.ClassificationWsMotor = classification[data.ScoresMotor.ScoreMotor.Classification];
             TraceFlow(argument);
             var step = (StepDetail) GetCurrentStep(argument);
             if (!argument.IsSubmitting)

@@ -266,22 +266,31 @@ jQuery.extend({
             }
 
             if ((x + 1) < total) {
-                $(el).append('<a class="nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
+                $(el).append('<a data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Debe seleccionar una opción para continuar." class="totip nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
 
                 $(".nextStep", $(el)).on("click", function () {
-
                     if ($('input[data-name="r' + (x + 1) + '"]').is(':checked')) {
                         $("#x_" + (x + 1)).slideDown();
                         $(el).slideUp();
-                    }else{
-                        console.log('Ninguna opci�n seleccionada');
+                        $('[data-toggle="popover"]').popover('hide');
+                    } else {
+                      
+                        $('[data-toggle="popover"]').popover('show');
                     }
-
+                   
                 });
             }
             $(el).attr("id", "x_" + x);
         });
     }
+
+
+    //checked terminos y condiciones
+
+
+
+
+
 });
 $(document).ready(function () {
     $.stepForm();
@@ -317,10 +326,3 @@ $(document).ready(function () {
         }
     }
 })();
-
-// Datapicker
-$(document).ready(function () {
-    $('#datepicker1').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
-});

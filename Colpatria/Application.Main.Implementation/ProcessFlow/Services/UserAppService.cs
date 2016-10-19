@@ -76,12 +76,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                 {
                     DataType = s.DataType,
                     Key = s.ColumnName,
-                    Value =
-                        fieldValueOrders.First(f => f.Key == s.BaseFieldId.ToString(CultureInfo.InvariantCulture)) ==
-                        null
-                            ? ""
-                            : fieldValueOrders.First(f => f.Key == s.BaseFieldId.ToString(CultureInfo.InvariantCulture))
-                                .Value ?? ""
+                    Value = fieldValueOrders.FirstOrDefault(f => f.Key == s.BaseFieldId.ToString(CultureInfo.InvariantCulture))?.Value
                 };
             })
                   .Where(s => !string.IsNullOrEmpty(s.Value))

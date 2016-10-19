@@ -124,6 +124,7 @@
             mywindow.document.write("</head><body><div class=\"container\">");
             mywindow.document.write(html);
             mywindow.document.write("</div></body></html>");
+            mywindow.document.close();
 
             setTimeout(function () {
                 $(mywindow.document).ready(function () {

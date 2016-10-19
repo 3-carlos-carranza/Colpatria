@@ -82,6 +82,7 @@
     <Compile Include="Evidente\AnswerSettings.cs" />
     <Compile Include="Evidente\AnswerSettingsBuilder.cs" />
     <Compile Include="Evidente\BaseSettings.cs" />
+    <Compile Include="Evidente\ErrorEvidenteResponse.cs" />
     <Compile Include="Evidente\ExpeditionDate.cs" />
     <Compile Include="Evidente\Identification.cs" />
     <Compile Include="Evidente\OptionsAnswer.cs" />

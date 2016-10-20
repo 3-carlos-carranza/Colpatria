@@ -6,7 +6,7 @@ namespace Crosscutting.Common.Tools.DataType
 {
     public static class ToolExtension
     {
-        private static readonly char[] BaseDictionary = "0123456789".ToCharArray();
+        private static readonly char[] BaseDictionary = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
         public static string GenSemiUniqueId(int lenght = 6)
         {
             var rngCsp = new RNGCryptoServiceProvider();
@@ -17,7 +17,7 @@ namespace Crosscutting.Common.Tools.DataType
                 var bytes = new byte[8];
                 rngCsp.GetBytes(bytes);
                 var seed = BitConverter.ToInt32(bytes, 0);
-                str.Append(BaseDictionary[new Random(seed).Next(0, 9)]);
+                str.Append(BaseDictionary[new Random(seed).Next(0, 35)]);
             }
             return str.ToString();
         }

@@ -1,13 +1,13 @@
-﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Core.Entities.Evidente;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -28,7 +28,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             await Task.Factory.StartNew(() => TraceFlow(argument)).ConfigureAwait(false);
             var step = await Task.Factory.StartNew(() => (StepDetail)GetCurrentStep(argument)).ConfigureAwait(false);
-            return new EvidenteResponse
+            var response = new EvidenteResponse
             {
                 UserInfoDto = userInfo,
                 ErrorEvidenteResponse = new ErrorEvidenteResponse
@@ -47,6 +47,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                     Status = ReponseStatus.Success
                 }
             };
+            return Task.FromResult((IProcessFlowResponse)response).Result;
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())

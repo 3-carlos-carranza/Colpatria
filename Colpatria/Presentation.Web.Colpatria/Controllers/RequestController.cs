@@ -12,7 +12,6 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Enumerations;
 using Core.Entities.Evidente;
 using Core.Entities.Process;
-using Core.Entities.User;
 using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
@@ -32,11 +31,18 @@ namespace Presentation.Web.Colpatria.Controllers
             _userAppService = userAppService;
         }
 
+        public ActionResult InternalLogin()
+        {
+            return View("ContinueRequest");
+        }
+
         [AllowAnonymous]
         public ActionResult Index()
         {
             if (bool.Parse(ConfigurationManager.AppSettings.Get("IsDevelop")))
+            {
                 return View();
+            }
             return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
         }
 
@@ -63,6 +69,53 @@ namespace Presentation.Web.Colpatria.Controllers
             });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> ContinueRequest(ModelLogin modelLogin)
+        {
+            if (ModelState.IsValid)
+            {
+                var user =
+                    await
+                        _userAppService.FindAsync(modelLogin.Identification,
+                            modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
+                if (user != null)
+                {
+                    //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
+                    var identity =
+                        await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    identity.Label = user.FullName;
+                    GetAuthenticationManager().SignIn(identity);
+                    var principal = new ClaimsPrincipal(identity);
+                    Thread.CurrentPrincipal = principal;
+                    HttpContext.User = principal;
+                    //set arguments
+                    var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+
+                    ProcessFlowArgument.User = user;
+
+                    var response = _userAppService.GetRequestBySimpleId(modelLogin.SimpleId);
+                    Session["Product"] = (ProductType)response.ProductId;
+
+                    ProcessFlowArgument.Execution = new Execution
+                    {
+                        Id = response.Id,
+                        ProductId = response.ProductId
+                    };
+
+                    var pages = _userAppService.GetAllPagesWithSections();
+                    ViewBag.Pages = pages;
+                    ViewBag.FullName = identity.Label;
+
+                    var stepresult = await ExecuteFlow(identity, pages);
+
+                    return ValidateStepResult(stepresult);
+                }
+                ModelState.AddModelError("", "El usuario no tiene una solicitud activa");
+            }
+            return View(modelLogin);
+        }
+
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
@@ -73,60 +126,72 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return RedirectToAction("ShowInformation", "Messages", new {code = "-1"}); //product not found 
             }
-            int productid = 0;
+            var productid = 0;
             if (!int.TryParse(product.Value, out productid))
             {
-                return RedirectToAction("ShowInformation", "Messages", new { code = "0" }); //invalid product
+                return RedirectToAction("ShowInformation", "Messages", new {code = "0"}); //invalid product
             }
 
-
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
-            var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
+            var user =
+                await
+                    _userAppService.FindAsync(nuser.Identification,
+                        nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
 
             //re-take Request 
             if (user != null)
             {
                 nuser = user;
                 nuser.IsNewUser = false;
-                var currentSectionId =
+                var response =
                     _userAppService.GetValidExecutionByUserAndProduct(user.Id, (int) Session["Product"]);
 
-                if (currentSectionId != 0)
-                    return View("ContinueRequest", new UserViewModel { 
-                        ProductId = Convert.ToInt32((int) Session["Product"]),
-                        CurrentSectionId = currentSectionId
-                    });
-
+                if (response != 0)
+                {
+                    return View("ContinueRequest");
+                }
             }
+
+
             //new user and new request 
             nuser.IsNewUser = true;
             var usercreated = new IdentityResult();
             if (nuser.IsNewUser)
             {
-                usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification+ ConfigurationManager.AppSettings["Salt"]);
-            }
-            //error creating user
-            if (!usercreated.Succeeded | usercreated.Errors.Any())
-            {
-                foreach (string error in usercreated.Errors)
+                usercreated =
+                    await
+                        _userAppService.CreateAsync(nuser,
+                            nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
+                if (!usercreated.Succeeded && usercreated.Errors.Any())
                 {
-                    ModelState.AddModelError("",error);
+                    return View("Register");
                 }
-                var allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var message = string.Join(", ", allErrors.Select(s=>s.ErrorMessage).ToArray());
-                TempData["Message"] = message;
-                return View("Register", new UserViewModel
+                //error creating user
+                if (!usercreated.Succeeded | usercreated.Errors.Any())
                 {
-                    ProductId = Convert.ToInt32((int)Session["Product"]),
-                });
+                    foreach (var error in usercreated.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                    var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                    var message = Join(", ", allErrors.Select(s => s.ErrorMessage).ToArray());
+                    TempData["Message"] = message;
+                    return View("Register", new UserViewModel
+                    {
+                        ProductId = Convert.ToInt32((int) Session["Product"])
+                    });
+                }
             }
-            var identity =await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
+            var identity =
+                await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;
             GetAuthenticationManager().SignIn(identity);
             var principal = new ClaimsPrincipal(identity);
             Thread.CurrentPrincipal = principal;
             HttpContext.User = principal;
             BaseProductType = productid;
+            BaseProductType = productid;
+
             InitSetFormArguments(fields);
             var pages = _userAppService.GetAllPagesWithSections();
             ViewBag.Pages = pages;
@@ -142,16 +207,6 @@ namespace Presentation.Web.Colpatria.Controllers
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
             return authManager;
-        }
-
-        public async Task<ActionResult> HandleRequest()
-        {
-            var userId = long.Parse(User.Identity.GetUserId());
-            ProcessFlowArgument.User = new User {Id = userId};
-            ProcessFlowArgument.IsSubmitting = false;
-            ProcessFlowArgument.Execution = new Execution {Id = ExecutionId, ProductId = ProductId};
-            dynamic stepresult = await Task.Factory.StartNew(() => ExecuteFlow()).ConfigureAwait(false);
-            return stepresult;
         }
 
         public ActionResult TermsAndConditions()

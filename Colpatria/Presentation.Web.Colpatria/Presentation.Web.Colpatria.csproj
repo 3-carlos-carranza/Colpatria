@@ -1191,6 +1191,7 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SecondFlowTempController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />

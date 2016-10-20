@@ -9,5 +9,6 @@ namespace Core.GlobalRepository.SQL.User
         IUserRoleStore<Entities.User.User, long>
     {
         UserInfoDto GetUserInfoByExecutionId(long executionId);
+        UserInfoDto GetUserInfoByUserId(long userId);
     }
 }

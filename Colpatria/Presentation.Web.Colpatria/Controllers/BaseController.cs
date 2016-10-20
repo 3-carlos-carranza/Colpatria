@@ -108,7 +108,6 @@ namespace Presentation.Web.Colpatria.Controllers
             if (identity != null)
             {
                 identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
-
                 identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
                 identity.AddClaim(new Claim("FullName", identity.Label));
                 if (pages != null)
@@ -153,8 +152,8 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.Execution = new Execution
             {
-                ProductId = BaseProductType,
-                Id = ExecutionId
+                Id = ExecutionId,
+                ProductId = BaseProductType
             };
             ProcessFlowArgument.IsSubmitting = true;
             var arg = ProcessFlowArgument as ISubmitFormArgument;
@@ -176,6 +175,24 @@ namespace Presentation.Web.Colpatria.Controllers
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;
+        }
+
+        public async Task<ActionResult> HandleRequest()
+        {
+            var userId = long.Parse(User.Identity.GetUserId());
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = BaseProductType,
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = false;
+
+            dynamic stepresult = await ExecuteFlow();
+            return stepresult;
         }
 
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)

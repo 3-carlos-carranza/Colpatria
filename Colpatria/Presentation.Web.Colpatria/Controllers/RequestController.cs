@@ -18,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using static System.String;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -25,11 +26,13 @@ namespace Presentation.Web.Colpatria.Controllers
     public class RequestController : BaseController
     {
         private readonly IUserAppService _userAppService;
+        private readonly ICustomActionAppService _customActionAppService;
 
         public RequestController(IProcessFlowArgument processFlowArgument, IProcessFlowManager processFlowManager,
-            IUserAppService userAppService) : base(processFlowArgument, processFlowManager)
+            IUserAppService userAppService, ICustomActionAppService customActionAppService) : base(processFlowArgument, processFlowManager)
         {
             _userAppService = userAppService;
+            _customActionAppService = customActionAppService;
         }
 
         [AllowAnonymous]
@@ -59,6 +62,51 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 ProductId = Convert.ToInt32(productType, CultureInfo.CurrentCulture)
             });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> ReturnRequest(string identification, string simpleId, int productId, int sectionId)
+        {
+            var user = await _userAppService.FindAsync(identification, identification);
+            //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
+            var identity =
+                await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            identity.Label = user.FullName;
+            GetAuthenticationManager().SignIn(identity);
+            var principal = new ClaimsPrincipal(identity);
+            Thread.CurrentPrincipal = principal;
+            HttpContext.User = principal;
+
+            //set arguments
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {                
+                ProductId = productId,
+                Id = ExecutionId, 
+            };
+            var allPagesWithSections = _userAppService.GetAllPagesWithSections();
+
+            ViewBag.Pages = allPagesWithSections;
+            ViewBag.FullName = identity.Label;
+
+            identity.AddClaim(new Claim("ExecutionId", ExecutionId.ToString()));
+            identity.AddClaim(new Claim("ProductId", ProductId.ToString()));
+            identity.AddClaim(new Claim("FullName", identity.Label));
+            identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(allPagesWithSections)));
+
+            var url =
+                allPagesWithSections.FirstOrDefault(p => p.Id == 3)?
+                    .Section.FirstOrDefault(s => s.Id == sectionId)?
+                    .Name.Replace(" ", "-");
+            ProcessFlowArgument.IsSubmitting = false;
+
+            return Redirect("~/Formularios/" + url);
         }
 
         [AllowAnonymous]

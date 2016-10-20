@@ -16,6 +16,7 @@ namespace Application.Main.Implementation.ProcessFlow.Responses
 {
     public class EvidenteResponse : IEvidenteResponse
     {
+        public ErrorEvidenteResponse ErrorEvidenteResponse { get; set; }
         public QuestionsResponse QuestionsResponse { get; set; }
         public UserInfoDto UserInfoDto { get; set; }
         public ExecutionFlow Execution { get; set; }

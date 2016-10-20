@@ -258,7 +258,7 @@ jQuery.extend({
         $(fieldsets).each(function (x, el) {
             if (x > 0) {
                 $(el).hide();
-              //  $(el).append('<a class="backStep" href="#x_' + (x - 1) + '">' + (txtBack || 'Volver') + '</a>');
+                //  $(el).append('<a class="backStep" href="#x_' + (x - 1) + '">' + (txtBack || 'Volver') + '</a>');
                 $(".backStep", $(el)).on("click", function () {
                     $("#x_" + (x - 1)).show("slow");
                     $(el).hide("slow");
@@ -266,7 +266,7 @@ jQuery.extend({
             }
 
             if ((x + 1) < total) {
-                $(el).append('<a data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Debe seleccionar una opción para continuar." class="totip nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
+                $(el).append('<a data-toggle="popover" data-placement="top" data-trigger="focus" data-content="*Por favor seleccione una opción." class="totip nextStep btn btn-danger pull-right enviar valid" href="#_' + (x + 1) + '">' + (txtNext || 'Siguiente') + '</a>');
 
                 $(".nextStep", $(el)).on("click", function () {
                     if ($('input[data-name="r' + (x + 1) + '"]').is(':checked')) {
@@ -285,15 +285,26 @@ jQuery.extend({
     }
 
 
-    //checked terminos y condiciones
-
-
-
-
-
 });
 $(document).ready(function () {
     $.stepForm();
+    //checked terminos y condiciones
+    $('#noacept').on('click', function () {
+        var valor = $('#term:checked').val();
+        if ($('#term').is(':checked')) {
+            $('#term').prop('checked', false);
+        }
+
+    });
+    $('#acept').on('click', function () {
+        var valor = $('#term:checked').val();
+        if ($('#term').is(':checked')) {
+        } else {
+            $('#term').prop('checked', true);
+        }
+
+    });
+   
 });
 
 //Fin Paginacion formulario de validacion de datos
@@ -313,6 +324,10 @@ $(document).ready(function () {
         if (inputEl.value.trim() !== '') {
             classie.add(inputEl.parentNode, 'input--filled');
         }
+
+        $('.date').on('change', function () {
+            $(this).parent('span.input').addClass("input--filled");
+        });
         // events:
         inputEl.addEventListener('focus', onInputFocus);
         inputEl.addEventListener('blur', onInputBlur);
@@ -320,9 +335,11 @@ $(document).ready(function () {
     function onInputFocus(ev) {
         classie.add(ev.target.parentNode, 'input--filled');
     }
+
     function onInputBlur(ev) {
         if (ev.target.value.trim() === '') {
             classie.remove(ev.target.parentNode, 'input--filled');
         }
     }
+
 })();

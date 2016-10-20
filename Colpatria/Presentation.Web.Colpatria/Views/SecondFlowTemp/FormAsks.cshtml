@@ -9,7 +9,7 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+            <p>Empieza a disfrutar de tu tarjeta de crédito</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -24,7 +24,7 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
+            <p class="desc-step">Número de solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
@@ -36,11 +36,11 @@
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
             <p class="">
-                <strong>@Model.UserInfoDto.FullName,</strong> este es el último paso para tener “Tu <span class="red">Tarjeta de Crédito</span>”
+                <strong>@Model.UserInfoDto.FullName,</strong> este es el último paso para tener “Tu <span class="red">Tarjeta de crédito</span>”
             </p>
             <div class="test">
                 <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
-                    <p class="bolds">Tus Datos</p>
+                    <p class="bolds">Tus datos</p>
                     <div class="form-group">
                         <div class="col-xs-12 col-md-4">
                             <label>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <span class="input input--hoshi">
-                                <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp], maxSize[12]] onlynumber" type="text" id="23" placeholder="" value="" maxlength="12">
+                                <input name="23" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp], maxSize[12], minSize[6]] onlynumber" type="text" id="23" placeholder="" value="" maxlength="12" minlength="6">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="23">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                 </label>
@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <div class="col-xs-12 col-md-3">
                             <span class="input input--hoshi">
-                                <input name="39" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp],maxSize[2]] onlynumber" type="text" id="39" placeholder="" value="" maxlength="2">
+                                <input name="39" class="input__field input__field--hoshi validate[required,custom[onlyNumberSp],maxSize[2], min[18] ] onlynumber" type="text" id="39" placeholder="" value="" maxlength="2">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="39">
                                     <span class="input__label-content input__label-content--hoshi input-block-level">Edad<span class="symbol required"></span></span>
                                 </label>

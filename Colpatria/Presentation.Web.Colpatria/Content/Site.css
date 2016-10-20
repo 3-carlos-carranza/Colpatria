@@ -20,6 +20,15 @@ text-decoration:none;
     margin-top: 1%;
     position:relative;
 }
+.panel-danger {
+    border-color: #ebccd1;
+    width: 400px;
+    margin: 0 auto;
+    max-width:100%;
+}
+.panel-danger>.panel-heading {
+    font-size: 18px;
+}
 .table-responsive {
     min-height: .01%;
     overflow-x: hidden;
@@ -100,6 +109,10 @@ text-decoration:none;
     width: 300px;
     max-width: 98%;
     margin: 6px auto;
+}
+.step-content .info-err {
+    font-size: 46px;
+    padding: 1% 0;
 }
 .step-content .none-err {
 color: #e20613;
@@ -870,7 +883,8 @@ text-align:left !important;
 .step-content .li-step {
     padding: 0;
 }
-.step-content .bull {
+.step-content .bull,
+.step-content .validado {
     padding: 0 0px;
 }
 .step-content .enviar {

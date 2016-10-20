@@ -141,6 +141,7 @@
                         Acepto términos y condiciones <a class="vermas" href="#" id="terms-cuenta">VER+</a>
                     </label>
                 </div>
+               
                 <div class="col-xs-12 col-md-3 space">
                     <button type="submit" class="btn btn-danger pull-right enviar">
                         Siguiente
@@ -148,7 +149,7 @@
                 </div>
                 <div style="clear: both"></div>
             </div>
-            @Html.Partial("_ValidationSummary", ViewData.ModelState);
+            @Html.Partial("_ValidationSummary", ViewData.ModelState)
             Tenga en cuenta que a partir de este momento despues de 15 minutos de <strong>INACTIVIDAD</strong> su sesión sera cerrada por su seguridad
         </form>
     </div>

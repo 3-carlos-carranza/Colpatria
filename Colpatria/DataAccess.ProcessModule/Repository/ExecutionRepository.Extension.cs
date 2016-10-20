@@ -15,6 +15,7 @@ using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using Core.Entities.WsMotor;
 
 #endregion
 
@@ -44,6 +45,17 @@ namespace DataAccess.ProcessModule.Repository
         public Execution GetRequestById(long id)
         {
             var request = GetFiltered(s => s.Id == id).FirstOrDefault();
+            if (request == null)
+            {
+                return null;
+            }
+            request.CurrentPageId = _context.Section.First(s => s.Id == request.CurrentSectionId).PageId;
+            return request;
+        }
+
+        public Execution GetRequestBySimpleId(string simpleId)
+        {
+            var request = GetFiltered(s => s.SimpleId == simpleId).FirstOrDefault();
             if (request == null)
             {
                 return null;
@@ -86,18 +98,24 @@ namespace DataAccess.ProcessModule.Repository
             _context.ExecutionApplicant.Add(executionApplicant);
         }
 
-        public int? GetValidExecutionByUserAndProduct(long userId, int productId)
+        public int GetValidExecutionByUserAndProduct(long userId, int productId)
         {
             var context = UnitOfWork as DbContext;
-            try{
-                return 
-                context?.Database.SqlQuery<int>("GetValidateExecutionByUserAndProduct @UserId, @ProductId",
-                    new SqlParameter { ParameterName = "UserId", Value = userId },
-                    new SqlParameter { ParameterName = "ProductId", Value = productId }).First();
+            var response = 0;
+            try
+            {
+                if (context != null)
+                    response =
+                        context.Database.SqlQuery<int>("GetValidateExecutionByUserAndProduct @UserId, @ProductId",
+                            new SqlParameter { ParameterName = "UserId", Value = userId },
+                            new SqlParameter { ParameterName = "ProductId", Value = productId }).First();
+                return response;
             }
-            catch (Exception){
-                return new int();
+            catch (Exception ex)
+            {
+                return response;
             }
+            
         }
     }
 }

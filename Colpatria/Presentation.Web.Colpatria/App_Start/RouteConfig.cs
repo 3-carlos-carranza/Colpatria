@@ -10,11 +10,6 @@ namespace Presentation.Web.Colpatria
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Request", action = "Index", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
              "FormTrackingRoute",
              "Formularios/{RequestStep}",
              new
@@ -23,6 +18,13 @@ namespace Presentation.Web.Colpatria
                  action = "HandleRequest"
              },
              new { allowedUrl = new AllowedUrlConstraint() });
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Request", action = "Index", id = UrlParameter.Optional }
+            );
+            
         }
     }
 }

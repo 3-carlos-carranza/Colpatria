@@ -50,8 +50,10 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
             IEnumerable<FieldValueOrder> fields);
         UserInfoDto GetUserInfoByExecutionId(long executionId);
 
-        int? GetValidExecutionByUserAndProduct(long userId, int productId);
+        long GetValidExecutionByUserAndProduct(long userId, int productId);
 
         UserInfoDto GetUserInfoByUserId(long userId);
+
+        Execution GetRequestBySimpleId(string simpleId);
     }
 }

@@ -177,24 +177,6 @@ namespace Presentation.Web.Colpatria.Controllers
             ProcessFlowArgument.IsSubmitting = true;
         }
 
-        public async Task<ActionResult> HandleRequest()
-        {
-            var userId = long.Parse(User.Identity.GetUserId());
-            ProcessFlowArgument.User = new User
-            {
-                Id = userId
-            };
-            ProcessFlowArgument.Execution = new Execution
-            {
-                ProductId = BaseProductType,
-                Id = ExecutionId
-            };
-            ProcessFlowArgument.IsSubmitting = false;
-
-            dynamic stepresult = await ExecuteFlow();
-            return stepresult;
-        }
-
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {
             if (!(stepresult is IShowScreenResponse))

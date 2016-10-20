@@ -39,11 +39,10 @@ namespace Application.Main.Implementation
         {
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
-            container.RegisterType<IInalambriaAppService, InalambriaAppService>();
+            
             container.RegisterType<IWsMotorAppService, WsMotorAppService>();
             container.RegisterType<IMailAppService, MailAppService>();
             container.RegisterType<IEmailNotificatorService, MailService>();
-            container.RegisterType<ICustomActionAppService, CustomActionAppService>();
             
             
             container.RegisterType<IDynamicAppService, DynamicAppService>();
@@ -57,8 +56,8 @@ namespace Application.Main.Implementation
             container.RegisterType<IProcessAppService, ProcessAppService>();
             container.RegisterType<ISaveFieldsAppService, SaveFieldsAppService>();
 
-            //Inalambria
-            
+            //Notification
+            container.RegisterType<INotificationSmsAppService, InalambriaNotificationSmsAppService>();
 
             //Config Steps
             container.RegisterType<IStep, StartFlowStep>("StartFlowStep");

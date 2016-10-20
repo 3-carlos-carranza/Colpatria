@@ -8,6 +8,7 @@ using Core.DataTransferObject.Vib;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Entities.Evidente;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -30,6 +31,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             return new EvidenteResponse
             {
                 UserInfoDto = userInfo,
+                ErrorEvidenteResponse = new ErrorEvidenteResponse
+                {
+                    Title = "Error",
+                    Message = "Lo sentimos",
+                    Code = 500
+                },
                 Execution = argument.Execution,
                 Action = step.Action,
                 ActionMethod = step.ActionMethod,

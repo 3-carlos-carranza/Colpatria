@@ -286,6 +286,10 @@ jQuery.extend({
 
 
 });
+function controlar(obj, event) {
+    if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;
+    if (obj.value.length >= 28) alert('ya no es menor a 28');
+}
 $(document).ready(function () {
     $.stepForm();
     //checked terminos y condiciones

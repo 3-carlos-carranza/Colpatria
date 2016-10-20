@@ -26,6 +26,9 @@ text-decoration:none;
     margin: 0 auto;
     max-width:100%;
 }
+.panel-danger>.panel-heading {
+    font-size: 18px;
+}
 .table-responsive {
     min-height: .01%;
     overflow-x: hidden;
@@ -880,7 +883,8 @@ text-align:left !important;
 .step-content .li-step {
     padding: 0;
 }
-.step-content .bull {
+.step-content .bull,
+.step-content .validado {
     padding: 0 0px;
 }
 .step-content .enviar {

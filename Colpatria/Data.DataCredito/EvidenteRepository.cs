@@ -8,16 +8,24 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Text;
+using Core.DataTransferObject.WebServiceConsultation;
+using Core.Entities.Process;
+using Core.GlobalRepository.SQL.Process;
 using Microsoft.ApplicationInsights;
+using Newtonsoft.Json;
 
 namespace Data.DataCredito
 {
     public class EvidenteRepository : ServicioIdentificacion, IEvidenteRepository
     {
+        private readonly IWebServiceConsultationRepository _webServiceConsultationRepository;
         private readonly XmlProcessor _xmlProcessor;
+        private readonly WebSettingsConsultationSettingsBuilder _webSettingsConsultationSettingsBuilder;
 
-        public EvidenteRepository()
+        public EvidenteRepository(IWebServiceConsultationRepository webServiceConsultationRepository)
         {
+            _webServiceConsultationRepository = webServiceConsultationRepository;
+            _webSettingsConsultationSettingsBuilder = new WebSettingsConsultationSettingsBuilder();
             _xmlProcessor = new XmlProcessor();
             var username = ConfigurationManager.AppSettings["EvidenteUsername"];
             var password = ConfigurationManager.AppSettings["EvidentePassword"];
@@ -48,6 +56,15 @@ namespace Data.DataCredito
             {
                 var clientLog = new TelemetryClient();
                 clientLog.TrackException(exception);
+                var consultationException =
+                    _webSettingsConsultationSettingsBuilder.WithPayload(
+                        JsonConvert.SerializeObject(new { Exception = exception }))
+                        .WithExecutionId(settings.ExecutionId)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
+                        .WithWebServiceName("Error consultando " + ServiceNameType.Answer.GetStringValue())
+                        .Build();
+                AddWebServiceConsultation(consultationException);
+
                 return new AnswerResponse { Result = false };
             }
         }
@@ -79,6 +96,15 @@ namespace Data.DataCredito
                 {
                     var clientLog = new TelemetryClient();
                     clientLog.TrackException(exception);
+                    clientLog.TrackException(exception);
+                    var consultationException =
+                        _webSettingsConsultationSettingsBuilder.WithPayload(
+                            JsonConvert.SerializeObject(new { Exception = exception }))
+                            .WithExecutionId(settings.ExecutionId)
+                            .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
+                            .WithWebServiceName("Error consultando " + ServiceNameType.Questions.GetStringValue())
+                            .Build();
+                    AddWebServiceConsultation(consultationException);
                     return new QuestionsResponse { Result = "00" };
                 }
                 
@@ -124,6 +150,15 @@ namespace Data.DataCredito
                 {
                     var clientLog = new TelemetryClient();
                     clientLog.TrackException(exception);
+                    clientLog.TrackException(exception);
+                    var consultationException =
+                        _webSettingsConsultationSettingsBuilder.WithPayload(
+                            JsonConvert.SerializeObject(new { Exception = exception }))
+                            .WithExecutionId(settings.ExecutionId)
+                            .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
+                            .WithWebServiceName("Error consultando " + ServiceNameType.Validate.GetStringValue())
+                            .Build();
+                    AddWebServiceConsultation(consultationException);
                     return new ValidationResponse
                     {
                         ProcessResult = false
@@ -271,6 +306,20 @@ namespace Data.DataCredito
             var actualUri = uri ?? new Uri(Url);
             var request = (HttpWebRequest)base.GetWebRequest(actualUri);
             return (PreAuthenticate) ? request.GetRequestWithBasicAuthorization(actualUri) : request;
+        }
+
+        public void AddWebServiceConsultation(WebServiceConsultationSettings settings)
+        {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
+            var item = new WebServiceConsultation
+            {
+                Payload = settings.Payload,
+                ExecutionId = settings.ExecutionId,
+                TypeOfConsultation = settings.TypeOfConsultation,
+                WebServiceName = settings.WebServiceName,
+                CreatedDate = DateTime.UtcNow
+            };
+            _webServiceConsultationRepository.Add(item);
         }
     }
 }

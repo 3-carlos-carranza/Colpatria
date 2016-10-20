@@ -76,6 +76,10 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -113,6 +117,10 @@
     <Compile Include="WsMotorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj">
+      <Project>{7F897A80-1FDA-4B0E-B86D-34F14EE6C417}</Project>
+      <Name>Core.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
       <Project>{984FC515-8235-4B7B-9821-84A7AF8F4EE0}</Project>
       <Name>Core.Entities</Name>
@@ -128,6 +136,10 @@
     <ProjectReference Include="..\Crosscutting.Common\Crosscutting.Common.csproj">
       <Project>{31541f2d-b903-4c21-ae5f-116633fd9e65}</Project>
       <Name>Crosscutting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Common.Definition\Data.Common.Definition.csproj">
+      <Project>{470AB1B1-B29E-4360-AA44-0D83825ECFCD}</Project>
+      <Name>Data.Common.Definition</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

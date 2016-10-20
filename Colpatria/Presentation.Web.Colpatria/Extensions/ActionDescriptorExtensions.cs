@@ -6,7 +6,7 @@ namespace Presentation.Web.Colpatria.Extensions
 {
     public static class ActionDescriptorExtensions
     {
-        public static bool HasAllowAnonimouseAttribute(this ActionDescriptor actionDescriptor) => actionDescriptor.HasAttribute<AllowAnonymousAttribute>();
+        public static bool HasAllowAnonymousAttribute(this ActionDescriptor actionDescriptor) => actionDescriptor.HasAttribute<AllowAnonymousAttribute>();
 
         public static bool HasAttribute<TAttribute>(this ActionDescriptor actionDescriptor)
             where TAttribute : Attribute

@@ -81,16 +81,21 @@
     @{
         Html.RenderPartial("~/Views/Shared/_footer.cshtml");
     }
+    
+  
 
-    @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/jqueryUI")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/layout")
     @Scripts.Render("~/bundles/xtensions")
-    @RenderSection("scripts", false)
 
+    @Html.Partial("_googleAnalytics")
+
+    @RenderSection("scripts", false)
+    
 
     @* ReSharper disable once NotAllPathsReturnValue *@
     <script>

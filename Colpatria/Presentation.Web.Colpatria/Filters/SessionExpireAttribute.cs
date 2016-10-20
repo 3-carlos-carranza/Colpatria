@@ -9,8 +9,8 @@ namespace Presentation.Web.Colpatria.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var ctx = HttpContext.Current;
-            var hasAllowAnonimouseAttribute = filterContext.ActionDescriptor.HasAllowAnonimouseAttribute();
-            if (!hasAllowAnonimouseAttribute && HttpContext.Current.Session["Product"] == null)
+            var has = filterContext.ActionDescriptor.HasAllowAnonymousAttribute();
+            if (!has && HttpContext.Current.Session["Product"] == null)
             {
                 filterContext.Result = new RedirectResult("~/Messages/SessionExpired");
                 return;

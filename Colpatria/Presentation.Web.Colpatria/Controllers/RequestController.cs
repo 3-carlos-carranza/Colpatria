@@ -92,8 +92,8 @@ namespace Presentation.Web.Colpatria.Controllers
                     _userAppService.GetValidExecutionByUserAndProduct(user.Id, (int) Session["Product"]);
 
                 if (currentSectionId != 0)
-                    return View("ContinueRequest", new UserViewModel
-                    {
+                    return View("ContinueRequest", new UserViewModel { 
+                        FirstName = "Wilmar",
                         ProductId = Convert.ToInt32((int) Session["Product"]),
                         CurrentSectionId = currentSectionId
                     });

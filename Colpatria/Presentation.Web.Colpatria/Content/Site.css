@@ -39,7 +39,54 @@ text-decoration:none;
 .step-content.error {
     font-family: 'Lato';
 }
-
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    display: none;
+    max-width: 276px;
+    padding: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    background-color: #ee0101;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0px 10px rgba(0,0,0,.4);
+    box-shadow: 0 0px 10px rgba(0,0,0,.2);
+    line-break: auto;
+    color: #fff;
+   
+}
+.popover.top>.arrow:after {
+    bottom: 1px;
+    margin-left: -10px;
+    content: " ";
+    border-top-color: #ee0101;
+    border-bottom-width: 0;
+}
+.popover.top>.arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #ddd;
+    border-bottom-width: 0;
+}
 .step-content .err {
     margin: 0;
     color: #e20613;
@@ -74,6 +121,9 @@ margin: 30px auto 10px auto;
 .nomargin{
     margin:0;
 }
+.step-content .margTop4 {
+margin-top:4%;
+}
 .body-content .legal,
 .legal {
     position: absolute;
@@ -95,7 +145,9 @@ textarea {
 .form-control {
     padding: 6px 1px;
 }
-
+.textred {
+    color:#e20613;
+}
 .step-content .bord-red {
     border: inherit;
     border-bottom: solid 1px #e20613;
@@ -106,6 +158,16 @@ textarea {
     border: inherit;
     background: transparent;
     box-shadow:0 0 0 0;
+}
+.with80 {
+width:80%;
+display:inline-block;
+vertical-align: top;
+}
+.with20 {
+width:19%;
+display:inline-block;
+vertical-align: top;
 }
 .k-dropdown-wrap.k-state-hover {
     background-color:transparent;
@@ -183,6 +245,14 @@ color:red;
 .step-content .step-title strong {
     color: #e20613;
 }
+.step-content .fontM{
+    font-size:18px;
+}
+.step-content .with50 {
+    width:50%;
+    position:relative;
+    margin: 0 auto;
+    }
 .step-content .block-left {
   background-color:#e80c25;
   border-top-left-radius: 10px;
@@ -228,7 +298,7 @@ color:red;
    height:20px;
    border-radius:50%;
    -webkit-border-radius:50%;
-   background:#f4f4f4;
+   background: rgba(180, 180, 180, 0.7);
    position:relative;
    display:inline-block;
    vertical-align:text-bottom;
@@ -236,7 +306,8 @@ color:red;
    border:solid 1px #b4b4b4;
 }
 .step-content .bull.active::after{
-    border:solid 2px #e20b18;
+       border: solid 2px #b90a15;
+       background: #e20613;
 }
 .step-content .required::after{
     content:"*";
@@ -520,6 +591,7 @@ font-weight: bold;
 color:#e20613;
 }
 .step-content .botons{
+ 
 }
 .step-content .print{
   
@@ -529,6 +601,7 @@ color:#e20613;
     padding: 4% 16%;
     transition:.3s;
     font-size:16px;
+    color: #fff;
 }
 .step-content .acepto{
     margin-right: 0%;
@@ -707,8 +780,18 @@ margin: 4% 0;
     margin: 10% auto 0 auto;
     float: right;
 }
+.step-content .logo-infoprint {
+    width: 90%;
+    margin: 10% auto 0 auto;
+    float: right;
+}
 .table {
     margin-top: 1%;
+}
+.body-content .legalprint, .legalprint {
+    position: absolute;
+    bottom: 10%;
+    left: -4%;
 }
 /* Fin styles aprovacion */
 
@@ -809,7 +892,10 @@ text-align:left !important;
 }
 }
 @media(max-width: 736px) {
-
+.step-content .with50 {
+    width:100%;
+    position:relative;
+    }
 .step-content .check {
     width: 90%;
     }

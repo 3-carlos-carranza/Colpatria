@@ -16,6 +16,7 @@ using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Presentation.Web.Colpatria.Filters;
 using Presentation.Web.Colpatria.Models;
 using static System.String;
 
@@ -31,6 +32,7 @@ namespace Presentation.Web.Colpatria.Controllers
             _userAppService = userAppService;
         }
 
+        
         public ActionResult InternalLogin()
         {
             return View("ContinueRequest");
@@ -45,7 +47,7 @@ namespace Presentation.Web.Colpatria.Controllers
             }
             return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
         }
-
+        
         [AllowAnonymous]
         public ActionResult ValidateProduct(string productType = "")
         {
@@ -68,7 +70,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 ProductId = (int) productId
             });
         }
-
+        
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> ContinueRequest(ModelLogin modelLogin)
@@ -116,7 +118,6 @@ namespace Presentation.Web.Colpatria.Controllers
             return View(modelLogin);
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Register(FormCollection collection)
         {
@@ -202,6 +203,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+
         private IAuthenticationManager GetAuthenticationManager()
         {
             var ctx = Request.GetOwinContext();
@@ -214,6 +216,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return View();
         }
 
+        
         public async Task<ActionResult> RequestAproved()
         {
             MockSubmitInitSetFormArguments();
@@ -222,6 +225,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        
         public async Task<ActionResult> FinalSummary()
         {
             MockSubmitInitSetFormArguments();
@@ -243,6 +247,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        
         [HttpPost]
         public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
         {
@@ -253,6 +258,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
+        
         public ActionResult ErrorEvidente()
         {
             return View();

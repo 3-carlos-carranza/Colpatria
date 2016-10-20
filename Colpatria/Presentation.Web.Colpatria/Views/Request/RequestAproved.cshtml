@@ -10,7 +10,7 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Respuesta de Solicitud</p>
+            <p>Respuesta de solicitud</p>
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <a href="#">
@@ -28,7 +28,7 @@
         <div class="contents aproved">
             <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
             <p>Señor(a) @Model.UserInfoDto.FullName</p>
-            <p>Asunto: Solicitud Cuenta de Ahorros Colpatria </p>
+            <p>Asunto: Solicitud Cuenta de ahorros colpatria </p>
             <p>
                 Solicitud <strong>@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</strong>
             </p>
@@ -117,7 +117,7 @@
         <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
         <p>Señor(a) @Model.UserInfoDto.Names</p>
 
-        @if ((ProductType)Session["Product"] == ProductType.Ca)
+        @if ((ProductType)Session["Product"] == ProductType.SavingAccount)
         {
             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria </p>
         }
@@ -158,7 +158,7 @@
             </table>
         </div>
         <p>
-            Si su solicitud ha sido <strong>NO PROCESADA</strong> te recomendamos hacercarte a la oficina de <span class="red">Colpatria</span> MAS CERCANA.
+            Si tu solicitud ha sido <strong>NO PROCESADA</strong> te recomendamos acercarte a la oficina de <span class="red">Colpatria</span> MÁS CERCANA.
         </p>
 
         <div class="info">

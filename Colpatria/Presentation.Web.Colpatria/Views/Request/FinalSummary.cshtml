@@ -12,11 +12,11 @@
         <div class="col-xs-12 col-sm-6 desc-step">
             @if ((ProductType) Session["Product"] == ProductType.SavingAccount)
             {
-                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+                <p>Empieza a disfrutar de tu cuenta de ahorros</p>
             }
             else
             {
-                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+                <p>Empieza a disfrutar de tu tarjeta de crédito</p>
             }
 
         </div>
@@ -29,7 +29,7 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
+            <p class="desc-step">Número de solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{

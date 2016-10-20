@@ -129,7 +129,25 @@ namespace DataAccess.UserModule.Repository
             try
             {
                 var result = context?.Database.SqlQuery<UserInfoDto>
-                    ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                    ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter
+                    { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+                return result;
+            }
+            catch (Exception exception)
+            {
+                var e = exception;
+                throw;
+            }
+        }
+
+        public UserInfoDto GetUserInfoByUserId(long userId)
+        {
+            var context = UnitOfWork as DbContext;
+            try
+            {
+                var result = context?.Database.SqlQuery<UserInfoDto>
+                    ("GetUserInfoByUserId @UserId", new SqlParameter
+                    { ParameterName = "UserId", DbType = DbType.Int64, Value = userId }).FirstOrDefault();
                 return result;
             }
             catch (Exception exception)

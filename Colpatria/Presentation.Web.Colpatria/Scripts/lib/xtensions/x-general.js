@@ -465,17 +465,25 @@ if (!window.location.origin) {
             // Set culture
             var thisCulture = culture || "es-CO";
             kendo.culture(thisCulture);
-            $('.onlyletter').livequery(function () {
+            $(".onlyletter").livequery(function () {
                 $(this).validateLetters();
             });
-            $('.onlynumber').livequery(function () {
+            $(".onlynumber").livequery(function () {
                 $(this).validateNumbers();
-
             });
 
             $('.validateBirthDay').livequery(function () {
                 $(this).datepicker({
                     maxDate: '-18Y',
+                    changeMonth: true,
+                    changeYear: true,
+                    showMonthAfterYear: true,
+                    yearRange: "-100:+0"
+                });
+            });
+
+            $('.datetimepicker').livequery(function () {
+                $(this).datepicker({
                     changeMonth: true,
                     changeYear: true,
                     yearRange: "-100:+0"
@@ -487,6 +495,7 @@ if (!window.location.origin) {
                     maxDate: '-1D',
                     changeMonth: true,
                     changeYear: true,
+                    showMonthAfterYear: true,
                     yearRange: "-100:+0"
                 });
             });
@@ -657,7 +666,6 @@ jQuery.fn.validateNumbers = function () {
         }
         else {
             // Ensure that it is a number and stop the keypress
-
             if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
                 event.preventDefault();
             }
@@ -667,28 +675,20 @@ jQuery.fn.validateNumbers = function () {
         if (/\D/g.test(this.value)) {
             // Filter non-digits from input value.
             var con = this.value.indexOf(",");
-            if (con == -1) {
-                /*  this.value = this.value.replace(',', '');
-                  this.value = this.value.replace(/\D/g, '');*/
-
-            } else {
-                /* $(this).parseNumber({ format: "#,###", locale: "us" });
-                 $(this).formatNumber({ format: "#,###", locale: "us" });
-                 */
-
-                if (this.value == '') {
-                    this.value = '';
-                    //this.value = '0';
+            if (con === -1) {
+                this.value = this.value.replace(/\D+/g, "");
+            } else
+            {
+                this.value = this.value.replace(/\D+/g, "");
+                if (this.value === "") {
+                    this.value = "0";
                 }
             }
         } else {
             var co = this.value.indexOf(",");
-            if (co == -1) {
-                //$(this).parseNumber({ format: "#,###", locale: "us" });
-                //$(this).formatNumber({ format: "#,###", locale: "us" });
-                if (this.value == '') {
-                    this.value = '';
-                    //this.value = '0';
+            if (co === -1) {
+                if (this.value === "") {
+                    this.value = "0";
                 }
             }
         }

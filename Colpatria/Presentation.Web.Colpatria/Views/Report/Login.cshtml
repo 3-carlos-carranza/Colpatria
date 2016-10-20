@@ -1,0 +1,48 @@
+﻿
+@model Presentation.Web.Colpatria.Controllers.LoginReportModel
+
+@{
+    ViewBag.Title = "Login - Reportes";
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="step-content">
+    <div class="with50">
+        <form data-x="x-validate" action="@Url.Action("Login", "Report")" method="POST" class="form-step">
+            <div class="fontM">
+                <center>
+                    <strong>Login</strong> 
+                </center> 
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <span class="input input--hoshi">
+                        <input name="UserName" class="input__field input__field--hoshi validate[required]" type="text" id="UserName">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="UserName">
+                            <span class="input__label-content input__label-content--hoshi input-block-level ">Usuario:<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-md-12">
+                    <span class="input input--hoshi">
+                        <input name="Password" class="input__field input__field--hoshi validate[required]" type="text" id="Password">
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Password">
+                            <span class="input__label-content input__label-content--hoshi input-block-level">Contraseña:<span class="symbol required"></span></span>
+                        </label>
+                    </span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-center margTop4">
+                    <button type="submit" class="btn btn-danger enviar nomargin ">
+                        Ingresar
+                    </button>
+                </div>
+            </div>
+            
+            <div style="clear: both"></div>
+        </form>
+        <br/>
+        @Html.Partial("_ValidationSummary", ViewData.ModelState)
+    </div>
+</div>

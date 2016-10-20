@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Tu sesión ha expirado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="step-content text-center error">
+    <p class="err"></p>
+    <h1 class="cod-err info-err">Importante</h1>
+    <p class="none-err">Tu sesión ha expirado</p>
+
+    <h3 class="title-err">Hemos identificado que han pasado más de 10 minutos en tu sesión</h3>
+    <p class="desc-err">por seguridad hemos cerrado tu sessión <br /> por favor intenta retomar tu solicitud. </p>
+    <p class="">
+        <a href="@Url.Action("Index", "Request")" class="btn btn-danger enviar nomargin">Volver a la página inicial</a>
+    </p>
+</div>

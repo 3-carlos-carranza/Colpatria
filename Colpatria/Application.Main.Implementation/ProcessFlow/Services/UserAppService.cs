@@ -93,7 +93,17 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             return _userRepository.GetUserInfoByExecutionId(executionId);
         }
 
-        public int? GetValidExecutionByUserAndProduct(long userId, int productId)
+        public UserInfoDto GetUserInfoByUserId(long userId)
+        {
+            return _userRepository.GetUserInfoByUserId(userId);
+        }
+
+        public Execution GetRequestBySimpleId(string simpleId)
+        {
+            return _executionRepository.GetRequestBySimpleId(simpleId);
+        }
+
+        public long GetValidExecutionByUserAndProduct(long userId, int productId)
         {
             return _executionRepository.GetValidExecutionByUserAndProduct(userId, productId);
         }

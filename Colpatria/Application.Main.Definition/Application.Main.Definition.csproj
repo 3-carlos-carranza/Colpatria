@@ -82,9 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\ICustomActionAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IInalambriaAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IMailAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\INotificationSmsAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\ISendRequestResponseStep.cs" />

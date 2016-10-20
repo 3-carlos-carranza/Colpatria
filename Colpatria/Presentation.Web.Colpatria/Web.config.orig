@@ -54,7 +54,11 @@
   <system.web>
     <globalization fileEncoding="utf-8" requestEncoding="utf-8" responseEncoding="utf-8" culture="es-CO" uiCulture="es-CO" />
     <!--Esto etiqueta controla el tiempo en sesion de la solicitud activa-->
+<<<<<<< HEAD
     <sessionState mode="InProc" timeout="15" cookieless="false" />
+=======
+    <sessionState mode="InProc" timeout="10" cookieless="false" />
+>>>>>>> c8b91910366b729cd98ff4f2502b1f27b45c39b5
     <authentication mode="Forms">
       <forms loginUrl="~/Request/Index" slidingExpiration="true" timeout="10" defaultUrl="~/Request/Index" />
     </authentication>

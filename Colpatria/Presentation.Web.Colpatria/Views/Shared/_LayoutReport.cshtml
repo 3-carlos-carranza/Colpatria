@@ -69,18 +69,7 @@
         <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
     </div>
     <div class="col-xs-12 col-sm-6 logo-step">
-
-        @if (Model != null) {
-            if ((ProductType)Session["Product"] == ProductType.SavingAccount)
-            {
-
-                <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
-            }
-            else
-            {
-                <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
-            }
-        }
+        <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria"/>
     </div>
 </header>
 
@@ -92,17 +81,21 @@
     @{
         Html.RenderPartial("~/Views/Shared/_footer.cshtml");
     }
+    
+  
 
-    @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/jqueryUI")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/layout")
     @Scripts.Render("~/bundles/xtensions")
-    @Html.Partial("_googleAnalytics")
-    @RenderSection("scripts", false)
 
+    @Html.Partial("_googleAnalytics")
+
+    @RenderSection("scripts", false)
+    
 
     @* ReSharper disable once NotAllPathsReturnValue *@
     <script>

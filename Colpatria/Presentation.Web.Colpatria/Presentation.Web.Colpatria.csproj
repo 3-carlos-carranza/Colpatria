@@ -1190,9 +1190,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ModalsController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SecondFlowTempController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
+    <Compile Include="Extensions\ActionDescriptorExtensions.cs" />
+    <Compile Include="Filters\SessionExpireAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1361,6 +1365,12 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Request\ContinueRequest.cshtml" />
     <Content Include="Views\Messages\ShowInformation.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Report\Login.cshtml" />
+    <Content Include="Views\Messages\SessionExpired.cshtml" />
+    <Content Include="Views\Report\Download.cshtml" />
+    <Content Include="Views\Shared\_LayoutReport.cshtml" />
+    <Content Include="Views\Shared\_googleAnalytics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

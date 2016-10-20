@@ -1,47 +1,47 @@
 ﻿//   -----------------------------------------------------------------------
-//   <copyright file=InalambriaAppService.cs company="Banlinea S.A.S">
+//   <copyright file=InalambriaNotificationSmsAppService.cs company="Banlinea S.A.S">
 //       Copyright (c) Banlinea Todos los derechos reservados.
 //   </copyright>
 //   <author>Jeysson Stevens  Ramirez </author>
 //   -----------------------------------------------------------------------
 
+using System;
+using System.Configuration;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.WebServiceConsultation;
 using Core.Entities.Process;
 using Core.GlobalRepository.Inalambria;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Extensions;
+using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
-using System;
 
 namespace Application.Main.Implementation.ProcessFlow.Services
 {
-    public class InalambriaAppService : IInalambriaAppService
+    public class InalambriaNotificationSmsAppService : INotificationSmsAppService
     {
         private readonly IInalambriaAuthRepository _inalambriaAuthRepository;
         private readonly IInalambriaRepository _inalambriaRepository;
         private readonly IWebServiceConsultationRepository _webServiceConsultationRepository;
         private readonly WebSettingsConsultationSettingsBuilder _webSettingsConsultationSettingsBuilder;
 
-        public InalambriaAppService(IInalambriaAuthRepository inalambriaAuthRepository,
+        public InalambriaNotificationSmsAppService(IInalambriaAuthRepository inalambriaAuthRepository,
             IInalambriaRepository inalambriaRepository,
-            WebSettingsConsultationSettingsBuilder webSettingsConsultationSettingsBuilder,
-            IWebServiceConsultationRepository webServiceConsultationRepository)
+            IWebServiceConsultationRepository webServiceConsultationRepository,
+            WebSettingsConsultationSettingsBuilder webSettingsConsultationSettingsBuilder)
         {
             _inalambriaAuthRepository = inalambriaAuthRepository;
             _inalambriaRepository = inalambriaRepository;
-            _webSettingsConsultationSettingsBuilder = webSettingsConsultationSettingsBuilder;
             _webServiceConsultationRepository = webServiceConsultationRepository;
+            _webSettingsConsultationSettingsBuilder = webSettingsConsultationSettingsBuilder;
         }
 
-        public string GetTicketKdc()
+        public ResponseDetailFlow SendSms(string devicenumber, string message, long executionId)
         {
-            return _inalambriaAuthRepository.GetTicketKdc();
-        }
-
-        public string SendSms(string devicenumber, string message, string provider, long executionId)
-        {
-            var response = (_inalambriaRepository.SendSms(GetTicketKdc(), devicenumber, message, provider));
+            var vResponseDetailFlow = new ResponseDetailFlow();
+            var response = _inalambriaRepository.SendSms(GetTicketKdc(), devicenumber, message,
+                ConfigurationManager.AppSettings.Get("InalambriaProvider"));
             try
             {
                 //Log Service
@@ -53,7 +53,8 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                         .Build();
 
                 AddWebServiceConsultation(consultation);
-                return response;
+                vResponseDetailFlow.Status = ReponseStatus.Success;
+                //return response;
             }
             catch (Exception ex)
             {
@@ -71,8 +72,16 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                         .Build();
 
                 AddWebServiceConsultation(consultation);
-                return response;
+                vResponseDetailFlow.Status = ReponseStatus.Failure;
+                var clientLog = new TelemetryClient();
+                clientLog.TrackException(ex);
             }
+            return vResponseDetailFlow;
+        }
+
+        private string GetTicketKdc()
+        {
+            return _inalambriaAuthRepository.GetTicketKdc();
         }
 
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)

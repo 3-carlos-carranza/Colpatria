@@ -1,0 +1,143 @@
+﻿@model Presentation.Web.Colpatria.Controllers.DownloadReportModel
+
+@{
+    ViewBag.Title = "Reportes - Connect";
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+
+}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Reportes Connect</a>
+        </div>
+        <ul class="nav navbar-nav right">
+            <li class="active"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                   <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                Inicio
+            </a></li>
+            <li><a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                Reportes de trasaciones
+            </a></li>
+            
+            @*<li><a href="#">Page 3</a></li>*@
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="right">
+                
+                <a href="@Url.Action("LogOut", "Report")"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="panel-group" id="accordion">
+        <div class="panel">
+            @*<div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+                </h4>
+            </div>*@
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div style="text-align: center;min-height: 200px;">
+                        <br />
+                        <br />
+                        <br />
+                        <h3>
+                            <strong>Bienvenido</strong>
+                            al Modulo de Reportes
+                        </h3>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            @*<div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+                </h4>
+            </div>*@
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div style="text-align: center;    min-height: 200px;">
+                        <form data-x="x-validate" action="@Url.Action("Download", "Report")" method="POST" class="form-step">
+
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <span class="input input--hoshi">
+                                        <input name="StartDate" class="input__field input__field--hoshi validate[required] datetimepicker" readonly="readonly" type="text" id="StartDate">
+                                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="StartDate">
+                                            <span class="input__label-content input__label-content--hoshi input-block-level ">Fecha Incial:<span class="symbol required"></span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="input input--hoshi">
+                                        <input name="EndDate" class="input__field input__field--hoshi validate[required] validateMaxToday" type="text" readonly="readonly" id="EndDate">
+                                        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="EndDate">
+                                            <span class="input__label-content input__label-content--hoshi input-block-level">Fecha Final:<span class="symbol required"></span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 text-center margTop4">
+                                    <button type="submit" class="btn btn-danger enviar nomargin ">
+                                        Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div style="clear: both"></div>
+                        </form>
+                        @Html.Partial("_ValidationSummary", ViewData.ModelState)
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            @*<div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+                </h4>
+            </div>*@
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div id="accordion" role="tablist" aria-multiselectable="false">
+    <div class="card">
+        <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+                <br />
+               
+                
+                
+            </div>
+        </div>
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+               
+            </div>
+        </div>
+    </div>
+    
+    
+</div>*@

@@ -23,7 +23,7 @@ namespace Core.Entities.Evidente
         [XmlAttribute(AttributeName = "numeroIntentosMes")]
         public int MonthlyNumberOfIntents { get; set; }
         [XmlElement(ElementName = "Pregunta")]
-        public IEnumerable<Question> Questions { get; set; }
+        public List<Question> Questions { get; set; }
         [XmlAttribute(AttributeName = "registro")]
         public string Record { get; set; }
         [XmlAttribute(AttributeName = "resultado")]

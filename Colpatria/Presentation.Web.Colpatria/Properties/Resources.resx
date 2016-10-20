@@ -123,4 +123,7 @@
   <data name="0" xml:space="preserve">
     <value>No se encuentra el producto.</value>
   </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Usuario y/o  contraseña incorrectos</value>
+  </data>
 </root>

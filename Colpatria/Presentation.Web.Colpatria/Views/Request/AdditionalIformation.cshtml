@@ -24,7 +24,7 @@
     </div>
     <div class="conts">
         <div class="col-xs-12 col-md-4 bordes">
-            <p class="desc-step">Número de Solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
+            <p class="desc-step">Número de solicitud: <span class="red">@Model.UserInfoDto.SimpleId</span></p>
             <p class="desc-step">Registro: <span class="ok-rgtr"></span></p>
             <div class="resumen-data">
                 @{
@@ -35,7 +35,7 @@
             <span class="proccess">Validado</span>
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
-            <p class=""><strong>@Model.UserInfoDto.Names,</strong> este es el último paso para tener “Tu <span class="red">Cuenta Cero</span>”</p>
+            <p class=""><strong>@Model.UserInfoDto.Names,</strong> este es el último paso para tener “Tu <span class="red">Cuenta cero</span>”</p>
             <div class="test">
                 <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus Datos</p>
@@ -44,13 +44,13 @@
                             <span class="input input--hoshi">
                                 <input type="text" name="11" id="BirthDate" class="input__field input__field--hoshi validate[required, custom[date]] validateBirthDay date" value="">
                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="BirthDate">
-                                    <span class="input__label-content input__label-content--hoshi input-block-level">Fecha de Nacimiento<span class="symbol required"></span></span>
+                                    <span class="input__label-content input__label-content--hoshi input-block-level">Fecha de nacimiento<span class="symbol required"></span></span>
                                 </label>
                             </span>
                         </div>
                             <div class="col-xs-12 col-sm-6">
                                 <label>
-                                    Estado Civil<span class="symbol required"></span>
+                                    Estado civil<span class="symbol required"></span>
                                 </label>
                                 <select name="34" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-value="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"> </select>
                             </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                             <div class="col-xs-12 col-sm-6">
                                 <label>
-                                    Actividad Económica <span class="symbol required"></span>
+                                    Actividad económica <span class="symbol required"></span>
                                 </label>
                                 <select name="26" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value=""></select>
                             </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div style="clear: both"></div>
                     <div class="form-group">
-                        <p class="bolds">Tu Producto</p>
+                        <p class="bolds">Tu producto</p>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-4">
@@ -98,7 +98,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label>
-                                    Tipo de Cuenta<span class="symbol required"></span>
+                                    Tipo de cuenta<span class="symbol required"></span>
                                 </label>
                                 <select name="18" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value="18396" disabled></select>
                             </div>

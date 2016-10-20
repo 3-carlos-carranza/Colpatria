@@ -452,6 +452,7 @@ header .logo-step {
 	height: calc(100% - 1em);
 	text-align: left;
 	pointer-events: none;
+    overflow:hidden;
 }
 
 .input__label-content--hoshi {
@@ -598,7 +599,7 @@ color:#e20613;
 }
 .step-content .prtn{
     background-color: #7d7d7d;
-    padding: 4% 16%;
+    padding: 16px 50px;
     transition:.3s;
     font-size:16px;
     color: #fff;
@@ -864,6 +865,26 @@ text-align:left !important;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+@media (max-width: 1024px) {
+.step-content .li-step {
+    padding: 0;
+}
+.step-content .bull {
+    padding: 0 0px;
+}
+.step-content .enviar {
+    margin-right: 0%;
+
+}
+.step-content .with50 {
+    width: 80%;
+
+}
+}
+
+
+
 @media (min-width: 768px) {
     .modal-dialog.modal-terms {
         width: 1140px;
@@ -877,7 +898,12 @@ text-align:left !important;
 
 /* Media Querys steps*/
 @media(max-width: 769px) {
-
+ footer .text-foot {
+    text-align: center;
+}
+    footer .img-foot {
+    text-align: center;
+}
 .step-content .bull {
     font-size: 15px;
 }
@@ -888,7 +914,7 @@ text-align:left !important;
     display: block;
     padding: 16px 0px;
     position: relative;
-    font-size: 3vw;
+    font-size: 16px;
 }
 }
 @media(max-width: 736px) {
@@ -1043,13 +1069,42 @@ margin-top: 16%;
 .step-content .img-summary {
         margin: 14% 0 0 0;
     }
+.step-content .enviar, .step-content .prtn {
+
+    font-size: 14px;
+}
 }
 @media(max-width:360px) {
     .input__label {
     font-size: 16px;
 }
+.step-content .enviar, .step-content .prtn {
+
+    font-size: 13px;
+}
 }
 /* Fin Media Querys steps*/
 
+/* hack IE 9 10 11 */
+@media screen and (min-width: 0\0) {
+    .input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi {
+    -webkit-animation: anim-1 0.3s forwards;
+    animation: anim-0 0.3s forwards;
+    opacity: 1;
+    transform: translate3d(0em, -1.5em, 0);
+    -webkit-transform: translate3d(0em, -1.4em, 0);
+}
+
+}
+/* hack Microsoft Edge */
+@supports (-ms-ime-align:auto) {
+  .input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi {
+    -webkit-animation: anim-1 0.3s forwards;
+    animation: anim-0 0.3s forwards;
+    opacity: 1;
+    transform: translate3d(0em, -1.5em, 0);
+    -webkit-transform: translate3d(0em, -1.4em, 0);
+}
+}
 
 /* End Styles registration form*/

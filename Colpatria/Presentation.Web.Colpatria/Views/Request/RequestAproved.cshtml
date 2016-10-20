@@ -117,7 +117,7 @@
         <p>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
         <p>Señor(a) @Model.UserInfoDto.Names</p>
 
-        @if ((ProductType)Session["Product"] == ProductType.Ca)
+        @if ((ProductType)Session["Product"] == ProductType.SavingAccount)
         {
             <p>Asunto: Solicitud Cuenta de Ahorros Colpatria </p>
         }

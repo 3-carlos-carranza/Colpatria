@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights;
 
 namespace DataAccess.UserModule.Repository
 {
@@ -133,7 +134,8 @@ namespace DataAccess.UserModule.Repository
             }
             catch (Exception exception)
             {
-                var e = exception;
+                var clientLog = new TelemetryClient();
+                clientLog.TrackException(exception);
                 throw;
             }
         }

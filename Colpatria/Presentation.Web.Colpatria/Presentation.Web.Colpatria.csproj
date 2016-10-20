@@ -1361,6 +1361,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Request\ContinueRequest.cshtml" />
     <Content Include="Views\Messages\ShowInformation.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

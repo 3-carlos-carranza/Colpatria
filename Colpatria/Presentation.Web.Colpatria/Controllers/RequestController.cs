@@ -94,7 +94,20 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification);
             }
-            if (!usercreated.Succeeded && usercreated.Errors.Any()) return View("Register");
+            if (!usercreated.Succeeded | usercreated.Errors.Any())
+            {
+                foreach (string error in usercreated.Errors)
+                {
+                    ModelState.AddModelError("",error);
+                }
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var message = string.Join(", ", allErrors.Select(s=>s.ErrorMessage).ToArray());
+                TempData["Message"] = message;
+                return View("Register", new UserViewModel
+                {
+                    ProductId = Convert.ToInt32((int)Session["Product"]),
+                });
+            }
             var identity =
                 await _userAppService.CreateIdentityAsync(nuser, DefaultAuthenticationTypes.ApplicationCookie);
             identity.Label = nuser.FullName;

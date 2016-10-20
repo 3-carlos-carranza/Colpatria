@@ -1,6 +1,7 @@
 ﻿@page {
     margin: 0;
 }
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 .step-content {
     padding: 4% 6% 0% 6% !important;
     border-radius: 10px;
@@ -12,16 +13,18 @@
 
 /*Styles terminos*/
 .step-content .bolds {
-    font-family: 'latobold';
+     font-weight:bold;
+    font-family: 'lato';
     padding: 2% 0;
 }
 .step-content .italic {
-font-family: 'latosemibold_italic';
+font-family: 'lato';
+font-style:italic;
 }
 .step-content .desc-step{
  font-weight:bold;
  font-size: 14px;
- font-family: 'latobold';
+ font-family: 'lato';
  color:#000 !important;
 }
 .step-content .conts{
@@ -34,13 +37,15 @@ font-family: 'latosemibold_italic';
     color:#6e6e6e !important;
 }
 .step-content .title-term{
+     font-weight:bold;
    color:#e20613 !important;
    font-size:16px;
-   font-family: 'latobold';
+   font-family: 'lato';
 
 }
 .step-content .subtitle-term {
-font-family: 'latobold';
+  font-weight:bold;
+font-family: 'lato';
  font-size:16px;
  color:#000 !important;
 }
@@ -57,15 +62,26 @@ color:#e20613 !important;
  padding:0% 0 4% 0;
 }
 .step-content .italic {
-font-family: 'latosemibold_italic';
+font-family: 'lato';
+font-style:italic;
 }
 .step-content .bolds {
-font-family: 'latobold';
+font-family: 'lato';
 padding: 2% 0;
+ font-weight:bold;
 }
 .step-content .bolds span {
 color:#e20613 !important;
 }
-
+.with80 {
+width:80%;
+display:inline-block;
+vertical-align: top;
+}
+.with20 {
+width:19%;
+display:inline-block;
+vertical-align: top;
+}
 /*Fin styles terminos*/
 

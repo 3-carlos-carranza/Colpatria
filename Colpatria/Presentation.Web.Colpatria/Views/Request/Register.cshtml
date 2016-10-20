@@ -10,16 +10,18 @@
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            
-            @if (Model.ProductId == (int)ProductType.SavingAccount)
-            {
-                <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
-            }
-            else
-            {
-                <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
-            }
 
+            @if (Model != null)
+            {
+                if (Model.ProductId == (int)ProductType.SavingAccount)
+                {
+                    <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+                }
+                else
+                {
+                    <p>Empieza a disfrutar de tu Tarjeta de Crédito</p>
+                }
+            }
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 bull active">
@@ -37,7 +39,7 @@
             <div class="form-group">
                 <div class="col-xs-12 col-md-6">
                     <span class="input input--hoshi">
-                        <input name="1" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" >
+                        <input name="1" class="input__field input__field--hoshi validate[required, maxSize[30], custom[onlyLetterSp]] onlyletter" type="text" id="FirstName" placeholder="" maxlength="30" >
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstName">
                             <span class="input__label-content input__label-content--hoshi input-block-level ">Nombre(s)<span class="symbol required"></span></span>
                         </label>
@@ -45,7 +47,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="2" class="input__field input__field--hoshi validate[required, maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" >
+                        <input name="2" class="input__field input__field--hoshi validate[required, maxSize[20], custom[onlyLetterSp]] onlyletter" type="text" id="FirstLastName" placeholder="" maxlength="20">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="FirstLastName">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Primer Apellido<span class="symbol required"></span></span>
                         </label>
@@ -53,7 +55,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="3" class="input__field input__field--hoshi validate[maxSize[15], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" >
+                        <input name="3" class="input__field input__field--hoshi validate[maxSize[20], custom[onlyLetterSp]] onlyletter" type="text" id="SecondLastName" placeholder="" maxlength="20" >
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SecondLastName">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Segundo Apellido<span class=""></span></span>
                         </label>
@@ -66,25 +68,24 @@
                     <label>
                         Tipo de Documento<span class="symbol required"></span>
                     </label>
-                    <select name="4" data-x="x-kdropdown" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListValues/" ></select>
+                    <select name="4" data-x="x-kdropdown" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListValues/"></select>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="5" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" >
+                        <input name="5" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" data-vmin="0" data-vmax="9999999999" id="Number" placeholder="" maxlength="11" >
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Number">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Número<span class="symbol required"></span></span>
                         </label>
                     </span>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                  
+
                     <span class="input input--hoshi">
-                        <input type="text" name="7" id="ExpeditionDate" class="input__field input__field--hoshi validate[required,custom[date]] validateMaxToday" value="24/05/2011">
+                        <input type="text" name="7" id="ExpeditionDate" class="input__field input__field--hoshi validate[required,custom[date]] validateMaxToday date" value="">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="ExpeditionDate">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Fecha de Expedición<span class="symbol required"></span></span>
                         </label>
                     </span>
-                    
                 </div>
                 <div style="clear: both"></div>
             </div>
@@ -95,7 +96,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="20" class="input__field input__field--hoshi validate[required, maxSize[50]]" type="text" id="address" placeholder="" >
+                        <input name="20" class="input__field input__field--hoshi validate[required, maxSize[50]]" type="text" id="address" placeholder="" maxlength="60">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="address">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Dirección<span class="symbol required"></span></span>
                         </label>
@@ -103,7 +104,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="8" class="input__field input__field--hoshi validate[required,custom[email], maxSize[50]]" type="text" id="email" placeholder="" >
+                        <input name="8" class="input__field input__field--hoshi validate[required,custom[email], maxSize[60]]" type="text" id="email" placeholder="" maxlength="60" >
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="email">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Correo Electrónico<span class="symbol required"></span></span>
                         </label>
@@ -114,7 +115,7 @@
             <div class="form-group">
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="9" class="input__field input__field--hoshi validate[required, maxSize[15]] onlynumber" type="text" placeholder="" >
+                        <input name="9" class="input__field input__field--hoshi validate[required, maxSize[15]] onlynumber" type="text" placeholder="">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="telephone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Teléfono<span class="symbol required"></span></span>
                         </label>
@@ -122,7 +123,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <span class="input input--hoshi">
-                        <input name="10" class="input__field input__field--hoshi validate[required, maxSize[15]] onlynumber" type="text" id="cellphone" placeholder="" >
+                        <input name="10" class="input__field input__field--hoshi validate[required, maxSize[15]] onlynumber" type="text" id="cellphone" placeholder="">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="cellphone">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Celular<span class="symbol required"></span></span>
                         </label>
@@ -135,7 +136,7 @@
                 </div>
 
                 <div class="col-xs-12 col-md-3 space">
-                    <input name="13" type="checkbox" value="18402" class="grey validate[required]" >
+                    <input name="13" type="checkbox" id="term" value="18402" class="grey validate[required]" >
                     <label class="check">
                         Acepto términos y condiciones <a class="vermas" href="#" id="terms-cuenta">VER+</a>
                     </label>
@@ -146,7 +147,6 @@
                     </button>
                 </div>
                 <div style="clear: both"></div>
-
             </div>
             Tenga en cuenta que a partir de este momento despues de 10 minutos de <strong>INACTIVIDAD</strong> su sesión sera cerrada por su seguridad
         </form>

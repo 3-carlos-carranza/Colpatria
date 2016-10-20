@@ -1,14 +1,18 @@
-﻿@model dynamic
+﻿@model Application.Main.Implementation.ProcessFlow.Responses.EvidenteResponse
 
 @{
   ViewBag.Title = "Evidente";
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="step-content">
+<div class="step-content text-center error">
+    <p class="err">Error</p>
+    <h1 class="cod-err"></h1>
+    <p class="none-err"></p>
 
-
-    Ops! algo sucedió!
-
-
+    <h3 class="title-err">@Model.ErrorEvidenteResponse.Title</h3>
+    <p class="desc-err">@Model.ErrorEvidenteResponse.Message</p>
+    <p class="">
+        <a href="@Url.Action("Index", "Request")" class="btn btn-danger enviar nomargin">Volver a la página inicial</a>
+    </p>
 </div>

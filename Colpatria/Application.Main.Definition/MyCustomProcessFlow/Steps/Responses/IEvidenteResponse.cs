@@ -13,6 +13,7 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface IEvidenteResponse : IShowScreenResponse
     {
+        ErrorEvidenteResponse ErrorEvidenteResponse { get; set; }
         QuestionsResponse QuestionsResponse { get; set; }
         UserInfoDto UserInfoDto { get; set; }
     }

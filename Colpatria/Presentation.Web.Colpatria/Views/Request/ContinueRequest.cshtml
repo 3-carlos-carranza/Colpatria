@@ -1,19 +1,19 @@
-﻿@model Presentation.Web.Colpatria.Models.UserViewModel
+﻿@model Presentation.Web.Colpatria.Models.ModelLogin
 
 @{
     ViewBag.Title = "Retome su solicitud";
 }
 <div class="step-content">
     <div class="with50">
-        <form data-x="x-validate" action="@Url.Action("", "")" method="POST" class="form-step">
+        <form data-x="x-validate" action="@Url.Action("ContinueRequest", "Request")" method="POST" class="form-step">
             <div class="fontM">
-                 <strong>Hola, @Model.FirstName</strong> usted tiene una solicitud en proceso, para continuarla ingrese los siguientes datos.
+                 <strong>Hola</strong> tienes una solicitud en proceso, para continuarla ingresa los siguientes datos.
             </div>
             <br>
             <div class="form-group">
                 <div class="col-md-12">
                     <span class="input input--hoshi">
-                        <input name="Identification" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" type="text" id="Identification">
+                        <input name="identification" class="input__field input__field--hoshi validate[required, maxSize[10]] onlynumber" type="text" id="Identification">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Identification">
                             <span class="input__label-content input__label-content--hoshi input-block-level ">Número de documento<span class="symbol required"></span></span>
                         </label>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-12">
                     <span class="input input--hoshi">
-                        <input name="SimpleId" class="input__field input__field--hoshi validate[required, maxSize[6]] onlynumber" type="text" id="SimpleId">
+                        <input name="simpleId" class="input__field input__field--hoshi validate[required, maxSize[6]] onlynumber" type="text" id="SimpleId">
                         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="SimpleId">
                             <span class="input__label-content input__label-content--hoshi input-block-level">Codigo de solicitud<span class="symbol required"></span></span>
                         </label>
@@ -30,18 +30,13 @@
 
             </div>
             <div class="form-group">
-                <div class="col-xs-12 col-md-3" hidden="hidden">
-                    <span class="input input--hoshi">
-                        <input name="ProductId" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="ProductId" placeholder="" value="@Model.ProductId">
-                        <input name="CurrentSectionId" class="input__field input__field--hoshi validate[required,custom[onlyLetterNumber]]" type="number" id="CurrentSectionId" placeholder="" value="@Model.CurrentSectionId">
-                    </span>
-                </div>
                 <div class="col-md-12 text-center margTop4">
                     <button type="submit" class="btn btn-danger enviar nomargin ">
                         Siguiente
                     </button>
                 </div>
             </div>
+            @Html.Partial("_ValidationSummary", ViewData.ModelState);
             <div style="clear: both"></div>
         </form>
     </div>

@@ -1,6 +1,8 @@
+using System;
 using System.Configuration;
 using Core.GlobalRepository.Inalambria;
 using Data.Inalambria.InalambriaAuthService;
+using Microsoft.ApplicationInsights;
 
 namespace Data.Inalambria
 {
@@ -8,19 +10,22 @@ namespace Data.Inalambria
     {
         public string GetTicketKdc()
         {
-            //1
-            ASResponse pass =  ASGeneratePassword(ConfigurationManager.AppSettings["UserToolSend"], "true");
+            try
+            {
+                var pass = ASGeneratePassword(ConfigurationManager.AppSettings["UserToolSend"], "true");
+                var ticket = GetCrypto(pass.Ticket, ConfigurationManager.AppSettings["PassToolSend"]);
+                var password = GetCrypto(pass.Password, ConfigurationManager.AppSettings["PassToolSend"]);
 
-            //2
-            string ticket = GetCrypto(pass.Ticket, ConfigurationManager.AppSettings["PassToolSend"]); 
-            string password = GetCrypto(pass.Password, ConfigurationManager.AppSettings["PassToolSend"]);
-            string flag = GetCrypto(pass.Flag, ConfigurationManager.AppSettings["PassToolSend"]);
+                var ticketTgs = SetCrypto(ticket, password);
 
-            //3 retorna un XML 
-            string ticketTgs = SetCrypto(ticket, password);
-
-            //4
-            return ASGenerateTicket(ticketTgs);
+                return ASGenerateTicket(ticketTgs);
+            }
+            catch (Exception exception)
+            {
+                var clientLog = new TelemetryClient();
+                clientLog.TrackException(exception);
+                return string.Empty;
+            }
         }
     }
 }

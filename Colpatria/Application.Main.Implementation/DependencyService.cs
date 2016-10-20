@@ -43,7 +43,6 @@ namespace Application.Main.Implementation
             container.RegisterType<IWsMotorAppService, WsMotorAppService>();
             container.RegisterType<IMailAppService, MailAppService>();
             container.RegisterType<IEmailNotificatorService, MailService>();
-            container.RegisterType<ICustomActionAppService, CustomActionAppService>();
             
             
             container.RegisterType<IDynamicAppService, DynamicAppService>();

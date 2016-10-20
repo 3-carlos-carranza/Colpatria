@@ -81,7 +81,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
 
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
-            var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification);
+            var user = await _userAppService.FindAsync(nuser.Identification, nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
 
             //re-take Request 
             if (user != null)
@@ -103,7 +103,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var usercreated = new IdentityResult();
             if (nuser.IsNewUser)
             {
-                usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification);
+                usercreated = await _userAppService.CreateAsync(nuser, nuser.Identification+ ConfigurationManager.AppSettings["Salt"]);
             }
             //error creating user
             if (!usercreated.Succeeded | usercreated.Errors.Any())

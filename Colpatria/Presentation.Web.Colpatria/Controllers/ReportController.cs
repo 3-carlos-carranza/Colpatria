@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
+using Presentation.Web.Colpatria.Properties;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
@@ -20,8 +22,15 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return View(model);
             }
-            Session["login"] = true;
-            return RedirectToAction("Download");
+            var user = ConfigurationManager.AppSettings.Get("ReportUser");
+            var password = ConfigurationManager.AppSettings.Get("ReportPassword");
+            if (model.UserName == user && model.Password == password)
+            {
+                Session["login"] = true;
+                return RedirectToAction("Download");
+            }
+            ModelState.AddModelError("",Resources.InvalidPassword);
+            return View(model);
         }
         [HttpGet]
         public ActionResult Download()

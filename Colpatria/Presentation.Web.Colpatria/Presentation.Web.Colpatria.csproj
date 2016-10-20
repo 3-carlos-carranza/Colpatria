@@ -1366,6 +1366,7 @@
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <Content Include="Views\Report\Login.cshtml" />
     <Content Include="Views\Report\Download.cshtml" />
+    <Content Include="Views\Shared\_LayoutReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

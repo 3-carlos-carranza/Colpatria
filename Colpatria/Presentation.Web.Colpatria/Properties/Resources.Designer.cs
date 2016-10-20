@@ -77,5 +77,14 @@ namespace Presentation.Web.Colpatria.Properties {
                 return ResourceManager.GetString("-1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuario y/o  contraseña incorrectos.
+        /// </summary>
+        internal static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
     }
 }

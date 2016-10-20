@@ -482,6 +482,14 @@ if (!window.location.origin) {
                 });
             });
 
+            $('.datetimepicker').livequery(function () {
+                $(this).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-100:+0"
+                });
+            });
+
             $('.validateMaxToday').livequery(function () {
                 $(this).datepicker({
                     maxDate: '-1D',

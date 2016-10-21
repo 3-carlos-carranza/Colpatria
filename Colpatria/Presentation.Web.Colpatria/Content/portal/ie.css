@@ -1,3 +1,3 @@
 .input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi{
-	margin-top:-22px;
+	margin-top:-19px;
 }

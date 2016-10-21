@@ -16,7 +16,6 @@ using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Presentation.Web.Colpatria.Filters;
 using Presentation.Web.Colpatria.Models;
 using static System.String;
 
@@ -119,6 +118,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> Register(FormCollection collection)
         {
             var fields = collection.RemoveUnnecessaryAndEmptyFields().ToFieldValueOrder().RemoveEmptyFields();

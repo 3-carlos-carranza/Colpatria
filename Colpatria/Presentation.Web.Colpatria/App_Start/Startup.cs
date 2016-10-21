@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Mappers;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
@@ -18,6 +19,9 @@ namespace Presentation.Web.Colpatria
                 });
 
             AutomapperMaps.Initialize();
+#if DEBUG
+            TelemetryConfiguration.Active.DisableTelemetry = true;
+#endif
 
         }
 

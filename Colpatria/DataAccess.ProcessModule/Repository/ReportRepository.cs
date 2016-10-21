@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Dynamic;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.ExcelGenerator;
 
@@ -14,9 +13,6 @@ namespace DataAccess.ProcessModule.Repository
         public ReportDto GetReportTransactional(DateTime startdate, DateTime enddate)
         {
             var returned = new ReportDto();
-
-            var listrequest = new List<object>();
-
 
             var cnx =
                 new SqlConnection(ConfigurationManager.ConnectionStrings["ProcessModelEntities"].ConnectionString);
@@ -48,23 +44,19 @@ namespace DataAccess.ProcessModule.Repository
             var dt = new SqlDataAdapter(cmd);
 
 
-            var isgetcolumns = false;
             var dataSet = new DataSet();
             cnx.Open();
             dt.Fill(dataSet);
-            var ddata= new List<Dictionary<string, string>>();
+            var ddata = new List<Dictionary<string, string>>();
             if (dataSet.Tables.Count > 0)
             {
                 var converter = dataSet.Tables[0];
                 var dataColumnCollection = converter.Columns;
                 foreach (DataRow row in converter.Rows)
                 {
-                    
                     var x = new Dictionary<string, string>();
                     foreach (DataColumn column in dataColumnCollection)
-                    {
                         x.Add(column.ColumnName, row[column.ColumnName].ToString());
-                    }
                     ddata.Add(x);
                 }
             }

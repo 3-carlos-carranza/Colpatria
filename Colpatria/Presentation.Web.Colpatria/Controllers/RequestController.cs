@@ -17,6 +17,7 @@ using Crosscutting.Common.Tools.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Presentation.Web.Colpatria.Models;
+using Presentation.Web.Colpatria.Properties;
 using static System.String;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -91,7 +92,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     Thread.CurrentPrincipal = principal;
                     HttpContext.User = principal;
                     //set arguments
-                    var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+                    long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
 
                     ProcessFlowArgument.User = user;
 
@@ -112,7 +113,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
                     return ValidateStepResult(stepresult);
                 }
-                ModelState.AddModelError("", "El usuario no tiene una solicitud activa");
+                ModelState.AddModelError("", Resources.RequestController_ContinueRequest_No_Active_Request);
             }
             return View(modelLogin);
         }
@@ -127,7 +128,7 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return RedirectToAction("ShowInformation", "Messages", new {code = "-1"}); //product not found 
             }
-            var productid = 0;
+            int productid;
             if (!int.TryParse(product.Value, out productid))
             {
                 return RedirectToAction("ShowInformation", "Messages", new {code = "0"}); //invalid product
@@ -156,13 +157,11 @@ namespace Presentation.Web.Colpatria.Controllers
 
             //new user and new request 
             nuser.IsNewUser = true;
-            var usercreated = new IdentityResult();
             if (nuser.IsNewUser)
             {
-                usercreated =
-                    await
-                        _userAppService.CreateAsync(nuser,
-                            nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
+                var usercreated = await
+                    _userAppService.CreateAsync(nuser,
+                        nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
                 if (!usercreated.Succeeded && usercreated.Errors.Any())
                 {
                     return View("Register");

@@ -126,4 +126,7 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>Usuario y/o  contraseña incorrectos</value>
   </data>
+  <data name="RequestController_ContinueRequest_No_Active_Request" xml:space="preserve">
+    <value>El usuario no tiene una solicitud activa</value>
+  </data>
 </root>

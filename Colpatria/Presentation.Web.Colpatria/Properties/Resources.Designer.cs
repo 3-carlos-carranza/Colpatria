@@ -86,5 +86,14 @@ namespace Presentation.Web.Colpatria.Properties {
                 return ResourceManager.GetString("InvalidPassword", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El usuario no tiene una solicitud activa.
+        /// </summary>
+        internal static string RequestController_ContinueRequest_No_Active_Request {
+            get {
+                return ResourceManager.GetString("RequestController_ContinueRequest_No_Active_Request", resourceCulture);
+            }
+        }
     }
 }

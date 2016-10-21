@@ -37,6 +37,7 @@ namespace Application.Main.Implementation
     {
         public static void InitializeAppService(this IUnityContainer container)
         {
+            container.RegisterType<IReportAppService, ReportAppService>();
             container.RegisterType<IUserAppService, UserAppService>();
             container.RegisterType<IEvidenteAppService, EvidenteAppService>();
             

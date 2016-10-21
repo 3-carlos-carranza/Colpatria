@@ -75,6 +75,7 @@
     <Compile Include="Vib\ExecutionArgument.cs" />
     <Compile Include="Vib\MapperPagesWithSections.cs" />
     <Compile Include="Vib\MapperPagesWithSectionsExtension.cs" />
+    <Compile Include="Vib\ReportDto.cs" />
     <Compile Include="Vib\UserInfoDto.cs" />
     <Compile Include="WebServiceConsultation\ServiceNameType.cs" />
     <Compile Include="WebServiceConsultation\TypeOfConsultation.cs" />

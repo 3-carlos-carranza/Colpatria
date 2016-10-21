@@ -86,6 +86,7 @@
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IMailAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\INotificationSmsAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IProcessAppService.cs" />
+    <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IReportAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\Handlers\Services\IWsMotorAppService.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\ISendRequestResponseStep.cs" />
     <Compile Include="MyCustomProcessFlow\Steps\IShowFinishRequestStep.cs" />

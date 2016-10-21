@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Presentation.Web.Colpatria.Properties;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -10,6 +12,12 @@ namespace Presentation.Web.Colpatria.Controllers
     
     public class ReportController : Controller
     {
+        private readonly IReportAppService _reportAppService;
+        public ReportController(IReportAppService reportAppService)
+        {
+            _reportAppService = reportAppService;
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
@@ -72,20 +80,12 @@ namespace Presentation.Web.Colpatria.Controllers
 
                 try
                 {
-                    string filename = "File.pdf";
-                    string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Path/To/File/" + filename;
-                    byte[] filedata = System.IO.File.ReadAllBytes(filepath);
-                    string contentType = MimeMapping.GetMimeMapping(filepath);
-
-                    var cd = new System.Net.Mime.ContentDisposition
-                    {
-                        FileName = $"Base {model.StartDate} - {model.EndDate} .xls",
-                        Inline = true,
-                    };
-
-                    Response.AppendHeader("Content-Disposition", cd.ToString());
-
-                    return File(filedata, contentType);
+                    Response.ContentType = "application/vnd.ms-excel";
+                    Response.AddHeader("content-disposition",$"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls" );
+                    Response.Clear();
+                    MemoryStream result = _reportAppService.GetReportTransactional(model.StartDate,model.EndDate);
+                    Response.BinaryWrite(result.GetBuffer());
+                    Response.End();
                 }
                 catch (Exception exception)
                 {

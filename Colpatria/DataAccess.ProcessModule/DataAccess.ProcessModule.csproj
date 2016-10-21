@@ -86,6 +86,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -120,6 +121,7 @@
       <DependentUpon>ProcessModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\SectionRepository.Extension.cs" />
     <Compile Include="Repository\ExtendedFieldRepository.Extension.cs" />
     <Compile Include="Repository\ExtendedFieldValueRepository.cs">

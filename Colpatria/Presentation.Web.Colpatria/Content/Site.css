@@ -1105,7 +1105,7 @@ margin-top: 16%;
     -webkit-animation: anim-1 0.3s forwards;
     animation: anim-0 0.3s forwards;
     opacity: 1;
-    transform: translate3d(0em, -1.5em, 0);
+    transform: translate3d(0em, -1.4em, 0);
     -webkit-transform: translate3d(0em, -1.4em, 0);
 }
 
@@ -1116,7 +1116,7 @@ margin-top: 16%;
     -webkit-animation: anim-1 0.3s forwards;
     animation: anim-0 0.3s forwards;
     opacity: 1;
-    transform: translate3d(0em, -1.5em, 0);
+    transform: translate3d(0em, -1.4em, 0);
     -webkit-transform: translate3d(0em, -1.4em, 0);
 }
 }

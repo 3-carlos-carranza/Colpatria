@@ -16,12 +16,12 @@ namespace DataAccess.UserModule.Repository
         public UserRepository(IUserContext uow): base(uow)
         {
     	
-    	    this.SetContext();
+    	    SetContext();
         }
     
             private void SetContext()
             {
-                this._context = UnitOfWork as IUserContext;
+                _context = UnitOfWork as IUserContext;
             }
     
     

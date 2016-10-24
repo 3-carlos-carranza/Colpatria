@@ -5,7 +5,9 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Core.Entities.WsMotor;
+using Crosscutting.Common.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.Entities.Enumerations;
-using Crosscutting.Common.Extensions;
 using Xipton.Razor;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -32,7 +32,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _userAppService = userAppService;
         }
 
-        public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
+        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);

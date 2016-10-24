@@ -15,12 +15,12 @@ namespace DataAccess.ProcessModule.Repository
         public ExtendedDataListRepository(IProcessContext uow): base(uow)
         {
     	
-    	    this.SetContext();
+    	    SetContext();
         }
     
             private void SetContext()
             {
-                this._context = UnitOfWork as IProcessContext;
+                _context = UnitOfWork as IProcessContext;
             }
     
     

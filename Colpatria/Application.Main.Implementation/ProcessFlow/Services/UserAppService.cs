@@ -1,4 +1,3 @@
-using System;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
@@ -9,6 +8,7 @@ using Crosscutting.Common.Tools.Contracts;
 using Crosscutting.Common.Tools.DataType;
 using Crosscutting.Common.Tools.Extensions;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -22,6 +22,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         private readonly IExtendedFieldRepository _extendedFieldRepository;
         private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
         private readonly IUserRepository _userRepository;
+
         public UserAppService(IUserRepository userRepository,
             IFieldToCreateUserRepository fieldToCreateUserRepository,
             IExtendedFieldRepository extendedFieldRepository, IExecutionRepository executionRepository) : base(userRepository)
@@ -66,7 +67,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public Execution GetRequestUserByRequestId(long requestid)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<User> GetUserByMappingField(IEnumerable<FieldToCreateUser> mappingfields, IEnumerable<FieldValueOrder> fields)
@@ -107,17 +108,17 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public Task<IdentityResult> UpdateAsync(long user)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<IdentityResult> UpdateUserAndPassword(User user, string newPassword)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<IQueryable<string>> UsersAreRegistered(IEnumerable<string> cleanEmailsList)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

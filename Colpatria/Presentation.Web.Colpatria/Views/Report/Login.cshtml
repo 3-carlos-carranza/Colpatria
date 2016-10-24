@@ -1,5 +1,4 @@
-﻿
-@model Presentation.Web.Colpatria.Controllers.LoginReportModel
+﻿@model Presentation.Web.Colpatria.Controllers.LoginReportModel
 
 @{
     ViewBag.Title = "Login - Reportes";
@@ -8,10 +7,9 @@
 <div class="step-content">
     <div class="with50">
         <form data-x="x-validate" action="@Url.Action("Login", "Report")" method="POST" class="form-step">
-            <div class="fontM">
-                <center>
-                    <strong>Login</strong> 
-                </center> 
+            <div class="fontM text-center">
+
+                <strong>Login</strong>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
@@ -30,7 +28,6 @@
                         </label>
                     </span>
                 </div>
-
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-center margTop4">
@@ -39,10 +36,10 @@
                     </button>
                 </div>
             </div>
-            
+
             <div style="clear: both"></div>
         </form>
-        <br/>
+        <br />
         @Html.Partial("_ValidationSummary", ViewData.ModelState)
     </div>
 </div>

@@ -70,15 +70,7 @@ namespace Data.Common.Implementation
             return item;
         }
 
-        public bool All(Expression<Func<T, bool>> predicate)
-        {
-            if (predicate != null)
-            {
-                return GetSet().All(predicate);
-            }
-
-            return false;
-        }
+        public bool All(Expression<Func<T, bool>> predicate) => predicate != null && GetSet().All(predicate);
 
         public bool Any(Expression<Func<T, bool>> predicate)
         {
@@ -135,12 +127,10 @@ namespace Data.Common.Implementation
 
         public void Update(T entity)
         {
-            if (entity != null)
-            {
-                _unitOfWork.SetModified(entity);
+            if (entity == null) return;
+            _unitOfWork.SetModified(entity);
 
-                _unitOfWork.Commit();
-            }
+            _unitOfWork.Commit();
         }
 
         public IQueryable<T> GetQueryable()

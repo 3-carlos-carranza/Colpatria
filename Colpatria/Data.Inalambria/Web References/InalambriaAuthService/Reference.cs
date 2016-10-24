@@ -85,7 +85,7 @@ namespace Data.Inalambria.InalambriaAuthService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/ASGeneratePassword", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public ASResponse ASGeneratePassword(string m_sUser, string m_sFlag) {
-            object[] results = this.Invoke("ASGeneratePassword", new object[] {
+            var results = this.Invoke("ASGeneratePassword", new object[] {
                         m_sUser,
                         m_sFlag});
             return ((ASResponse)(results[0]));
@@ -108,7 +108,7 @@ namespace Data.Inalambria.InalambriaAuthService
         
         private void OnASGeneratePasswordOperationCompleted(object arg) {
             if ((this.ASGeneratePasswordCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ASGeneratePasswordCompleted(this, new ASGeneratePasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -116,7 +116,7 @@ namespace Data.Inalambria.InalambriaAuthService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/GetCrypto", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetCrypto(string Value, string Password) {
-            object[] results = this.Invoke("GetCrypto", new object[] {
+            var results = this.Invoke("GetCrypto", new object[] {
                         Value,
                         Password});
             return ((string)(results[0]));
@@ -139,7 +139,7 @@ namespace Data.Inalambria.InalambriaAuthService
         
         private void OnGetCryptoOperationCompleted(object arg) {
             if ((this.GetCryptoCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCryptoCompleted(this, new GetCryptoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -147,7 +147,7 @@ namespace Data.Inalambria.InalambriaAuthService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/SetCrypto", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string SetCrypto(string Value, string Password) {
-            object[] results = this.Invoke("SetCrypto", new object[] {
+            var results = this.Invoke("SetCrypto", new object[] {
                         Value,
                         Password});
             return ((string)(results[0]));
@@ -170,7 +170,7 @@ namespace Data.Inalambria.InalambriaAuthService
         
         private void OnSetCryptoOperationCompleted(object arg) {
             if ((this.SetCryptoCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SetCryptoCompleted(this, new SetCryptoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -178,7 +178,7 @@ namespace Data.Inalambria.InalambriaAuthService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/ASGenerateTicket", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ASGenerateTicket(string TicketTGS) {
-            object[] results = this.Invoke("ASGenerateTicket", new object[] {
+            var results = this.Invoke("ASGenerateTicket", new object[] {
                         TicketTGS});
             return ((string)(results[0]));
         }
@@ -199,7 +199,7 @@ namespace Data.Inalambria.InalambriaAuthService
         
         private void OnASGenerateTicketOperationCompleted(object arg) {
             if ((this.ASGenerateTicketCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ASGenerateTicketCompleted(this, new ASGenerateTicketCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -214,7 +214,7 @@ namespace Data.Inalambria.InalambriaAuthService
                         || (url == string.Empty))) {
                 return false;
             }
-            System.Uri wsUri = new System.Uri(url);
+            var wsUri = new System.Uri(url);
             if (((wsUri.Port >= 1024) 
                         && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
                 return true;

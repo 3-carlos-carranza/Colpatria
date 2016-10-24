@@ -5,14 +5,13 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Core.Entities.WsMotor;
+using Crosscutting.Common.Extensions;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.Entities.Enumerations;
-using Crosscutting.Common.Extensions;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -31,7 +30,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor)).ConfigureAwait(false);
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
                 ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
             TraceFlow(argument);

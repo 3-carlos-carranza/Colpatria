@@ -95,7 +95,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/Send", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction Send(string TicketTGS, string DeviceNumber, string Message, string DateMessage, string Provider) {
-            object[] results = this.Invoke("Send", new object[] {
+            var results = this.Invoke("Send", new object[] {
                         TicketTGS,
                         DeviceNumber,
                         Message,
@@ -124,7 +124,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnSendOperationCompleted(object arg) {
             if ((this.SendCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SendCompleted(this, new SendCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -132,7 +132,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/SendWithHash", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction SendWithHash(string Hash, string User, string DeviceNumber, string Message, string DateMessage, string Provider) {
-            object[] results = this.Invoke("SendWithHash", new object[] {
+            var results = this.Invoke("SendWithHash", new object[] {
                         Hash,
                         User,
                         DeviceNumber,
@@ -163,7 +163,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnSendWithHashOperationCompleted(object arg) {
             if ((this.SendWithHashCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SendWithHashCompleted(this, new SendWithHashCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -171,7 +171,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/SendWithUser", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction SendWithUser(string User, string Password, string DeviceNumber, string Message, string DateMessage, string Provider) {
-            object[] results = this.Invoke("SendWithUser", new object[] {
+            var results = this.Invoke("SendWithUser", new object[] {
                         User,
                         Password,
                         DeviceNumber,
@@ -202,7 +202,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnSendWithUserOperationCompleted(object arg) {
             if ((this.SendWithUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SendWithUserCompleted(this, new SendWithUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -210,7 +210,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/CancelTicket", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction CancelTicket(string TicketTGS, string TicketSMS) {
-            object[] results = this.Invoke("CancelTicket", new object[] {
+            var results = this.Invoke("CancelTicket", new object[] {
                         TicketTGS,
                         TicketSMS});
             return ((Transaction)(results[0]));
@@ -233,7 +233,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnCancelTicketOperationCompleted(object arg) {
             if ((this.CancelTicketCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CancelTicketCompleted(this, new CancelTicketCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -241,7 +241,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/CancelTicketWithHash", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction CancelTicketWithHash(string Hash, string User, string TicketSMS) {
-            object[] results = this.Invoke("CancelTicketWithHash", new object[] {
+            var results = this.Invoke("CancelTicketWithHash", new object[] {
                         Hash,
                         User,
                         TicketSMS});
@@ -266,7 +266,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnCancelTicketWithHashOperationCompleted(object arg) {
             if ((this.CancelTicketWithHashCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CancelTicketWithHashCompleted(this, new CancelTicketWithHashCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -274,7 +274,7 @@ namespace Data.Inalambria.InalambriaService
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("soa.inalambria.com/CancelTicketWithUser", RequestNamespace="soa.inalambria.com", ResponseNamespace="soa.inalambria.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Transaction CancelTicketWithUser(string User, string Password, string TicketSMS) {
-            object[] results = this.Invoke("CancelTicketWithUser", new object[] {
+            var results = this.Invoke("CancelTicketWithUser", new object[] {
                         User,
                         Password,
                         TicketSMS});
@@ -299,7 +299,7 @@ namespace Data.Inalambria.InalambriaService
         
         private void OnCancelTicketWithUserOperationCompleted(object arg) {
             if ((this.CancelTicketWithUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CancelTicketWithUserCompleted(this, new CancelTicketWithUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -314,7 +314,7 @@ namespace Data.Inalambria.InalambriaService
                         || (url == string.Empty))) {
                 return false;
             }
-            System.Uri wsUri = new System.Uri(url);
+            var wsUri = new System.Uri(url);
             if (((wsUri.Port >= 1024) 
                         && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
                 return true;

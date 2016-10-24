@@ -1,19 +1,20 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowAdditionalInformationStep : BaseStep
     {
         private readonly IUserAppService _userAppService;
+
         public ShowAdditionalInformationStep(IProcessFlowStore store, IUserAppService userAppService) : base(store)
         {
             _userAppService = userAppService;
@@ -39,7 +40,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                     {
                         Status = ReponseStatus.Success
                     }
-
                 };
             }
             Console.WriteLine("Submitting form...Guardando campos");
@@ -49,7 +49,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

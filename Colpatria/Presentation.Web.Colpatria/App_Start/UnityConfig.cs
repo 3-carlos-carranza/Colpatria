@@ -1,6 +1,6 @@
-using System;
 using Crosscutting.DependencyInjectionFactory;
 using Microsoft.Practices.Unity;
+using System;
 
 namespace Presentation.Web.Colpatria
 {
@@ -11,7 +11,7 @@ namespace Presentation.Web.Colpatria
     {
         #region Unity Container
 
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        private static readonly Lazy<IUnityContainer> Container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -23,7 +23,7 @@ namespace Presentation.Web.Colpatria
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return container.Value;
+            return Container.Value;
         }
 
         #endregion Unity Container

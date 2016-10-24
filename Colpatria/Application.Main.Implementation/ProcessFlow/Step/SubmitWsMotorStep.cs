@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Arguments;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
@@ -9,6 +6,11 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.Entities.WsMotor;
 using Crosscutting.Common.Tools.DataType;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+// ReSharper disable NotAccessedField.Local
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -17,9 +19,8 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly WsMotorRequestSettingsBuilder _wsMotorRequestSettingsBuilder;
         private readonly ISaveFieldsAppService _saveFieldsAppService;
         private readonly IWsMotorAppService _wsMotorAppService;
+        private readonly WsMotorRequestSettingsBuilder _petitionSettingsBuilder;
         private readonly IUserAppService _userAppService;
-
-        
 
         public SubmitWsMotorStep(IProcessFlowStore store,
             IWsMotorAppService wsMotorAppService,
@@ -28,6 +29,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             : base(store)
         {
             _wsMotorAppService = wsMotorAppService;
+            _petitionSettingsBuilder = petitionSettingsBuilder;
             _saveFieldsAppService = saveFieldsAppService;
             _userAppService = userAppService;
             _wsMotorRequestSettingsBuilder = new WsMotorRequestSettingsBuilder();

@@ -39,7 +39,7 @@ namespace Presentation.Web.Colpatria.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Presentation.Web.Colpatria.Properties.Resources", typeof(Resources).Assembly);
+                    var temp = new global::System.Resources.ResourceManager("Presentation.Web.Colpatria.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,15 @@ namespace Presentation.Web.Colpatria.Properties {
         internal static string _1 {
             get {
                 return ResourceManager.GetString("-1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encontramos inconvenientes con tu identificación. Por favor contactate con un asesor de la entidad..
+        /// </summary>
+        internal static string _100 {
+            get {
+                return ResourceManager.GetString("100", resourceCulture);
             }
         }
         

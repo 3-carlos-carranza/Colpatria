@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using NPOI.HPSF;
+﻿using NPOI.HPSF;
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF.Util;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace Crosscutting.Common.Tools.ExcelGenerator
 {
@@ -39,7 +39,6 @@ namespace Crosscutting.Common.Tools.ExcelGenerator
             _hssfworkbook.SummaryInformation = si;
         }
 
-
         public MemoryStream WriteExcelToStream()
         {
             // Write the stream data of workbook to the root directory
@@ -53,11 +52,9 @@ namespace Crosscutting.Common.Tools.ExcelGenerator
         {
             var reportdata = _data.ReportData.ToList().AsParallel();
 
-
             InitializeWorkbook();
             var sheet = _hssfworkbook.CreateSheet("request");
-            var hidden = _hssfworkbook.CreateSheet("hidden");
-
+            _hssfworkbook.CreateSheet("hidden");
 
             var style = _hssfworkbook.CreateCellStyle();
             style.FillForegroundColor = HSSFColor.DarkBlue.Index;
@@ -66,14 +63,12 @@ namespace Crosscutting.Common.Tools.ExcelGenerator
             font.Color = HSSFColor.White.Index;
             style.SetFont(font);
 
-
             var rows = reportdata.Count() + 1;
-            IRow firstrow = null;
+
             for (var j = 0; j < rows; j++)
             {
                 var row = sheet.CreateRow(j);
-                if (j == 0)
-                    firstrow = row;
+
                 for (var i = 0; i < _data.Columns.Count; i++)
                 {
                     var header = _data.Columns.ElementAt(i);
@@ -99,7 +94,6 @@ namespace Crosscutting.Common.Tools.ExcelGenerator
                 _data.Columns.Count);
             var validation = new HSSFDataValidation(addressList, constraint);
             _hssfworkbook.SetSheetHidden(1, true);
-            
         }
     }
 }

@@ -1,18 +1,16 @@
-﻿using System;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+using Presentation.Web.Colpatria.Properties;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
-using System.IO;
-using System.Web;
 using System.Web.Mvc;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
-using Presentation.Web.Colpatria.Properties;
 
 namespace Presentation.Web.Colpatria.Controllers
 {
-    
     public class ReportController : Controller
     {
         private readonly IReportAppService _reportAppService;
+
         public ReportController(IReportAppService reportAppService)
         {
             _reportAppService = reportAppService;
@@ -24,7 +22,6 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
-
 
         [HttpGet]
         [AllowAnonymous]
@@ -74,23 +71,19 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return RedirectToAction("Login");
             }
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            try
             {
-
-
-                try
-                {
-                    Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("content-disposition",$"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls" );
-                    Response.Clear();
-                    MemoryStream result = _reportAppService.GetReportTransactional(model.StartDate,model.EndDate);
-                    Response.BinaryWrite(result.GetBuffer());
-                    Response.End();
-                }
-                catch (Exception exception)
-                {
-                    ModelState.AddModelError("", exception.InnerException?.Message ?? exception.Message);
-                }
+                Response.ContentType = "application/vnd.ms-excel";
+                Response.AddHeader("content-disposition", $"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls");
+                Response.Clear();
+                var result = _reportAppService.GetReportTransactional(model.StartDate, model.EndDate);
+                Response.BinaryWrite(result.GetBuffer());
+                Response.End();
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError("", exception.InnerException?.Message ?? exception.Message);
             }
             return View(model);
         }
@@ -100,15 +93,17 @@ namespace Presentation.Web.Colpatria.Controllers
     {
         [Required]
         public string UserName { get; set; }
+
         [Required]
         public string Password { get; set; }
     }
+
     public class DownloadReportModel
     {
         [Required]
         public DateTime StartDate { get; set; }
+
         [Required]
         public DateTime EndDate { get; set; }
-        
     }
 }

@@ -1,18 +1,18 @@
-﻿using Core.Entities.Evidente;
+﻿using Core.DataTransferObject.WebServiceConsultation;
+using Core.Entities.Evidente;
+using Core.Entities.Process;
 using Core.GlobalRepository.Evidente;
+using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Extensions;
 using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.EvidenteService;
+using Microsoft.ApplicationInsights;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Text;
-using Core.DataTransferObject.WebServiceConsultation;
-using Core.Entities.Process;
-using Core.GlobalRepository.SQL.Process;
-using Microsoft.ApplicationInsights;
-using Newtonsoft.Json;
 
 namespace Data.DataCredito
 {
@@ -106,7 +106,6 @@ namespace Data.DataCredito
                     AddWebServiceConsultation(consultationException);
                     return new QuestionsResponse { Result = "00" };
                 }
-                
             }
             return QuestionsResponseMock();
         }
@@ -170,6 +169,7 @@ namespace Data.DataCredito
                 ProcessResult = true,
             };
         }
+
         private static QuestionsResponse QuestionsResponseMock()
         {
             return new QuestionsResponse
@@ -304,7 +304,7 @@ namespace Data.DataCredito
         {
             var actualUri = uri ?? new Uri(Url);
             var request = (HttpWebRequest)base.GetWebRequest(actualUri);
-            return (PreAuthenticate) ? request.GetRequestWithBasicAuthorization(actualUri) : request;
+            return PreAuthenticate ? request.GetRequestWithBasicAuthorization(actualUri) : request;
         }
 
         public void AddWebServiceConsultation(WebServiceConsultationSettings settings)

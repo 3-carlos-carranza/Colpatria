@@ -56,8 +56,8 @@
       <HintPath>..\..\packages\Banlinea.Framework.Logging.Insights.Mvc.1.0.1\lib\net462\Banlinea.Framework.Logging.Insights.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Banlinea.Framework.Logging.Insights.Soap, Version=1.0.0.0, Culture=neutral, PublicKeyToken=77b424d688ee8501, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Banlinea.Framework.Logging.Insights.Soap.1.0.2\lib\net462\Banlinea.Framework.Logging.Insights.Soap.dll</HintPath>
+    <Reference Include="Banlinea.Framework.Logging.Insights.Soap, Version=1.0.3.0, Culture=neutral, PublicKeyToken=77b424d688ee8501, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Banlinea.Framework.Logging.Insights.Soap.1.0.3\lib\net462\Banlinea.Framework.Logging.Insights.Soap.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Banlinea.ProcessFlow.Engine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=67a22b587b1847ba, processorArchitecture=MSIL">

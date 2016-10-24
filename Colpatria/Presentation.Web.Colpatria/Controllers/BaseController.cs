@@ -101,19 +101,17 @@ namespace Presentation.Web.Colpatria.Controllers
             }
         }
 
-        public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
+        public async Task<IProcessFlowResponse> ExecuteFlowAsync(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
             var result = await _processFlowManager.StartFlow(ProcessFlowArgument);
-            if (identity != null)
+            if (identity == null) return result;
+            identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
+            identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
+            identity.AddClaim(new Claim("FullName", identity.Label));
+            if (pages != null)
             {
-                identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
-                identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
-                identity.AddClaim(new Claim("FullName", identity.Label));
-                if (pages != null)
-                {
-                    identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
-                }
+                identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
             }
             return result;
         }

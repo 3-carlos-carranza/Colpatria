@@ -40,7 +40,7 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 var user =
                     await
-                        _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"] );
+                        _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
                 if (user != null)
                 {
                     //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
@@ -69,7 +69,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     ViewBag.Pages = pages;
                     ViewBag.FullName = identity.Label;
 
-                    var stepresult = await ExecuteFlow(identity, pages);
+                    var stepresult = await ExecuteFlowAsync(identity, pages);
 
                     return ValidateStepResult(stepresult);
                 }
@@ -90,7 +90,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public async Task<ActionResult> FinalSummary()
         {
-            dynamic stepresult = await ExecuteFlow();
+            dynamic stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }
 
@@ -133,7 +133,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 return RedirectToAction("ShowInformation", "Messages", new { code = "100" }); //invalid Document type
             }
 
-            var user = await _userAppService.FindAsync(nuser.Identification, nuser.IdentificationType.Value,nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
+            var user = await _userAppService.FindAsync(nuser.Identification, nuser.IdentificationType.Value, nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
 
             //re-take Request
             if (user != null)
@@ -191,14 +191,14 @@ namespace Presentation.Web.Colpatria.Controllers
             ViewBag.Pages = pages;
             ViewBag.FullName = identity.Label;
 
-            var stepresult = await ExecuteFlow(identity, pages);
+            var stepresult = await ExecuteFlowAsync(identity, pages);
 
             return ValidateStepResult(stepresult);
         }
 
         public async Task<ActionResult> RequestAproved()
         {
-            dynamic stepresult = await ExecuteFlow();
+            dynamic stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }
 
@@ -208,7 +208,7 @@ namespace Presentation.Web.Colpatria.Controllers
             var fields = collection.ToFieldValueOrder();
             InitSetFormArguments(fields);
 
-            var stepresult = await ExecuteFlow();
+            var stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }
 
@@ -221,7 +221,7 @@ namespace Presentation.Web.Colpatria.Controllers
         public async Task<ActionResult> ValidateAnswer(AnswerRequest answer)
         {
             InitSetAnswersArguments(answer);
-            var stepresult = await ExecuteFlow();
+            var stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }
 

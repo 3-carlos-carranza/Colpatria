@@ -93,8 +93,9 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var path = Uri.UnescapeDataString(new UriBuilder(new Uri(Assembly.GetExecutingAssembly().CodeBase)).Path);
             var dir = Path.GetDirectoryName(path)?.Replace("bin", string.Empty);
 
-            _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
-                : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
+            if (dir != null)
+                _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
+                    : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
 
             var template = File.ReadAllText(_razorTemplate);
             return new RazorMachine().ExecuteContent(template, userInfoDto, skipLayout: true).Result;

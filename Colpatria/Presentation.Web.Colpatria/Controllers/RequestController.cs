@@ -55,6 +55,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
                 var response = _userAppService.GetRequestBySimpleId(modelLogin.SimpleId);
                 Session["Product"] = (ProductType)response.ProductId;
+                BaseProductType = (int) Session["Product"];
 
                 ProcessFlowArgument.Execution = new Execution
                 {
@@ -86,6 +87,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public async Task<ActionResult> FinalSummary()
         {
+            InitSetArguments();
             dynamic stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }
@@ -194,6 +196,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
         public async Task<ActionResult> RequestAproved()
         {
+            InitSetArguments();
             dynamic stepresult = await ExecuteFlowAsync();
             return ValidateStepResult(stepresult);
         }

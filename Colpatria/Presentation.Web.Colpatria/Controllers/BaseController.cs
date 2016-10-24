@@ -131,6 +131,21 @@ namespace Presentation.Web.Colpatria.Controllers
             ProcessFlowArgument = arg;
         }
 
+        public void InitSetArguments()
+        {
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = (long) Session["Product"],
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
+        }
+
         public void InitSetFormArguments(IList<FieldValueOrder> form)
         {
             if (BaseProductType == 0)

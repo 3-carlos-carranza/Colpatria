@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+// ReSharper disable NotAccessedField.Local
+
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class SubmitWsMotorStep : BaseStep, ISubmitWsMotorStep
@@ -17,6 +19,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly WsMotorRequestSettingsBuilder _wsMotorRequestSettingsBuilder;
         private readonly ISaveFieldsAppService _saveFieldsAppService;
         private readonly IWsMotorAppService _wsMotorAppService;
+        private readonly WsMotorRequestSettingsBuilder _petitionSettingsBuilder;
         private readonly IUserAppService _userAppService;
 
         public SubmitWsMotorStep(IProcessFlowStore store,
@@ -26,6 +29,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             : base(store)
         {
             _wsMotorAppService = wsMotorAppService;
+            _petitionSettingsBuilder = petitionSettingsBuilder;
             _saveFieldsAppService = saveFieldsAppService;
             _userAppService = userAppService;
             _wsMotorRequestSettingsBuilder = new WsMotorRequestSettingsBuilder();

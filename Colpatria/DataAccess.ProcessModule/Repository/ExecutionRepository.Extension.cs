@@ -110,7 +110,7 @@ namespace DataAccess.ProcessModule.Repository
                             new SqlParameter { ParameterName = "ProductId", Value = productId }).First();
                 return response;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return response;
             }

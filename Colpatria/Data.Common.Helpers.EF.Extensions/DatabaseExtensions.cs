@@ -63,7 +63,7 @@ namespace Data.Common.Helpers.EF.Extensions
                 if (propertyInfo != null)
                 {
                     propertyInfo.SetValue(storedProcedure,
-                        (sqlParameter.Value == DBNull.Value) ?
+                        sqlParameter.Value == DBNull.Value ?
                         GetDefault(propertyInfo.PropertyType) :
                         sqlParameter.Value, null);
                 }
@@ -85,13 +85,6 @@ namespace Data.Common.Helpers.EF.Extensions
             return null;
         }
 
-        private static object GetDefault(Type type)
-        {
-            if (type.IsValueType)
-            {
-                return Activator.CreateInstance(type);
-            }
-            return null;
-        }
+        private static object GetDefault(Type type) => type.IsValueType ? Activator.CreateInstance(type) : null;
     }
 }

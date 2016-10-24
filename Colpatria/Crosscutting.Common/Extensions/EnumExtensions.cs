@@ -1,6 +1,5 @@
-﻿using System;
-using System.Reflection;
-using Crosscutting.Common.Tools.DataType;
+﻿using Crosscutting.Common.Tools.DataType;
+using System;
 
 namespace Crosscutting.Common.Extensions
 {
@@ -29,12 +28,12 @@ namespace Crosscutting.Common.Extensions
 
             // Check first in our cached results...
 
-            // Look for our 'StringValueAttribute' 
+            // Look for our 'StringValueAttribute'
 
             // in the field's custom attributes
-            FieldInfo fi = type.GetField(value.ToString());
+            var fi = type.GetField(value.ToString());
             var attrs = fi.GetCustomAttributes(typeof(MappingToItemListValue), false) as MappingToItemListValue[];
-            if (attrs.Length > 0)
+            if (attrs != null && attrs.Length > 0)
             {
                 output = attrs[0].Value;
             }

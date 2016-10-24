@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Crosscutting.Common.Tools.DataType;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Crosscutting.Common.Tools.DataType;
 
 namespace Crosscutting.Common.Tools.Web
 {
@@ -35,7 +35,7 @@ namespace Crosscutting.Common.Tools.Web
             var counter = 0;
             foreach (var key in collection.AllKeys.Distinct())
             {
-                var keyint = 0;
+                int keyint;
                 var lastkey = "";
                 var field = new FieldValueOrder();
                 var order = 1;
@@ -44,13 +44,13 @@ namespace Crosscutting.Common.Tools.Web
                 {
                     var splitvalues = key.Split('_');
                     //only applicant
-                    if (splitvalues.Count() - 1 == 1)
+                    if (splitvalues.Length - 1 == 1)
                     {
                         lastkey = splitvalues.First();
                         int.TryParse(splitvalues.Last(), out applicant);
                     }
                     // applicant & order
-                    if (splitvalues.Count() - 1 == 2)
+                    if (splitvalues.Length - 1 == 2)
                     {
                         lastkey = splitvalues.First();
                         int.TryParse(splitvalues[1], out applicant);
@@ -99,7 +99,7 @@ namespace Crosscutting.Common.Tools.Web
             foreach (var key in files.AllKeys.Distinct())
             {
                 var fieldfile = files[key];
-                var keyint = 0;
+                int keyint;
                 var lastkey = "";
                 var field = new FieldValueOrder();
                 var order = 1;
@@ -108,13 +108,13 @@ namespace Crosscutting.Common.Tools.Web
                 {
                     var splitvalues = key.Split('_');
                     //only applicant
-                    if (splitvalues.Count() - 1 == 1)
+                    if (splitvalues.Length - 1 == 1)
                     {
                         lastkey = splitvalues.First();
                         int.TryParse(splitvalues.Last(), out applicant);
                     }
                     // applicant & order
-                    if (splitvalues.Count() - 1 == 2)
+                    if (splitvalues.Length - 1 == 2)
                     {
                         lastkey = splitvalues.First();
                         int.TryParse(splitvalues[1], out applicant);

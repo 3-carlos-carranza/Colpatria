@@ -76,7 +76,7 @@ namespace Application.Main.Implementation.ProcessFlow
                 });
                 return firstOrDefault != null
                     ? firstOrDefault.Row
-                    : Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.Order == (currentstep.Order + 1));
+                    : Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.Order == currentstep.Order + 1);
             }
             //first Step
             return Steps.OrderBy(s => s.Order).FirstOrDefault(s => s.StepType == stepType);
@@ -86,7 +86,7 @@ namespace Application.Main.Implementation.ProcessFlow
         {
             if (argument == null) throw new ArgumentNullException(nameof(argument));
             if (!Enum.IsDefined(typeof(StepType), stepType))
-                throw new InvalidEnumArgumentException(nameof(stepType), (int) stepType, typeof(StepType));
+                throw new InvalidEnumArgumentException(nameof(stepType), (int)stepType, typeof(StepType));
             var nextStepWithType = _processAppService.GetNextStepWithType(argument.Execution.CurrentStepId,
                 argument.Execution.CurrentSectionId,
                 argument.Execution.ProcessId, (int)stepType);
@@ -104,11 +104,11 @@ namespace Application.Main.Implementation.ProcessFlow
             return Steps.FirstOrDefault(s => s.Id == argument.Execution.CurrentStepId);
         }
 
-        public async Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument,StepType stepType,CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<StepFlow> GetNextStepAsync(IProcessFlowArgument argument, StepType stepType, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (argument == null) throw new ArgumentNullException(nameof(argument));
-            if (!Enum.IsDefined(typeof(StepType), stepType)) throw new InvalidEnumArgumentException(nameof(stepType), (int) stepType, typeof(StepType));
-            return await  Task.FromResult(Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType == stepType)).ConfigureAwait(false);
+            if (!Enum.IsDefined(typeof(StepType), stepType)) throw new InvalidEnumArgumentException(nameof(stepType), (int)stepType, typeof(StepType));
+            return await Task.FromResult(Steps.First(s => s.Id == argument.Execution.CurrentStepId && s.StepType == stepType)).ConfigureAwait(false);
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.ProcessFlow.Engine.Api;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
-
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -28,15 +27,15 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var user = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
-            var responseDetailFlow = _notificationSmsAppService.SendSms(user.Cellphone,
+            _notificationSmsAppService.SendSms(user.Cellphone,
                 $"Colpatria informa que usted realizo la solicitud #{user.SimpleId} a traves de oficina virtual",
                 argument.Execution.Id);
 
-            /*_inalambriaAppService.SendSms(user.Cellphone,                                                                        
+            /*_inalambriaAppService.SendSms(user.Cellphone,
                     "Colpatria informa que usted realizo la solicitud #" + user.SimpleId +
                     " a traves de oficina virtual", "1", argument.Execution.Id);
                     */
-            return await OnSuccess(argument).Result.Advance(argument);
+            return await OnSuccess(argument).Result.Advance(argument).ConfigureAwait(false);
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,

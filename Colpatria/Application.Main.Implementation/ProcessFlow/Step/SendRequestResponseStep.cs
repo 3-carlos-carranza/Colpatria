@@ -5,7 +5,9 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.DataTransferObject.Vib;
+using Core.Entities.Enumerations;
 using Core.Entities.WsMotor;
+using Crosscutting.Common.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.Entities.Enumerations;
-using Crosscutting.Common.Extensions;
 using Xipton.Razor;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
@@ -32,11 +32,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             _userAppService = userAppService;
         }
 
-        public async override Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
+        public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
                 ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
             TraceFlow(argument);
@@ -91,10 +91,11 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             if (userInfoDto == null) throw new ArgumentNullException(nameof(userInfoDto));
             var path = Uri.UnescapeDataString(new UriBuilder(new Uri(Assembly.GetExecutingAssembly().CodeBase)).Path);
-            var dir = (Path.GetDirectoryName(path))?.Replace("bin", string.Empty);
+            var dir = Path.GetDirectoryName(path)?.Replace("bin", string.Empty);
 
-            _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
-                : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
+            if (dir != null)
+                _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
+                    : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");
 
             var template = File.ReadAllText(_razorTemplate);
             return new RazorMachine().ExecuteContent(template, userInfoDto, skipLayout: true).Result;

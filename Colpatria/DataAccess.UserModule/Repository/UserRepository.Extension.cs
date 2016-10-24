@@ -1,5 +1,6 @@
 ﻿using Core.DataTransferObject.Vib;
 using Core.Entities.User;
+using Microsoft.ApplicationInsights;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
 
 namespace DataAccess.UserModule.Repository
 {
@@ -126,18 +126,10 @@ namespace DataAccess.UserModule.Repository
         public UserInfoDto GetUserInfoByExecutionId(long executionId)
         {
             var context = UnitOfWork as DbContext;
-            try
-            {
-                var result = context?.Database.SqlQuery<UserInfoDto>
-                    ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter
-                    { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
-                return result;
-            }
-            catch (Exception exception)
-            {
-                var e = exception;
-                throw;
-            }
+            var result = context?.Database.SqlQuery<UserInfoDto>
+            ("GetUserInfoByExecutionId @ExecutionId", new SqlParameter
+            { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
+            return result;
         }
 
         public UserInfoDto GetUserInfoByUserId(long userId)

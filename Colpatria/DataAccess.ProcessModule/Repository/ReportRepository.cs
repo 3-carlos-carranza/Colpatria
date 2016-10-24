@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Core.GlobalRepository.SQL.Process;
+using Crosscutting.Common.Tools.ExcelGenerator;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using Core.GlobalRepository.SQL.Process;
-using Crosscutting.Common.Tools.ExcelGenerator;
 
 namespace DataAccess.ProcessModule.Repository
 {
@@ -16,11 +16,12 @@ namespace DataAccess.ProcessModule.Repository
 
             var cnx =
                 new SqlConnection(ConfigurationManager.ConnectionStrings["ProcessModelEntities"].ConnectionString);
-            var cmd = new SqlCommand();
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetBill";
-            cmd.Connection = cnx;
+            var cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "GetBill",
+                Connection = cnx
+            };
 
             var p1 = new SqlParameter
             {
@@ -28,7 +29,6 @@ namespace DataAccess.ProcessModule.Repository
                 Value = startdate,
                 DbType = DbType.DateTime
             };
-
 
             var p2 = new SqlParameter
             {
@@ -40,9 +40,7 @@ namespace DataAccess.ProcessModule.Repository
             cmd.Parameters.Add(p1);
             cmd.Parameters.Add(p2);
 
-
             var dt = new SqlDataAdapter(cmd);
-
 
             var dataSet = new DataSet();
             cnx.Open();

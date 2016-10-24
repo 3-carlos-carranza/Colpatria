@@ -1,9 +1,6 @@
-﻿//   -----------------------------------------------------------------------
-//   <copyright file=InalambriaAppService.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------- <copyright
+// file=InalambriaAppService.cs company="Banlinea S.A.S"> Copyright (c) Banlinea Todos los derechos
+// reservados. </copyright> <author>Jeysson Stevens Ramirez </author> -----------------------------------------------------------------------
 
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.WebServiceConsultation;
@@ -41,14 +38,14 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
         public string SendSms(string devicenumber, string message, string provider, long executionId)
         {
-            var response = (_inalambriaRepository.SendSms(GetTicketKdc(), devicenumber, message, provider));
+            var response = _inalambriaRepository.SendSms(GetTicketKdc(), devicenumber, message, provider);
             try
             {
                 //Log Service
                 var consultation =
                     _webSettingsConsultationSettingsBuilder.WithPayload(JsonConvert.SerializeObject(response))
                         .WithExecutionId(executionId)
-                        .WithTypeOfConsultation((int) TypeOfConsultation.Request)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.Request)
                         .WithWebServiceName(ServiceNameType.SendSms.GetStringValue())
                         .Build();
 
@@ -66,7 +63,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
                                 response
                             }))
                         .WithExecutionId(executionId)
-                        .WithTypeOfConsultation((int) TypeOfConsultation.CommunicationError)
+                        .WithTypeOfConsultation((int)TypeOfConsultation.CommunicationError)
                         .WithWebServiceName(ServiceNameType.SendSms.GetStringValue())
                         .Build();
 

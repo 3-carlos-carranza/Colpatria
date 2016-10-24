@@ -1,21 +1,17 @@
 ﻿#region Signature
 
-//   -----------------------------------------------------------------------
-//   <copyright file=DataController.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   <Date>  2016 -09-05  - 11:34 a. m.</Date>
-//   <Update> 2016-09-12 - 5:37 p. m.</Update>
-//   -----------------------------------------------------------------------
+// ----------------------------------------------------------------------- <copyright
+// file=DataController.cs company="Banlinea S.A.S"> Copyright (c) Banlinea Todos los derechos
+// reservados. </copyright> <author>Jeysson Stevens Ramirez </author> <Date> 2016 -09-05 - 11:34 a.
+// m.</Date> <Update> 2016-09-12 - 5:37 p. m.</Update> -----------------------------------------------------------------------
 
-#endregion
+#endregion Signature
 
 #region
 
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using System.Linq;
 using System.Web.Mvc;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 
 #endregion
 
@@ -35,58 +31,48 @@ namespace Presentation.Web.Colpatria.Controllers
         public ActionResult GetDataListValues(int self, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
-            if (reqfield?.ListId != null)
-            {
-                var results =
-                    _dynamicFormAppService.GetDataListValues(reqfield.ListId.Value)
-                        .OrderBy(dlv => dlv.Order)
-                        .Select(v => new
-                        {
-                            value = v.OriginalValue.ToString(),
-                            text = v.Value
-                        }).ToList();
-                if (isLabel)
-                {
-                    results.Insert(0, new
+            if (reqfield?.ListId == null) return Json(new { });
+            var results =
+                _dynamicFormAppService.GetDataListValues(reqfield.ListId.Value)
+                    .OrderBy(dlv => dlv.Order)
+                    .Select(v => new
                     {
-                        value = "0",
-                        text = "Seleccione..."
-                    });
-                }
-                return Json(results, JsonRequestBehavior.AllowGet);
+                        value = v.OriginalValue.ToString(),
+                        text = v.Value
+                    }).ToList();
+            if (isLabel)
+            {
+                results.Insert(0, new
+                {
+                    value = "0",
+                    text = "Seleccione..."
+                });
             }
-
-            return Json(new {});
+            return Json(results, JsonRequestBehavior.AllowGet);
         }
-
-
 
         [AllowAnonymous]
         public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
-            if (reqfield?.ListId != null)
-            {
-                var results =
-                    _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
-                        .OrderBy(dlv => dlv.Order)
-                        .Select(v => new
-                        {
-                            value = v.OriginalValue.ToString(),
-                            text = v.Value
-                        }).ToList();
-                if (isLabel)
-                {
-                    results.Insert(0, new
+            if (reqfield?.ListId == null) return Json(new { });
+            var results =
+                _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
+                    .OrderBy(dlv => dlv.Order)
+                    .Select(v => new
                     {
-                        value = "0",
-                        text = "Seleccione..."
-                    });
-                }
-                return Json(results, JsonRequestBehavior.AllowGet);
+                        value = v.OriginalValue.ToString(),
+                        text = v.Value
+                    }).ToList();
+            if (isLabel)
+            {
+                results.Insert(0, new
+                {
+                    value = "0",
+                    text = "Seleccione..."
+                });
             }
-
-            return Json(new { });
+            return Json(results, JsonRequestBehavior.AllowGet);
         }
     }
 }

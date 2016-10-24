@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Application.Main.Definition.MyCustomProcessFlow.Steps;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -14,24 +9,23 @@ using Core.Entities.Enumerations;
 using Core.Entities.WsMotor;
 using Core.GlobalRepository.SQL.User;
 using Crosscutting.Common.Extensions;
-using Crosscutting.Common.Tools.DataType;
 using Newtonsoft.Json;
-
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
     public class ShowFinishRequestStep : BaseStep, IShowFinishRequestStep
     {
-        
         private readonly IUserRepository _userRepository;
 
-        public ShowFinishRequestStep(IProcessFlowStore store, 
+        public ShowFinishRequestStep(IProcessFlowStore store,
             IUserRepository userRepository)
             : base(store)
         {
             _userRepository = userRepository;
         }
-
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
@@ -39,12 +33,12 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
 
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A" 
-                ? Classification.Approved.GetStringValue() 
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
+                ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
 
             TraceFlow(argument);
-            var step = (StepDetail) GetCurrentStep(argument);
+            var step = (StepDetail)GetCurrentStep(argument);
             if (!argument.IsSubmitting)
             {
                 return new RequestResponse
@@ -66,7 +60,6 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             Console.WriteLine("Submitting form...Guardando campos");
             argument.IsSubmitting = false;
             return await OnSuccess(argument).Result.Advance(argument);
-            
         }
 
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument,

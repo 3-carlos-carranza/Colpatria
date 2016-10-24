@@ -58,7 +58,7 @@ namespace Crosscutting.Common
 
             request.Method = Method.POST;
 
-            var r = client.Execute(request);
+            client.Execute(request);
 
             return true;
         }

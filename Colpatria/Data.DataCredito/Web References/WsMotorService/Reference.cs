@@ -76,7 +76,7 @@ namespace Data.DataCredito.WsMotorService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.decisor.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/MotorService")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarBureauReturn")]
         public string consultarBureau(string solicitudBureau, string @params) {
-            object[] results = this.Invoke("consultarBureau", new object[] {
+            var results = this.Invoke("consultarBureau", new object[] {
                         solicitudBureau,
                         @params});
             return ((string)(results[0]));
@@ -99,7 +99,7 @@ namespace Data.DataCredito.WsMotorService
         
         private void OnconsultarBureauOperationCompleted(object arg) {
             if ((this.consultarBureauCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarBureauCompleted(this, new consultarBureauCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -108,7 +108,7 @@ namespace Data.DataCredito.WsMotorService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.decisor.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/MotorService")]
         [return: System.Xml.Serialization.SoapElementAttribute("executeStrategyReturn")]
         public string executeStrategy(string solicitud) {
-            object[] results = this.Invoke("executeStrategy", new object[] {
+            var results = this.Invoke("executeStrategy", new object[] {
                         solicitud});
             return ((string)(results[0]));
         }
@@ -129,7 +129,7 @@ namespace Data.DataCredito.WsMotorService
         
         private void OnexecuteStrategyOperationCompleted(object arg) {
             if ((this.executeStrategyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.executeStrategyCompleted(this, new executeStrategyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -144,7 +144,7 @@ namespace Data.DataCredito.WsMotorService
                         || (url == string.Empty))) {
                 return false;
             }
-            System.Uri wsUri = new System.Uri(url);
+            var wsUri = new System.Uri(url);
             if (((wsUri.Port >= 1024) 
                         && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
                 return true;

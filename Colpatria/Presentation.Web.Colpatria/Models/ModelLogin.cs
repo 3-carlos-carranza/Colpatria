@@ -8,5 +8,8 @@ namespace Presentation.Web.Colpatria.Models
         public string Identification { get; set; }
         [Required]
         public string SimpleId { get; set; }
+
+        [Required]
+        public int DocumentType { get; set; }
     }
 }

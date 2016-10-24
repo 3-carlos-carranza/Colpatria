@@ -46,24 +46,22 @@ namespace Data.Common.Helpers.EF.Extensions
             {
                 var attribute = Attributes.GetAttribute<StoredProcedureParameterAttribute>(propertyInfo);
 
-                if (attribute != null)
+                if (attribute == null) continue;
+                var parameterName = Helper.GetParameterName(propertyInfo);
+
+                var isUserDefinedTableParameter = Helper.IsUserDefinedTableParameter(propertyInfo);
+                var isMandatory = Helper.ParameterIsMandatory(attribute.Options);
+
+                parameters.Add(new StoredProcedureParameterInfo
                 {
-                    var parameterName = Helper.GetParameterName(propertyInfo);
-
-                    var isUserDefinedTableParameter = Helper.IsUserDefinedTableParameter(propertyInfo);
-                    var isMandatory = Helper.ParameterIsMandatory(attribute.Options);
-
-                    parameters.Add(new StoredProcedureParameterInfo
-                    {
-                        Name = parameterName,
-                        IsUserDefinedTable = isUserDefinedTableParameter,
-                        IsMandatory = isMandatory,
-                        SqlDataType = attribute.DataType,
-                        PropertyInfo = propertyInfo,
-                        Direction = attribute.Direction,
-                        Size = attribute.Size
-                    });
-                }
+                    Name = parameterName,
+                    IsUserDefinedTable = isUserDefinedTableParameter,
+                    IsMandatory = isMandatory,
+                    SqlDataType = attribute.DataType,
+                    PropertyInfo = propertyInfo,
+                    Direction = attribute.Direction,
+                    Size = attribute.Size
+                });
             }
 
             return parameters;

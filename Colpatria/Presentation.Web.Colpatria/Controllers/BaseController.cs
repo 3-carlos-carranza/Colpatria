@@ -80,11 +80,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 //Get the current claims principal
                 var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 var data = identity.Claims.Where(c => c.Type == "Pages").Select(c => c.Value).FirstOrDefault();
-                if (!string.IsNullOrEmpty(data))
-                {
-                    return JsonConvert.DeserializeObject<List<Page>>(data);
-                }
-                return null;
+                return !string.IsNullOrEmpty(data) ? JsonConvert.DeserializeObject<List<Page>>(data) : null;
             }
         }
 
@@ -101,19 +97,17 @@ namespace Presentation.Web.Colpatria.Controllers
             }
         }
 
-        public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
+        public async Task<IProcessFlowResponse> ExecuteFlowAsync(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
-            IProcessFlowResponse result = await _processFlowManager.StartFlow(ProcessFlowArgument);
-            if (identity != null)
+            var result = await _processFlowManager.StartFlow(ProcessFlowArgument);
+            if (identity == null) return result;
+            identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
+            identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
+            identity.AddClaim(new Claim("FullName", identity.Label));
+            if (pages != null)
             {
-                identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));
-                identity.AddClaim(new Claim("ProductId", result.Execution.ProductId.ToString()));
-                identity.AddClaim(new Claim("FullName", identity.Label));
-                if (pages != null)
-                {
-                    identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
-                }
+                identity.AddClaim(new Claim("Pages", JsonConvert.SerializeObject(pages)));
             }
             return result;
         }
@@ -135,6 +129,21 @@ namespace Presentation.Web.Colpatria.Controllers
             var arg = ProcessFlowArgument as IAnswerQuestionArgument;
             arg.AnswerRequest = answer;
             ProcessFlowArgument = arg;
+        }
+
+        public void InitSetArguments()
+        {
+            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+            ProcessFlowArgument.User = new User
+            {
+                Id = userId
+            };
+            ProcessFlowArgument.Execution = new Execution
+            {
+                ProductId = (long) Session["Product"],
+                Id = ExecutionId
+            };
+            ProcessFlowArgument.IsSubmitting = true;
         }
 
         public void InitSetFormArguments(IList<FieldValueOrder> form)
@@ -160,21 +169,6 @@ namespace Presentation.Web.Colpatria.Controllers
             if (arg == null) return;
             ((List<FieldValueOrder>)arg.Form).AddRange(form);
             ProcessFlowArgument = arg;
-        }
-
-        public void MockSubmitInitSetFormArguments()
-        {
-            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
-            ProcessFlowArgument.User = new User
-            {
-                Id = userId
-            };
-            ProcessFlowArgument.Execution = new Execution
-            {
-                ProductId = 1,
-                Id = ExecutionId
-            };
-            ProcessFlowArgument.IsSubmitting = true;
         }
 
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)

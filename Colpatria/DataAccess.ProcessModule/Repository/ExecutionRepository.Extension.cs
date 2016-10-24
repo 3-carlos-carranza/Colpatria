@@ -15,7 +15,6 @@ using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-using Core.Entities.WsMotor;
 
 #endregion
 
@@ -111,11 +110,10 @@ namespace DataAccess.ProcessModule.Repository
                             new SqlParameter { ParameterName = "ProductId", Value = productId }).First();
                 return response;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return response;
             }
-            
         }
     }
 }

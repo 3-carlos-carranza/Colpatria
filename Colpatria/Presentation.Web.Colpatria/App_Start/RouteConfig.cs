@@ -24,7 +24,6 @@ namespace Presentation.Web.Colpatria
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Request", action = "Index", id = UrlParameter.Optional }
             );
-            
         }
     }
 }

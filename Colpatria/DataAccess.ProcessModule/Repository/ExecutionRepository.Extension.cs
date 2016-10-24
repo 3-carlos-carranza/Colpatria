@@ -15,7 +15,6 @@ using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-using Core.Entities.WsMotor;
 
 #endregion
 
@@ -115,7 +114,6 @@ namespace DataAccess.ProcessModule.Repository
             {
                 return response;
             }
-            
         }
     }
 }

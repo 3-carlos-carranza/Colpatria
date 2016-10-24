@@ -71,21 +71,19 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 return RedirectToAction("Login");
             }
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            try
             {
-                try
-                {
-                    Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("content-disposition", $"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls");
-                    Response.Clear();
-                    var result = _reportAppService.GetReportTransactional(model.StartDate, model.EndDate);
-                    Response.BinaryWrite(result.GetBuffer());
-                    Response.End();
-                }
-                catch (Exception exception)
-                {
-                    ModelState.AddModelError("", exception.InnerException?.Message ?? exception.Message);
-                }
+                Response.ContentType = "application/vnd.ms-excel";
+                Response.AddHeader("content-disposition", $"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls");
+                Response.Clear();
+                var result = _reportAppService.GetReportTransactional(model.StartDate, model.EndDate);
+                Response.BinaryWrite(result.GetBuffer());
+                Response.End();
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError("", exception.InnerException?.Message ?? exception.Message);
             }
             return View(model);
         }

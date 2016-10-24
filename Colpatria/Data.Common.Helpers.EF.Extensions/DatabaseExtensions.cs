@@ -85,13 +85,6 @@ namespace Data.Common.Helpers.EF.Extensions
             return null;
         }
 
-        private static object GetDefault(Type type)
-        {
-            if (type.IsValueType)
-            {
-                return Activator.CreateInstance(type);
-            }
-            return null;
-        }
+        private static object GetDefault(Type type) => type.IsValueType ? Activator.CreateInstance(type) : null;
     }
 }

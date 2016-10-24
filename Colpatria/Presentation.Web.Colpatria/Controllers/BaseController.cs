@@ -80,11 +80,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 //Get the current claims principal
                 var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 var data = identity.Claims.Where(c => c.Type == "Pages").Select(c => c.Value).FirstOrDefault();
-                if (!string.IsNullOrEmpty(data))
-                {
-                    return JsonConvert.DeserializeObject<List<Page>>(data);
-                }
-                return null;
+                return !string.IsNullOrEmpty(data) ? JsonConvert.DeserializeObject<List<Page>>(data) : null;
             }
         }
 

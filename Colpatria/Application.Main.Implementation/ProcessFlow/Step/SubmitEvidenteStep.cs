@@ -1,14 +1,7 @@
-//   -----------------------------------------------------------------------
-//   <copyright file=SubmitEvidenteStep.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
+// ----------------------------------------------------------------------- <copyright
+// file=SubmitEvidenteStep.cs company="Banlinea S.A.S"> Copyright (c) Banlinea Todos los derechos
+// reservados. </copyright> <author>Jeysson Stevens Ramirez </author> -----------------------------------------------------------------------
 
-using System;
-using System.Configuration;
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Main.Definition.MyCustomProcessFlow.Steps;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Responses;
@@ -16,6 +9,10 @@ using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
 using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Core.Entities.Evidente;
+using System;
+using System.Configuration;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -43,7 +40,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             if (!mock)
             {
                 var arg = argument as IAnswerQuestionArgument;
-                
+
                 var settings = _answerSettingsBuilder.WithIdentification(userInfo.Identification)
                         .WithAnswerRequest(arg.AnswerRequest)
                         .WithIdentificationType("1")

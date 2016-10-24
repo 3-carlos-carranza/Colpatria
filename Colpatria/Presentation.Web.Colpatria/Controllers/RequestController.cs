@@ -36,45 +36,41 @@ namespace Presentation.Web.Colpatria.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ContinueRequest(ModelLogin modelLogin)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(modelLogin);
+            var user = await _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
+            if (user != null)
             {
-                var user =
-                    await
-                        _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
-                if (user != null)
+                //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
+                var identity =
+                    await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                identity.Label = user.FullName;
+                GetAuthenticationManager().SignIn(identity);
+                var principal = new ClaimsPrincipal(identity);
+                Thread.CurrentPrincipal = principal;
+                HttpContext.User = principal;
+                //set arguments
+                long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+
+                ProcessFlowArgument.User = user;
+
+                var response = _userAppService.GetRequestBySimpleId(modelLogin.SimpleId);
+                Session["Product"] = (ProductType)response.ProductId;
+
+                ProcessFlowArgument.Execution = new Execution
                 {
-                    //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
-                    var identity =
-                        await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-                    identity.Label = user.FullName;
-                    GetAuthenticationManager().SignIn(identity);
-                    var principal = new ClaimsPrincipal(identity);
-                    Thread.CurrentPrincipal = principal;
-                    HttpContext.User = principal;
-                    //set arguments
-                    long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
+                    Id = response.Id,
+                    ProductId = response.ProductId
+                };
 
-                    ProcessFlowArgument.User = user;
+                var pages = _userAppService.GetAllPagesWithSections();
+                ViewBag.Pages = pages;
+                ViewBag.FullName = identity.Label;
 
-                    var response = _userAppService.GetRequestBySimpleId(modelLogin.SimpleId);
-                    Session["Product"] = (ProductType)response.ProductId;
+                var stepresult = await ExecuteFlowAsync(identity, pages);
 
-                    ProcessFlowArgument.Execution = new Execution
-                    {
-                        Id = response.Id,
-                        ProductId = response.ProductId
-                    };
-
-                    var pages = _userAppService.GetAllPagesWithSections();
-                    ViewBag.Pages = pages;
-                    ViewBag.FullName = identity.Label;
-
-                    var stepresult = await ExecuteFlowAsync(identity, pages);
-
-                    return ValidateStepResult(stepresult);
-                }
-                ModelState.AddModelError("", Resources.RequestController_ContinueRequest_No_Active_Request);
+                return ValidateStepResult(stepresult);
             }
+            ModelState.AddModelError("", Resources.RequestController_ContinueRequest_No_Active_Request);
             return View(modelLogin);
         }
 

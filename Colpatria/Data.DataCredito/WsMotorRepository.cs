@@ -2,9 +2,9 @@
 using Core.GlobalRepository.WsMotor;
 using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.WsMotorService;
+using Microsoft.ApplicationInsights;
 using System;
 using System.Configuration;
-using Microsoft.ApplicationInsights;
 
 namespace Data.DataCredito
 {
@@ -59,7 +59,6 @@ namespace Data.DataCredito
                         }
                     };
                 }
-                
             }
             return new WsMotorServiceResponse
             {

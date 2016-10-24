@@ -1,3 +1,4 @@
+using System;
 using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Process;
@@ -17,11 +18,10 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 {
     public class UserAppService : UserManager<User, long>, IUserAppService
     {
-        private readonly IExtendedFieldRepository _extendedFieldRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
         private readonly IExecutionRepository _executionRepository;
-
+        private readonly IExtendedFieldRepository _extendedFieldRepository;
+        private readonly IFieldToCreateUserRepository _fieldToCreateUserRepository;
+        private readonly IUserRepository _userRepository;
         public UserAppService(IUserRepository userRepository,
             IFieldToCreateUserRepository fieldToCreateUserRepository,
             IExtendedFieldRepository extendedFieldRepository, IExecutionRepository executionRepository) : base(userRepository)
@@ -32,29 +32,21 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             _executionRepository = executionRepository;
         }
 
+        public async Task<User> FindAsync(string identification, int identificationType, string password)
+        {
+            var user = _userRepository.Get(u =>
+                       u.Identification.Equals(identification, StringComparison.InvariantCulture) &&
+                       u.IdentificationType.HasValue && u.IdentificationType.Value.Equals(identificationType));
+            if (user == null)
+            {
+                return null;
+            }
+            return await CheckPasswordAsync(user, password).ConfigureAwait(false) ? user : null;
+        }
+
         public override Task<User> FindByIdAsync(long userId)
         {
             return Task.FromResult(_userRepository.Get(s => s.Id == userId));
-        }
-
-        public Execution GetRequestUserByRequestId(long requestid)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IdentityResult> UpdateAsync(long user)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IdentityResult> UpdateUserAndPassword(User user, string newPassword)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IQueryable<string>> UsersAreRegistered(IEnumerable<string> cleanEmailsList)
-        {
-            throw new System.NotImplementedException();
         }
 
         public IEnumerable<Page> GetAllPagesWithSections()
@@ -65,6 +57,16 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         public IEnumerable<FieldToCreateUser> GetMappingFieldToCreateUsers()
         {
             return _fieldToCreateUserRepository.GetAll().ToList();
+        }
+
+        public Execution GetRequestBySimpleId(string simpleId)
+        {
+            return _executionRepository.GetRequestBySimpleId(simpleId);
+        }
+
+        public Execution GetRequestUserByRequestId(long requestid)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Task<User> GetUserByMappingField(IEnumerable<FieldToCreateUser> mappingfields, IEnumerable<FieldValueOrder> fields)
@@ -98,14 +100,24 @@ namespace Application.Main.Implementation.ProcessFlow.Services
             return _userRepository.GetUserInfoByUserId(userId);
         }
 
-        public Execution GetRequestBySimpleId(string simpleId)
-        {
-            return _executionRepository.GetRequestBySimpleId(simpleId);
-        }
-
         public long GetValidExecutionByUserAndProduct(long userId, int productId)
         {
             return _executionRepository.GetValidExecutionByUserAndProduct(userId, productId);
+        }
+
+        public Task<IdentityResult> UpdateAsync(long user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IdentityResult> UpdateUserAndPassword(User user, string newPassword)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IQueryable<string>> UsersAreRegistered(IEnumerable<string> cleanEmailsList)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

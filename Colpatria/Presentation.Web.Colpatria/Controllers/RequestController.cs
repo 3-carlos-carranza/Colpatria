@@ -127,10 +127,13 @@ namespace Presentation.Web.Colpatria.Controllers
             }
 
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
-            var user =
-                await
-                    _userAppService.FindAsync(nuser.Identification,
-                        nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
+
+            if (!nuser.IdentificationType.HasValue)
+            {
+                return RedirectToAction("ShowInformation", "Messages", new { code = "100" }); //invalid Document type
+            }
+
+            var user = await _userAppService.FindAsync(nuser.Identification, nuser.IdentificationType.Value,nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
 
             //re-take Request
             if (user != null)

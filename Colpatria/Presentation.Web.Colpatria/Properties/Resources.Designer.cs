@@ -79,6 +79,15 @@ namespace Presentation.Web.Colpatria.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encontramos inconvenientes con tu identificación. Por favor contactate con un asesor de la entidad..
+        /// </summary>
+        internal static string _100 {
+            get {
+                return ResourceManager.GetString("100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuario y/o  contraseña incorrectos.
         /// </summary>
         internal static string InvalidPassword {

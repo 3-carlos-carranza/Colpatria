@@ -33,6 +33,9 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
         Task<IdentityResult> CreateAsync(User user, string password);
         Task<ClaimsIdentity> CreateIdentityAsync(User user, string type);
         Task<User> FindAsync(string email, string password);
+
+        Task<User> FindAsync(string identification, int identificationType, string password);
+
         Task<User> FindByIdAsync(long userId);
         Task<User> FindByNameAsync(string email);
         Task<string> GenerateEmailConfirmationTokenAsync(long id);

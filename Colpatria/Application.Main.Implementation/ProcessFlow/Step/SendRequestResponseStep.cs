@@ -36,7 +36,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
                 ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
             TraceFlow(argument);
@@ -91,7 +91,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         {
             if (userInfoDto == null) throw new ArgumentNullException(nameof(userInfoDto));
             var path = Uri.UnescapeDataString(new UriBuilder(new Uri(Assembly.GetExecutingAssembly().CodeBase)).Path);
-            var dir = (Path.GetDirectoryName(path))?.Replace("bin", string.Empty);
+            var dir = Path.GetDirectoryName(path)?.Replace("bin", string.Empty);
 
             _razorTemplate = userInfoDto.Product == "1" ? Path.Combine(dir, @"Views\Request\EmailRequest.cshtml")
                 : Path.Combine(dir, @"Views\SecondFlowTemp\EmailRequest.cshtml");

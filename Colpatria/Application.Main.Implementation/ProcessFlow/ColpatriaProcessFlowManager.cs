@@ -1,15 +1,9 @@
-﻿//   -----------------------------------------------------------------------
-//   <copyright file=ColpatriaProcessFlowManager.cs company="Banlinea S.A.S">
-//       Copyright (c) Banlinea Todos los derechos reservados.
-//   </copyright>
-//   <author>Jeysson Stevens  Ramirez </author>
-//   -----------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------- <copyright
+// file=ColpatriaProcessFlowManager.cs company="Banlinea S.A.S"> Copyright (c) Banlinea Todos los
+// derechos reservados. </copyright> <author>Jeysson Stevens Ramirez </author> -----------------------------------------------------------------------
 
 #region
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Banlinea.ProcessFlow.Engine;
 using Banlinea.ProcessFlow.Engine.Api;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
@@ -19,6 +13,9 @@ using Core.Entities.Enumerations;
 using Core.Entities.Process;
 using Core.GlobalRepository.SQL.Process;
 using Crosscutting.Common.Tools.DataType;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -40,6 +37,7 @@ namespace Application.Main.Implementation.ProcessFlow
             InitializeArgument(arg);
             return await base.StartFlow(arg);
         }
+
         private void InitializeArgument(IProcessFlowArgument arg)
         {
             if (arg.Execution.ProductId == 0)
@@ -48,7 +46,7 @@ namespace Application.Main.Implementation.ProcessFlow
             }
             if (arg.Execution.Id == 0)
             {
-                var stepFlow = ((Core.Entities.Process.Step) Store.GetNextStep(arg, StepType.Success));
+                var stepFlow = (Core.Entities.Process.Step)Store.GetNextStep(arg, StepType.Success);
                 var request = new Execution
                 {
                     CreateDate = DateTime.UtcNow,
@@ -58,7 +56,7 @@ namespace Application.Main.Implementation.ProcessFlow
                     SimpleId = ToolExtension.GenSemiUniqueId(),
                     UserId = arg.User.Id,
                     CurrentStepId = stepFlow.Id,
-                    State = (int) ExecutionState.Requesting,
+                    State = (int)ExecutionState.Requesting,
                     ProductData = @"{}"
                 };
                 arg.Execution = _executionRepository.CreateRequest(request);

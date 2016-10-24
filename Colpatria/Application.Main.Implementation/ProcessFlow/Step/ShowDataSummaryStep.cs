@@ -30,7 +30,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor)).ConfigureAwait(false);
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
                 ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
             TraceFlow(argument);

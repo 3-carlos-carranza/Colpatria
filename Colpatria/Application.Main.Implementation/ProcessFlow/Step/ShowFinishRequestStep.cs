@@ -33,7 +33,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var userInfo = _userRepository.GetUserInfoByExecutionId(argument.Execution.Id);
             var data = JsonConvert.DeserializeObject<WsMotorServiceResponse>(userInfo.ResponseWsMotor);
 
-            userInfo.ClassificationWsMotor = (data.ScoresMotor.ScoreMotor.Classification) == "A"
+            userInfo.ClassificationWsMotor = data.ScoresMotor.ScoreMotor.Classification == "A"
                 ? Classification.Approved.GetStringValue()
                 : Classification.Declined.GetStringValue();
 

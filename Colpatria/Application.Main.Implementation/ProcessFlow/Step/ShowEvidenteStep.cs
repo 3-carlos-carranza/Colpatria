@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Application.Main.Implementation.ProcessFlow.Responses;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
@@ -9,7 +6,9 @@ using Banlinea.ProcessFlow.Engine.Api.Steps;
 using Banlinea.ProcessFlow.Model;
 using Core.DataTransferObject.Vib;
 using Core.Entities.Evidente;
-
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -35,44 +34,43 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             {
                 var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
 
-            var validationSettings =
-            _validateUserSettingsBuilder.WithIdentification(userInfo.Identification)
-                .WithTypeOfDocument("1")
-                .WithLastName(userInfo.LastName)
-                .WithSecondLastName(userInfo.SecondLastName)
-                .WithExpeditionDate(userInfo.DateOfExpedition)
-                .WithNames(userInfo.Names)
-                .WithExecutionId(argument.Execution.Id)
-                .Build();
-            //validate User
-            var validationResponse = _evidenteAppService.Validate(validationSettings);
-
-
-            if (!validationResponse.Success)
-            {
-                return await OnError(argument).Result.Advance(argument);
-            }
-            //calll WS 
-            QuestionsResponse questionsResponse =
-                _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber(userInfo.Identification)
+                var validationSettings =
+                _validateUserSettingsBuilder.WithIdentification(userInfo.Identification)
                     .WithTypeOfDocument("1")
-                    .WithValidationNumber(validationResponse.ValidationNumber)
+                    .WithLastName(userInfo.LastName)
+                    .WithSecondLastName(userInfo.SecondLastName)
+                    .WithExpeditionDate(userInfo.DateOfExpedition)
+                    .WithNames(userInfo.Names)
                     .WithExecutionId(argument.Execution.Id)
-                    .Build());
-            //validate response
-            if (questionsResponse.MaximumAttemptsPerDay)
-            {
-                return await OnError(argument).Result.Advance(argument);
-            }
-            if (questionsResponse.MaximumAttemptsPerMonth)
-            {
-                return await OnError(argument).Result.Advance(argument);
-            }
-            if (questionsResponse.MaximumAttemptsPerYear)
-            {
-                return await OnError(argument).Result.Advance(argument);
-            }
-            
+                    .Build();
+                //validate User
+                var validationResponse = _evidenteAppService.Validate(validationSettings);
+
+                if (!validationResponse.Success)
+                {
+                    return await OnError(argument).Result.Advance(argument);
+                }
+                //calll WS
+                var questionsResponse =
+                    _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber(userInfo.Identification)
+                        .WithTypeOfDocument("1")
+                        .WithValidationNumber(validationResponse.ValidationNumber)
+                        .WithExecutionId(argument.Execution.Id)
+                        .Build());
+                //validate response
+                if (questionsResponse.MaximumAttemptsPerDay)
+                {
+                    return await OnError(argument).Result.Advance(argument);
+                }
+                if (questionsResponse.MaximumAttemptsPerMonth)
+                {
+                    return await OnError(argument).Result.Advance(argument);
+                }
+                if (questionsResponse.MaximumAttemptsPerYear)
+                {
+                    return await OnError(argument).Result.Advance(argument);
+                }
+
                 var step = (StepDetail)GetCurrentStep(argument);
                 return new EvidenteResponse
                 {
@@ -87,14 +85,13 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                     {
                         Status = ReponseStatus.Success
                     }
-
                 };
             }
             Console.WriteLine("Submitting form...Guardando campos");
             argument.IsSubmitting = false;
             return await OnSuccess(argument).Result.Advance(argument);
-
         }
+
         public override Task<IProcessFlowResponse> AdvanceAsync(IProcessFlowArgument argument, CancellationToken cancellationToken = new CancellationToken())
         {
             throw new NotImplementedException();

@@ -3,7 +3,6 @@ using Presentation.Web.Colpatria.Properties;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
-using System.IO;
 using System.Web.Mvc;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -79,7 +78,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     Response.ContentType = "application/vnd.ms-excel";
                     Response.AddHeader("content-disposition", $"attachment; filename=Report {model.StartDate.ToShortDateString()} to {model.EndDate.ToShortDateString()} of {DateTime.Now.ToShortDateString()}.xls");
                     Response.Clear();
-                    MemoryStream result = _reportAppService.GetReportTransactional(model.StartDate, model.EndDate);
+                    var result = _reportAppService.GetReportTransactional(model.StartDate, model.EndDate);
                     Response.BinaryWrite(result.GetBuffer());
                     Response.End();
                 }

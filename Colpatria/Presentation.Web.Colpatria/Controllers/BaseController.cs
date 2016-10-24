@@ -104,7 +104,7 @@ namespace Presentation.Web.Colpatria.Controllers
         public async Task<IProcessFlowResponse> ExecuteFlow(ClaimsIdentity identity = null,
             IEnumerable<Page> pages = null)
         {
-            IProcessFlowResponse result = await _processFlowManager.StartFlow(ProcessFlowArgument);
+            var result = await _processFlowManager.StartFlow(ProcessFlowArgument);
             if (identity != null)
             {
                 identity.AddClaim(new Claim("ExecutionId", result.Execution.Id.ToString()));

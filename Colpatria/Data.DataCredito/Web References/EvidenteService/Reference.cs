@@ -166,7 +166,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarTiposAlertaReturn")]
         public string consultarTiposAlerta(string criteriosXML) {
-            object[] results = this.Invoke("consultarTiposAlerta", new object[] {
+            var results = this.Invoke("consultarTiposAlerta", new object[] {
                         criteriosXML});
             return ((string)(results[0]));
         }
@@ -187,7 +187,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarTiposAlertaOperationCompleted(object arg) {
             if ((this.consultarTiposAlertaCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarTiposAlertaCompleted(this, new consultarTiposAlertaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -196,7 +196,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarAlertasReturn")]
         public string consultarAlertas(string tipoDoc, string numDoc) {
-            object[] results = this.Invoke("consultarAlertas", new object[] {
+            var results = this.Invoke("consultarAlertas", new object[] {
                         tipoDoc,
                         numDoc});
             return ((string)(results[0]));
@@ -219,7 +219,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarAlertasOperationCompleted(object arg) {
             if ((this.consultarAlertasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarAlertasCompleted(this, new consultarAlertasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -228,7 +228,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("validarReturn")]
         public string validar(string paramProducto, string producto, string canal, string datosValidacion) {
-            object[] results = this.Invoke("validar", new object[] {
+            var results = this.Invoke("validar", new object[] {
                         paramProducto,
                         producto,
                         canal,
@@ -255,7 +255,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnvalidarOperationCompleted(object arg) {
             if ((this.validarCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.validarCompleted(this, new validarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -264,7 +264,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("preguntasReturn")]
         public string preguntas(string paramProducto, string producto, string canal, string solicitudCuestionario) {
-            object[] results = this.Invoke("preguntas", new object[] {
+            var results = this.Invoke("preguntas", new object[] {
                         paramProducto,
                         producto,
                         canal,
@@ -291,7 +291,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnpreguntasOperationCompleted(object arg) {
             if ((this.preguntasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.preguntasCompleted(this, new preguntasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -300,7 +300,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("verificarReturn")]
         public string verificar(string producto, string paramProducto, string respuestas) {
-            object[] results = this.Invoke("verificar", new object[] {
+            var results = this.Invoke("verificar", new object[] {
                         producto,
                         paramProducto,
                         respuestas});
@@ -325,7 +325,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnverificarOperationCompleted(object arg) {
             if ((this.verificarCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.verificarCompleted(this, new verificarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -334,7 +334,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametroReturn")]
         public string consultarParametro(string parametrizacion, string transaccion, string producto, string parametro) {
-            object[] results = this.Invoke("consultarParametro", new object[] {
+            var results = this.Invoke("consultarParametro", new object[] {
                         parametrizacion,
                         transaccion,
                         producto,
@@ -361,7 +361,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametroOperationCompleted(object arg) {
             if ((this.consultarParametroCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametroCompleted(this, new consultarParametroCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -370,7 +370,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametrizacionReturn")]
         public string consultarParametrizacion(string producto, string consecutivo, string nit) {
-            object[] results = this.Invoke("consultarParametrizacion", new object[] {
+            var results = this.Invoke("consultarParametrizacion", new object[] {
                         producto,
                         consecutivo,
                         nit});
@@ -395,7 +395,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametrizacionOperationCompleted(object arg) {
             if ((this.consultarParametrizacionCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametrizacionCompleted(this, new consultarParametrizacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -404,7 +404,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametrizacionesReturn")]
         public string consultarParametrizaciones(string producto, string tipoIdentificacion, string entidad) {
-            object[] results = this.Invoke("consultarParametrizaciones", new object[] {
+            var results = this.Invoke("consultarParametrizaciones", new object[] {
                         producto,
                         tipoIdentificacion,
                         entidad});
@@ -429,7 +429,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametrizacionesOperationCompleted(object arg) {
             if ((this.consultarParametrizacionesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametrizacionesCompleted(this, new consultarParametrizacionesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -438,7 +438,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametrizacionesCompletasReturn")]
         public string consultarParametrizacionesCompletas(string producto, string tipoIdentificacion, string entidad, bool indParametros) {
-            object[] results = this.Invoke("consultarParametrizacionesCompletas", new object[] {
+            var results = this.Invoke("consultarParametrizacionesCompletas", new object[] {
                         producto,
                         tipoIdentificacion,
                         entidad,
@@ -465,7 +465,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametrizacionesCompletasOperationCompleted(object arg) {
             if ((this.consultarParametrizacionesCompletasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametrizacionesCompletasCompleted(this, new consultarParametrizacionesCompletasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -474,7 +474,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarCodigosValidacionReturn")]
         public string consultarCodigosValidacion() {
-            object[] results = this.Invoke("consultarCodigosValidacion", new object[0]);
+            var results = this.Invoke("consultarCodigosValidacion", new object[0]);
             return ((string)(results[0]));
         }
         
@@ -493,7 +493,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarCodigosValidacionOperationCompleted(object arg) {
             if ((this.consultarCodigosValidacionCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarCodigosValidacionCompleted(this, new consultarCodigosValidacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -502,7 +502,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarCodigosPreguntasReturn")]
         public string consultarCodigosPreguntas() {
-            object[] results = this.Invoke("consultarCodigosPreguntas", new object[0]);
+            var results = this.Invoke("consultarCodigosPreguntas", new object[0]);
             return ((string)(results[0]));
         }
         
@@ -521,7 +521,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarCodigosPreguntasOperationCompleted(object arg) {
             if ((this.consultarCodigosPreguntasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarCodigosPreguntasCompleted(this, new consultarCodigosPreguntasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -530,7 +530,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametroParametrizacionesReturn")]
         public string consultarParametroParametrizaciones(string parametrizacionesXML, string transaccion, string codParametro) {
-            object[] results = this.Invoke("consultarParametroParametrizaciones", new object[] {
+            var results = this.Invoke("consultarParametroParametrizaciones", new object[] {
                         parametrizacionesXML,
                         transaccion,
                         codParametro});
@@ -555,7 +555,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametroParametrizacionesOperationCompleted(object arg) {
             if ((this.consultarParametroParametrizacionesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametroParametrizacionesCompleted(this, new consultarParametroParametrizacionesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -565,7 +565,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarParametroParametrizacionesReturn")]
         public string consultarParametroParametrizaciones(string parametrizacionesXML, string codParametro) {
-            object[] results = this.Invoke("consultarParametroParametrizaciones1", new object[] {
+            var results = this.Invoke("consultarParametroParametrizaciones1", new object[] {
                         parametrizacionesXML,
                         codParametro});
             return ((string)(results[0]));
@@ -588,7 +588,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarParametroParametrizaciones1OperationCompleted(object arg) {
             if ((this.consultarParametroParametrizaciones1Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarParametroParametrizaciones1Completed(this, new consultarParametroParametrizaciones1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -597,7 +597,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarUltimoResultadoReturn")]
         public string consultarUltimoResultado(string producto, string nit, string tipo_identificacion, string identificacion) {
-            object[] results = this.Invoke("consultarUltimoResultado", new object[] {
+            var results = this.Invoke("consultarUltimoResultado", new object[] {
                         producto,
                         nit,
                         tipo_identificacion,
@@ -624,7 +624,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarUltimoResultadoOperationCompleted(object arg) {
             if ((this.consultarUltimoResultadoCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarUltimoResultadoCompleted(this, new consultarUltimoResultadoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -633,7 +633,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarSistemaAlertasReturn")]
         public string consultarSistemaAlertas(string producto, string nit, string paramProducto) {
-            object[] results = this.Invoke("consultarSistemaAlertas", new object[] {
+            var results = this.Invoke("consultarSistemaAlertas", new object[] {
                         producto,
                         nit,
                         paramProducto});
@@ -658,7 +658,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarSistemaAlertasOperationCompleted(object arg) {
             if ((this.consultarSistemaAlertasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarSistemaAlertasCompleted(this, new consultarSistemaAlertasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -667,7 +667,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarEstadisticasDetalladasReturn")]
         public string consultarEstadisticasDetalladas(string xmlEstadisticasDetalldas, string email) {
-            object[] results = this.Invoke("consultarEstadisticasDetalladas", new object[] {
+            var results = this.Invoke("consultarEstadisticasDetalladas", new object[] {
                         xmlEstadisticasDetalldas,
                         email});
             return ((string)(results[0]));
@@ -690,7 +690,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarEstadisticasDetalladasOperationCompleted(object arg) {
             if ((this.consultarEstadisticasDetalladasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarEstadisticasDetalladasCompleted(this, new consultarEstadisticasDetalladasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -699,7 +699,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarListaEstadisticasGeneradasReturn")]
         public string consultarListaEstadisticasGeneradas(string entidad, string identificacion) {
-            object[] results = this.Invoke("consultarListaEstadisticasGeneradas", new object[] {
+            var results = this.Invoke("consultarListaEstadisticasGeneradas", new object[] {
                         entidad,
                         identificacion});
             return ((string)(results[0]));
@@ -722,7 +722,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarListaEstadisticasGeneradasOperationCompleted(object arg) {
             if ((this.consultarListaEstadisticasGeneradasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarListaEstadisticasGeneradasCompleted(this, new consultarListaEstadisticasGeneradasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -731,7 +731,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarListaEstadisticasEncuestasGeneradasReturn")]
         public string consultarListaEstadisticasEncuestasGeneradas(string entidad, string identificacion) {
-            object[] results = this.Invoke("consultarListaEstadisticasEncuestasGeneradas", new object[] {
+            var results = this.Invoke("consultarListaEstadisticasEncuestasGeneradas", new object[] {
                         entidad,
                         identificacion});
             return ((string)(results[0]));
@@ -754,7 +754,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarListaEstadisticasEncuestasGeneradasOperationCompleted(object arg) {
             if ((this.consultarListaEstadisticasEncuestasGeneradasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarListaEstadisticasEncuestasGeneradasCompleted(this, new consultarListaEstadisticasEncuestasGeneradasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -763,7 +763,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("adicionarRespuestaCuestionarioReturn")]
         public bool adicionarRespuestaCuestionario(string idRegCuestionario, string nroCuestionario, string nroConValidacion, string cod_pregunta, string cod_respuesta, string orden) {
-            object[] results = this.Invoke("adicionarRespuestaCuestionario", new object[] {
+            var results = this.Invoke("adicionarRespuestaCuestionario", new object[] {
                         idRegCuestionario,
                         nroCuestionario,
                         nroConValidacion,
@@ -794,7 +794,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnadicionarRespuestaCuestionarioOperationCompleted(object arg) {
             if ((this.adicionarRespuestaCuestionarioCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.adicionarRespuestaCuestionarioCompleted(this, new adicionarRespuestaCuestionarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -803,7 +803,7 @@ namespace Data.DataCredito.EvidenteService
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace="http://ws.id.dc.com", ResponseNamespace="http://www.datacredito.com.co/services/ServicioIdentificacion")]
         [return: System.Xml.Serialization.SoapElementAttribute("consultarEstadisticasEncuestasDetalladasReturn")]
         public string consultarEstadisticasEncuestasDetalladas(string xmlEstadisticasDetalladas, string email) {
-            object[] results = this.Invoke("consultarEstadisticasEncuestasDetalladas", new object[] {
+            var results = this.Invoke("consultarEstadisticasEncuestasDetalladas", new object[] {
                         xmlEstadisticasDetalladas,
                         email});
             return ((string)(results[0]));
@@ -826,7 +826,7 @@ namespace Data.DataCredito.EvidenteService
         
         private void OnconsultarEstadisticasEncuestasDetalladasOperationCompleted(object arg) {
             if ((this.consultarEstadisticasEncuestasDetalladasCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                var invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultarEstadisticasEncuestasDetalladasCompleted(this, new consultarEstadisticasEncuestasDetalladasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -841,7 +841,7 @@ namespace Data.DataCredito.EvidenteService
                         || (url == string.Empty))) {
                 return false;
             }
-            System.Uri wsUri = new System.Uri(url);
+            var wsUri = new System.Uri(url);
             if (((wsUri.Port >= 1024) 
                         && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
                 return true;

@@ -33,7 +33,7 @@ namespace Crosscutting.Common.Extensions
             // in the field's custom attributes
             var fi = type.GetField(value.ToString());
             var attrs = fi.GetCustomAttributes(typeof(MappingToItemListValue), false) as MappingToItemListValue[];
-            if (attrs.Length > 0)
+            if (attrs != null && attrs.Length > 0)
             {
                 output = attrs[0].Value;
             }

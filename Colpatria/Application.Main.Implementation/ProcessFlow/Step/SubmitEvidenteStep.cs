@@ -35,6 +35,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
         public override async Task<IProcessFlowResponse> Advance(IProcessFlowArgument argument)
         {
+            if (argument == null) throw new ArgumentNullException(nameof(argument));
             var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)

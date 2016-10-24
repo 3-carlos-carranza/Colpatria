@@ -20,7 +20,7 @@ namespace Presentation.Web.Colpatria
 
             AutomapperMaps.Initialize();
 #if DEBUG
-            TelemetryConfiguration.Active.DisableTelemetry = true;
+            TelemetryConfiguration.Active.DisableTelemetry = false;
 #endif
 
         }

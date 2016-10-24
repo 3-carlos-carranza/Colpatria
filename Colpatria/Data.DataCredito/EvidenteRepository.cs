@@ -96,7 +96,6 @@ namespace Data.DataCredito
                 {
                     var clientLog = new TelemetryClient();
                     clientLog.TrackException(exception);
-                    clientLog.TrackException(exception);
                     var consultationException =
                         _webSettingsConsultationSettingsBuilder.WithPayload(
                             JsonConvert.SerializeObject(new { Exception = exception }))

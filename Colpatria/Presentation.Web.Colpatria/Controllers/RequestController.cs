@@ -40,8 +40,7 @@ namespace Presentation.Web.Colpatria.Controllers
             {
                 var user =
                     await
-                        _userAppService.FindAsync(modelLogin.Identification,
-                            modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
+                        _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"] );
                 if (user != null)
                 {
                     //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
@@ -105,6 +104,7 @@ namespace Presentation.Web.Colpatria.Controllers
             return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
         }
 
+        [AllowAnonymous]
         public ActionResult InternalLogin()
         {
             return View("ContinueRequest");

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
+﻿using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows;
 using Core.Entities.Enumerations;
 using Core.Entities.Evidente;
@@ -18,6 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Presentation.Web.Colpatria.Models;
 using Presentation.Web.Colpatria.Properties;
+using System;
+using System.Configuration;
+using System.Globalization;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 using static System.String;
 
 namespace Presentation.Web.Colpatria.Controllers
@@ -32,45 +32,6 @@ namespace Presentation.Web.Colpatria.Controllers
             _userAppService = userAppService;
         }
 
-        
-        public ActionResult InternalLogin()
-        {
-            return View("ContinueRequest");
-        }
-
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            if (bool.Parse(ConfigurationManager.AppSettings.Get("IsDevelop")))
-            {
-                return View();
-            }
-            return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
-        }
-        
-        [AllowAnonymous]
-        public ActionResult ValidateProduct(string productType = "")
-        {
-            if (IsNullOrEmpty(productType))
-            {
-                return RedirectToAction("ShowInformation", "Messages", new {code = "0"});
-            }
-            if (
-                !((productType ==
-                   ProductType.SavingAccount.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture)) ||
-                  (productType ==
-                   ProductType.CreditCard.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture))))
-            {
-                return RedirectToAction("ShowInformation", "Messages", new {code = "-1"});
-            }
-            var productId = (ProductType) Convert.ToInt32(productType, CultureInfo.CurrentCulture);
-            Session["Product"] = productId;
-            return View("Register", new UserViewModel
-            {
-                ProductId = (int) productId
-            });
-        }
-        
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> ContinueRequest(ModelLogin modelLogin)
@@ -118,6 +79,37 @@ namespace Presentation.Web.Colpatria.Controllers
             return View(modelLogin);
         }
 
+        public ActionResult EmailRequest()
+        {
+            return View();
+        }
+
+        public ActionResult ErrorEvidente()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> FinalSummary()
+        {
+            dynamic stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            if (bool.Parse(ConfigurationManager.AppSettings.Get("IsDevelop")))
+            {
+                return View();
+            }
+            return Redirect(ConfigurationManager.AppSettings.Get("SiteToRedirect"));
+        }
+
+        public ActionResult InternalLogin()
+        {
+            return View("ContinueRequest");
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Register(FormCollection collection)
@@ -126,12 +118,12 @@ namespace Presentation.Web.Colpatria.Controllers
             var product = fields.FirstOrDefault(s => s.KeyInt == 12);
             if (product == null)
             {
-                return RedirectToAction("ShowInformation", "Messages", new {code = "-1"}); //product not found 
+                return RedirectToAction("ShowInformation", "Messages", new { code = "-1" }); //product not found
             }
             int productid;
             if (!int.TryParse(product.Value, out productid))
             {
-                return RedirectToAction("ShowInformation", "Messages", new {code = "0"}); //invalid product
+                return RedirectToAction("ShowInformation", "Messages", new { code = "0" }); //invalid product
             }
 
             var nuser = await _userAppService.GetUserByMappingField(GlobalVariables.FieldToCreateUser, fields);
@@ -140,13 +132,13 @@ namespace Presentation.Web.Colpatria.Controllers
                     _userAppService.FindAsync(nuser.Identification,
                         nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
 
-            //re-take Request 
+            //re-take Request
             if (user != null)
             {
                 nuser = user;
                 nuser.IsNewUser = false;
                 var response =
-                    _userAppService.GetValidExecutionByUserAndProduct(user.Id, (int) Session["Product"]);
+                    _userAppService.GetValidExecutionByUserAndProduct(user.Id, (int)Session["Product"]);
 
                 if (response != 0)
                 {
@@ -154,8 +146,7 @@ namespace Presentation.Web.Colpatria.Controllers
                 }
             }
 
-
-            //new user and new request 
+            //new user and new request
             nuser.IsNewUser = true;
             if (nuser.IsNewUser)
             {
@@ -178,7 +169,7 @@ namespace Presentation.Web.Colpatria.Controllers
                     TempData["Message"] = message;
                     return View("Register", new UserViewModel
                     {
-                        ProductId = Convert.ToInt32((int) Session["Product"])
+                        ProductId = Convert.ToInt32((int)Session["Product"])
                     });
                 }
             }
@@ -202,38 +193,23 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-
-        private IAuthenticationManager GetAuthenticationManager()
+        public async Task<ActionResult> RequestAproved()
         {
-            var ctx = Request.GetOwinContext();
-            var authManager = ctx.Authentication;
-            return authManager;
+            dynamic stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
+        {
+            var fields = collection.ToFieldValueOrder();
+            InitSetFormArguments(fields);
+
+            var stepresult = await ExecuteFlow();
+            return ValidateStepResult(stepresult);
         }
 
         public ActionResult TermsAndConditions()
-        {
-            return View();
-        }
-
-        
-        public async Task<ActionResult> RequestAproved()
-        {
-            MockSubmitInitSetFormArguments();
-
-            dynamic stepresult = await ExecuteFlow();
-            return ValidateStepResult(stepresult);
-        }
-
-        
-        public async Task<ActionResult> FinalSummary()
-        {
-            MockSubmitInitSetFormArguments();
-
-            dynamic stepresult = await ExecuteFlow();
-            return ValidateStepResult(stepresult);
-        }
-
-        public ActionResult EmailRequest()
         {
             return View();
         }
@@ -246,21 +222,34 @@ namespace Presentation.Web.Colpatria.Controllers
             return ValidateStepResult(stepresult);
         }
 
-        
-        [HttpPost]
-        public async Task<ActionResult> SaveAdditionalInformation(FormCollection collection)
+        [AllowAnonymous]
+        public ActionResult ValidateProduct(string productType = "")
         {
-            var fields = collection.ToFieldValueOrder();
-            InitSetFormArguments(fields);
-
-            var stepresult = await ExecuteFlow();
-            return ValidateStepResult(stepresult);
+            if (IsNullOrEmpty(productType))
+            {
+                return RedirectToAction("ShowInformation", "Messages", new { code = "0" });
+            }
+            if (
+                !((productType ==
+                   ProductType.SavingAccount.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture)) ||
+                  (productType ==
+                   ProductType.CreditCard.GetMappingToItemListValue().ToString(CultureInfo.CurrentCulture))))
+            {
+                return RedirectToAction("ShowInformation", "Messages", new { code = "-1" });
+            }
+            var productId = (ProductType)Convert.ToInt32(productType, CultureInfo.CurrentCulture);
+            Session["Product"] = productId;
+            return View("Register", new UserViewModel
+            {
+                ProductId = (int)productId
+            });
         }
 
-        
-        public ActionResult ErrorEvidente()
+        private IAuthenticationManager GetAuthenticationManager()
         {
-            return View();
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+            return authManager;
         }
     }
 }

@@ -162,21 +162,6 @@ namespace Presentation.Web.Colpatria.Controllers
             ProcessFlowArgument = arg;
         }
 
-        public void MockSubmitInitSetFormArguments()
-        {
-            var userId = long.Parse(User.Identity.GetUserId(), CultureInfo.InvariantCulture);
-            ProcessFlowArgument.User = new User
-            {
-                Id = userId
-            };
-            ProcessFlowArgument.Execution = new Execution
-            {
-                ProductId = 1,
-                Id = ExecutionId
-            };
-            ProcessFlowArgument.IsSubmitting = true;
-        }
-
         protected ActionResult ValidateStepResult(IProcessFlowResponse stepresult)
         {
             if (!(stepresult is IShowScreenResponse))

@@ -1,134 +1,34 @@
-﻿
-@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IRequestResponse
-@{
-    ViewBag.Title = "Respuesta de solicitud";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
-</div>
-<div class="step-content">
-    <div class="linea-step">
-        <div class="col-xs-12 col-sm-6 desc-step">
-            <p>Respuesta de Solicitud</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 li-step">
-            <a href="#">
-                <img src="~/Images/Content/imprimir.png" alt="Alternate Text" onclick="PrintElement($('#respuesta-solicitud-summary'))" />
-            </a>
-        </div>
-        <div style="clear: both"></div>
-    </div>
-    <div class="conts">
-        <p class="desc-step"><span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName
-        </p>
-        <p class="bolds paddno paddnov">Tu Solicitud fue: <strong>
-                @Model.UserInfoDto.ClassificationWsMotor.ToUpper()
-            </strong>
-        </p>
-        <div class="contents aproved">
-            <p>Bogotá,  @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
-            <p>Señor(a) @Model.UserInfoDto.FullName</p>
-            <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
-            <p>Con respecto a tu solicitud Nº <span>@Model.UserInfoDto.SimpleId</span> realizada el día <span>@Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</span> y después de la revisión y evaluación de nuestras
-            politicas internas de riesgo crediticio para el producto, nos permitimos que tu solicitud ha sido <span>@Model.UserInfoDto.ClassificationWsMotor</span></p>
+﻿<p>
+    Tu solicitud ha sido <strong>APROBADA</strong>, dentro de los próximos cinco <strong>(5)</strong> días hábiles te contactaremos vía telefónica para coordinar la entrega de tu Tarjeta de Crédito en tu domicilio y así finalizar el trámite de la legalización, ten a mano los siguientes documentos según tu actividad económica:
+</p>
+<p>
+    <strong>Empleado:</strong>
+</p>
+<p>
+    <ul>
+        <li> Original y fotocopia del documento de identidad ampliado al 150%.</li>
+        <li>Carta laboral que incluya cargo, sueldo básico, tipo de contrato y antigüedad con fecha de expedición menor a 60 días o último comprobante de nómina; si el pago es mensual anexar uno (1) y si es quincenal anexar dos (2 ) o el certificado de ingresos y retenciones</li>
+    </ul>
+</p>
 
-            <p><strong>Si tu solicitud HA SIDO APROBADA</strong>
-            </p>
-            <p>En un plazo no mayor a cinco (5) días hábiles, uno de nuestros ejecutivos se pondrá en contacto telefónico contigo para acordar la cita y la recolección de documentos necesarios para la entrega de tu Tarjeta de Crédito Colpatria.</p>
-            <p>* Recuerda que esta es una Pre-Aprobación del producto, la aprobación definitiva está sujera a validaciones internas de nuestra entidad.</p>
+<p>
+    <strong>Pensionado:</strong>
+</p>
+<p>
+    <ul>
+        <li>Original y fotocopia del documento de identidad ampliado al 150%.</li>
+        <li>Último desprendible de pensión.</li>
+    </ul>
+</p>
+
+<p>
+    <strong>Independiente:</strong>
+</p>
+<p>
+    <ul>
+        <li>Original y fotocopia del documento de identidad ampliado al 150%.</li>
+        <li>Declaración de Renta o RUT o carta de No Declarante</li>
+    </ul>
 
 
-            <p><strong>Si tu solicitud HA SIDO NEGADA</strong>
-            </p>
-            <p>Agradecemos la preferencia y tu interés por los productos del Banco y esperamos poder servirte en una próxima oportunidad.</p>
-            <p>Si lo deseas podrás realizar una nueva solicitud, cumplidos 6 meses de esta comunicación, tiempo en el cual el <span>Banco Colpatria</span> estará dispuesto a revisar y evaluar nuevamente tu petición
-            </p>
-
-
-            <div class="info">
-                <div class="col-xs-12 col-sm-8 desc-info">
-                    <div class="chats">
-                        <img src="~/Images/Content/chat-icon.png" alt="Alternate Text"/>
-                    </div>
-                    <p class="">
-                        Para más información contacta a nuestros asesores de servicio a través de nuestro Chat en www.colpatria.com <br/>
-                        en los siguientes horarios: Lunes a Viernes de 7:00am a 7:00pm - Sábados de 8:00am a 5:00pm
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-4 info-log">
-                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
-                    </div>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-        </div>
-        <div class="botons">
-            <div class="col-xs-12 col-sm-6 print">
-                <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud-summary'))">
-                    <img src="~/Images/Content/imprim.png" alt="Alternate Text" />
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 print">
-                <button class="btn btn-danger enviar acepto" id="myBtn">
-                    Enviar <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                </button>
-            </div>
-        </div>
-        <div style="clear: both"></div>
-    </div>
-</div>
-
-
-
-@*Impresion de la respuesta*@
-<div class="conts" id="respuesta-solicitud-summary" hidden="hidden">
-    <p class="desc-step">
-        <span class="red">Felicitaciones,</span> @Model.UserInfoDto.FullName
-    </p>
-    <p class="bolds paddno paddnov">
-        Tu Solicitud fue: <strong>
-            @Model.UserInfoDto.ClassificationWsMotor.ToUpper()
-        </strong>
-    </p>
-    <div class="contents aproved">
-        <p>Bogotá,  @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</p>
-        <p>Señor(a) @Model.UserInfoDto.FullName</p>
-        <p>Asunto: Solicitud Tarjeta de Crédito Colpatria</p>
-        <p>
-            Con respecto a tu solicitud Nº <span>@Model.UserInfoDto.SimpleId</span> realizada el día <span>@Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</span> y después de la revisión y evaluación de nuestras
-            politicas internas de riesgo crediticio para el producto, nos permitimos que tu solicitud ha sido <span>@Model.UserInfoDto.ClassificationWsMotor</span>
-        </p>
-
-        <p>
-            <strong>Si tu solicitud HA SIDO APROBADA</strong>
-        </p>
-        <p>En un plazo no mayor a cinco (5) días hábiles, uno de nuestros ejecutivos se pondrá en contacto telefónico contigo para acordar la cita y la recolección de documentos necesarios para la entrega de tu Tarjeta de Crédito Colpatria.</p>
-        <p>* Recuerda que esta es una Pre-Aprobación del producto, la aprobación definitiva está sujera a validaciones internas de nuestra entidad.</p>
-
-
-        <p>
-            <strong>Si tu solicitud HA SIDO NEGADA</strong>
-        </p>
-        <p>Agradecemos la preferencia y tu interés por los productos del Banco y esperamos poder servirte en una próxima oportunidad.</p>
-        <p>
-            Si lo deseas podrás realizar una nueva solicitud, cumplidos 6 meses de esta comunicación, tiempo en el cual el <span>Banco Colpatria</span> estará dispuesto a revisar y evaluar nuevamente tu petición
-        </p>
-
-
-        <div class="info">
-            <div class="col-xs-12 col-sm-8 desc-info">
-
-            </div>
-            <div class="col-xs-12 col-sm-4 info-log">
-                <div class="logo-info">
-                    <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
-                </div>
-            </div>
-            <div style="clear: both"></div>
-        </div>
-    </div>
-    <div style="clear: both"></div>
-</div>
-
-@{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }
+</p>

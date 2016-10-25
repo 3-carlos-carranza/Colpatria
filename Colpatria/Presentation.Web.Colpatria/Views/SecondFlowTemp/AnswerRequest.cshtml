@@ -1,0 +1,124 @@
+﻿
+@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IRequestResponse
+@{
+    ViewBag.Title = "Respuesta de solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="legal">
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
+</div>
+<div class="step-content">
+    <div class="linea-step">
+        <div class="col-xs-12 col-sm-6 desc-step">
+            <p>Respuesta de Solicitud</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 li-step">
+            <a href="#">
+                <img src="~/Images/Content/imprimir.png" alt="Alternate Text" onclick="PrintElement($('#respuesta-solicitud-summary'))" />
+            </a>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="conts">
+        <div class="contents aproved">
+            <p><strong>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</strong></p>
+            <p><strong>Consecutivo No: </strong> <span>@Model.UserInfoDto.SimpleId</span></p>
+            <p><strong>Señor(a) @Model.UserInfoDto.FullName</strong></p>
+            <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
+            
+           @if (Model.UserInfoDto.ClassificationWsMotor == "A")
+           {
+                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto); 
+           }
+           else
+           {
+               Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto); 
+           }
+            <hr />
+
+            <div class="info">
+                <div class="col-xs-12 col-sm-8 desc-info">
+                    <div class="chats">
+                        <img src="~/Images/Content/chat-icon.png" alt="Alternate Text"/>
+                    </div>
+                    <p class="">
+                        Cualquier duda o inquietud puedes contactarte:<br />
+                        Chat en www.colpatria.com
+                        Horarios de atención:
+                        Lunes a Viernes de 7:00 am a 7:00pm - Sábados de 8:00 am a 5:00pm
+                        Multilínea:
+                        Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 - Pereira 3401616
+                        Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480
+                        Popayán 8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 522
+                        Mail: servicliente@colpatria.com
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-log">
+                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="botons">
+            <div class="col-xs-12 col-sm-6 print">
+                <a href="#" class="btn btn-default pull-right prtn" onclick="PrintElement($('#respuesta-solicitud-summary'))">
+                    <img src="~/Images/Content/imprim.png" alt="Alternate Text" />
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 print">
+                <button class="btn btn-danger enviar acepto" id="myBtn">
+                    Enviar <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+
+
+@*Impresion de la respuesta*@
+<div class="step-content" id="respuesta-solicitud-summary" hidden="hidden">
+    <div class="conts step-content">
+        <div class="contents aproved">
+            <p><strong>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</strong></p>
+            <p><strong>Consecutivo No: </strong> <span>@Model.UserInfoDto.SimpleId</span></p>
+            <p><strong>Señor(a) @Model.UserInfoDto.FullName</strong></p>
+            <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
+            @if (Model.UserInfoDto.ClassificationWsMotor == "A")
+            {
+                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto);
+            }
+            else
+            {
+                Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto);
+            }
+            <hr />
+
+            <div class="info">
+                <div class="desc-info with80">
+                    <p class="">
+                        Cualquier duda o inquietud puedes contactarte:<br />
+                        Chat en www.colpatria.com
+                        Horarios de atención:
+                        Lunes a Viernes de 7:00 am a 7:00pm - Sábados de 8:00 am a 5:00pm
+                        Multilínea:
+                        Bogotá 7561616 - Cali 4891616 - Medellín 6041616 - Barranquilla 3851616 - Ibagué 2771616 - Pereira 3401616
+                        Cartagena 6931616 - Neiva 8631616 - Bucaramanga 6971616 - Cucuta 5955795 - Valledupar 5898480
+                        Popayán 8353735 - Villavicencio 6836126 - Santa Marta 4365966 - Resto del País 01 8000 522 522
+                        Mail: servicliente@colpatria.com
+                    </p>
+                </div>
+                <div class="info-log with20">
+                    <div class="logo-info">
+                        <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    </div>
+    @{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }

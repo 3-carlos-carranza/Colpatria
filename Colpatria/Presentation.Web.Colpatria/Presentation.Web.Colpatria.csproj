@@ -1376,6 +1376,11 @@
     <Content Include="Views\Report\Download.cshtml" />
     <Content Include="Views\Shared\_LayoutReport.cshtml" />
     <Content Include="Views\Shared\_googleAnalytics.cshtml" />
+    <Content Include="Views\Request\RequestDeclined.cshtml" />
+    <Content Include="Views\Request\RequestPending.cshtml" />
+    <Content Include="Views\SecondFlowTemp\RequestDeclined.cshtml" />
+    <Content Include="Views\SecondFlowTemp\AnswerRequest.cshtml" />
+    <Content Include="Views\Request\AnswerRequest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

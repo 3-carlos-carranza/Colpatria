@@ -27,7 +27,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [AllowAnonymous]
-        [OutputCache(Duration = int.MaxValue, VaryByParam = "self")]
+        //[OutputCache(Duration = int.MaxValue, VaryByParam = "self")]
         public ActionResult GetDataListValues(int self, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
@@ -52,7 +52,7 @@ namespace Presentation.Web.Colpatria.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false)
+        public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false, string value = "")
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
             if (reqfield?.ListId == null) return Json(new { });

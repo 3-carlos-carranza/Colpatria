@@ -19,7 +19,7 @@ namespace Presentation.Web.Colpatria
                 });
             AutomapperMaps.Initialize();
 #if DEBUG
-            TelemetryConfiguration.Active.DisableTelemetry = false;
+            TelemetryConfiguration.Active.DisableTelemetry = true;
 #endif
         }
     }

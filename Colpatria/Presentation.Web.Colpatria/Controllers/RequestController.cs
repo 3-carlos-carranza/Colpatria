@@ -40,7 +40,6 @@ namespace Presentation.Web.Colpatria.Controllers
             var user = await _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
             if (user != null)
             {
-                //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
                 var identity =
                     await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 identity.Label = user.FullName;

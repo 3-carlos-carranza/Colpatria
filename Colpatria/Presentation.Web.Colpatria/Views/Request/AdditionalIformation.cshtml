@@ -1,4 +1,5 @@
 ﻿
+@using System.Web.Optimization
 @model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IAdditionalInformationResponse
 
 @{
@@ -12,13 +13,15 @@
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
 
-         <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
+            <p>Empieza a disfrutar de tu Cuenta de Ahorros</p>
 
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
-            <div class="col-xs-4 col-sm-4 validado"><span>2.</span> Valida</div>
-            <div class="col-xs-4 col-sm-4 bull active"><span>3.</span> Solicita</div>
+            <div class="col-xs-4 col-sm-4 validado"><span>2.</span> Valida
+            </div>
+            <div class="col-xs-4 col-sm-4 bull active"><span>3.</span> Solicita
+            </div>
         </div>
         <div style="clear: both"></div>
     </div>
@@ -35,7 +38,8 @@
             <span class="proccess">Validado</span>
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
-            <p class=""><strong>@Model.UserInfoDto.Names,</strong> este es el último paso para tener “Tu <span class="red">Cuenta cero</span>”</p>
+            <p class=""><strong>@Model.UserInfoDto.Names,</strong> este es el último paso para tener “Tu <span class="red">Cuenta cero</span>”
+            </p>
             <div class="test">
                 <form action="@Url.Action("SaveAdditionalInformation", "Request")" method="POST" data-x="x-validate" class="form-step form-step3">
                     <p class="bolds">Tus datos</p>
@@ -48,35 +52,35 @@
                                 </label>
                             </span>
                         </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <label>
-                                    Estado civil<span class="symbol required"></span>
-                                </label>
-                                <select name="34" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-value="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"> </select>
-                            </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>
+                                Estado civil<span class="symbol required"></span>
+                            </label>
+                            <select name="34" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-value="" data-x="x-kdropdown" data-url="/Data/GetDataListValues/"> </select>
+                        </div>
                         <div style="clear: both"></div>
                     </div>
                     <div class="form-group">
-                            <div class="col-xs-12 col-sm-6">
-                                <label>
-                                    Actividad económica <span class="symbol required"></span>
-                                </label>
-                                <select name="26" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value=""></select>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <span class="input input--hoshi">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>
+                                Actividad económica <span class="symbol required"></span>
+                            </label>
+                            <select name="26" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value=""></select>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <span class="input input--hoshi">
                                     <input name="23" class="input__field input__field--hoshi validate[required,maxSize[12],onlynumber minSize[6], min[100000]] " type="text" id="Income" placeholder="" value="" maxlength="12">
                                     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="Income">
                                         <span class="input__label-content input__label-content--hoshi input-block-level">Ingresos<span class="symbol required"></span></span>
                                     </label>
                                 </span>
-                            </div>
-                            <div class="col-xs-12 col-sm-3 paddno">
-                                <label>
-                                    Servidor Público<span class="symbol required"></span>
-                                </label>
-                                <select name="35" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value=""></select>
-                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 paddno">
+                            <label>
+                                Servidor Público<span class="symbol required"></span>
+                            </label>
+                            <select name="35" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value=""></select>
+                        </div>
                         <div style="clear: both"></div>
                     </div>
                     <div style="clear: both"></div>
@@ -88,36 +92,36 @@
                             <label class="">
                                 Recojo la Tarjeta en<span class="symbol required"></span>
                             </label>
-                            <select name="19" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this" ></select>
+                            <select name="19" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this"></select>
                         </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <label class="">
-                                    Oficina<span class="symbol required"></span>
-                                </label>
-                                <select name="38" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this" ></select>
-                            </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <label>
-                                    Tipo de cuenta<span class="symbol required"></span>
-                                </label>
-                                <select name="18" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value="18396" disabled></select>
-                            </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <label class="">
+                                Oficina<span class="symbol required"></span>
+                            </label>
+                            <select name="38" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this"></select>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <label>
+                                Tipo de cuenta<span class="symbol required"></span>
+                            </label>
+                            <select name="18" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red AccountType" data-x="x-kdropdown" data-url="/Data/GetDataListValues/" data-value="18396" disabled></select>
+                        </div>
                         <div style="clear: both"></div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-6 space">
-                            <input type="checkbox" class="grey greys" value="18402" name="29" >
+                            <input type="checkbox" class="grey greys" value="18402" name="29">
                             <label class="check">
                                 Recibir mi extracto por email
                             </label>
-                            <input type="checkbox" class="grey greys" value="18402" name="37" >
+                            <input type="checkbox" class="grey greys" value="18402" name="37">
                             <label class="check">
                                 Recibir más información de productos
                             </label>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 space">
-                            <input class="btn btn-danger pull-right enviar" value="Siguiente" type="submit" >
+                            <input class="btn btn-danger pull-right enviar" value="Siguiente" type="submit">
                         </div>
                         <div style="clear: both"></div>
                     </div>
@@ -127,3 +131,25 @@
     </div>
     <div style="clear: both"></div>
 </div>
+
+
+@section scripts{
+    <script>
+        //$(function () {
+
+        //    var $card = $("#19"),
+        //        $office = $("#38");
+
+        //    $card.on("change", function () {
+        //        var _rel = 9217;
+                
+        //        $office.find("#38").attr("style", "");
+        //        $office.val("");
+                
+        //        $office.find("[value=" + 9217 + "]").show();
+        //        $office.prop("disabled", false);
+        //    });
+
+        //});
+    </script>
+}

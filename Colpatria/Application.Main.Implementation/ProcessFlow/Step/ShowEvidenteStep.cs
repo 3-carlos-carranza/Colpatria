@@ -9,6 +9,8 @@ using Core.Entities.Evidente;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Implementation.ProcessFlow.Arguments;
+using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -18,11 +20,13 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly IEvidenteAppService _evidenteAppService;
         private readonly QuestionsSettingsBuilder _questionsSettingsBuilder;
         private readonly ValidateUserSettingsBuilder _validateUserSettingsBuilder;
+        private readonly ISaveFieldsAppService _saveFieldsAppService;
 
-        public ShowEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService) : base(store)
+        public ShowEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService, ISaveFieldsAppService saveFieldsAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
             _userAppService = userAppService;
+            _saveFieldsAppService = saveFieldsAppService;
             _validateUserSettingsBuilder = new ValidateUserSettingsBuilder();
             _questionsSettingsBuilder = new QuestionsSettingsBuilder();
         }
@@ -32,6 +36,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             TraceFlow(argument);
             if (!argument.IsSubmitting)
             {
+                var saveFieldsAppService = argument as ProcessFlowArgument;
                 var userInfo = _userAppService.GetUserInfoByExecutionId(argument.Execution.Id);
 
                 var validationSettings =
@@ -46,10 +51,23 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                 //validate User
                 var validationResponse = _evidenteAppService.Validate(validationSettings);
 
-                if (!validationResponse.Success)
+                if (!validationResponse.ProcessResult)
                 {
+                    //Execution failed
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "17", Value = "Ha ocurrido un error con nuestro buró de crédito" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
+
                     return await OnError(argument).Result.Advance(argument);
                 }
+
+                if (!validationResponse.Success)
+                {
+                    //Execution rejected
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "17", Value = "Rechazado" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
+                    return await OnError(argument).Result.Advance(argument);
+                }
+                saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "17", Value = "Aprobado" });
                 //calll WS
                 var questionsResponse =
                     _evidenteAppService.GetQuestions(_questionsSettingsBuilder.WithDocumentNumber(userInfo.Identification)
@@ -58,19 +76,32 @@ namespace Application.Main.Implementation.ProcessFlow.Step
                         .WithExecutionId(argument.Execution.Id)
                         .Build());
                 //validate response
+                if (questionsResponse.Result.Equals("00"))
+                {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "14", Value = "Ha ocurrido un error con nuestro buró de crédito" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
+                    return await OnError(argument).Result.Advance(argument);
+                }
                 if (questionsResponse.MaximumAttemptsPerDay)
                 {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "14", Value = "Ha superado los intentos diarios permitidos. Intentar mañana" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
                     return await OnError(argument).Result.Advance(argument);
                 }
                 if (questionsResponse.MaximumAttemptsPerMonth)
                 {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "14", Value = "Ha superado los intentos mensuales permitidos. Intentar en un mes" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
                     return await OnError(argument).Result.Advance(argument);
                 }
                 if (questionsResponse.MaximumAttemptsPerYear)
                 {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "14", Value = "Apreciado Usuario: el proceso de solicitud no puede continuar. Superó máximos intentos permitidos" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
                     return await OnError(argument).Result.Advance(argument);
                 }
-
+                saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "14", Value = "Preguntas obtenidas con éxito" });
+                _saveFieldsAppService.SaveForm(saveFieldsAppService);
                 var step = (StepDetail)GetCurrentStep(argument);
                 return new EvidenteResponse
                 {

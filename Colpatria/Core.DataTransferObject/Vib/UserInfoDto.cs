@@ -19,6 +19,9 @@ namespace Core.DataTransferObject.Vib
         public DateTime DateOfExpedition { get; set; }
         public DateTime CreatedDateExecution { get; set; }
         public string ExpeditionPlace { get; set; }
+        public string EvidenteValidationUser { get; set; }
+        public string EvidenteQuestions { get; set; }
+        public string EvidenteAnswersResponse { get; set; }
         public string SimpleId { get; set; }
         public string Birthdate { get; set; }
         public string CivilStatus { get; set; }

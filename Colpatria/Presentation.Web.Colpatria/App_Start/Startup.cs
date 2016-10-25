@@ -17,13 +17,10 @@ namespace Presentation.Web.Colpatria
                     LoginPath = new PathString("/Request/Index"),
                     CookieName = "colpatriaCkt"
                 });
-
             AutomapperMaps.Initialize();
 #if DEBUG
             TelemetryConfiguration.Active.DisableTelemetry = false;
 #endif
-
         }
-
     }
 }

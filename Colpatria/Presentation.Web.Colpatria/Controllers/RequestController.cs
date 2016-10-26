@@ -84,6 +84,10 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+        public ActionResult ErrorWsMotor()
+        {
+            return View();
+        }
 
         public async Task<ActionResult> FinalSummary()
         {

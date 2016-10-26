@@ -1375,6 +1375,7 @@
     <Content Include="Views\Report\Download.cshtml" />
     <Content Include="Views\Shared\_LayoutReport.cshtml" />
     <Content Include="Views\Shared\_googleAnalytics.cshtml" />
+    <Content Include="Views\Request\ErrorWsMotor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

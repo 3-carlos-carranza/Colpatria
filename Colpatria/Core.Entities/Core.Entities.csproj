@@ -128,6 +128,7 @@
     <Compile Include="User\User.Extension.cs" />
     <Compile Include="User\UserRole.cs" />
     <Compile Include="WsMotor\Age.cs" />
+    <Compile Include="WsMotor\ErrorWsMotorResponse.cs" />
     <Compile Include="WsMotor\Identification.cs" />
     <Compile Include="WsMotor\NaturalPerson.cs" />
     <Compile Include="WsMotor\Parameter.cs" />

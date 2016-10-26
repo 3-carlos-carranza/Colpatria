@@ -137,6 +137,7 @@
     <Compile Include="ProcessFlow\Services\SaveFieldsAppService.cs" />
     <Compile Include="ProcessFlow\Services\WsMotorAppService.cs" />
     <Compile Include="ProcessFlow\Step\ErrorEvidenteStep.cs" />
+    <Compile Include="ProcessFlow\Step\ErrorWsMotorStep.cs" />
     <Compile Include="ProcessFlow\Step\SendRequestResponseStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowAdditionalInformationStep.cs" />
     <Compile Include="ProcessFlow\Step\ShowDataSummaryStep.cs" />

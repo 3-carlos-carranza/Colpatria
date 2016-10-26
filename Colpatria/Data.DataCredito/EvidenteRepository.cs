@@ -123,7 +123,6 @@ namespace Data.DataCredito
                         Number = settings.Identification,
                         Type = settings.IdentificationType
                     };
-
                     var dataValidation = new ValidationRequest
                     {
                         Identification = identification,
@@ -135,13 +134,9 @@ namespace Data.DataCredito
                             Timestamp = settings.ExpeditionDate.ToTimestamp()
                         }
                     };
-
                     var serialized = _xmlProcessor.Serialize(dataValidation);
-
                     var response = validar(settings.ParamProduct, settings.Product, settings.Channel, serialized);
-
                     var deserialized = _xmlProcessor.Deserialize<ValidationResponse>(response);
-
                     return deserialized;
                 }
                 catch (Exception exception)
@@ -169,7 +164,6 @@ namespace Data.DataCredito
                 ProcessResult = true,
             };
         }
-
         private static QuestionsResponse QuestionsResponseMock()
         {
             return new QuestionsResponse

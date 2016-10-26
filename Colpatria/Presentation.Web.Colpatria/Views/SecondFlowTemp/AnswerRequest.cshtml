@@ -27,11 +27,15 @@
 
             @if (Model.UserInfoDto.ClassificationWsMotor == "A")
             {
-                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model);
+            }
+            else if (Model.UserInfoDto.ClassificationWsMotor == "R")
+            {
+                Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model);
             }
             else
             {
-                Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model);
             }
             <hr />
 
@@ -53,8 +57,7 @@
                     </p>
                 </div>
                 <div class="col-xs-12 col-sm-4 info-log">
-                    <div class="logo-info">
-                        <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
                     </div>
                 </div>
                 <div style="clear: both"></div>
@@ -76,6 +79,8 @@
     </div>
 </div>
 
+
+
 @*Impresion de la respuesta*@
 <div class="step-content" id="respuesta-solicitud-summary" hidden="hidden">
     <div class="conts step-content">
@@ -86,11 +91,15 @@
             <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
             @if (Model.UserInfoDto.ClassificationWsMotor == "A")
             {
-                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model);
+            }
+            else if (Model.UserInfoDto.ClassificationWsMotor == "R")
+            {
+                Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model);
             }
             else
             {
-                Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model);
             }
             <hr />
 

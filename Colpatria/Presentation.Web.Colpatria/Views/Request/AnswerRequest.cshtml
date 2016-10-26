@@ -1,4 +1,4 @@
-﻿@using Core.Entities.Enumerations
+﻿
 @model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IRequestResponse
 @{
     ViewBag.Title = "Respuesta de solicitud";
@@ -24,19 +24,18 @@
             <p><strong>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</strong></p>
             <p><strong>Consecutivo No: </strong> <span>@Model.UserInfoDto.SimpleId</span></p>
             <p><strong>Señor(a) @Model.UserInfoDto.FullName</strong></p>
-            <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
+            <p><strong>Asunto:</strong> Solicitud de Cuenta de Ahorros</p>
 
             @if (Model.UserInfoDto.ClassificationWsMotor == "A")
             {
-                Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model.UserInfoDto);
+               Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model);
             }
-            else if (Model.UserInfoDto.ClassificationWsMotor == "D")
+           else if (Model.UserInfoDto.ClassificationWsMotor == "R")
             {
-                Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model.UserInfoDto);
-            }
-            else
-            {
-                Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model.UserInfoDto);
+               Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model);
+           }
+           else {
+               Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model);
             }
             <hr />
 
@@ -58,8 +57,7 @@
                     </p>
                 </div>
                 <div class="col-xs-12 col-sm-4 info-log">
-                    <div class="logo-info">
-                        <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
+                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
                     </div>
                 </div>
                 <div style="clear: both"></div>
@@ -81,6 +79,8 @@
     </div>
 </div>
 
+
+
 @*Impresion de la respuesta*@
 <div class="step-content" id="respuesta-solicitud-summary" hidden="hidden">
     <div class="conts step-content">
@@ -91,18 +91,18 @@
             <p><strong>Bogotá, @Model.UserInfoDto.CreatedDateExecution.ToLongDateString()</strong></p>
             <p><strong>Consecutivo No: </strong> <span>@Model.UserInfoDto.SimpleId</span></p>
             <p><strong>Señor(a) @Model.UserInfoDto.FullName</strong></p>
-            <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
+            <p><strong>Asunto:</strong> Solicitud de Cuenta de Ahorros</p>
             @if (Model.UserInfoDto.ClassificationWsMotor == "A")
             {
-                Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestAproved.cshtml", Model);
             }
             else if (Model.UserInfoDto.ClassificationWsMotor == "R")
             {
-                Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestDeclined.cshtml", Model);
             }
             else
             {
-                Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model.UserInfoDto);
+                Html.RenderPartial("~/Views/Request/RequestPending.cshtml", Model);
             }
             <hr />
 

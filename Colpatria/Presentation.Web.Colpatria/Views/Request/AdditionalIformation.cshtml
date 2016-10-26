@@ -92,13 +92,15 @@
                             <label class="">
                                 Recojo la Tarjeta en<span class="symbol required"></span>
                             </label>
-                            <select name="19" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-cascadefrom="this"></select>
+                            <select name="19" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red"
+                                     data-url="/Data/GetDataListFilterValue/" type="text" id="19" data-this="this"></select>
                         </div>
                         <div class="col-xs-12 col-sm-4">
                             <label class="">
                                 Oficina<span class="symbol required"></span>
                             </label>
-                            <select name="38" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="this"></select>
+                            <select name="38" data-x="x-kdropdownauto" class="validate[funcCall[XGeneral.dropdownlistvalidate]] form-control bord-red" 
+                                    data-url="/Data/GetDataListFilterValue/" type="text" id="38" data-cascadefrom="19" data-this="this"></select>
                         </div>
                         <div class="col-xs-12 col-sm-4">
                             <label>
@@ -134,22 +136,22 @@
 
 
 @section scripts{
-    <script>
-        //$(function () {
+    @*<script>
+        $(function () {
 
-        //    var $card = $("#19"),
-        //        $office = $("#38");
-
-        //    $card.on("change", function () {
-        //        var _rel = 9217;
+            var $card = $("#19"),
+                $office = $("#38_listbox");
+            $office.prop("disabled", true);
+            $card.on("change", function () {
+                var _rel = 9217;
                 
-        //        $office.find("#38").attr("style", "");
-        //        $office.val("");
+                $office.find("#38").attr("style", "");
+                $office.val("");
                 
-        //        $office.find("[value=" + 9217 + "]").show();
-        //        $office.prop("disabled", false);
-        //    });
+                $office.find("[value=" + 9217 + "]").show();
+                $office.prop("disabled", false);
+            });
 
-        //});
-    </script>
+        });
+    </script>*@
 }

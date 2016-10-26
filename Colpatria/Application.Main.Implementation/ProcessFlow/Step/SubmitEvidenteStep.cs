@@ -13,6 +13,8 @@ using System;
 using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Main.Implementation.ProcessFlow.Arguments;
+using Crosscutting.Common.Tools.DataType;
 
 namespace Application.Main.Implementation.ProcessFlow.Step
 {
@@ -21,11 +23,13 @@ namespace Application.Main.Implementation.ProcessFlow.Step
         private readonly IUserAppService _userAppService;
         private readonly IEvidenteAppService _evidenteAppService;
         private readonly AnswerSettingsBuilder _answerSettingsBuilder;
+        private readonly ISaveFieldsAppService _saveFieldsAppService;
 
-        public SubmitEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService) : base(store)
+        public SubmitEvidenteStep(IProcessFlowStore store, IEvidenteAppService evidenteAppService, IUserAppService userAppService, ISaveFieldsAppService saveFieldsAppService) : base(store)
         {
             _evidenteAppService = evidenteAppService;
             _userAppService = userAppService;
+            _saveFieldsAppService = saveFieldsAppService;
             _answerSettingsBuilder = new AnswerSettingsBuilder();
         }
 
@@ -40,6 +44,7 @@ namespace Application.Main.Implementation.ProcessFlow.Step
             var mock = bool.Parse(ConfigurationManager.AppSettings.Get("Mock"));
             if (!mock)
             {
+                var saveFieldsAppService = argument as ProcessFlowArgument;
                 var arg = argument as IAnswerQuestionArgument;
 
                 var settings = _answerSettingsBuilder.WithIdentification(userInfo.Identification)
@@ -52,13 +57,18 @@ namespace Application.Main.Implementation.ProcessFlow.Step
 
                 if (!response.Result)
                 {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "16", Value = "Ha ocurrido un error con nuestro buró de crédito" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
                     return await OnError(argument).Result.Advance(argument);
                 }
                 if (response.Approval)
                 {
+                    saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "16", Value = "Aprobado" });
+                    _saveFieldsAppService.SaveForm(saveFieldsAppService);
                     return await OnSuccess(argument).Result.Advance(argument);
                 }
-
+                saveFieldsAppService?.Form.Add(new FieldValueOrder { Key = "16", Value = "Las respuestas proporcionadas no coinciden" });
+                _saveFieldsAppService.SaveForm(saveFieldsAppService);
                 return await OnError(argument).Result.Advance(argument);
             }
 

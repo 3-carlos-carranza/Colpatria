@@ -217,6 +217,8 @@
             if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
                 if (this.$element.data("url")) {
+                    //this.$element.data("url")
+                    //console.log(this.$element.data("cascadefrom"));
 
                     this.$element.kendoDropDownList({
                         optionLabel: { text: this.$element.data("optionlabel") == undefined ? "Seleccione..." : this.$element.data("optionlabel"), value: "0" },
@@ -235,10 +237,14 @@
                                     url: XGeneral.path + this.$element.data("url"),
                                     type: "GET",
                                     data: function (e) {
-                                        var vars = { self: ($element.attr("data-id") == undefined ? $element.attr("name") : $element.attr("data-id")), filterself: ($("#" + $element.attr("name") + "-list > span > input").val()) };
+                                        var vars = {
+                                            self: ($element.attr("data-id") == undefined ? $element.attr("name") :
+                                                $element.attr("data-id")), filterself: ($("#" + $element.attr("name") + "-list > span > input").val())
+                                        };
                                         if ($element.data("cascadefrom") != undefined) {
-                                            vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom")).val() });
-                                            if ($element.data("cascadefrom") === "this") {
+
+                                            vars = jQuery.extend(vars, { value: $("#" + $element.data("cascadefrom").toString() + " option:selected").text() });
+                                            if ($element.data("this") === "this") {
                                                 vars.filterself = ($("#" + $element.attr("name") + "-list > span > input").val());
                                             }
                                         } else {

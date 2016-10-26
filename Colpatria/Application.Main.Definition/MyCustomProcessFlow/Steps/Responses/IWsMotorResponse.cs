@@ -6,11 +6,12 @@
 //   -----------------------------------------------------------------------
 
 using Banlinea.ProcessFlow.Engine.Api.ProcessFlows.Response;
+using Core.Entities.WsMotor;
 
 namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Responses
 {
     public interface IWsMotorResponse : IShowScreenResponse
     {
-        string Error { get; set; }
+        ErrorWsMotorResponse ErrorWsMotorResponse { get; set; }
     }
 }

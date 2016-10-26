@@ -1,0 +1,18 @@
+﻿@model Application.Main.Implementation.ProcessFlow.Responses.WsMotorResponse
+
+@{
+    ViewBag.Title = "WsMotor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="step-content text-center error">
+    <p class="err"></p>
+    <h1 class="cod-err info-err">Importante</h1>
+    <p class="none-err"></p>
+
+    <h3 class="title-err">@Model.ErrorWsMotorResponse.Title</h3>
+    <p class="desc-err">@Model.ErrorWsMotorResponse.Message</p>
+    <p class="">
+        <a href="@Url.Action("Index", "Request")" class="btn btn-danger enviar nomargin">Volver a la página inicial</a>
+    </p>
+</div>

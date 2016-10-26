@@ -4,6 +4,7 @@ using Crosscutting.Common.Tools.XmlUtilities;
 using Data.DataCredito.WsMotorService;
 using Microsoft.ApplicationInsights;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace Data.DataCredito
@@ -56,7 +57,8 @@ namespace Data.DataCredito
                                 Score = "0.0",
                                 Classification = "N"
                             }
-                        }
+                        },
+                        
                     };
                 }
             }

@@ -1376,6 +1376,7 @@
     <Content Include="Views\Report\Download.cshtml" />
     <Content Include="Views\Shared\_LayoutReport.cshtml" />
     <Content Include="Views\Shared\_googleAnalytics.cshtml" />
+    <Content Include="Views\Request\ErrorWsMotor.cshtml" />
     <Content Include="Views\Request\RequestDeclined.cshtml" />
     <Content Include="Views\Request\RequestPending.cshtml" />
     <Content Include="Views\SecondFlowTemp\RequestDeclined.cshtml" />

@@ -13,6 +13,10 @@ namespace Core.Entities.WsMotor
         public string MotorId { get; set; }
         [XmlAttribute(AttributeName = "fechaConsulta")]
         public string ConsultationDate { get; set; }
+        [XmlElement(ElementName = "codError")]
+        public string CodeError { get; set; }
+        [XmlElement(ElementName = "descError")]
+        public string DescriptionError { get; set; }
         [XmlElement(ElementName = "NaturalNacional")]
         public NaturalPerson NaturalPerson { get; set; }
         [XmlElement(ElementName = "ScoresMotor")]

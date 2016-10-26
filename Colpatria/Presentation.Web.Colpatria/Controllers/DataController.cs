@@ -9,9 +9,9 @@
 
 #region
 
-using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 using System.Linq;
 using System.Web.Mvc;
+using Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Services;
 
 #endregion
 
@@ -31,7 +31,7 @@ namespace Presentation.Web.Colpatria.Controllers
         public ActionResult GetDataListValues(int self, bool isLabel = false)
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
-            if (reqfield?.ListId == null) return Json(new { });
+            if (reqfield?.ListId == null) return Json(new {});
             var results =
                 _dynamicFormAppService.GetDataListValues(reqfield.ListId.Value)
                     .OrderBy(dlv => dlv.Order)
@@ -55,15 +55,23 @@ namespace Presentation.Web.Colpatria.Controllers
         public ActionResult GetDataListFilterValue(int self, string filterself, bool isLabel = false, string value = "")
         {
             var reqfield = _dynamicFormAppService.GetRequestFieldByUserAndProccess(self, 1);
-            if (reqfield?.ListId == null) return Json(new { });
-            var results =
-                _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
+            if (reqfield?.ListId == null) return Json(new {});
+
+            dynamic results = value == "" ? _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, filterself)
+                .OrderBy(dlv => dlv.Order)
+                .Select(v => new
+                {
+                    value = v.OriginalValue.ToString(),
+                    text = v.Value
+                }).ToList()
+                : _dynamicFormAppService.GetDataListFilterValues(reqfield.ListId.Value, value)
                     .OrderBy(dlv => dlv.Order)
                     .Select(v => new
                     {
                         value = v.OriginalValue.ToString(),
                         text = v.Value
                     }).ToList();
+
             if (isLabel)
             {
                 results.Insert(0, new
@@ -76,3 +84,4 @@ namespace Presentation.Web.Colpatria.Controllers
         }
     }
 }
+

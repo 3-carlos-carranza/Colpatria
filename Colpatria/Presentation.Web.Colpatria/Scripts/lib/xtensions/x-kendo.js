@@ -216,9 +216,6 @@
         initDropDownAuto: function () {
             if ($.isFunction($.fn.kendoDropDownList)) {
                 var $element = this.$element;
-
-                
-
                 if (this.$element.data("url")) {
                     //this.$element.data("url")
                     //console.log(this.$element.data("cascadefrom"));
@@ -255,7 +252,6 @@
                                                 vars = jQuery.extend(vars, XGeneral.Object2Array($element.data("vars")));
                                             }
                                         }
-                                        
                                         return vars;
                                     }
                                 }

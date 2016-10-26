@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="legal">
-    <img src="~/Images/Content/legal.png" alt="Alternate Text"/>
+    <img src="~/Images/Content/legal.png" alt="Alternate Text" />
 </div>
 <div class="step-content">
     <div class="linea-step">
         <div class="col-xs-12 col-sm-6 desc-step">
-            @if ((ProductType) Session["Product"] == ProductType.SavingAccount)
+            @if ((ProductType)Session["Product"] == ProductType.SavingAccount)
             {
                 <p>Empieza a disfrutar de tu cuenta de ahorros</p>
             }
@@ -18,7 +18,6 @@
             {
                 <p>Empieza a disfrutar de tu tarjeta de crédito</p>
             }
-
         </div>
         <div class="col-xs-12 col-sm-6 li-step">
             <div class="col-xs-4 col-sm-4 validado">1. Ingresa</div>
@@ -41,71 +40,70 @@
         </div>
         <div class="col-xs-12 col-md-8 paddmov">
             <p class="bolds">
-                <strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</span></p>
+                <strong>Solicitud</strong> <span class="ok-rgtr"></span> <span class="red">@Model.UserInfoDto.ClassificationWsMotor.ToUpper()</span>
+            </p>
 
             <div class="col-xs-12 col-sm-7 paddnov">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <tbody>
-                        <tr>
-                            <td>Nacimiento:</td>
-                            <th>@Model.UserInfoDto.Birthdate</th>
-                        </tr>
-                        <tr>
-                            <td>Estado civil:</td>
-                            <th>@Model.UserInfoDto.CivilStatus</th>
-                        </tr>
-                        <tr>
-                            <td>Actividad económica:</td>
-                            <th>@Model.UserInfoDto.EconomicActivity</th>
-                        </tr>
-                        <tr>
-                            <td>Ingresos:</td>
-                            <th>$ @Model.UserInfoDto.Income</th>
-                        </tr>
-                        <tr>
-                            <td>Servidor público:</td>
-                            <th>@Model.UserInfoDto.PublicServer</th>
-                        </tr>
+                            <tr>
+                                <td>Nacimiento:</td>
+                                <th>@Model.UserInfoDto.Birthdate</th>
+                            </tr>
+                            <tr>
+                                <td>Estado civil:</td>
+                                <th>@Model.UserInfoDto.CivilStatus</th>
+                            </tr>
+                            <tr>
+                                <td>Actividad económica:</td>
+                                <th>@Model.UserInfoDto.EconomicActivity</th>
+                            </tr>
+                            <tr>
+                                <td>Ingresos:</td>
+                                <th>$ @Model.UserInfoDto.Income</th>
+                            </tr>
+                            <tr>
+                                <td>Servidor público:</td>
+                                <th>@Model.UserInfoDto.PublicServer</th>
+                            </tr>
 
-                        <tr>
-                            <td>Recojo la tarjeta en:</td>
-                            <th>@Model.UserInfoDto.PickTheCard</th>
-                        </tr>
-                        <tr>
-                            <td>Oficina:</td>
-                            <th>@Model.UserInfoDto.Office</th>
-                        </tr>
-                        <tr>
-                            <td>Tipo de producto:</td>
-                            <th>@Model.UserInfoDto.AccountType</th>
-                        </tr>
-                        <tr>
-                            <td>Extracto por correo:</td>
-                            <th>@Model.UserInfoDto.ExtractMail</th>
-                        </tr>
-                        <tr>
-                            <td>Más información:</td>
-                            <th>@Model.UserInfoDto.MoreInformation</th>
-                        </tr>
+                            <tr>
+                                <td>Recojo la tarjeta en:</td>
+                                <th>@Model.UserInfoDto.PickTheCard</th>
+                            </tr>
+                            <tr>
+                                <td>Oficina:</td>
+                                <th>@Model.UserInfoDto.Office</th>
+                            </tr>
+                            <tr>
+                                <td>Tipo de producto:</td>
+                                <th>@Model.UserInfoDto.AccountType</th>
+                            </tr>
+                            <tr>
+                                <td>Extracto por correo:</td>
+                                <th>@Model.UserInfoDto.ExtractMail</th>
+                            </tr>
+                            <tr>
+                                <td>Más información:</td>
+                                <th>@Model.UserInfoDto.MoreInformation</th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-5">
                 <div class="li-step">
-                    @*<a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir"/></a>*@
+                    @*<a href="#"><img src="~/Images/Content/imprimir.png" alt="Imprimir" /></a>*@
 
                     <a href="#">
-                        <img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud-summary'))"/>
+                        <img src="~/Images/Content/imprimir.png" alt="Imprimir" onclick="PrintElement($('#respuesta-solicitud-summary'))" />
                     </a>
-
                 </div>
 
                 <div class="img-summary" id="response-summary">
-                    <img src="~/Images/Content/resumen.png" alt="Imagen"/>
+                    <img src="~/Images/Content/resumen.png" alt="Imagen" />
                 </div>
-
             </div>
             <div class="col-xs-12 space">
                 <a class="btn btn-danger pull-right enviar marginnone" href="@Url.Action("Index", "Request")">
@@ -120,7 +118,6 @@
 @{ Html.RenderPartial("~/Views/Shared/_summaryModal.cshtml", Model.UserInfoDto); }
 
 @*Impresion de la respuesta*@
-
 
 <div class="step-content" id="respuesta-solicitud-summary" hidden="hidden">
     <div class="conts step-content">

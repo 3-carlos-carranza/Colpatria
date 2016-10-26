@@ -1,5 +1,4 @@
-﻿
-@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IRequestResponse
+﻿@model Application.Main.Definition.MyCustomProcessFlow.Steps.Responses.IRequestResponse
 @{
     ViewBag.Title = "Respuesta de solicitud";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,21 +24,21 @@
             <p><strong>Consecutivo No: </strong> <span>@Model.UserInfoDto.SimpleId</span></p>
             <p><strong>Señor(a) @Model.UserInfoDto.FullName</strong></p>
             <p><strong>Asunto:</strong> Solicitud Tarjeta de Crédito Colpatria</p>
-            
-           @if (Model.UserInfoDto.ClassificationWsMotor == "A")
-           {
-                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto); 
-           }
-           else
-           {
-               Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto); 
-           }
+
+            @if (Model.UserInfoDto.ClassificationWsMotor == "A")
+            {
+                Html.RenderPartial("~/Views/SecondFlowTemp/RequestAproved.cshtml", Model.UserInfoDto);
+            }
+            else
+            {
+                Html.RenderPartial("~/Views/SecondFlowTemp/RequestDeclined.cshtml", Model.UserInfoDto);
+            }
             <hr />
 
             <div class="info">
                 <div class="col-xs-12 col-sm-8 desc-info">
                     <div class="chats">
-                        <img src="~/Images/Content/chat-icon.png" alt="Alternate Text"/>
+                        <img src="~/Images/Content/chat-icon.png" alt="Alternate Text" />
                     </div>
                     <p class="">
                         Cualquier duda o inquietud puedes contactarte:<br />
@@ -54,7 +53,8 @@
                     </p>
                 </div>
                 <div class="col-xs-12 col-sm-4 info-log">
-                    <div class="logo-info"><img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text"/>
+                    <div class="logo-info">
+                        <img src="~/Images/Logos/colpatria_logo.png" alt="Alternate Text" />
                     </div>
                 </div>
                 <div style="clear: both"></div>
@@ -75,8 +75,6 @@
         <div style="clear: both"></div>
     </div>
 </div>
-
-
 
 @*Impresion de la respuesta*@
 <div class="step-content" id="respuesta-solicitud-summary" hidden="hidden">
@@ -120,5 +118,5 @@
         </div>
         <div style="clear: both"></div>
     </div>
-    </div>
-    @{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }
+</div>
+@{ Html.RenderPartial("~/Views/Shared/_finishModal.cshtml", Model.UserInfoDto); }

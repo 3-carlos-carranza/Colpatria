@@ -83,6 +83,7 @@ namespace Presentation.Web.Colpatria.Controllers
         {
             return View();
         }
+
         public ActionResult ErrorWsMotor()
         {
             return View();
@@ -149,9 +150,13 @@ namespace Presentation.Web.Colpatria.Controllers
                     return View("ContinueRequest");
                 }
             }
+            else
+            {
+                nuser.IsNewUser = true;
+            }
 
             //new user and new request
-            nuser.IsNewUser = true;
+
             if (nuser.IsNewUser)
             {
                 var usercreated = await

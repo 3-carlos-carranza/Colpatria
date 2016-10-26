@@ -131,23 +131,5 @@ namespace DataAccess.UserModule.Repository
             { ParameterName = "ExecutionId", DbType = DbType.Int64, Value = executionId }).FirstOrDefault();
             return result;
         }
-
-        public UserInfoDto GetUserInfoByUserId(long userId)
-        {
-            var context = UnitOfWork as DbContext;
-            try
-            {
-                var result = context?.Database.SqlQuery<UserInfoDto>
-                    ("GetUserInfoByUserId @UserId", new SqlParameter
-                    { ParameterName = "UserId", DbType = DbType.Int64, Value = userId }).FirstOrDefault();
-                return result;
-            }
-            catch (Exception exception)
-            {
-                var clientLog = new TelemetryClient();
-                clientLog.TrackException(exception);
-                throw;
-            }
-        }
     }
 }

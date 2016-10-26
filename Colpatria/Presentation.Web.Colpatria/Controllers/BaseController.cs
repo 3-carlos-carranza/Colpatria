@@ -140,7 +140,7 @@ namespace Presentation.Web.Colpatria.Controllers
             };
             ProcessFlowArgument.Execution = new Execution
             {
-                ProductId =  Convert.ToInt64(Session["Product"]),
+                ProductId =  Convert.ToInt32(Session["Product"]),
                 Id = ExecutionId
             };
             ProcessFlowArgument.IsSubmitting = true;

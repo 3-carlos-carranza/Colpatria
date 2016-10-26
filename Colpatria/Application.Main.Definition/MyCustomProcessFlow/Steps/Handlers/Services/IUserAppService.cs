@@ -66,8 +66,6 @@ namespace Application.Main.Definition.MyCustomProcessFlow.Steps.Handlers.Service
 
         long GetValidExecutionByUserAndProduct(long userId, int productId);
 
-        UserInfoDto GetUserInfoByUserId(long userId);
-
         Execution GetRequestBySimpleId(string simpleId);
     }
 }

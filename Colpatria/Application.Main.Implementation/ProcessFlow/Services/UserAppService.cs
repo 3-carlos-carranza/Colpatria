@@ -87,6 +87,7 @@ namespace Application.Main.Implementation.ProcessFlow.Services
 
             var user = new User();
             ObjectExtensions.MapDictionaryToObject(user, fieldValueTypes);
+            user.UserName = $"{user.IdentificationType ?? 0}_{user.Identification}";
 
             return Task.FromResult(user);
         }
@@ -94,11 +95,6 @@ namespace Application.Main.Implementation.ProcessFlow.Services
         public UserInfoDto GetUserInfoByExecutionId(long executionId)
         {
             return _userRepository.GetUserInfoByExecutionId(executionId);
-        }
-
-        public UserInfoDto GetUserInfoByUserId(long userId)
-        {
-            return _userRepository.GetUserInfoByUserId(userId);
         }
 
         public long GetValidExecutionByUserAndProduct(long userId, int productId)

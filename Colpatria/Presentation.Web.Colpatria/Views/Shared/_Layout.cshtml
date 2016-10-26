@@ -69,18 +69,26 @@
         <img src="~/Images/Logos/colpatria_logo.png" alt="Colpatria"/>
     </div>
     <div class="col-xs-12 col-sm-6 logo-step">
-
-        @if (Model != null) {
-            if ((ProductType)Session["Product"] == ProductType.SavingAccount)
+        @try
+        {
+            if (Model != null)
             {
+                if ((ProductType)Session["Product"] == ProductType.SavingAccount)
+                {
 
-                <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
-            }
-            else
-            {
-                <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
+                    <img src="~/Images/Content/tu-cuenta.png" alt="Colpatria" />
+                }
+                else
+                {
+                    <img src="~/Images/Content/tu-tarjeta.png" alt="Colpatria" />
+                }
             }
         }
+        catch (Exception ex)
+        {
+            // ignored
+        }
+        
     </div>
 </header>
 

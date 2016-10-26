@@ -40,7 +40,6 @@ namespace Presentation.Web.Colpatria.Controllers
             var user = await _userAppService.FindAsync(modelLogin.Identification, modelLogin.DocumentType, modelLogin.Identification + ConfigurationManager.AppSettings["Salt"]);
             if (user != null)
             {
-                //var info = _userAppService.GetUserInfoByUserId(user.Id); Get Page
                 var identity =
                     await _userAppService.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 identity.Label = user.FullName;
@@ -55,7 +54,7 @@ namespace Presentation.Web.Colpatria.Controllers
 
                 var response = _userAppService.GetRequestBySimpleId(modelLogin.SimpleId);
                 Session["Product"] = (ProductType)response.ProductId;
-                BaseProductType = (int) Session["Product"];
+                BaseProductType = (int)Session["Product"];
 
                 ProcessFlowArgument.Execution = new Execution
                 {
@@ -158,10 +157,6 @@ namespace Presentation.Web.Colpatria.Controllers
                 var usercreated = await
                     _userAppService.CreateAsync(nuser,
                         nuser.Identification + ConfigurationManager.AppSettings["Salt"]);
-                if (!usercreated.Succeeded && usercreated.Errors.Any())
-                {
-                    return View("Register");
-                }
                 //error creating user
                 if (!usercreated.Succeeded | usercreated.Errors.Any())
                 {
